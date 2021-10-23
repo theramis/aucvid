@@ -4,20 +4,15 @@ import got from "got";
 let data: any = null;
 
 const handler: Handler = async (event: APIGatewayEvent): Promise<any> => {
-  console.log("here");
   if (data == null) {
-    console.log("here2");
-    data = getData();
-    console.log("here3");
+    data = await getData();
   }
-
-  console.log("here4");
 
   return {
     statusCode: 200,
     body: JSON.stringify(data),
     headers: {
-      // "Cache-Control": "public, s-maxage=1800",
+      "Cache-Control": "public, s-maxage=1800",
       "Content-Type": "application/json",
     },
   };
