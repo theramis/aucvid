@@ -4,9 +4,14 @@ import got from "got";
 let data: any = null;
 
 const handler: Handler = async (event: APIGatewayEvent): Promise<any> => {
-  if (data === null) {
+  console.log("here");
+  if (data == null) {
+    console.log("here2");
     data = getData();
+    console.log("here3");
   }
+
+  console.log("here4");
 
   return {
     statusCode: 200,
