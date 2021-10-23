@@ -1,0 +1,30 @@
+{
+  "type": "module",
+  "name": "aucvid",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "npm run compile && rimraf .netlify && netlify-lambda build src/functions",
+    "prepare": "husky install",
+    "compile": "tsc --noEmit"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/preset-typescript": "^7.13.0",
+    "@types/aws-lambda": "^8.10.76",
+    "@types/node": "^15.6.0",
+    "@types/uuid": "^8.3.0",
+    "husky": "^6.0.0",
+    "lint-staged": "^11.0.0",
+    "netlify-lambda": "^2.0.6",
+    "prettier": "2.3.0",
+    "rimraf": "^2.7.1",
+    "typescript": "^4.2.4"
+  },
+  "lint-staged": {
+    "**/*": "prettier --write --ignore-unknown"
+  },
+  "dependencies": {
+    "@netlify/functions": "^0.7.2",
+    "node-fetch": "^3.0.0"
+  }
+}
