@@ -1,11 +1,12 @@
-const fetch = require("node-fetch");
+// const fetch = require("node-fetch");
+import got from "got";
 
 const covidSiteUrl =
   "https://www.health.govt.nz/our-work/diseases-and-conditions/covid-19-novel-coronavirus/covid-19-data-and-statistics/covid-19-vaccine-data";
 
 export async function getData() {
-  const response = await fetch(covidSiteUrl);
-  const rawHtml = await response.text();
+  const response = await got(covidSiteUrl);
+  const rawHtml = response.body;
 
   return {
     waitemata: extractDhbData(rawHtml, "Waitemata"),
