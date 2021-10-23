@@ -7,14 +7,12 @@ const covidSiteUrl =
 export async function getData() {
   const response = await got(covidSiteUrl);
   const rawHtml = response.body;
-
+  console.log(rawHtml);
   return {
     waitemata: extractDhbData(rawHtml, "Waitemata"),
     auckland: extractDhbData(rawHtml, "Auckland"),
     countiesManukau: extractDhbData(rawHtml, "Counties Manukau"),
   };
-
-  console.log(rawHtml);
 }
 
 function extractDhbData(rawHtml: string, dhbName: string) {
