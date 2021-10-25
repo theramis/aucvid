@@ -1,10 +1,18 @@
 import { GetServerSideProps } from "next";
 import type { NextPage } from "next";
 import fetchData from "../services/dataFetcher";
+import { DhbData } from "../types/DhbData";
 
-const Home: NextPage = (data) => {
-  // data is injected, use it however you want
-  console.log(data);
+export type HomePageProps = {
+    waitemata: DhbData,
+    auckland: DhbData,
+    countiesManukau: DhbData,
+    lastRetrievedTime: string
+}
+
+const Home: NextPage = (props: any) => {
+  // props is injected, use it however you want
+  console.log(props);
 
   return (
     <div className="antialiased bg-pink-50 bg-opacity-50 h-full min-h-screen">
