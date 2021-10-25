@@ -61,4 +61,4 @@ function extractDhbData(rawHtml: string, dhbName: string): DhbData {
 const extractValue = (s: string): string =>
   s.replace('<td style="text-align:right">', "").replace("</td>", "");
 
-const convertToNumber = (s: string): number => parseInt(s.replace(/[%,]/g, ""));
+const convertToNumber = (s: string): number => Number(s.replace(/[%,]/g, ""));
