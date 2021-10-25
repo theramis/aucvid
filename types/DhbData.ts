@@ -1,9 +1,9 @@
 export type DhbData = {
-  numOfFirstDoses: string;
-  numOfFirstDosesTo90Percent: string;
-  firstDosesPercentage: string;
-  numOfSecondDoses: string;
-  numOfSecondDosesTo90Percent: string;
-  secondDosesPercentage: string;
-  totalPopulation: string;
+  numOfFirstDoses: number;
+  numOfFirstDosesTo90Percent: number;
+  firstDosesPercentage: number;
+  numOfSecondDoses: number;
+  numOfSecondDosesTo90Percent: number;
+  secondDosesPercentage: number;
+  totalPopulation: number;
 };
