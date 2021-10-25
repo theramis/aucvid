@@ -1,4 +1,3 @@
-import type { NextApiRequest, NextApiResponse } from "next";
 import got from "got";
 
 const covidSiteUrl =
@@ -7,25 +6,24 @@ const covidSiteUrl =
 // making it global so hopefully it gets cached by lambda
 let data: any = null;
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse<any>
-) {
+export default async function fetchData() {
+
   if (data == null) {
     data = await getData();
   }
 
-  res.status(200).json(data);
+  return data;
 }
 
-export async function getData() {
+async function getData() {
   const response = await got(covidSiteUrl);
   const rawHtml = response.body;
-  console.log(rawHtml);
+
   return {
     waitemata: extractDhbData(rawHtml, "Waitemata"),
     auckland: extractDhbData(rawHtml, "Auckland"),
     countiesManukau: extractDhbData(rawHtml, "Counties Manukau"),
+    lastRetrievedTime: new Date().toISOString()
   };
 }
 

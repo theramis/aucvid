@@ -1,6 +1,11 @@
+import { GetServerSideProps } from "next";
 import type { NextPage } from "next";
+import fetchData from "../services/dataFetcher";
 
-const Home: NextPage = () => {
+const Home: NextPage = (data) => {
+  // data is injected, use it however you want
+  console.log(data);
+
   return (
     <div className="antialiased bg-pink-50 bg-opacity-50 h-full min-h-screen">
       <div className="max-w-[600px] mx-5 sm:mx-auto py-20">
@@ -388,3 +393,16 @@ const Home: NextPage = () => {
 };
 
 export default Home;
+
+export const getServerSideProps: GetServerSideProps = async ({ res }) => {
+  res.setHeader(
+    "Cache-Control",
+    "public, s-maxage=1800, stale-while-revalidate=3600"
+  );
+
+  return {
+    props: {
+      data: await fetchData(),
+    },
+  };
+};
