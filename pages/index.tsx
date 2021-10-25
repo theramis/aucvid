@@ -1,6 +1,7 @@
 import { GetServerSideProps, GetServerSidePropsResult } from "next";
 import fetchData from "../services/dataFetcher";
 import { DhbData } from "../types/DhbData";
+import { Progress } from "../components/Progress";
 
 export type HomePageProps = {
   waitemata: DhbData;
@@ -76,52 +77,9 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
               <dt className="w-8">76%</dt>
             </div>
           </dl>
-          <div className="w-full flex">
-            <div
-              className="
-                w-full
-                relative
-                h-12
-                bg-purple-300
-                rounded-lg
-                animate-fade-in
-              "
-            >
-              <div className="absolute inset-0 h-full w-[90%]">
-                <div
-                  className="
-                    bg-purple-400
-                    h-full
-                    rounded-lg
-                    overflow-hidden
-                    animate-grow-width
-                  "
-                ></div>
-              </div>
-              <div className="absolute inset-0 h-full w-[76%]">
-                <div
-                  className="
-                    bg-purple-500
-                    h-full
-                    rounded-lg
-                    overflow-hidden
-                    animate-grow-width
-                  "
-                  style={{ animationDelay: "1s" }}
-                ></div>
-              </div>
-              <div
-                className="
-                  absolute
-                  top-0
-                  left-[90%]
-                  bottom-0
-                  border-dashed border-black border-r-2
-                "
-              ></div>
-            </div>
-          </div>
+          <Progress firstDose={90} secondDose={76} size="large" />
         </section>
+
         <section>
           <div className="bg-white rounded-xl p-6 space-y-6">
             <div>
@@ -179,51 +137,7 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
                   </dt>
                 </div>
               </dl>
-              <div className="w-full flex">
-                <div
-                  className="
-                    relative
-                    w-full
-                    h-6
-                    bg-yellow-200
-                    rounded-md
-                    animate-fade-in
-                  "
-                >
-                  <div className="absolute inset-0 h-full w-[90%]">
-                    <div
-                      className="
-                        bg-yellow-500
-                        h-full
-                        rounded-md
-                        overflow-hidden
-                        animate-grow-width
-                      "
-                    ></div>
-                  </div>
-                  <div className="absolute inset-0 h-full w-[76%]">
-                    <div
-                      className="
-                        bg-yellow-600
-                        h-full
-                        rounded-md
-                        overflow-hidden
-                        animate-grow-width
-                      "
-                      style={{ animationDelay: "1s" }}
-                    ></div>
-                  </div>
-                  <div
-                    className="
-                      absolute
-                      top-0
-                      left-[90%]
-                      bottom-0
-                      border-dashed border-black border-r-2
-                    "
-                  ></div>
-                </div>
-              </div>
+              <Progress firstDose={90} secondDose={76} color="yellow" />
             </div>
             <div>
               <h3 className="text-gray-900 text-lg md:text-2xl font-semibold mb-2">
@@ -280,51 +194,7 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
                   </dt>
                 </div>
               </dl>
-              <div className="w-full flex">
-                <div
-                  className="
-                    relative
-                    w-full
-                    h-6
-                    bg-yellow-200
-                    rounded-md
-                    animate-fade-in
-                  "
-                >
-                  <div className="absolute inset-0 h-full w-[93%]">
-                    <div
-                      className="
-                        bg-yellow-500
-                        h-full
-                        rounded-md
-                        overflow-hidden
-                        animate-grow-width
-                      "
-                    ></div>
-                  </div>
-                  <div className="absolute inset-0 h-full w-[81%]">
-                    <div
-                      className="
-                        bg-yellow-600
-                        h-full
-                        rounded-md
-                        overflow-hidden
-                        animate-grow-width
-                      "
-                      style={{ animationDelay: "1s" }}
-                    ></div>
-                  </div>
-                  <div
-                    className="
-                      absolute
-                      top-0
-                      left-[90%]
-                      bottom-0
-                      border-dashed border-black border-r-2
-                    "
-                  ></div>
-                </div>
-              </div>
+              <Progress firstDose={93} secondDose={81} color="yellow" />
             </div>
             <div>
               <h3 className="text-gray-900 text-lg md:text-2xl font-semibold mb-2">
@@ -346,51 +216,7 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
                   </dt>
                 </div>
               </dl>
-              <div className="w-full flex">
-                <div
-                  className="
-                    relative
-                    w-full
-                    h-6
-                    bg-yellow-200
-                    rounded-md
-                    animate-fade-in
-                  "
-                >
-                  <div className="absolute inset-0 h-full w-[88%]">
-                    <div
-                      className="
-                        bg-yellow-500
-                        h-full
-                        rounded-md
-                        overflow-hidden
-                        animate-grow-width
-                      "
-                    ></div>
-                  </div>
-                  <div className="absolute inset-0 h-full w-[73%]">
-                    <div
-                      className="
-                        bg-yellow-600
-                        h-full
-                        rounded-md
-                        overflow-hidden
-                        animate-grow-width
-                      "
-                      style={{ animationDelay: "1s" }}
-                    ></div>
-                  </div>
-                  <div
-                    className="
-                      absolute
-                      top-0
-                      left-[90%]
-                      bottom-0
-                      border-dashed border-black border-r-2
-                    "
-                  ></div>
-                </div>
-              </div>
+              <Progress firstDose={88} secondDose={73} color="yellow" />
             </div>
           </div>
         </section>
