@@ -29,6 +29,7 @@ async function getData(): Promise<HomePageProps> {
   };
 }
 
+// returns a string like "11:59pm 24 October 2021"
 const extractDailyUpdatedTime = (rawHtml: string): string =>
   /Data\sin\sthis\ssection\sis\sas\sat\s(.*?)\sand\sis\supdated\sdaily/g.exec(
     rawHtml
@@ -49,10 +50,10 @@ function extractDhbData(rawHtml: string, dhbName: string): DhbData {
 
   return {
     numOfFirstDoses: convertToNumber(extractValue(c[0])),
-    firstDosesPercentage: convertToNumber(extractValue(c[1])),
+    firstDosesPercentage: convertToNumber(extractValue(c[1])) / 100,
     numOfFirstDosesTo90Percent: convertToNumber(extractValue(c[2])),
     numOfSecondDoses: convertToNumber(extractValue(c[3])),
-    secondDosesPercentage: convertToNumber(extractValue(c[4])),
+    secondDosesPercentage: convertToNumber(extractValue(c[4])) / 100,
     numOfSecondDosesTo90Percent: convertToNumber(extractValue(c[5])),
     totalPopulation: convertToNumber(extractValue(c[6])),
   };
