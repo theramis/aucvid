@@ -1,3 +1,61 @@
+<!DOCTYPE html>
 <html>
-<body>Hello Andy!</body>
+  <head>
+    <title>Out of lockdown</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://cdn-tailwindcss.vercel.app/"></script>
+  </head>
+  <body>
+    <div class="antialiased bg-pink-50 bg-opacity-50 h-full min-h-screen">
+      <div class="max-w-xl mx-5 sm:mx-auto py-20">
+        <section class="mb-12">
+          <div class="text-gray-900 text-lg md:text-2xl">Vaccination rates</div>
+          <h1 class="text-gray-900 text-4xl md:text-6xl font-bold">Auckland</h1>
+        </section>
+        <section>
+          <h2 class="text-gray-900 text-lg md:text-2xl font-semibold mb-2">
+            Combined Auckland DHBs
+          </h2>
+          <dl class="mb-6">
+            <div
+              class="
+                w-44
+                flex flex-row
+                justify-between
+                items-center
+                text-green-500
+              "
+            >
+              <dd class="w-32">First dose</dd>
+              <dt class="w-8">90%</dt>
+            </div>
+            <div class="w-44 flex flex-row justify-between items-center">
+              <dd class="w-32">Second dose</dd>
+              <dt class="w-8">76%</dt>
+            </div>
+          </dl>
+          <div class="w-full flex">
+            <div class="w-full relative h-12 bg-purple-300 rounded-lg">
+              <div
+                class="absolute inset-0 h-full bg-purple-400 rounded-lg w-[90%]"
+              ></div>
+              <div
+                class="absolute inset-0 h-full bg-purple-500 rounded-lg w-[76%]"
+              ></div>
+              <div
+                class="
+                  absolute
+                  top-0
+                  left-[90%]
+                  bottom-0
+                  border-dashed border-black border-r-2
+                "
+              ></div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </body>
 </html>
