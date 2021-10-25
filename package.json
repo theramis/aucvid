@@ -9,7 +9,7 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@babel/preset-typescript": "^7.13.0",
+    "@babel/preset-typescript": "^7.15.0",
     "@types/aws-lambda": "^8.10.84",
     "@types/node": "^16.11.4",
     "@types/uuid": "^8.3.0",
