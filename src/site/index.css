@@ -15,9 +15,6 @@
 }
 
 .animate-grow-width {
+  opacity: 0%;
   animation: grow-width 1s ease-in-out .5s forwards;
-}
-
-.animate-grow-width-delay {
-  animation: grow-width 1.5s ease-in-out 1s forwards;
 }
