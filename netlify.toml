@@ -1,13 +1,3 @@
 [build]
   command = "npm run build"
-  functions = ".netlify/functions/"
-  publish = "src/site/"
-
-[functions]
-  directory = ".netlify/functions/"
-
-[[redirects]]
-  from = "/api/data"
-  to = "/.netlify/functions/data"
-  status = 200
-  force = true
+  publish = "out"

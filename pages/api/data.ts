@@ -1,27 +1,23 @@
-import { Handler, APIGatewayEvent } from "aws-lambda";
+import type { NextApiRequest, NextApiResponse } from 'next'
 import got from "got";
 
+const covidSiteUrl =
+  "https://www.health.govt.nz/our-work/diseases-and-conditions/covid-19-novel-coronavirus/covid-19-data-and-statistics/covid-19-vaccine-data";
+
+  // making it global so hopefully it gets cached by lambda
 let data: any = null;
 
-const handler: Handler = async (event: APIGatewayEvent): Promise<any> => {
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse<any>
+) {
+
   if (data == null) {
     data = await getData();
   }
 
-  return {
-    statusCode: 200,
-    body: JSON.stringify(data),
-    headers: {
-      "Cache-Control": "public, s-maxage=1800",
-      "Content-Type": "application/json",
-    },
-  };
-};
-
-export { handler };
-
-const covidSiteUrl =
-  "https://www.health.govt.nz/our-work/diseases-and-conditions/covid-19-novel-coronavirus/covid-19-data-and-statistics/covid-19-vaccine-data";
+  res.status(200).json(data);
+}
 
 export async function getData() {
   const response = await got(covidSiteUrl);
