@@ -1,0 +1,23 @@
+@keyframes fade-in {
+  0%    {opacity: 0%;}
+  100%  {opacity: 100%;}
+}
+
+@keyframes grow-width {
+  0%    {opacity: 0%; width: 0%;}
+  30%   {opacity: 100%;}
+  100%  {opacity: 100%; width: 100%}
+}
+
+
+.animate-fade-in {
+  animation: fade-in .3s ease-in-out forwards;
+}
+
+.animate-grow-width {
+  animation: grow-width 1s ease-in-out .5s forwards;
+}
+
+.animate-grow-width-delay {
+  animation: grow-width 1.5s ease-in-out 1s forwards;
+}
