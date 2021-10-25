@@ -5,8 +5,12 @@ const Home: NextPage = () => {
     <div className="antialiased bg-pink-50 bg-opacity-50 h-full min-h-screen">
       <div className="max-w-[600px] mx-5 sm:mx-auto py-20">
         <section className="mb-12">
-          <div className="text-gray-900 text-lg md:text-2xl">Vaccination rates</div>
-          <h1 className="text-gray-900 text-4xl md:text-6xl font-bold">Auckland</h1>
+          <div className="text-gray-900 text-lg md:text-2xl">
+            Vaccination rates
+          </div>
+          <h1 className="text-gray-900 text-4xl md:text-6xl font-bold">
+            Auckland
+          </h1>
         </section>
         <section className="mb-8">
           <h2 className="text-gray-900 text-lg md:text-2xl font-semibold mb-2">
@@ -214,7 +218,7 @@ const Home: NextPage = () => {
                 Auckland
               </h3>
               <dl className="mb-6">
-              <div
+                <div
                   className="
                     w-full
                     grid grid-cols-12
