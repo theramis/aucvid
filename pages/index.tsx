@@ -1,6 +1,18 @@
-import type { NextPage } from "next";
+import { GetServerSideProps, GetServerSidePropsResult } from "next";
+import fetchData from "../services/dataFetcher";
+import { DhbData } from "../types/DhbData";
 
-const Home: NextPage = () => {
+export type HomePageProps = {
+  waitemata: DhbData;
+  auckland: DhbData;
+  countiesManukau: DhbData;
+  lastRetrievedTime: string;
+};
+
+const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
+  // props is injected, use it however you want
+  console.log(props);
+
   return (
     <div className="antialiased bg-pink-50 bg-opacity-50 h-full min-h-screen">
       <div className="max-w-[600px] mx-5 sm:mx-auto py-20">
@@ -388,3 +400,16 @@ const Home: NextPage = () => {
 };
 
 export default Home;
+
+export const getServerSideProps: GetServerSideProps<HomePageProps> = async ({
+  res,
+}) => {
+  res.setHeader(
+    "Cache-Control",
+    "public, s-maxage=1800, stale-while-revalidate=3600"
+  );
+
+  return {
+    props: await fetchData(),
+  };
+};
