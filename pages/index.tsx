@@ -55,7 +55,7 @@ const Home: NextPage = () => {
               </dd>
               <dt className="w-8">90%</dt>
             </div>
-            <div className="w-44 flex flex-row justify-between items-center">
+            <div className="w-44 flex flex-row justify-between items-center text-lg">
               <dd className="w-32">Second dose</dd>
               <dt className="w-8">76%</dt>
             </div>
