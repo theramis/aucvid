@@ -1,16 +1,15 @@
-import { GetServerSideProps } from "next";
-import type { NextPage } from "next";
+import { GetServerSideProps, GetServerSidePropsResult } from "next";
 import fetchData from "../services/dataFetcher";
 import { DhbData } from "../types/DhbData";
 
 export type HomePageProps = {
-    waitemata: DhbData,
-    auckland: DhbData,
-    countiesManukau: DhbData,
-    lastRetrievedTime: string
-}
+  waitemata: DhbData;
+  auckland: DhbData;
+  countiesManukau: DhbData;
+  lastRetrievedTime: string;
+};
 
-const Home: NextPage = (props: any) => {
+const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
   // props is injected, use it however you want
   console.log(props);
 
@@ -402,15 +401,15 @@ const Home: NextPage = (props: any) => {
 
 export default Home;
 
-export const getServerSideProps: GetServerSideProps = async ({ res }) => {
+export const getServerSideProps: GetServerSideProps<HomePageProps> = async ({
+  res,
+}) => {
   res.setHeader(
     "Cache-Control",
     "public, s-maxage=1800, stale-while-revalidate=3600"
   );
 
   return {
-    props: {
-      data: await fetchData(),
-    },
+    props: await fetchData(),
   };
 };
