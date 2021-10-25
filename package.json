@@ -11,7 +11,7 @@
   "devDependencies": {
     "@babel/preset-typescript": "^7.13.0",
     "@types/aws-lambda": "^8.10.84",
-    "@types/node": "^15.6.0",
+    "@types/node": "^16.11.4",
     "@types/uuid": "^8.3.0",
     "husky": "^6.0.0",
     "lint-staged": "^11.0.0",
