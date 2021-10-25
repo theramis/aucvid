@@ -77,7 +77,12 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
               <dt className="w-8">76%</dt>
             </div>
           </dl>
-          <Progress firstDose={90} secondDose={76} size="large" />
+          <Progress
+            firstDose={90}
+            secondDose={76}
+            size="large"
+            color="purple"
+          />
         </section>
 
         <section>
@@ -137,7 +142,7 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
                   </dt>
                 </div>
               </dl>
-              <Progress firstDose={90} secondDose={76} color="yellow" />
+              <Progress firstDose={90} secondDose={76} />
             </div>
             <div>
               <h3 className="text-gray-900 text-lg md:text-2xl font-semibold mb-2">
@@ -194,7 +199,7 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
                   </dt>
                 </div>
               </dl>
-              <Progress firstDose={93} secondDose={81} color="yellow" />
+              <Progress firstDose={93} secondDose={81} />
             </div>
             <div>
               <h3 className="text-gray-900 text-lg md:text-2xl font-semibold mb-2">
@@ -216,7 +221,7 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
                   </dt>
                 </div>
               </dl>
-              <Progress firstDose={88} secondDose={73} color="yellow" />
+              <Progress firstDose={88} secondDose={73} />
             </div>
           </div>
         </section>

@@ -10,7 +10,7 @@ type ProgressProps = {
 export const Progress = ({
   firstDose,
   secondDose,
-  color = "purple",
+  color = "yellow",
   size = "small",
 }: ProgressProps) => {
   return (
