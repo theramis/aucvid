@@ -1,6 +1,7 @@
 import got from "got";
 import { HomePageProps } from "../pages";
 import { DhbData } from "../types/DhbData";
+import { DateTime } from "luxon";
 
 const covidSiteUrl =
   "https://www.health.govt.nz/our-work/diseases-and-conditions/covid-19-novel-coronavirus/covid-19-data-and-statistics/covid-19-vaccine-data";
@@ -33,16 +34,36 @@ async function getData(): Promise<HomePageProps> {
     auckland: aucklandDhbData,
     countiesManukau: countiesManukauDhbData,
     combinedAuckland: combinedAucklandDhbData,
-    dataUpdatedTime: extractDailyUpdatedTime(rawHtml),
-    lastRetrievedTime: new Date().toISOString(),
+    dataUpdatedTime: extractDailyUpdatedTime(rawHtml).toUTC().toISO(),
+    lastRetrievedTime: DateTime.now().toUTC().toISO(),
   };
 }
 
-// returns a string like "11:59pm 24 October 2021"
-const extractDailyUpdatedTime = (rawHtml: string): string =>
-  /Data\sin\sthis\ssection\sis\sas\sat\s(.*?)\sand\sis\supdated\sdaily/g.exec(
-    rawHtml
-  )![1];
+const extractDailyUpdatedTime = (rawHtml: string): DateTime => {
+  // extracts a date like "11:59pm 24 October 2021"
+  const match =
+    /Data\sin\sthis\ssection\sis\sas\sat\s([0-9]+):([0-9]+)(am|pm)\s([0-9]+)\s(.*?)\s([0-9]+)\sand\sis\supdated\sdaily/g.exec(
+      rawHtml
+    )!;
+
+  const hour = convertToNumber(match[1]);
+  const minute = convertToNumber(match[2]);
+  const isPm = match[3] === "pm";
+  const date = convertToNumber(match[4]);
+  const month = getMonthFromString(match[5]);
+  const year = convertToNumber(match[6]);
+
+  return DateTime.fromObject(
+    {
+      day: date,
+      year: year,
+      month: month,
+      hour: isPm ? hour + 12 : hour,
+      minute: minute,
+    },
+    { zone: "Pacific/Auckland" }
+  );
+};
 
 function extractDhbData(rawHtml: string, dhbName: string): DhbData {
   const dbhRowRegex = new RegExp(
@@ -103,3 +124,6 @@ const combineDhbData = (...data: DhbData[]): DhbData => {
 
 const roundTo2Dp = (num: number) =>
   Math.round((num + Number.EPSILON) * 100) / 100;
+
+const getMonthFromString = (s: string) =>
+  new Date(Date.parse(s + " 1, 2012")).getMonth() + 1;
