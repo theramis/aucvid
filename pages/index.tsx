@@ -127,20 +127,30 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
                     </div>
                     <div className="text-green-500">First dose</div>
                   </dd>
-                  <dt className="col-span-1 text-green-500">{waitemata.firstDosesPercentage * 100}%</dt>
+                  <dt className="col-span-1 text-green-500">
+                    {waitemata.firstDosesPercentage * 100}%
+                  </dt>
                   <dt className="col-span-6 sm:col-span-7 md:col-span-8 text-right">
                     <strong>{waitemata.numOfFirstDosesTo90Percent}</strong> left
                   </dt>
                 </div>
                 <div className="w-full grid grid-cols-12 text-sm sm:text-md">
-                  <dd className="col-span-5 sm:col-span-4 md:col-span-3">Second dose</dd>
-                  <dt className="col-span-1">{waitemata.secondDosesPercentage * 100}%</dt>
+                  <dd className="col-span-5 sm:col-span-4 md:col-span-3">
+                    Second dose
+                  </dd>
+                  <dt className="col-span-1">
+                    {waitemata.secondDosesPercentage * 100}%
+                  </dt>
                   <dt className="col-span-6 sm:col-span-7 md:col-span-8 text-right">
-                    <strong>{waitemata.numOfSecondDosesTo90Percent}</strong> left
+                    <strong>{waitemata.numOfSecondDosesTo90Percent}</strong>{" "}
+                    left
                   </dt>
                 </div>
               </dl>
-              <Progress firstDose={waitemata.firstDosesPercentage * 100} secondDose={waitemata.secondDosesPercentage * 100} />
+              <Progress
+                firstDose={waitemata.firstDosesPercentage * 100}
+                secondDose={waitemata.secondDosesPercentage * 100}
+              />
             </div>
             <div>
               <h3 className="text-gray-900 text-lg md:text-2xl font-semibold mb-2">
@@ -184,20 +194,29 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
                     </div>
                     <div className="text-green-500">First dose</div>
                   </dd>
-                  <dt className="col-span-1 text-green-500">{auckland.firstDosesPercentage * 100}%</dt>
+                  <dt className="col-span-1 text-green-500">
+                    {auckland.firstDosesPercentage * 100}%
+                  </dt>
                   <dt className="col-span-6 sm:col-span-7 md:col-span-8 text-right">
                     <strong>{auckland.numOfFirstDosesTo90Percent}</strong> left
                   </dt>
                 </div>
                 <div className="w-full grid grid-cols-12 text-sm sm:text-md">
-                  <dd className="col-span-5 sm:col-span-4 md:col-span-3">Second dose</dd>
-                  <dt className="col-span-1">{auckland.secondDosesPercentage * 100}%</dt>
+                  <dd className="col-span-5 sm:col-span-4 md:col-span-3">
+                    Second dose
+                  </dd>
+                  <dt className="col-span-1">
+                    {auckland.secondDosesPercentage * 100}%
+                  </dt>
                   <dt className="col-span-6 sm:col-span-7 md:col-span-8 text-right">
                     <strong>{auckland.numOfSecondDosesTo90Percent}</strong> left
                   </dt>
                 </div>
               </dl>
-              <Progress firstDose={auckland.firstDosesPercentage * 100} secondDose={auckland.secondDosesPercentage * 100} />
+              <Progress
+                firstDose={auckland.firstDosesPercentage * 100}
+                secondDose={auckland.secondDosesPercentage * 100}
+              />
             </div>
             <div>
               <h3 className="text-gray-900 text-lg md:text-2xl font-semibold mb-2">
@@ -205,21 +224,38 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
               </h3>
               <dl className="mb-6">
                 <div className="w-full grid grid-cols-12 text-sm sm:text-md">
-                  <dd className="col-span-5 sm:col-span-4 md:col-span-3">First dose</dd>
-                  <dt className="col-span-1">{countiesManukau.firstDosesPercentage * 100}%</dt>
+                  <dd className="col-span-5 sm:col-span-4 md:col-span-3">
+                    First dose
+                  </dd>
+                  <dt className="col-span-1">
+                    {countiesManukau.firstDosesPercentage * 100}%
+                  </dt>
                   <dt className="col-span-6 sm:col-span-7 md:col-span-8 text-right">
-                    <strong>{countiesManukau.numOfFirstDosesTo90Percent}</strong> left
+                    <strong>
+                      {countiesManukau.numOfFirstDosesTo90Percent}
+                    </strong>{" "}
+                    left
                   </dt>
                 </div>
                 <div className="w-full grid grid-cols-12 text-sm sm:text-md">
-                  <dd className="col-span-5 sm:col-span-4 md:col-span-3">Second dose</dd>
-                  <dt className="col-span-1">{countiesManukau.secondDosesPercentage * 100}%</dt>
+                  <dd className="col-span-5 sm:col-span-4 md:col-span-3">
+                    Second dose
+                  </dd>
+                  <dt className="col-span-1">
+                    {countiesManukau.secondDosesPercentage * 100}%
+                  </dt>
                   <dt className="col-span-6 sm:col-span-7 md:col-span-8 text-right">
-                    <strong>{countiesManukau.numOfSecondDosesTo90Percent}</strong> left
+                    <strong>
+                      {countiesManukau.numOfSecondDosesTo90Percent}
+                    </strong>{" "}
+                    left
                   </dt>
                 </div>
               </dl>
-              <Progress firstDose={countiesManukau.firstDosesPercentage * 100} secondDose={countiesManukau.secondDosesPercentage * 100} />
+              <Progress
+                firstDose={countiesManukau.firstDosesPercentage * 100}
+                secondDose={countiesManukau.secondDosesPercentage * 100}
+              />
             </div>
           </div>
         </section>
