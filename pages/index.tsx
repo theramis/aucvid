@@ -1,8 +1,10 @@
 import { GetServerSideProps } from "next";
+import { DateTime } from "luxon";
+import { CheckIcon } from "@heroicons/react/solid";
+
 import fetchData from "../services/dataFetcher";
 import { DhbData } from "../types/DhbData";
 import { Progress } from "../components/Progress";
-import { CheckIcon } from "@heroicons/react/solid";
 
 export type HomePageProps = {
   waitemata: DhbData;
@@ -14,12 +16,18 @@ export type HomePageProps = {
 };
 
 const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
-  const { combinedAuckland, auckland, countiesManukau, waitemata } = props;
+  const {
+    combinedAuckland,
+    auckland,
+    countiesManukau,
+    waitemata,
+    dataUpdatedTime,
+  } = props;
 
   return (
     <div className="antialiased bg-pink-50 bg-opacity-50 h-full min-h-screen">
-      <div className="max-w-[600px] mx-5 sm:mx-auto py-12 md:py-20">
-        <section className="mb-8">
+      <div className="max-w-[600px] mx-5 sm:mx-auto">
+        <section className="pb-8 pt-12 md:pt-20">
           <div className="text-gray-900 text-lg md:text-2xl">
             Vaccination rates
           </div>
@@ -224,12 +232,35 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
             </div>
           </div>
         </section>
+        <footer className="pb-4 pt-20 md:pt-32 flex justify-center">
+          <div className="flex flex-col sm:flex-row items-center justify-center space-x-0 sm:space-x-2 space-y-2 sm:space-y-0 text-sm">
+            <p>
+              Source:{" "}
+              <a
+                className="underline focus:outline-none focus:no-underline focus:opacity-70 hover:opacity-70"
+                href="https://www.health.govt.nz/our-work/diseases-and-conditions/covid-19-novel-coronavirus/covid-19-data-and-statistics/covid-19-vaccine-data"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                Ministry of Health NZ
+              </a>
+            </p>
+            <div className="hidden sm:block">&#8226;</div>
+            <p>Last updated {hoursAgo(dataUpdatedTime)} hours ago</p>
+          </div>
+        </footer>
       </div>
     </div>
   );
 };
 
 export default Home;
+
+const hoursAgo = (text: string) => {
+  const hoursBeforeNow = DateTime.fromISO(text).diffNow("hours").get("hours");
+
+  return Math.floor(Math.abs(hoursBeforeNow));
+};
 
 export const getServerSideProps: GetServerSideProps<HomePageProps> = async ({
   res,
