@@ -2,6 +2,7 @@ import { GetServerSideProps, GetServerSidePropsResult } from "next";
 import fetchData from "../services/dataFetcher";
 import { DhbData } from "../types/DhbData";
 import { Progress } from "../components/Progress";
+import { CheckIcon } from "@heroicons/react/solid";
 
 export type HomePageProps = {
   waitemata: DhbData;
@@ -54,21 +55,7 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
                     text-green-700
                   "
                 >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-4 w-4"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    data-src="https://heroicons.com/"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M5 13l4 4L19 7"
-                    />
-                  </svg>
+                  <CheckIcon className="h-4 w-4" />
                 </div>
                 <div>First dose</div>
               </dd>
@@ -114,20 +101,7 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
                         text-green-700
                       "
                     >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-3 w-4 md:h-4 md:w-4"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                          d="M5 13l4 4L19 7"
-                        />
-                      </svg>
+                      <CheckIcon className="h-3 w-4 md:h-4 md:w-4" />
                     </div>
                     <div className="text-green-500">First dose</div>
                   </dd>
@@ -171,20 +145,7 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
                         text-green-700
                       "
                     >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-3 w-4 md:h-4 md:w-4"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                          d="M5 13l4 4L19 7"
-                        />
-                      </svg>
+                      <CheckIcon className="h-3 w-4 md:h-4 md:w-4" />
                     </div>
                     <div className="text-green-500">First dose</div>
                   </dd>
