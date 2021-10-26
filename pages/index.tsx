@@ -26,8 +26,8 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
 
   return (
     <div className="bg-pink-50 h-full min-h-screen">
-      <div className="max-w-[600px] mx-5 sm:mx-auto">
-        <section className="pb-8 pt-12 md:pt-20">
+      <section className="pb-8 pt-12 md:pt-20">
+        <Container>
           <div className="text-gray-900 text-lg md:text-2xl">
             Vaccination rates
           </div>
@@ -81,8 +81,10 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
             size="large"
             color="purple"
           />
-        </section>
-        <section>
+        </Container>
+      </section>
+      <section>
+        <Container>
           <div className="bg-white rounded-xl p-6 space-y-6">
             <div>
               <h3 className="text-gray-900 text-lg md:text-2xl font-semibold mb-2">
@@ -231,8 +233,10 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
               />
             </div>
           </div>
-        </section>
-        <footer className="pb-4 pt-20 md:pt-32 flex justify-center">
+        </Container>
+      </section>
+      <footer className="pb-4 pt-20 md:pt-32">
+        <Container>
           <div className="flex flex-col sm:flex-row items-center justify-center space-x-0 sm:space-x-2 space-y-2 sm:space-y-0 text-sm">
             <p>
               Source:{" "}
@@ -248,13 +252,17 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
             <div className="hidden sm:block">&#8226;</div>
             <p>Last updated {hoursAgo(dataUpdatedTime)} hours ago</p>
           </div>
-        </footer>
-      </div>
+        </Container>
+      </footer>
     </div>
   );
 };
 
 export default Home;
+
+const Container: React.FC<{ children: React.ReactNode }> = ({ children }) => (
+  <div className="max-w-[600px] mx-5 sm:mx-auto">{children}</div>
+);
 
 const hoursAgo = (text: string) => {
   const hoursBeforeNow = DateTime.fromISO(text).diffNow("hours").get("hours");
