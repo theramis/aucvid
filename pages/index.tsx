@@ -13,22 +13,19 @@ export type HomePageProps = {
 };
 
 const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
-  // props is injected, use it however you want
-  console.log(props);
+  const { auckland, countiesManukau, waitemata } = props;
 
   return (
     <div className="antialiased bg-pink-50 bg-opacity-50 h-full min-h-screen">
-      <div className="max-w-[600px] mx-5 sm:mx-auto py-20">
-        <section className="mb-12">
+      <div className="max-w-[600px] mx-5 sm:mx-auto py-12 md:py-20">
+        <section className="mb-8">
           <div className="text-gray-900 text-lg md:text-2xl">
             Vaccination rates
           </div>
-          <h1 className="text-gray-900 text-4xl md:text-6xl font-bold">
+          <h1 className="text-gray-900 text-4xl md:text-6xl font-bold mb-6 md:mb-12">
             Auckland
           </h1>
-        </section>
-        <section className="mb-8">
-          <h2 className="text-gray-900 text-lg md:text-2xl font-semibold mb-2">
+          <h2 className="text-gray-900 text-2xl font-semibold mb-3">
             Combined Auckland DHBs
           </h2>
           <dl className="mb-6">
@@ -86,7 +83,6 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
             color="purple"
           />
         </section>
-
         <section>
           <div className="bg-white rounded-xl p-6 space-y-6">
             <div>
@@ -98,10 +94,10 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
                   className="
                     w-full
                     grid grid-cols-12
-                    text-md sm:text-lg
+                    text-sm sm:text-md
                   "
                 >
-                  <dd className="col-span-4 md:col-span-3 flex items-center space-x-3">
+                  <dd className="col-span-5 sm:col-span-4 md:col-span-3 flex items-center space-x-3">
                     <div
                       className="
                         w-4 md:w-5
@@ -131,20 +127,20 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
                     </div>
                     <div className="text-green-500">First dose</div>
                   </dd>
-                  <dt className="col-span-1 text-green-500">90%</dt>
-                  <dt className="col-span-7 md:col-span-8 text-right">
-                    <strong>0</strong> left
+                  <dt className="col-span-1 text-green-500">{waitemata.firstDosesPercentage * 100}%</dt>
+                  <dt className="col-span-6 sm:col-span-7 md:col-span-8 text-right">
+                    <strong>{waitemata.numOfFirstDosesTo90Percent}</strong> left
                   </dt>
                 </div>
-                <div className="w-full grid grid-cols-12 text-md sm:text-lg">
-                  <dd className="col-span-4 md:col-span-3">Second dose</dd>
-                  <dt className="col-span-1">76%</dt>
-                  <dt className="col-span-7 md:col-span-8 text-right">
-                    <strong>71,486</strong> left
+                <div className="w-full grid grid-cols-12 text-sm sm:text-md">
+                  <dd className="col-span-5 sm:col-span-4 md:col-span-3">Second dose</dd>
+                  <dt className="col-span-1">{waitemata.secondDosesPercentage * 100}%</dt>
+                  <dt className="col-span-6 sm:col-span-7 md:col-span-8 text-right">
+                    <strong>{waitemata.numOfSecondDosesTo90Percent}</strong> left
                   </dt>
                 </div>
               </dl>
-              <Progress firstDose={90} secondDose={76} />
+              <Progress firstDose={waitemata.firstDosesPercentage * 100} secondDose={waitemata.secondDosesPercentage * 100} />
             </div>
             <div>
               <h3 className="text-gray-900 text-lg md:text-2xl font-semibold mb-2">
@@ -155,10 +151,10 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
                   className="
                     w-full
                     grid grid-cols-12
-                    text-md sm:text-lg
+                    text-sm sm:text-md
                   "
                 >
-                  <dd className="col-span-4 md:col-span-3 flex items-center space-x-3">
+                  <dd className="col-span-5 sm:col-span-4 md:col-span-3 flex items-center space-x-3">
                     <div
                       className="
                         w-4 md:w-5
@@ -188,42 +184,42 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
                     </div>
                     <div className="text-green-500">First dose</div>
                   </dd>
-                  <dt className="col-span-1 text-green-500">93%</dt>
-                  <dt className="col-span-7 md:col-span-8 text-right">
-                    <strong>0</strong> left
+                  <dt className="col-span-1 text-green-500">{auckland.firstDosesPercentage * 100}%</dt>
+                  <dt className="col-span-6 sm:col-span-7 md:col-span-8 text-right">
+                    <strong>{auckland.numOfFirstDosesTo90Percent}</strong> left
                   </dt>
                 </div>
-                <div className="w-full grid grid-cols-12 text-md md:text-lg">
-                  <dd className="col-span-4 md:col-span-3">Second dose</dd>
-                  <dt className="col-span-1">81%</dt>
-                  <dt className="col-span-7 md:col-span-8 text-right">
-                    <strong>38,916</strong> left
+                <div className="w-full grid grid-cols-12 text-sm sm:text-md">
+                  <dd className="col-span-5 sm:col-span-4 md:col-span-3">Second dose</dd>
+                  <dt className="col-span-1">{auckland.secondDosesPercentage * 100}%</dt>
+                  <dt className="col-span-6 sm:col-span-7 md:col-span-8 text-right">
+                    <strong>{auckland.numOfSecondDosesTo90Percent}</strong> left
                   </dt>
                 </div>
               </dl>
-              <Progress firstDose={93} secondDose={81} />
+              <Progress firstDose={auckland.firstDosesPercentage * 100} secondDose={auckland.secondDosesPercentage * 100} />
             </div>
             <div>
               <h3 className="text-gray-900 text-lg md:text-2xl font-semibold mb-2">
                 Counties Manukau
               </h3>
               <dl className="mb-6">
-                <div className="w-full grid grid-cols-12 text-md md:text-lg">
-                  <dd className="col-span-4 md:col-span-3">First dose</dd>
-                  <dt className="col-span-1">88%</dt>
-                  <dt className="col-span-7 md:col-span-8 text-right">
-                    <strong>11,728</strong> left
+                <div className="w-full grid grid-cols-12 text-sm sm:text-md">
+                  <dd className="col-span-5 sm:col-span-4 md:col-span-3">First dose</dd>
+                  <dt className="col-span-1">{countiesManukau.firstDosesPercentage * 100}%</dt>
+                  <dt className="col-span-6 sm:col-span-7 md:col-span-8 text-right">
+                    <strong>{countiesManukau.numOfFirstDosesTo90Percent}</strong> left
                   </dt>
                 </div>
-                <div className="w-full grid grid-cols-12 text-md md:text-lg">
-                  <dd className="col-span-4 md:col-span-3">Second dose</dd>
-                  <dt className="col-span-1">73%</dt>
-                  <dt className="col-span-7 md:col-span-8 text-right">
-                    <strong>80,400</strong> left
+                <div className="w-full grid grid-cols-12 text-sm sm:text-md">
+                  <dd className="col-span-5 sm:col-span-4 md:col-span-3">Second dose</dd>
+                  <dt className="col-span-1">{countiesManukau.secondDosesPercentage * 100}%</dt>
+                  <dt className="col-span-6 sm:col-span-7 md:col-span-8 text-right">
+                    <strong>{countiesManukau.numOfSecondDosesTo90Percent}</strong> left
                   </dt>
                 </div>
               </dl>
-              <Progress firstDose={88} secondDose={73} />
+              <Progress firstDose={countiesManukau.firstDosesPercentage * 100} secondDose={countiesManukau.secondDosesPercentage * 100} />
             </div>
           </div>
         </section>
