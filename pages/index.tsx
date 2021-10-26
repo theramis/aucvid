@@ -25,7 +25,7 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
   } = props;
 
   return (
-    <div className="antialiased bg-pink-50 bg-opacity-50 h-full min-h-screen">
+    <div className="bg-pink-50 h-full min-h-screen">
       <div className="max-w-[600px] mx-5 sm:mx-auto">
         <section className="pb-8 pt-12 md:pt-20">
           <div className="text-gray-900 text-lg md:text-2xl">
