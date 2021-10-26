@@ -26,8 +26,8 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
 
   return (
     <div className="antialiased bg-pink-50 bg-opacity-50 h-full min-h-screen">
-      <div className="max-w-[600px] mx-5 sm:mx-auto py-12 md:py-20">
-        <section className="mb-8">
+      <div className="max-w-[600px] mx-5 sm:mx-auto">
+        <section className="pb-8 pt-12 md:pt-20">
           <div className="text-gray-900 text-lg md:text-2xl">
             Vaccination rates
           </div>
@@ -232,7 +232,7 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
             </div>
           </div>
         </section>
-        <footer className="mt-32 flex justify-center">
+        <footer className="pb-4 pt-20 md:pt-32 flex justify-center">
           <div className="flex flex-col sm:flex-row items-center justify-center space-x-0 sm:space-x-2 space-y-2 sm:space-y-0 text-sm">
             <p>
               Source:{" "}
@@ -242,7 +242,7 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
                 rel="noopener noreferrer"
                 target="_blank"
               >
-                Ministry of Health
+                Ministry of Health NZ
               </a>
             </p>
             <div className="hidden sm:block">&#8226;</div>
