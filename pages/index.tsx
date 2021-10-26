@@ -29,16 +29,10 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
       <div className="max-w-[600px] mx-5 sm:mx-auto">
         <section className="pb-12 pt-12 md:pt-16">
           <div>
-            <h2 className="heading-2">
-              Vaccination rates
-            </h2>
-            <h1 className="heading-1 mb-6 md:mb-8">
-              Auckland
-            </h1>
+            <h2 className="heading-2">Vaccination rates</h2>
+            <h1 className="heading-1 mb-6 md:mb-8">Auckland</h1>
           </div>
-          <h3 className="heading-3 mb-3">
-            Combined Auckland DHBs
-          </h3>
+          <h3 className="heading-3 mb-3">Combined Auckland DHBs</h3>
           <dl className="mb-6">
             <div
               className="
@@ -88,9 +82,7 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
         <section>
           <div className="container-data rounded-xl p-6 space-y-6">
             <div>
-              <h3 className="heading-3 mb-2">
-                Waitemata
-              </h3>
+              <h3 className="heading-3 mb-2">Waitemata</h3>
               <dl className="mb-4">
                 <div
                   className="
@@ -114,7 +106,9 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
                     >
                       <CheckIcon className="h-3 w-4 md:h-4 md:w-4" />
                     </div>
-                    <div className="data-text data-text-complete">First dose</div>
+                    <div className="data-text data-text-complete">
+                      First dose
+                    </div>
                   </dd>
                   <dt className="col-span-1 data-text data-text-complete">
                     {waitemata.firstDosesPercentage * 100}%
@@ -142,9 +136,7 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
               />
             </div>
             <div>
-              <h3 className="heading-3 mb-2">
-                Auckland
-              </h3>
+              <h3 className="heading-3 mb-2">Auckland</h3>
               <dl className="mb-4">
                 <div
                   className="
@@ -168,7 +160,9 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
                     >
                       <CheckIcon className="h-3 w-4 md:h-4 md:w-4" />
                     </div>
-                    <div className="data-text data-text-complete">First dose</div>
+                    <div className="data-text data-text-complete">
+                      First dose
+                    </div>
                   </dd>
                   <dt className="col-span-1 data-text data-text-complete">
                     {auckland.firstDosesPercentage * 100}%
@@ -195,9 +189,7 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
               />
             </div>
             <div>
-              <h3 className="heading-3 mb-2">
-                Counties Manukau
-              </h3>
+              <h3 className="heading-3 mb-2">Counties Manukau</h3>
               <dl className="mb-4">
                 <div className="w-full grid grid-cols-12 data-text">
                   <dd className="col-span-5 sm:col-span-4 md:col-span-3">

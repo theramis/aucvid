@@ -1,20 +1,20 @@
 /* Color definitions */
 $black: #000;
-$white: #FFF;
+$white: #fff;
 $white-75: rgba(255, 255, 255, 0.7);
-$grey: #DEDEDE;
+$grey: #dedede;
 $grey-dark: #383838;
 $green-dark: #005924;
-$green-light: #7BDAA1;
+$green-light: #7bdaa1;
 $purple-2xdark: #200133;
-$purple-xdark: #2B0E3D;
-$purple-dark: #361A47;
-$purple-base: #714CB4;
-$purple-light: #9C7AD9;
-$purple-xlight: #F0E0F9;
-$purple-2xlight: #FAF5FD;
-$orange-base: #BF360C;
-$orange-light: #FF5722;
+$purple-xdark: #2b0e3d;
+$purple-dark: #361a47;
+$purple-base: #714cb4;
+$purple-light: #9c7ad9;
+$purple-xlight: #f0e0f9;
+$purple-2xlight: #faf5fd;
+$orange-base: #bf360c;
+$orange-light: #ff5722;
 
 // Light
 $light--text-primary: $black;
@@ -49,35 +49,35 @@ $dark--background-tint-1: $purple-xdark;
 $dark--background-tint-2: $purple-dark;
 
 :root {
-    --text-primary: #{$dark--text-primary};
-    --text-secondary: #{$dark--text-secondary};
-    --text-positive: #{$dark--text-positive};
-    --progress-goal: #{$dark--progress-goal};
-    --progress-comlete: #{$dark--progress-complete};
-    --progress--total: #{$dark--progress--total};
-    --progress--primary-first: #{$dark--progress--primary-first};
-    --progress--primary-second: #{$dark--progress--primary-second};
-    --progress--secondary-first: #{$dark--progress--secondary-first};
-    --progress--secondary-second: #{$dark--progress--secondary-second};
-    --complete-background: #{$dark--complete-background};
-    --background-base: #{$dark--background-base};
-    --background-tint-1: #{$dark--background-tint-1};
-    --background-tint-2: #{$dark--background-tint-2};
+  --text-primary: #{$dark--text-primary};
+  --text-secondary: #{$dark--text-secondary};
+  --text-positive: #{$dark--text-positive};
+  --progress-goal: #{$dark--progress-goal};
+  --progress-comlete: #{$dark--progress-complete};
+  --progress--total: #{$dark--progress--total};
+  --progress--primary-first: #{$dark--progress--primary-first};
+  --progress--primary-second: #{$dark--progress--primary-second};
+  --progress--secondary-first: #{$dark--progress--secondary-first};
+  --progress--secondary-second: #{$dark--progress--secondary-second};
+  --complete-background: #{$dark--complete-background};
+  --background-base: #{$dark--background-base};
+  --background-tint-1: #{$dark--background-tint-1};
+  --background-tint-2: #{$dark--background-tint-2};
 }
 
 .light {
-    --text-primary: #{$light--text-primary};
-    --text-secondary: #{$light--text-secondary};
-    --text-positive: #{$light--text-positive};
-    --progress-goal: #{$light--progress--goal};
-    --progress-comlete: #{$light--progress--complete};
-    --progress--total: #{$light--progress--total};
-    --progress--primary-first: #{$light--progress--primary-first};
-    --progress--primary-second: #{$light--progress--primary-second};
-    --progress--secondary-first: #{$light--progress--secondary-first};
-    --progress--secondary-second: #{$light--progress--secondary-second};
-    --complete-background: #{$light--complete--background};
-    --background-base: #{$light--background--base};
-    --background-tint-1: #{$light--background--tint-1};
-    --background-tint-2: #{$light--background--tint-2};
+  --text-primary: #{$light--text-primary};
+  --text-secondary: #{$light--text-secondary};
+  --text-positive: #{$light--text-positive};
+  --progress-goal: #{$light--progress--goal};
+  --progress-comlete: #{$light--progress--complete};
+  --progress--total: #{$light--progress--total};
+  --progress--primary-first: #{$light--progress--primary-first};
+  --progress--primary-second: #{$light--progress--primary-second};
+  --progress--secondary-first: #{$light--progress--secondary-first};
+  --progress--secondary-second: #{$light--progress--secondary-second};
+  --complete-background: #{$light--complete--background};
+  --background-base: #{$light--background--base};
+  --background-tint-1: #{$light--background--tint-1};
+  --background-tint-2: #{$light--background--tint-2};
 }
