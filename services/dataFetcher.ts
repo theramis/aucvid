@@ -20,10 +20,19 @@ async function getData(): Promise<HomePageProps> {
   const response = await got(covidSiteUrl);
   const rawHtml = response.body;
 
+  const aucklandDhbData = extractDhbData(rawHtml, "Auckland");
+  const waitemataDhbData = extractDhbData(rawHtml, "Waitemata");
+  const countiesManukauDhbData = extractDhbData(rawHtml, "Counties Manukau");
+  const combinedAucklandDhbData = combineDhbData(
+    waitemataDhbData,
+    aucklandDhbData,
+    countiesManukauDhbData
+  );
   return {
-    waitemata: extractDhbData(rawHtml, "Waitemata"),
-    auckland: extractDhbData(rawHtml, "Auckland"),
-    countiesManukau: extractDhbData(rawHtml, "Counties Manukau"),
+    waitemata: waitemataDhbData,
+    auckland: aucklandDhbData,
+    countiesManukau: countiesManukauDhbData,
+    combinedAuckland: combinedAucklandDhbData,
     dataUpdatedTime: extractDailyUpdatedTime(rawHtml),
     lastRetrievedTime: new Date().toISOString(),
   };
@@ -63,3 +72,34 @@ const extractValue = (s: string): string =>
   s.replace('<td style="text-align:right">', "").replace("</td>", "");
 
 const convertToNumber = (s: string): number => Number(s.replace(/[%,]/g, ""));
+
+const combineDhbData = (...data: DhbData[]): DhbData => {
+  const combinedData: DhbData = {
+    numOfFirstDoses: 0,
+    firstDosesPercentage: 0,
+    numOfFirstDosesTo90Percent: 0,
+    numOfSecondDoses: 0,
+    secondDosesPercentage: 0,
+    numOfSecondDosesTo90Percent: 0,
+    totalPopulation: 0,
+  };
+
+  data.forEach((d) => {
+    combinedData.numOfFirstDoses += d.numOfFirstDoses;
+    combinedData.numOfFirstDosesTo90Percent += d.numOfFirstDosesTo90Percent;
+    combinedData.numOfSecondDoses += d.numOfSecondDoses;
+    combinedData.numOfSecondDosesTo90Percent += d.numOfSecondDosesTo90Percent;
+    combinedData.totalPopulation += d.totalPopulation;
+    combinedData.firstDosesPercentage = roundTo2Dp(
+      combinedData.numOfFirstDoses / combinedData.totalPopulation
+    );
+    combinedData.secondDosesPercentage = roundTo2Dp(
+      combinedData.numOfSecondDoses / combinedData.totalPopulation
+    );
+  });
+
+  return combinedData;
+};
+
+const roundTo2Dp = (num: number) =>
+  Math.round((num + Number.EPSILON) * 100) / 100;
