@@ -14,7 +14,13 @@ export type HomePageProps = {
 };
 
 const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
-  const { combinedAuckland, auckland, countiesManukau, waitemata } = props;
+  const {
+    combinedAuckland,
+    auckland,
+    countiesManukau,
+    waitemata,
+    dataUpdatedTime,
+  } = props;
 
   return (
     <div className="antialiased bg-pink-50 bg-opacity-50 h-full min-h-screen">
@@ -224,6 +230,23 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
             </div>
           </div>
         </section>
+        <footer className="mt-32 flex justify-center">
+          <div className="flex flex-col sm:flex-row items-center justify-center space-x-0 sm:space-x-2 space-y-2 sm:space-y-0 text-sm">
+            <p>
+              Source:{" "}
+              <a
+                className="underline focus:outline-none focus:no-underline focus:opacity-70 hover:opacity-70"
+                href="https://www.health.govt.nz/our-work/diseases-and-conditions/covid-19-novel-coronavirus/covid-19-data-and-statistics/covid-19-vaccine-data"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                Ministry of Health
+              </a>
+            </p>
+            <div className="hidden sm:block">&#8226;</div>
+            <p>Last updated {dataUpdatedTime}</p>
+          </div>
+        </footer>
       </div>
     </div>
   );
