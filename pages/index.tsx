@@ -13,7 +13,7 @@ export type HomePageProps = {
 };
 
 const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
-  const { auckland, countiesManukau, waitemata } = props;
+  const { combinedAuckland, auckland, countiesManukau, waitemata } = props;
 
   return (
     <div className="antialiased bg-pink-50 bg-opacity-50 h-full min-h-screen">
@@ -69,16 +69,20 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
                 </div>
                 <div>First dose</div>
               </dd>
-              <dt className="w-8">90%</dt>
+              <dt className="w-8">
+                {combinedAuckland.firstDosesPercentage * 100}%
+              </dt>
             </div>
             <div className="w-44 flex flex-row justify-between items-center text-lg">
               <dd className="w-32">Second dose</dd>
-              <dt className="w-8">76%</dt>
+              <dt className="w-8">
+                {combinedAuckland.secondDosesPercentage * 100}%
+              </dt>
             </div>
           </dl>
           <Progress
-            firstDose={90}
-            secondDose={76}
+            firstDose={combinedAuckland.firstDosesPercentage * 100}
+            secondDose={combinedAuckland.secondDosesPercentage * 100}
             size="large"
             color="purple"
           />
