@@ -1,7 +1,8 @@
 /* Color definitions */
 $black: #000;
 $white: #fff;
-$white-75: rgba(255, 255, 255, 0.7);
+$white-95: rgba(255, 255, 255, 0.95);
+$white-75: rgba(255, 255, 255, 0.75);
 $grey: #dedede;
 $grey-dark: #383838;
 $green-dark: #005924;
@@ -33,7 +34,7 @@ $light--background--tint-1: $purple-2xlight;
 $light--background--tint-2: $purple-xlight;
 
 // Dark
-$dark--text-primary: $white;
+$dark--text-primary: $white-95;
 $dark--text-secondary: $white-75;
 $dark--text-positive: $green-light;
 $dark--progress-goal: $black;
