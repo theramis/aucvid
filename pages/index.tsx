@@ -7,6 +7,7 @@ export type HomePageProps = {
   waitemata: DhbData;
   auckland: DhbData;
   countiesManukau: DhbData;
+  combinedAuckland: DhbData;
   dataUpdatedTime: string;
   lastRetrievedTime: string;
 };
