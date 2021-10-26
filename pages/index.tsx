@@ -1,8 +1,10 @@
 import { GetServerSideProps } from "next";
+import { DateTime } from "luxon";
+import { CheckIcon } from "@heroicons/react/solid";
+
 import fetchData from "../services/dataFetcher";
 import { DhbData } from "../types/DhbData";
 import { Progress } from "../components/Progress";
-import { CheckIcon } from "@heroicons/react/solid";
 
 export type HomePageProps = {
   waitemata: DhbData;
@@ -244,7 +246,7 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
               </a>
             </p>
             <div className="hidden sm:block">&#8226;</div>
-            <p>Last updated {dataUpdatedTime}</p>
+            <p>Last updated {hoursAgo(dataUpdatedTime)} hours ago</p>
           </div>
         </footer>
       </div>
@@ -253,6 +255,12 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
 };
 
 export default Home;
+
+const hoursAgo = (text: string) => {
+  const hoursBeforeNow = DateTime.fromISO(text).diffNow("hours").get("hours");
+
+  return Math.floor(Math.abs(hoursBeforeNow));
+};
 
 export const getServerSideProps: GetServerSideProps<HomePageProps> = async ({
   res,
