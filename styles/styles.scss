@@ -1,0 +1,25 @@
+$radius: 4px;
+$radius-large: 8px;
+
+// Typography
+
+@mixin h1 {
+  font-size: 3.75rem;
+  line-height: 4.5rem;
+  font-weight: bold;
+}
+@mixin h2 {
+  font-size: 1.75rem;
+  line-height: 2.25rem;
+  font-weight: regular;
+}
+@mixin h3 {
+  font-size: 1.75rem;
+  line-height: 2.25rem;
+  font-weight: 700;
+}
+@mixin h4 {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: regular;
+}

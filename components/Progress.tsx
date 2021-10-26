@@ -3,24 +3,22 @@ import cx from "classnames";
 type ProgressProps = {
   firstDose: number;
   secondDose: number;
-  color?: "purple" | "yellow";
+  color?: "purple" | "orange";
   size?: "small" | "large";
 };
 
 export const Progress = ({
   firstDose,
   secondDose,
-  color = "yellow",
+  color = "orange",
   size = "small",
 }: ProgressProps) => {
   return (
     <div className="w-full flex">
       <div
-        className={cx("w-full relative rounded-lg animate-fade-in", {
-          ["bg-purple-300"]: color === "purple",
-          ["bg-yellow-200"]: color === "yellow",
-          ["h-6"]: size === "small",
-          ["h-12"]: size === "large",
+        className={cx("w-full relative animate-fade-in progress-total", {
+          ["h-6 radius"]: size === "small",
+          ["h-12 radius-large"]: size === "large",
         })}
       >
         <div
@@ -31,8 +29,10 @@ export const Progress = ({
             className={cx(
               "h-full rounded-lg overflow-hidden animate-grow-width",
               {
-                ["bg-purple-400 "]: color === "purple",
-                ["bg-yellow-500"]: color === "yellow",
+                ["progress-primary-first"]: color === "purple",
+                ["progress-secondary-first"]: color === "orange",
+                ["progress-bar"]: size === "small",
+                ["progress-bar-large"]: size === "large",
               }
             )}
           />
@@ -45,8 +45,10 @@ export const Progress = ({
             className={cx(
               "h-full rounded-lg overflow-hidden animate-grow-width",
               {
-                ["bg-purple-500 "]: color === "purple",
-                ["bg-yellow-600"]: color === "yellow",
+                ["progress-primary-second"]: color === "purple",
+                ["progress-secondary-second"]: color === "orange",
+                ["progress-bar"]: size === "small",
+                ["progress-bar-large"]: size === "large",
               }
             )}
             style={{ animationDelay: "1s" }}

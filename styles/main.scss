@@ -1,0 +1,72 @@
+@import "colors";
+@import "styles";
+
+body {
+  background: var(--background-base);
+}
+
+.container-data {
+  background: var(--background-tint-1);
+}
+
+.heading-1 {
+  @include h1;
+  color: var(--text-primary);
+}
+
+.heading-2 {
+  @include h2;
+  color: var(--text-primary);
+}
+
+.heading-3 {
+  @include h3;
+  color: var(--text-primary);
+}
+
+.data-text {
+  @include h4;
+  color: var(--text-secondary);
+}
+
+.data-text-complete {
+  color: var(--text-positive);
+}
+
+// Progress bars
+
+.progress-bar {
+  border-radius: $radius 0 0 $radius;
+  box-shadow: 1px 0 0 $white-75;
+}
+.progress-bar-large {
+  border-radius: $radius-large 0 0 $radius-large;
+  box-shadow: 1px 0 0 $white-75;
+}
+
+// Style utils
+
+.radius {
+  border-radius: $radius;
+}
+.radius-large {
+  border-radius: $radius-large;
+}
+
+// Progress color utils
+
+.progress-total {
+  background: var(--progress--total);
+}
+.progress-primary-first {
+  background: var(--progress--primary-first);
+}
+.progress-primary-second {
+  background: var(--progress--primary-second);
+}
+.progress-secondary-first {
+  background: var(--progress--secondary-first);
+}
+.progress-secondary-second {
+  background: var(--progress--secondary-second);
+}
