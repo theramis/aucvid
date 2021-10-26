@@ -24,9 +24,16 @@ async function getData(): Promise<HomePageProps> {
     waitemata: extractDhbData(rawHtml, "Waitemata"),
     auckland: extractDhbData(rawHtml, "Auckland"),
     countiesManukau: extractDhbData(rawHtml, "Counties Manukau"),
+    dataUpdatedTime: extractDailyUpdatedTime(rawHtml),
     lastRetrievedTime: new Date().toISOString(),
   };
 }
+
+// returns a string like "11:59pm 24 October 2021"
+const extractDailyUpdatedTime = (rawHtml: string): string =>
+  /Data\sin\sthis\ssection\sis\sas\sat\s(.*?)\sand\sis\supdated\sdaily/g.exec(
+    rawHtml
+  )![1];
 
 function extractDhbData(rawHtml: string, dhbName: string): DhbData {
   const dbhRowRegex = new RegExp(
@@ -42,26 +49,17 @@ function extractDhbData(rawHtml: string, dhbName: string): DhbData {
   const c = dhbHtml![0].match(valuesRegex) as RegExpExecArray;
 
   return {
-    numOfFirstDoses: c[0]
-      .replace('<td style="text-align:right">', "")
-      .replace("</td>", ""),
-    firstDosesPercentage: c[1]
-      .replace('<td style="text-align:right">', "")
-      .replace("</td>", ""),
-    numOfFirstDosesTo90Percent: c[2]
-      .replace('<td style="text-align:right">', "")
-      .replace("</td>", ""),
-    numOfSecondDoses: c[3]
-      .replace('<td style="text-align:right">', "")
-      .replace("</td>", ""),
-    secondDosesPercentage: c[4]
-      .replace('<td style="text-align:right">', "")
-      .replace("</td>", ""),
-    numOfSecondDosesTo90Percent: c[5]
-      .replace('<td style="text-align:right">', "")
-      .replace("</td>", ""),
-    totalPopulation: c[6]
-      .replace('<td style="text-align:right">', "")
-      .replace("</td>", ""),
+    numOfFirstDoses: convertToNumber(extractValue(c[0])),
+    firstDosesPercentage: convertToNumber(extractValue(c[1])) / 100,
+    numOfFirstDosesTo90Percent: convertToNumber(extractValue(c[2])),
+    numOfSecondDoses: convertToNumber(extractValue(c[3])),
+    secondDosesPercentage: convertToNumber(extractValue(c[4])) / 100,
+    numOfSecondDosesTo90Percent: convertToNumber(extractValue(c[5])),
+    totalPopulation: convertToNumber(extractValue(c[6])),
   };
 }
+
+const extractValue = (s: string): string =>
+  s.replace('<td style="text-align:right">', "").replace("</td>", "");
+
+const convertToNumber = (s: string): number => Number(s.replace(/[%,]/g, ""));
