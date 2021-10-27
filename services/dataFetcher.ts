@@ -34,8 +34,8 @@ async function getData(): Promise<HomePageProps> {
     auckland: aucklandDhbData,
     countiesManukau: countiesManukauDhbData,
     combinedAuckland: combinedAucklandDhbData,
-    dataUpdatedTime: extractDailyUpdatedTime(rawHtml).toUTC().toISO(),
-    lastRetrievedTime: DateTime.now().toUTC().toISO(),
+    dataValidAsAtTimeUtc: extractDailyUpdatedTime(rawHtml).toUTC().toISO(),
+    dataFetchedAtTimeUtc: DateTime.now().toUTC().toISO(),
   };
 }
 
