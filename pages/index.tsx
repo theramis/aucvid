@@ -1,18 +1,18 @@
 import { GetServerSideProps } from "next";
-import { DateTime } from "luxon";
 import { CheckIcon } from "@heroicons/react/solid";
 
 import fetchData from "../services/dataFetcher";
 import { DhbData } from "../types/DhbData";
 import { Progress } from "../components/Progress";
+import hoursBeforeNow from "../utilities/hoursBeforeNow";
 
 export type HomePageProps = {
   waitemata: DhbData;
   auckland: DhbData;
   countiesManukau: DhbData;
   combinedAuckland: DhbData;
-  dataUpdatedTime: string;
-  lastRetrievedTime: string;
+  dataValidAsAtTimeUtc: string;
+  dataFetchedAtTimeUtc: string;
 };
 
 const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
@@ -21,7 +21,7 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
     auckland,
     countiesManukau,
     waitemata,
-    dataUpdatedTime,
+    dataFetchedAtTimeUtc,
   } = props;
 
   return (
@@ -245,7 +245,7 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
               </a>
             </p>
             <div className="hidden sm:block">&#8226;</div>
-            <p>Last updated {hoursAgo(dataUpdatedTime)} hours ago</p>
+            <p>Data last fetched {hoursBeforeNow(dataFetchedAtTimeUtc)}</p>
           </div>
         </Container>
       </footer>
@@ -258,12 +258,6 @@ export default Home;
 const Container: React.FC<{ children: React.ReactNode }> = ({ children }) => (
   <div className="max-w-[600px] mx-5 sm:mx-auto">{children}</div>
 );
-
-const hoursAgo = (text: string) => {
-  const hoursBeforeNow = DateTime.fromISO(text).diffNow("hours").get("hours");
-
-  return Math.floor(Math.abs(hoursBeforeNow));
-};
 
 export const getServerSideProps: GetServerSideProps<HomePageProps> = async ({
   res,

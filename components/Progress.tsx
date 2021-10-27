@@ -14,11 +14,11 @@ export const Progress = ({
   size = "small",
 }: ProgressProps) => {
   return (
-    <div className="w-full flex">
+    <div className="progress-bar-container w-full flex">
       <div
         className={cx("w-full relative animate-fade-in progress-total", {
           ["h-6 radius"]: size === "small",
-          ["h-12 radius-large"]: size === "large",
+          ["h-10 radius-large"]: size === "large",
         })}
       >
         <div
@@ -26,15 +26,12 @@ export const Progress = ({
           style={{ width: `${firstDose}%` }}
         >
           <div
-            className={cx(
-              "h-full rounded-lg overflow-hidden animate-grow-width",
-              {
-                ["progress-primary-first"]: color === "purple",
-                ["progress-secondary-first"]: color === "orange",
-                ["progress-bar"]: size === "small",
-                ["progress-bar-large"]: size === "large",
-              }
-            )}
+            className={cx("h-full overflow-hidden animate-grow-width", {
+              ["progress-primary-first"]: color === "purple",
+              ["progress-secondary-first"]: color === "orange",
+              ["progress-bar"]: size === "small",
+              ["progress-bar-large"]: size === "large",
+            })}
           />
         </div>
         <div
@@ -42,26 +39,20 @@ export const Progress = ({
           style={{ width: `${secondDose}%` }}
         >
           <div
-            className={cx(
-              "h-full rounded-lg overflow-hidden animate-grow-width",
-              {
-                ["progress-primary-second"]: color === "purple",
-                ["progress-secondary-second"]: color === "orange",
-                ["progress-bar"]: size === "small",
-                ["progress-bar-large"]: size === "large",
-              }
-            )}
+            className={cx("h-full overflow-hidden animate-grow-width", {
+              ["progress-primary-second"]: color === "purple",
+              ["progress-secondary-second"]: color === "orange",
+              ["progress-bar"]: size === "small",
+              ["progress-bar-large"]: size === "large",
+            })}
             style={{ animationDelay: "1s" }}
           />
         </div>
         <div
           className="
-          absolute
-          top-0
-          left-[90%]
-          bottom-0
-          border-dashed border-black border-r-2
+          goal-line
         "
+          style={{ left: "90%" }}
         ></div>
       </div>
     </div>
