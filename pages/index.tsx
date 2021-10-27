@@ -265,6 +265,10 @@ export const getServerSideProps: GetServerSideProps<HomePageProps> = async ({
     "public, s-maxage=1800, stale-while-revalidate=3600"
   );
 
+  console.log(res);
+  console.log((res as any).multiValueHeaders);
+  console.log((res as any).multiValueHeaders["Cache-Control"]);
+
   return {
     props: await fetchData(),
   };
