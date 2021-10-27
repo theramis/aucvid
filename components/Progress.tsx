@@ -14,7 +14,7 @@ export const Progress = ({
   size = "small",
 }: ProgressProps) => {
   return (
-    <div className="w-full flex">
+    <div className="progress-bar-container w-full flex">
       <div
         className={cx("w-full relative animate-fade-in progress-total", {
           ["h-6 radius"]: size === "small",
@@ -52,6 +52,7 @@ export const Progress = ({
           className="
           goal-line
         "
+          style={{ left: "90%" }}
         ></div>
       </div>
     </div>
