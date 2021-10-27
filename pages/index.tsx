@@ -25,16 +25,9 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
   } = props;
 
   return (
-<<<<<<< HEAD
-    <div className="antialiased h-full min-h-screen">
-      <div className="background-shape"></div>
-      <div className="max-w-[600px] mx-5 sm:mx-auto">
-        <section className="pb-12 pt-12 md:pt-16">
-=======
     <div className="h-full min-h-screen">
       <section className="pb-12 pt-12 md:pt-16">
         <Container>
->>>>>>> 110651874671f8ebf89ec71091f5b316d24d2301
           <div>
             <h2 className="heading-2">Vaccination rates</h2>
             <h1 className="heading-1 mb-6 md:mb-8">Auckland</h1>
