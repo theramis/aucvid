@@ -3,6 +3,7 @@ import { HomePageProps } from "../pages";
 import { DhbData } from "../types/DhbData";
 import { DateTime } from "luxon";
 
+const cacheTtlInMins = 30;
 const covidSiteUrl =
   "https://www.health.govt.nz/our-work/diseases-and-conditions/covid-19-novel-coronavirus/covid-19-data-and-statistics/covid-19-vaccine-data";
 
@@ -10,7 +11,7 @@ const covidSiteUrl =
 let data: any = null;
 
 export default async function fetchData(): Promise<HomePageProps> {
-  if (data == null) {
+  if (data == null || isDataCacheExpired(data, cacheTtlInMins)) {
     data = await getData();
   }
 
@@ -127,3 +128,7 @@ const roundTo2Dp = (num: number) =>
 
 const getMonthFromString = (s: string) =>
   new Date(Date.parse(s + " 1, 2012")).getMonth() + 1;
+
+const isDataCacheExpired = (data: HomePageProps, ttl: number) =>
+  DateTime.utc().diff(DateTime.fromISO(data.dataFetchedAtTimeUtc), "minutes")
+    .minutes >= ttl;

@@ -257,15 +257,9 @@ const Container: React.FC<{ children: React.ReactNode }> = ({ children }) => (
   <div className="max-w-[600px] mx-5 sm:mx-auto">{children}</div>
 );
 
-export const getServerSideProps: GetServerSideProps<HomePageProps> = async ({
-  res,
-}) => {
-  res.setHeader(
-    "Cache-Control",
-    "public, s-maxage=1800, stale-while-revalidate=3600"
-  );
-
-  return {
-    props: await fetchData(),
+export const getServerSideProps: GetServerSideProps<HomePageProps> =
+  async () => {
+    return {
+      props: await fetchData(),
+    };
   };
-};
