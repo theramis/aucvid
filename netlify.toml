@@ -4,3 +4,9 @@
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
+
+[context.production.environment]
+  NEXT_PUBLIC_GA_ID = "G-3N8VWQ2KCM"
+
+[context.deploy-preview.environment]
+  NEXT_PUBLIC_GA_ID = "G-LGFTVFGLKX"
