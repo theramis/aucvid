@@ -48,6 +48,13 @@ body {
   color: var(--text-positive);
 }
 
+// Check icon
+
+.check {
+  background: var(--complete-background);
+  color: var(--progress-comlete);
+}
+
 // Progress bars
 
 .progress-bar {

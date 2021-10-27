@@ -54,7 +54,7 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
                     items-center
                     justify-center
                     rounded-full
-                    bg-green-300
+                    check
                     text-green-700
                   "
                 >
@@ -101,8 +101,7 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
                         items-center
                         justify-center
                         rounded-full
-                        bg-green-300
-                        text-green-700
+                        check
                       "
                     >
                       <CheckIcon className="h-3 w-4 md:h-4 md:w-4" />
@@ -155,8 +154,7 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
                         items-center
                         justify-center
                         rounded-full
-                        bg-green-300
-                        text-green-700
+                        check
                       "
                     >
                       <CheckIcon className="h-3 w-4 md:h-4 md:w-4" />
