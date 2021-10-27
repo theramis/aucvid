@@ -41,11 +41,11 @@ body {
 
 .progress-bar {
   border-radius: $radius 0 0 $radius;
-  box-shadow: 1px 0 0 $black;
+  box-shadow: 1px 0 0 $grey;
 }
 .progress-bar-large {
   border-radius: $radius-large 0 0 $radius-large;
-  box-shadow: 1px 0 0 $black;
+  box-shadow: 1px 0 0 $grey;
 }
 
 .goal-line {
