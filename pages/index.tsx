@@ -1,18 +1,18 @@
 import { GetServerSideProps } from "next";
-import { DateTime } from "luxon";
 import { CheckIcon } from "@heroicons/react/solid";
 
 import fetchData from "../services/dataFetcher";
 import { DhbData } from "../types/DhbData";
 import { Progress } from "../components/Progress";
+import hoursBeforeNow from "../utilities/hoursBeforeNow";
 
 export type HomePageProps = {
   waitemata: DhbData;
   auckland: DhbData;
   countiesManukau: DhbData;
   combinedAuckland: DhbData;
-  dataUpdatedTime: string;
-  lastRetrievedTime: string;
+  dataValidAsAtTimeUtc: string;
+  dataFetchedAtTimeUtc: string;
 };
 
 const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
@@ -21,14 +21,20 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
     auckland,
     countiesManukau,
     waitemata,
-    dataUpdatedTime,
+    dataFetchedAtTimeUtc,
   } = props;
 
   return (
+<<<<<<< HEAD
     <div className="antialiased h-full min-h-screen">
       <div className="background-shape"></div>
       <div className="max-w-[600px] mx-5 sm:mx-auto">
         <section className="pb-12 pt-12 md:pt-16">
+=======
+    <div className="h-full min-h-screen">
+      <section className="pb-12 pt-12 md:pt-16">
+        <Container>
+>>>>>>> 110651874671f8ebf89ec71091f5b316d24d2301
           <div>
             <h2 className="heading-2">Vaccination rates</h2>
             <h1 className="heading-1 mb-6 md:mb-8">Auckland</h1>
@@ -79,8 +85,10 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
             size="large"
             color="purple"
           />
-        </section>
-        <section>
+        </Container>
+      </section>
+      <section>
+        <Container>
           <div className="container-data rounded-xl p-6 space-y-6">
             <div>
               <h3 className="heading-3 mb-2">Waitemata</h3>
@@ -225,9 +233,11 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
               />
             </div>
           </div>
-        </section>
-        <footer className="pb-4 pt-20 md:pt-32 flex justify-center">
-          <div className="flex flex-col sm:flex-row items-center justify-center space-x-0 sm:space-x-2 space-y-2 sm:space-y-0 footnote">
+        </Container>
+      </section>
+      <footer className="pb-4 pt-20 md:pt-32">
+        <Container>
+          <div className="flex flex-col sm:flex-row items-center justify-center space-x-0 sm:space-x-2 space-y-2 sm:space-y-0 data-text">
             <p>
               Source:{" "}
               <a
@@ -240,21 +250,19 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
               </a>
             </p>
             <div className="hidden sm:block">&#8226;</div>
-            <p>Last updated {hoursAgo(dataUpdatedTime)} hours ago</p>
+            <p>Data last fetched {hoursBeforeNow(dataFetchedAtTimeUtc)}</p>
           </div>
-        </footer>
-      </div>
+        </Container>
+      </footer>
     </div>
   );
 };
 
 export default Home;
 
-const hoursAgo = (text: string) => {
-  const hoursBeforeNow = DateTime.fromISO(text).diffNow("hours").get("hours");
-
-  return Math.floor(Math.abs(hoursBeforeNow));
-};
+const Container: React.FC<{ children: React.ReactNode }> = ({ children }) => (
+  <div className="max-w-[600px] mx-5 sm:mx-auto">{children}</div>
+);
 
 export const getServerSideProps: GetServerSideProps<HomePageProps> = async ({
   res,
