@@ -11,8 +11,8 @@ export type HomePageProps = {
   auckland: DhbData;
   countiesManukau: DhbData;
   combinedAuckland: DhbData;
-  dataUpdatedTime: string;
-  lastRetrievedTime: string;
+  dataValidAsAtTimeUtc: string;
+  dataFetchedAtTimeUtc: string;
 };
 
 const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
@@ -21,7 +21,7 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
     auckland,
     countiesManukau,
     waitemata,
-    lastRetrievedTime,
+    dataFetchedAtTimeUtc,
   } = props;
 
   return (
@@ -241,7 +241,7 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
               </a>
             </p>
             <div className="hidden sm:block">&#8226;</div>
-            <p>Data last fetched {hoursAgo(lastRetrievedTime)} hours ago</p>
+            <p>Data last fetched {hoursAgo(dataFetchedAtTimeUtc)} hours ago</p>
           </div>
         </footer>
       </div>
