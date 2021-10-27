@@ -85,6 +85,7 @@ function extractDhbData(rawHtml: string, dhbName: string): DhbData {
   const secondDosesPercentage = convertToNumber(extractValue(c[4])) / 100;
 
   return {
+    name: dhbName,
     numOfFirstDoses: convertToNumber(extractValue(c[0])),
     firstDosesPercentage,
     hasMetFirstDoseTarget: firstDosesPercentage >= firstDoseTargetPercentage,
@@ -104,6 +105,7 @@ const convertToNumber = (s: string): number => Number(s.replace(/[%,]/g, ""));
 
 const combineDhbData = (...data: DhbData[]): DhbData => {
   const combinedData: DhbData = {
+    name: "Combined Auckland DHBs",
     numOfFirstDoses: 0,
     firstDosesPercentage: 0,
     hasMetFirstDoseTarget: false,

@@ -1,4 +1,5 @@
 export type DhbData = {
+  name: string;
   numOfFirstDoses: number;
   numOfFirstDosesTo90Percent: number;
   firstDosesPercentage: number;

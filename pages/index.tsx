@@ -1,11 +1,12 @@
 import { GetServerSideProps } from "next";
-import { CheckIcon } from "@heroicons/react/solid";
 
 import fetchData from "../services/dataFetcher";
 import { DhbData } from "../types/DhbData";
 import { Progress } from "../components/Progress";
 import hoursBeforeNow from "../utilities/hoursBeforeNow";
-import numberFormatter from "../utilities/numberFormatter";
+import DosesDescriptionList, {
+  DosesDescription,
+} from "../components/DosesDetailList";
 
 export type HomePageProps = {
   waitemata: DhbData;
@@ -34,44 +35,18 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
             <h2 className="heading-2">Vaccination rates</h2>
             <h1 className="heading-1 mb-6 md:mb-8">Auckland</h1>
           </div>
-          <h3 className="heading-3 mb-3">Combined Auckland DHBs</h3>
+          <h2 className="heading-3 mb-3">Combined Auckland DHBs</h2>
           <dl className="mb-6">
-            <div
-              className="
-                data-text
-                data-text-complete
-                w-44
-                flex flex-row
-                justify-between
-                items-center
-              "
-            >
-              <dd className="w-32 flex items-center space-x-2">
-                <div
-                  className="
-                    w-4
-                    h-4
-                    flex
-                    items-center
-                    justify-center
-                    rounded-full
-                    check
-                  "
-                >
-                  <CheckIcon className="h-4 w-4" />
-                </div>
-                <div>First dose</div>
-              </dd>
-              <dt className="w-8">
-                {combinedAuckland.firstDosesPercentage * 100}%
-              </dt>
-            </div>
-            <div className="data-text w-44 flex flex-row justify-between items-center text-lg">
-              <dd className="w-32">Second dose</dd>
-              <dt className="w-8">
-                {combinedAuckland.secondDosesPercentage * 100}%
-              </dt>
-            </div>
+            <DosesDescription
+              term="First doses"
+              hasMetTarget={combinedAuckland.hasMetFirstDoseTarget}
+              dosesPercent={combinedAuckland.firstDosesPercentage}
+            />
+            <DosesDescription
+              term="Second doses"
+              hasMetTarget={combinedAuckland.hasMetSecondDoseTarget}
+              dosesPercent={combinedAuckland.secondDosesPercentage}
+            />
           </dl>
           <Progress
             firstDose={combinedAuckland.firstDosesPercentage * 100}
@@ -84,171 +59,18 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
       <section>
         <Container>
           <div className="container-data rounded-xl p-6 space-y-6">
-            <div>
-              <h3 className="heading-3 mb-2">Waitemata</h3>
-              <dl className="mb-4">
-                <div
-                  className="
-                    w-full
-                    grid grid-cols-12
-                    data-text
-                  "
-                >
-                  <dd className="col-span-5 sm:col-span-4 md:col-span-3 flex items-center space-x-2">
-                    <div
-                      className="
-                        w-4
-                        h-4
-                        flex
-                        items-center
-                        justify-center
-                        rounded-full
-                        check
-                      "
-                    >
-                      <CheckIcon className="h-4 w-4" />
-                    </div>
-                    <div className="data-text data-text-complete">
-                      First dose
-                    </div>
-                  </dd>
-                  <dt className="col-span-1 data-text data-text-complete">
-                    {waitemata.firstDosesPercentage * 100}%
-                  </dt>
-                  <dt className="col-span-6 sm:col-span-7 md:col-span-8 text-right">
-                    <strong>
-                      {numberFormatter.format(
-                        waitemata.numOfFirstDosesTo90Percent
-                      )}
-                    </strong>{" "}
-                    left
-                  </dt>
+            {[auckland, countiesManukau, waitemata].map((dhb) => (
+              <div key={dhb.name}>
+                <h3 className="heading-3 mb-2">{dhb.name}</h3>
+                <div className="mb-4">
+                  <DosesDescriptionList dhbData={dhb} />
                 </div>
-                <div className="w-full grid grid-cols-12 data-text">
-                  <dd className="col-span-5 sm:col-span-4 md:col-span-3">
-                    Second dose
-                  </dd>
-                  <dt className="col-span-1">
-                    {waitemata.secondDosesPercentage * 100}%
-                  </dt>
-                  <dt className="col-span-6 sm:col-span-7 md:col-span-8 text-right">
-                    <strong>
-                      {numberFormatter.format(
-                        waitemata.numOfSecondDosesTo90Percent
-                      )}
-                    </strong>{" "}
-                    left
-                  </dt>
-                </div>
-              </dl>
-              <Progress
-                firstDose={waitemata.firstDosesPercentage * 100}
-                secondDose={waitemata.secondDosesPercentage * 100}
-              />
-            </div>
-            <div>
-              <h3 className="heading-3 mb-2">Auckland</h3>
-              <dl className="mb-4">
-                <div
-                  className="
-                    w-full
-                    grid grid-cols-12
-                    data-text
-                  "
-                >
-                  <dd className="col-span-5 sm:col-span-4 md:col-span-3 flex items-center space-x-2">
-                    <div
-                      className="
-                        w-4
-                        h-4
-                        flex
-                        items-center
-                        justify-center
-                        rounded-full
-                        check
-                      "
-                    >
-                      <CheckIcon className="h-4 w-4" />
-                    </div>
-                    <div className="data-text data-text-complete">
-                      First dose
-                    </div>
-                  </dd>
-                  <dt className="col-span-1 data-text data-text-complete">
-                    {auckland.firstDosesPercentage * 100}%
-                  </dt>
-                  <dt className="col-span-6 sm:col-span-7 md:col-span-8 text-right">
-                    <strong>
-                      {numberFormatter.format(
-                        auckland.numOfFirstDosesTo90Percent
-                      )}
-                    </strong>{" "}
-                    left
-                  </dt>
-                </div>
-                <div className="w-full grid grid-cols-12 data-text">
-                  <dd className="col-span-5 sm:col-span-4 md:col-span-3">
-                    Second dose
-                  </dd>
-                  <dt className="col-span-1">
-                    {auckland.secondDosesPercentage * 100}%
-                  </dt>
-                  <dt className="col-span-6 sm:col-span-7 md:col-span-8 text-right">
-                    <strong>
-                      {numberFormatter.format(
-                        auckland.numOfSecondDosesTo90Percent
-                      )}
-                    </strong>{" "}
-                    left
-                  </dt>
-                </div>
-              </dl>
-              <Progress
-                firstDose={auckland.firstDosesPercentage * 100}
-                secondDose={auckland.secondDosesPercentage * 100}
-              />
-            </div>
-            <div>
-              <h3 className="heading-3 mb-2">Counties Manukau</h3>
-              <dl className="mb-4">
-                <div className="w-full grid grid-cols-12 data-text">
-                  <dd className="col-span-5 sm:col-span-4 md:col-span-3">
-                    First dose
-                  </dd>
-                  <dt className="col-span-1">
-                    {countiesManukau.firstDosesPercentage * 100}%
-                  </dt>
-                  <dt className="col-span-6 sm:col-span-7 md:col-span-8 text-right">
-                    <strong>
-                      {numberFormatter.format(
-                        countiesManukau.numOfFirstDosesTo90Percent
-                      )}
-                    </strong>{" "}
-                    left
-                  </dt>
-                </div>
-                <div className="w-full grid grid-cols-12 data-text">
-                  <dd className="col-span-5 sm:col-span-4 md:col-span-3">
-                    Second dose
-                  </dd>
-                  <dt className="col-span-1">
-                    {countiesManukau.secondDosesPercentage * 100}%
-                  </dt>
-                  <dt className="col-span-6 sm:col-span-7 md:col-span-8 text-right">
-                    <strong>
-                      {numberFormatter.format(
-                        countiesManukau.numOfSecondDosesTo90Percent
-                      )}
-                    </strong>{" "}
-                    left
-                  </dt>
-                </div>
-              </dl>
-              <Progress
-                firstDose={countiesManukau.firstDosesPercentage * 100}
-                secondDose={countiesManukau.secondDosesPercentage * 100}
-              />
-            </div>
+                <Progress
+                  firstDose={dhb.firstDosesPercentage * 100}
+                  secondDose={dhb.secondDosesPercentage * 100}
+                />
+              </div>
+            ))}
           </div>
         </Container>
       </section>
