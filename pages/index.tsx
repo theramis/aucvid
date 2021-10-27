@@ -26,6 +26,7 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
 
   return (
     <div className="h-full min-h-screen">
+      <div className="background-shape"></div>
       <section className="pb-12 pt-12 md:pt-16">
         <Container>
           <div>
@@ -54,7 +55,6 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
                     justify-center
                     rounded-full
                     check
-                    text-green-700
                   "
                 >
                   <CheckIcon className="h-4 w-4" />
@@ -230,9 +230,9 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
       </section>
       <footer className="pb-4 pt-20 md:pt-32">
         <Container>
-          <div className="flex flex-col sm:flex-row items-center justify-center space-x-0 sm:space-x-2 space-y-2 sm:space-y-0 data-text">
+          <div className="flex flex-col sm:flex-row items-center justify-center space-x-0 sm:space-x-2 space-y-2 sm:space-y-0 footnote">
             <p>
-              Source:{" "}
+              Data fetched from{" "}
               <a
                 className="underline focus:outline-none focus:no-underline focus:opacity-70 hover:opacity-70"
                 href="https://www.health.govt.nz/our-work/diseases-and-conditions/covid-19-novel-coronavirus/covid-19-data-and-statistics/covid-19-vaccine-data"
@@ -243,7 +243,7 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
               </a>
             </p>
             <div className="hidden sm:block">&#8226;</div>
-            <p>Data last fetched {hoursBeforeNow(dataFetchedAtTimeUtc)}</p>
+            <p>{hoursBeforeNow(dataFetchedAtTimeUtc)}</p>
           </div>
         </Container>
       </footer>
