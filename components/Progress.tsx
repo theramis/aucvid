@@ -18,7 +18,7 @@ export const Progress = ({
       <div
         className={cx("w-full relative animate-fade-in progress-total", {
           ["h-6 radius"]: size === "small",
-          ["h-12 radius-large"]: size === "large",
+          ["h-10 radius-large"]: size === "large",
         })}
       >
         <div
@@ -27,7 +27,7 @@ export const Progress = ({
         >
           <div
             className={cx(
-              "h-full rounded-lg overflow-hidden animate-grow-width",
+              "h-full overflow-hidden animate-grow-width",
               {
                 ["progress-primary-first"]: color === "purple",
                 ["progress-secondary-first"]: color === "orange",
@@ -43,7 +43,7 @@ export const Progress = ({
         >
           <div
             className={cx(
-              "h-full rounded-lg overflow-hidden animate-grow-width",
+              "h-full overflow-hidden animate-grow-width",
               {
                 ["progress-primary-second"]: color === "purple",
                 ["progress-secondary-second"]: color === "orange",
@@ -56,11 +56,7 @@ export const Progress = ({
         </div>
         <div
           className="
-          absolute
-          top-0
-          left-[90%]
-          bottom-0
-          border-dashed border-black border-r-2
+          goal-line
         "
         ></div>
       </div>
