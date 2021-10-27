@@ -25,9 +25,9 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
   } = props;
 
   return (
-    <div className="antialiased h-full min-h-screen">
-      <div className="max-w-[600px] mx-5 sm:mx-auto">
-        <section className="pb-12 pt-12 md:pt-16">
+    <div className="h-full min-h-screen">
+      <section className="pb-12 pt-12 md:pt-16">
+        <Container>
           <div>
             <h2 className="heading-2">Vaccination rates</h2>
             <h1 className="heading-1 mb-6 md:mb-8">Auckland</h1>
@@ -78,8 +78,10 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
             size="large"
             color="purple"
           />
-        </section>
-        <section>
+        </Container>
+      </section>
+      <section>
+        <Container>
           <div className="container-data rounded-xl p-6 space-y-6">
             <div>
               <h3 className="heading-3 mb-2">Waitemata</h3>
@@ -226,8 +228,10 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
               />
             </div>
           </div>
-        </section>
-        <footer className="pb-4 pt-20 md:pt-32 flex justify-center">
+        </Container>
+      </section>
+      <footer className="pb-4 pt-20 md:pt-32">
+        <Container>
           <div className="flex flex-col sm:flex-row items-center justify-center space-x-0 sm:space-x-2 space-y-2 sm:space-y-0 data-text">
             <p>
               Source:{" "}
@@ -243,13 +247,17 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
             <div className="hidden sm:block">&#8226;</div>
             <p>Data last fetched {hoursBeforeNow(dataFetchedAtTimeUtc)}</p>
           </div>
-        </footer>
-      </div>
+        </Container>
+      </footer>
     </div>
   );
 };
 
 export default Home;
+
+const Container: React.FC<{ children: React.ReactNode }> = ({ children }) => (
+  <div className="max-w-[600px] mx-5 sm:mx-auto">{children}</div>
+);
 
 export const getServerSideProps: GetServerSideProps<HomePageProps> = async ({
   res,
