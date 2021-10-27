@@ -26,6 +26,7 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
 
   return (
     <div className="antialiased h-full min-h-screen">
+      <div className="background-shape"></div>
       <div className="max-w-[600px] mx-5 sm:mx-auto">
         <section className="pb-12 pt-12 md:pt-16">
           <div>
@@ -228,7 +229,7 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
           </div>
         </section>
         <footer className="pb-4 pt-20 md:pt-32 flex justify-center">
-          <div className="flex flex-col sm:flex-row items-center justify-center space-x-0 sm:space-x-2 space-y-2 sm:space-y-0 data-text">
+          <div className="flex flex-col sm:flex-row items-center justify-center space-x-0 sm:space-x-2 space-y-2 sm:space-y-0 footnote">
             <p>
               Source:{" "}
               <a
