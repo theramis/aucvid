@@ -243,7 +243,7 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
               </a>
             </p>
             <div className="hidden sm:block">&#8226;</div>
-            <p>Data last fetched {hoursBeforeNow(dataFetchedAtTimeUtc)}</p>
+            <p>Data fetched {hoursBeforeNow(dataFetchedAtTimeUtc)}</p>
           </div>
         </Container>
       </footer>
