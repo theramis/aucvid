@@ -106,7 +106,7 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
                         check
                       "
                     >
-                      <CheckIcon className="h-3 w-4 md:h-4 md:w-4" />
+                      <CheckIcon className="h-4 w-4" />
                     </div>
                     <div className="data-text data-text-complete">
                       First dose
@@ -168,7 +168,7 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
                         check
                       "
                     >
-                      <CheckIcon className="h-3 w-4 md:h-4 md:w-4" />
+                      <CheckIcon className="h-4 w-4" />
                     </div>
                     <div className="data-text data-text-complete">
                       First dose
