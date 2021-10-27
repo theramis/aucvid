@@ -38,12 +38,12 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
           <h2 className="heading-3 mb-3">Combined Auckland DHBs</h2>
           <dl className="mb-6">
             <DosesDescription
-              title="First doses"
+              term="First doses"
               hasMetTarget={combinedAuckland.hasMetFirstDoseTarget}
               dosesPercent={combinedAuckland.firstDosesPercentage}
             />
             <DosesDescription
-              title="Second doses"
+              term="Second doses"
               hasMetTarget={combinedAuckland.hasMetSecondDoseTarget}
               dosesPercent={combinedAuckland.secondDosesPercentage}
             />

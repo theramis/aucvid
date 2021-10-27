@@ -5,7 +5,7 @@ import { DhbData } from "../types/DhbData";
 import numberFormatter from "../utilities/numberFormatter";
 
 type DosesDescriptionProps = {
-  title: string;
+  term: string;
   hasMetTarget: boolean;
   dosesPercent: number;
   children?: React.ReactNode;
@@ -14,13 +14,13 @@ type DosesDescriptionProps = {
 type DosesDescriptionListProps = { dhbData: DhbData };
 
 export const DosesDescription = ({
-  title,
+  term,
   hasMetTarget,
   dosesPercent,
   children = null,
 }: DosesDescriptionProps) => (
-  <div className={"flex flex-row justify-start items-center"}>
-    <dd className="w-32 flex items-center">
+  <div className="flex flex-row justify-start items-center">
+    <dt className="w-32 flex items-center">
       {hasMetTarget && (
         <div className="w-4 h-4 mr-2 flex items-center justify-center rounded-full check">
           <CheckIcon className="h-4 w-4" />
@@ -31,16 +31,16 @@ export const DosesDescription = ({
           ["data-text-complete"]: hasMetTarget,
         })}
       >
-        {title}
+        {term}
       </div>
-    </dd>
-    <dt
+    </dt>
+    <dd
       className={cx("data-text text-right w-8", {
         ["data-text-complete"]: hasMetTarget,
       })}
     >
       {dosesPercent * 100}%
-    </dt>
+    </dd>
     {children}
   </div>
 );
@@ -48,28 +48,28 @@ export const DosesDescription = ({
 const DosesDescriptionList = ({ dhbData }: DosesDescriptionListProps) => (
   <dl>
     <DosesDescription
-      title="First doses"
+      term="First doses"
       hasMetTarget={dhbData.hasMetFirstDoseTarget}
       dosesPercent={dhbData.firstDosesPercentage}
     >
-      <dt className="flex-1 data-text text-right">
+      <dd className="flex-1 data-text text-right">
         <strong>
           {numberFormatter.format(dhbData.numOfFirstDosesTo90Percent)}
         </strong>{" "}
         left
-      </dt>
+      </dd>
     </DosesDescription>
     <DosesDescription
-      title="Second doses"
+      term="Second doses"
       hasMetTarget={dhbData.hasMetSecondDoseTarget}
       dosesPercent={dhbData.secondDosesPercentage}
     >
-      <dt className="flex-1 data-text text-right">
+      <dd className="flex-1 data-text text-right">
         <strong>
           {numberFormatter.format(dhbData.numOfSecondDosesTo90Percent)}
         </strong>{" "}
         left
-      </dt>
+      </dd>
     </DosesDescription>
   </dl>
 );
