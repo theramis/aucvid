@@ -3,6 +3,7 @@
 
 body {
   background: var(--background-base);
+  font-family: "Rubik", Helvetica, Arial, sans-serif;
 }
 
 .container-data {
@@ -35,13 +36,35 @@ body {
 
 // Progress bars
 
+.progress-bar-container {
+}
+
 .progress-bar {
   border-radius: $radius 0 0 $radius;
-  box-shadow: 1px 0 0 $white-75;
+  box-shadow: 1px 0 0 $grey;
 }
 .progress-bar-large {
   border-radius: $radius-large 0 0 $radius-large;
-  box-shadow: 1px 0 0 $white-75;
+  box-shadow: 1px 0 0 $grey;
+}
+
+.goal-line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  border-right-width: 2px;
+  border-color: $black;
+  &::before {
+    content: "";
+    position: inherit;
+    height: 6px;
+    width: 6px;
+    left: -2px;
+    top: -3px;
+    background: $green-light;
+    border-radius: 100%;
+    box-shadow: 0 0 0 2px $black;
+  }
 }
 
 // Style utils

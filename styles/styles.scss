@@ -1,3 +1,8 @@
+// Font
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;700&display=swap");
+
+// Radius
+
 $radius: 4px;
 $radius-large: 8px;
 
@@ -6,20 +11,20 @@ $radius-large: 8px;
 @mixin h1 {
   font-size: 3.75rem;
   line-height: 4.5rem;
-  font-weight: bold;
+  font-weight: 700;
 }
 @mixin h2 {
-  font-size: 1.75rem;
-  line-height: 2.25rem;
-  font-weight: regular;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: 300;
 }
 @mixin h3 {
-  font-size: 1.75rem;
-  line-height: 2.25rem;
-  font-weight: 700;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: 500;
 }
 @mixin h4 {
   font-size: 0.875rem;
   line-height: 1.25rem;
-  font-weight: regular;
+  font-weight: 500;
 }
