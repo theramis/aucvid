@@ -5,7 +5,7 @@ import fetchData from "../services/dataFetcher";
 import { DhbData } from "../types/DhbData";
 import { Progress } from "../components/Progress";
 import hoursBeforeNow from "../utilities/hoursBeforeNow";
-import { numberFormatter } from "../utilities/numberFormatter";
+import numberFormatter from "../utilities/numberFormatter";
 
 export type HomePageProps = {
   waitemata: DhbData;
