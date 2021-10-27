@@ -231,8 +231,8 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
       <footer className="pb-4 pt-20 md:pt-32">
         <Container>
           <div className="flex flex-col sm:flex-row items-center justify-center space-x-0 sm:space-x-2 space-y-2 sm:space-y-0 footnote">
-            <p>Data fetched from 
-              {" "}
+            <p>
+              Data fetched from{" "}
               <a
                 className="underline focus:outline-none focus:no-underline focus:opacity-70 hover:opacity-70"
                 href="https://www.health.govt.nz/our-work/diseases-and-conditions/covid-19-novel-coronavirus/covid-19-data-and-statistics/covid-19-vaccine-data"
