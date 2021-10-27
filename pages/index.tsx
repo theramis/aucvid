@@ -5,6 +5,7 @@ import fetchData from "../services/dataFetcher";
 import { DhbData } from "../types/DhbData";
 import { Progress } from "../components/Progress";
 import hoursBeforeNow from "../utilities/hoursBeforeNow";
+import { numberFormatter } from "../utilities/numberFormatter";
 
 export type HomePageProps = {
   waitemata: DhbData;
@@ -115,7 +116,12 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
                     {waitemata.firstDosesPercentage * 100}%
                   </dt>
                   <dt className="col-span-6 sm:col-span-7 md:col-span-8 text-right">
-                    <strong>{waitemata.numOfFirstDosesTo90Percent}</strong> left
+                    <strong>
+                      {numberFormatter.format(
+                        waitemata.numOfFirstDosesTo90Percent
+                      )}
+                    </strong>{" "}
+                    left
                   </dt>
                 </div>
                 <div className="w-full grid grid-cols-12 data-text">
@@ -126,7 +132,11 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
                     {waitemata.secondDosesPercentage * 100}%
                   </dt>
                   <dt className="col-span-6 sm:col-span-7 md:col-span-8 text-right">
-                    <strong>{waitemata.numOfSecondDosesTo90Percent}</strong>{" "}
+                    <strong>
+                      {numberFormatter.format(
+                        waitemata.numOfSecondDosesTo90Percent
+                      )}
+                    </strong>{" "}
                     left
                   </dt>
                 </div>
@@ -168,7 +178,12 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
                     {auckland.firstDosesPercentage * 100}%
                   </dt>
                   <dt className="col-span-6 sm:col-span-7 md:col-span-8 text-right">
-                    <strong>{auckland.numOfFirstDosesTo90Percent}</strong> left
+                    <strong>
+                      {numberFormatter.format(
+                        auckland.numOfFirstDosesTo90Percent
+                      )}
+                    </strong>{" "}
+                    left
                   </dt>
                 </div>
                 <div className="w-full grid grid-cols-12 data-text">
@@ -179,7 +194,12 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
                     {auckland.secondDosesPercentage * 100}%
                   </dt>
                   <dt className="col-span-6 sm:col-span-7 md:col-span-8 text-right">
-                    <strong>{auckland.numOfSecondDosesTo90Percent}</strong> left
+                    <strong>
+                      {numberFormatter.format(
+                        auckland.numOfSecondDosesTo90Percent
+                      )}
+                    </strong>{" "}
+                    left
                   </dt>
                 </div>
               </dl>
@@ -200,7 +220,9 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
                   </dt>
                   <dt className="col-span-6 sm:col-span-7 md:col-span-8 text-right">
                     <strong>
-                      {countiesManukau.numOfFirstDosesTo90Percent}
+                      {numberFormatter.format(
+                        countiesManukau.numOfFirstDosesTo90Percent
+                      )}
                     </strong>{" "}
                     left
                   </dt>
@@ -214,7 +236,9 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
                   </dt>
                   <dt className="col-span-6 sm:col-span-7 md:col-span-8 text-right">
                     <strong>
-                      {countiesManukau.numOfSecondDosesTo90Percent}
+                      {numberFormatter.format(
+                        countiesManukau.numOfSecondDosesTo90Percent
+                      )}
                     </strong>{" "}
                     left
                   </dt>
