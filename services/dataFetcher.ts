@@ -125,12 +125,12 @@ const combineDhbData = (...data: DhbData[]): DhbData => {
       combinedData.numOfFirstDoses / combinedData.totalPopulation
     );
     combinedData.hasMetFirstDoseTarget =
-      combinedData.firstDosesPercentage > firstDoseTargetPercentage;
+      combinedData.firstDosesPercentage >= firstDoseTargetPercentage;
     combinedData.secondDosesPercentage = roundTo2Dp(
       combinedData.numOfSecondDoses / combinedData.totalPopulation
     );
     combinedData.hasMetSecondDoseTarget =
-      combinedData.secondDosesPercentage > secondDoseTargetPercentage;
+      combinedData.secondDosesPercentage >= secondDoseTargetPercentage;
   });
 
   return combinedData;
