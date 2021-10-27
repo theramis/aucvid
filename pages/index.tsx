@@ -21,7 +21,7 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
     auckland,
     countiesManukau,
     waitemata,
-    dataUpdatedTime,
+    lastRetrievedTime,
   } = props;
 
   return (
@@ -241,7 +241,7 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
               </a>
             </p>
             <div className="hidden sm:block">&#8226;</div>
-            <p>Last updated {hoursAgo(dataUpdatedTime)} hours ago</p>
+            <p>Data last fetched {hoursAgo(lastRetrievedTime)} hours ago</p>
           </div>
         </footer>
       </div>
