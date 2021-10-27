@@ -28,3 +28,9 @@ $radius-large: 8px;
   line-height: 1.25rem;
   font-weight: 500;
 }
+
+@mixin footnote {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 400;
+}
