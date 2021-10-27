@@ -241,7 +241,9 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
               </a>
             </p>
             <div className="hidden sm:block">&#8226;</div>
-            <p>Data last fetched {hoursAgo(dataFetchedAtTimeUtc)} hours ago</p>
+            <p>
+              Data last fetched <HoursBeforeNow date={dataFetchedAtTimeUtc} />
+            </p>
           </div>
         </footer>
       </div>
@@ -251,10 +253,24 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
 
 export default Home;
 
-const hoursAgo = (text: string) => {
+const getHoursAgo = (text: string) => {
   const hoursBeforeNow = DateTime.fromISO(text).diffNow("hours").get("hours");
 
   return Math.floor(Math.abs(hoursBeforeNow));
+};
+
+const HoursBeforeNow = ({ date }: { date: string }) => {
+  const hoursAgo = getHoursAgo(date);
+
+  if (hoursAgo === 0) {
+    return "less than an hour ago";
+  }
+
+  if (hoursAgo === 1) {
+    return "1 hour ago";
+  }
+
+  return `${hoursAgo} hours ago`;
 };
 
 export const getServerSideProps: GetServerSideProps<HomePageProps> = async ({
