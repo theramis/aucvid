@@ -31,7 +31,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           href="/apple-touch-icon.png"
         />
         <link rel="manifest" href="/site.webmanifest" />
-        <meta name="theme-color" content="#ffffff" />
+        <meta name="theme-color" content="#200133" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <title key="title">{metaTags.title}</title>
         <meta
