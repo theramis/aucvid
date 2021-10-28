@@ -7,6 +7,7 @@ import hoursBeforeNow from "../utilities/hoursBeforeNow";
 import DosesDescriptionList, {
   DosesDescription,
 } from "../components/DosesDetailList";
+import { DateTime } from "luxon";
 
 export type HomePageProps = {
   waitemata: DhbData;
@@ -88,7 +89,9 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
               </a>
             </p>
             <div className="hidden sm:block">&#8226;</div>
-            <p>{hoursBeforeNow(dataFetchedAtTimeUtc)}</p>
+            <p title={fetchedAtTimeTitle(dataFetchedAtTimeUtc)}>
+              {hoursBeforeNow(dataFetchedAtTimeUtc)}
+            </p>
           </div>
         </Container>
       </footer>
@@ -101,6 +104,9 @@ export default Home;
 const Container: React.FC<{ children: React.ReactNode }> = ({ children }) => (
   <div className="max-w-[600px] mx-5 sm:mx-auto">{children}</div>
 );
+
+const fetchedAtTimeTitle = (t: string) =>
+  DateTime.fromISO(t).toLocaleString(DateTime.DATETIME_FULL);
 
 export const getServerSideProps: GetServerSideProps<HomePageProps> =
   async () => {
