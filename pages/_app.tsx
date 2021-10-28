@@ -14,6 +14,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     <>
       <Head>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta name="theme-color" content="#200133" />
         <title key="title">{metaTags.title}</title>
         <meta
           name="description"
