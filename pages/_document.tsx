@@ -24,10 +24,6 @@ class MyDocument extends Document {
           />
           <link rel="manifest" href="/site.webmanifest" />
           <meta name="theme-color" content="#200133" />
-          <meta
-            name="viewport"
-            content="initial-scale=1.0, width=device-width"
-          />
           <script
             async
             src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
