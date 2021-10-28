@@ -52,7 +52,6 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
             firstDose={combinedAuckland.firstDosesPercentage * 100}
             secondDose={combinedAuckland.secondDosesPercentage * 100}
             size="large"
-            color="purple"
           />
         </Container>
       </section>

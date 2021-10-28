@@ -25,7 +25,7 @@ export const Progress = ({
         >
           <div
             className={cx(
-              "h-full overflow-hidden animate-grow-width progress-primary-first",
+              "h-full overflow-hidden animate-grow-width progress-first",
               {
                 ["progress-bar"]: size === "small",
                 ["progress-bar-large"]: size === "large",
@@ -39,7 +39,7 @@ export const Progress = ({
         >
           <div
             className={cx(
-              "h-full overflow-hidden animate-grow-width progress-primary-second",
+              "h-full overflow-hidden animate-grow-width progress-second",
               {
                 ["progress-bar"]: size === "small",
                 ["progress-bar-large"]: size === "large",
