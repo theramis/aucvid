@@ -19,23 +19,21 @@ export const DosesDescription = ({
   dosesPercent,
   children = null,
 }: DosesDescriptionProps) => (
-  <div className="flex flex-row justify-start items-center">
-    <dt className="w-32 flex items-center">
+  <div className="data-description">
+    <dt className="term">
       {hasMetTarget && (
-        <div className="w-4 h-4 mr-2 flex items-center justify-center rounded-full check">
-          <CheckIcon className="h-4 w-4" />
+        <div className="check">
+          <CheckIcon />
         </div>
       )}
       <div
-        className={cx("data-text", {
-          ["data-text-complete"]: hasMetTarget,
-        })}
+        className={cx("data-text", { ["data-text-complete"]: hasMetTarget })}
       >
         {term}
       </div>
     </dt>
     <dd
-      className={cx("data-text text-right w-8", {
+      className={cx("definition-primary data-text", {
         ["data-text-complete"]: hasMetTarget,
       })}
     >
@@ -52,7 +50,7 @@ const DosesDescriptionList = ({ dhbData }: DosesDescriptionListProps) => (
       hasMetTarget={dhbData.hasMetFirstDoseTarget}
       dosesPercent={dhbData.firstDosesPercentage}
     >
-      <dd className="flex-1 data-text text-right">
+      <dd className="definition-secondary data-text">
         <strong>
           {numberFormatter.format(dhbData.numOfFirstDosesTo90Percent)}
         </strong>{" "}
@@ -64,7 +62,7 @@ const DosesDescriptionList = ({ dhbData }: DosesDescriptionListProps) => (
       hasMetTarget={dhbData.hasMetSecondDoseTarget}
       dosesPercent={dhbData.secondDosesPercentage}
     >
-      <dd className="flex-1 data-text text-right">
+      <dd className="definition-secondary data-text">
         <strong>
           {numberFormatter.format(dhbData.numOfSecondDosesTo90Percent)}
         </strong>{" "}
