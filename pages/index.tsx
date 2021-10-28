@@ -6,7 +6,7 @@ import { Progress } from "../components/Progress";
 import hoursBeforeNow from "../utilities/hoursBeforeNow";
 import DosesDescriptionList, {
   DosesDescription,
-} from "../components/DosesDetailList";
+} from "../components/DosesDescriptionList";
 
 export type HomePageProps = {
   waitemata: DhbData;
