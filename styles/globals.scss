@@ -1,6 +1,6 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
 
 * {
   -webkit-tap-highlight-color: transparent;
@@ -9,6 +9,7 @@
 body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-family: Rubik, Helvetica, Arial, sans-serif;
 }
 
 @keyframes fade-in {
