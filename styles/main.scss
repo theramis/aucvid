@@ -59,11 +59,31 @@ body {
 
 .progress-bar {
   border-radius: $radius 0 0 $radius;
-  box-shadow: 1px 0 0 $grey;
 }
+
 .progress-bar-large {
   border-radius: $radius-large 0 0 $radius-large;
-  box-shadow: 1px 0 0 $grey;
+}
+
+.progress-total {
+  background: var(--progress--total);
+}
+
+.progress-first {
+  box-shadow: 2px 0 0 var(--progress--first);
+  background-size: 8px 8px;
+  background-image: repeating-linear-gradient(
+    45deg,
+    var(--progress--first) 0,
+    var(--progress--first) 2px,
+    var(--progress--total) 0,
+    var(--progress--total) 50%
+  );
+}
+
+.progress-second {
+  background: var(--progress--first);
+  box-shadow: 2px 0 0 var(--progress--second);
 }
 
 .goal-line {
@@ -72,16 +92,14 @@ body {
   bottom: 0;
   border-right-width: 2px;
   border-color: $black;
+  box-shadow: 1px 0 0 $white-75;
   &::before {
     content: "";
     position: inherit;
-    height: 6px;
-    width: 6px;
-    left: -2px;
-    top: -3px;
-    background: $green-light;
-    border-radius: 100%;
-    box-shadow: 0 0 0 2px $black;
+    height: 100%;
+    width: 1px;
+    left: -1px;
+    background: $white-75;
   }
 }
 
@@ -94,22 +112,4 @@ body {
 }
 .radius-large {
   border-radius: $radius-large;
-}
-
-// Progress color utils
-
-.progress-total {
-  background: var(--progress--total);
-}
-.progress-primary-first {
-  background: var(--progress--primary-first);
-}
-.progress-primary-second {
-  background: var(--progress--primary-second);
-}
-.progress-secondary-first {
-  background: var(--progress--secondary-first);
-}
-.progress-secondary-second {
-  background: var(--progress--secondary-second);
 }

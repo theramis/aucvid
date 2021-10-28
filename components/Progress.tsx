@@ -3,14 +3,12 @@ import cx from "classnames";
 type ProgressProps = {
   firstDose: number;
   secondDose: number;
-  color?: "purple" | "orange";
   size?: "small" | "large";
 };
 
 export const Progress = ({
   firstDose,
   secondDose,
-  color = "orange",
   size = "small",
 }: ProgressProps) => {
   return (
@@ -26,12 +24,13 @@ export const Progress = ({
           style={{ width: `${firstDose}%` }}
         >
           <div
-            className={cx("h-full overflow-hidden animate-grow-width", {
-              ["progress-primary-first"]: color === "purple",
-              ["progress-secondary-first"]: color === "orange",
-              ["progress-bar"]: size === "small",
-              ["progress-bar-large"]: size === "large",
-            })}
+            className={cx(
+              "h-full overflow-hidden animate-grow-width progress-first",
+              {
+                ["progress-bar"]: size === "small",
+                ["progress-bar-large"]: size === "large",
+              }
+            )}
           />
         </div>
         <div
@@ -39,12 +38,13 @@ export const Progress = ({
           style={{ width: `${secondDose}%` }}
         >
           <div
-            className={cx("h-full overflow-hidden animate-grow-width", {
-              ["progress-primary-second"]: color === "purple",
-              ["progress-secondary-second"]: color === "orange",
-              ["progress-bar"]: size === "small",
-              ["progress-bar-large"]: size === "large",
-            })}
+            className={cx(
+              "h-full overflow-hidden animate-grow-width progress-second",
+              {
+                ["progress-bar"]: size === "small",
+                ["progress-bar-large"]: size === "large",
+              }
+            )}
             style={{ animationDelay: "1s" }}
           />
         </div>
