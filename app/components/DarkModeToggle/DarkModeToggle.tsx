@@ -31,7 +31,7 @@ export const DarkModeToggle = ({ className }: DarkModeToggleProps) => {
       onClick={() => setMode(mode === "light" ? "dark" : "light")}
       className={cx(styles.toggleButton, className)}
     >
-      {mode === "light" ? <SunIcon /> : <MoonIcon />}
+      {mode === "light" ? <MoonIcon /> : <SunIcon />}
     </button>
   );
 };
