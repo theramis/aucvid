@@ -5,7 +5,7 @@ import { DhbPopulationDoseData } from "../../types/VaccineDataTypes";
 
 import numberFormatter from "../../utilities/numberFormatter";
 
-import "./doses-description-list.scss";
+import styles from "./DosesDescriptionList.module.scss";
 
 type DosesDescriptionProps = {
   term: string;
@@ -22,10 +22,10 @@ export const DosesDescription = ({
   dosesPercent,
   children = null,
 }: DosesDescriptionProps) => (
-  <div className="description-definition">
-    <dt className="term">
+  <div className={styles["description-definition"]}>
+    <dt className={styles["term"]}>
       {hasMetTarget && (
-        <div className="check">
+        <div className={styles["check"]}>
           <CheckIcon />
         </div>
       )}
@@ -36,7 +36,7 @@ export const DosesDescription = ({
       </div>
     </dt>
     <dd
-      className={cx("definition-primary data-text", {
+      className={cx(styles["definition-primary"], "data-text", {
         ["data-text-complete"]: hasMetTarget,
       })}
     >
@@ -53,7 +53,7 @@ const DosesDescriptionList = ({ dhbData }: DosesDescriptionListProps) => (
       hasMetTarget={dhbData.hasMetFirstDoseTarget}
       dosesPercent={dhbData.firstDosesPercentage}
     >
-      <dd className="definition-secondary data-text">
+      <dd className={cx(styles["definition-secondary"], "data-text")}>
         <strong>
           {numberFormatter.format(dhbData.numOfFirstDosesTo90Percent)}
         </strong>{" "}
@@ -65,7 +65,7 @@ const DosesDescriptionList = ({ dhbData }: DosesDescriptionListProps) => (
       hasMetTarget={dhbData.hasMetSecondDoseTarget}
       dosesPercent={dhbData.secondDosesPercentage}
     >
-      <dd className="definition-secondary data-text">
+      <dd className={cx(styles["definition-secondary"], "data-text")}>
         <strong>
           {numberFormatter.format(dhbData.numOfSecondDosesTo90Percent)}
         </strong>{" "}
