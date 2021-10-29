@@ -159,7 +159,9 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
 export default Home;
 
 const Container: React.FC<{ children: React.ReactNode }> = ({ children }) => (
-  <div className="max-w-[600px] mx-5 sm:mx-auto">{children}</div>
+  <div className="mx-5 sm:mx-auto" style={{ maxWidth: "600px" }}>
+    {children}
+  </div>
 );
 
 const useTimeFormatter = () => {
