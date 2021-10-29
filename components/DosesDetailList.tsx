@@ -1,7 +1,6 @@
 import cx from "classnames";
 import { CheckIcon } from "@heroicons/react/solid";
-
-import { DhbData } from "../types/DhbData";
+import { DhbPopulationDoseData } from "../types/VaccineDataTypes";
 import numberFormatter from "../utilities/numberFormatter";
 
 type DosesDescriptionProps = {
@@ -11,7 +10,7 @@ type DosesDescriptionProps = {
   children?: React.ReactNode;
 };
 
-type DosesDescriptionListProps = { dhbData: DhbData };
+type DosesDescriptionListProps = { dhbData: DhbPopulationDoseData };
 
 export const DosesDescription = ({
   term,

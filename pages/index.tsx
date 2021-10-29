@@ -1,32 +1,33 @@
 import { DateTime } from "luxon";
 import { GetServerSideProps } from "next";
 import { useEffect, useState } from "react";
-
-import fetchData from "../services/dataFetcher";
-import { DhbData } from "../types/DhbData";
 import { Progress } from "../components/Progress";
 import hoursBeforeNow from "../utilities/hoursBeforeNow";
 import DosesDescriptionList, {
   DosesDescription,
 } from "../components/DosesDetailList";
+import { DhbPopulationDoseData } from "../types/VaccineDataTypes";
+import fetchHomePageProps from "../services/homePagePropsService";
 
 export type HomePageProps = {
-  waitemata: DhbData;
-  auckland: DhbData;
-  countiesManukau: DhbData;
-  combinedAuckland: DhbData;
+  allDhbsPopulationDoseData: DhbPopulationDoseData[];
+  aucklandDhbsPopulationDoseData: DhbPopulationDoseData[];
+  combinedAucklandDhbsPopulationDoseData: DhbPopulationDoseData;
   dataValidAsAtTimeUtc: string;
   dataFetchedAtTimeUtc: string;
 };
 
 const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
   const {
-    combinedAuckland,
-    auckland,
-    countiesManukau,
-    waitemata,
+    combinedAucklandDhbsPopulationDoseData,
+    aucklandDhbsPopulationDoseData,
     dataFetchedAtTimeUtc,
   } = props;
+
+  const sortedAucklandDhbsPopulationDoseData =
+    aucklandDhbsPopulationDoseData.sort((a, b) =>
+      a.dhbName.localeCompare(b.dhbName)
+    );
 
   const formatTimeTitle = useTimeFormatter();
 
@@ -43,18 +44,30 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
           <dl className="mb-6">
             <DosesDescription
               term="First doses"
-              hasMetTarget={combinedAuckland.hasMetFirstDoseTarget}
-              dosesPercent={combinedAuckland.firstDosesPercentage}
+              hasMetTarget={
+                combinedAucklandDhbsPopulationDoseData.hasMetFirstDoseTarget
+              }
+              dosesPercent={
+                combinedAucklandDhbsPopulationDoseData.firstDosesPercentage
+              }
             />
             <DosesDescription
               term="Second doses"
-              hasMetTarget={combinedAuckland.hasMetSecondDoseTarget}
-              dosesPercent={combinedAuckland.secondDosesPercentage}
+              hasMetTarget={
+                combinedAucklandDhbsPopulationDoseData.hasMetSecondDoseTarget
+              }
+              dosesPercent={
+                combinedAucklandDhbsPopulationDoseData.secondDosesPercentage
+              }
             />
           </dl>
           <Progress
-            firstDose={combinedAuckland.firstDosesPercentage * 100}
-            secondDose={combinedAuckland.secondDosesPercentage * 100}
+            firstDose={
+              combinedAucklandDhbsPopulationDoseData.firstDosesPercentage * 100
+            }
+            secondDose={
+              combinedAucklandDhbsPopulationDoseData.secondDosesPercentage * 100
+            }
             size="large"
           />
         </Container>
@@ -62,9 +75,9 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
       <section>
         <Container>
           <div className="container-data rounded-xl p-6 space-y-6">
-            {[auckland, countiesManukau, waitemata].map((dhb) => (
-              <div key={dhb.name}>
-                <h3 className="heading-3 mb-2">{dhb.name}</h3>
+            {sortedAucklandDhbsPopulationDoseData.map((dhb) => (
+              <div key={dhb.dhbName}>
+                <h3 className="heading-3 mb-2">{dhb.dhbName}</h3>
                 <div className="mb-4">
                   <DosesDescriptionList dhbData={dhb} />
                 </div>
@@ -166,6 +179,6 @@ const useTimeFormatter = () => {
 export const getServerSideProps: GetServerSideProps<HomePageProps> =
   async () => {
     return {
-      props: await fetchData(),
+      props: await fetchHomePageProps(),
     };
   };
