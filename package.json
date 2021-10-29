@@ -3,12 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
+    "dev": "next dev app",
+    "build": "next build app",
     "format": "prettier --write .",
     "format-staged": "pretty-quick --staged",
-    "start": "next start",
-    "lint": "next lint",
+    "start": "next start app",
+    "lint": "next lint app",
     "husky-install": "husky install"
   },
   "dependencies": {
