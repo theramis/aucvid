@@ -46,7 +46,9 @@ export const DosesDescription = ({
   </div>
 );
 
-const DosesDescriptionList = ({ dhbData }: DosesDescriptionListProps) => (
+export const DosesDescriptionList = ({
+  dhbData,
+}: DosesDescriptionListProps) => (
   <dl>
     <DosesDescription
       term="First doses"
@@ -74,5 +76,3 @@ const DosesDescriptionList = ({ dhbData }: DosesDescriptionListProps) => (
     </DosesDescription>
   </dl>
 );
-
-export default DosesDescriptionList;

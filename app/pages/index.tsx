@@ -1,10 +1,11 @@
 import { DateTime } from "luxon";
 import { GetServerSideProps } from "next";
 import { useEffect, useState } from "react";
-import { Progress } from "../components/Progress";
+import { Progress } from "../components/Progress/Progress";
 import hoursBeforeNow from "../utilities/hoursBeforeNow";
-import DosesDescriptionList, {
+import {
   DosesDescription,
+  DosesDescriptionList,
 } from "../components/DosesDescriptionList";
 import { DhbPopulationDoseData } from "../types/VaccineDataTypes";
 import fetchHomePageProps from "../services/homePagePropsService";
