@@ -5,7 +5,7 @@ import { Progress } from "../components/Progress";
 import hoursBeforeNow from "../utilities/hoursBeforeNow";
 import DosesDescriptionList, {
   DosesDescription,
-} from "../components/DosesDetailList";
+} from "../components/DosesDescriptionList";
 import { DhbPopulationDoseData } from "../types/VaccineDataTypes";
 import fetchHomePageProps from "../services/homePagePropsService";
 
