@@ -26,8 +26,6 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
       a.dhbName.localeCompare(b.dhbName)
     );
 
-  const formatTimeTitle = useTimeFormatter();
-
   return (
     <div className="h-full min-h-screen">
       <div className="background-shape"></div>
