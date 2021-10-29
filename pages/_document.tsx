@@ -2,6 +2,22 @@ import Document, { Html, Head, Main, NextScript } from "next/document";
 
 class MyDocument extends Document {
   render() {
+    const setTheme = `
+    function getAppTheme() {
+      const appThemeVal = window.localStorage.getItem("appTheme");
+      if (appThemeVal && typeof appThemeVal === "string") {
+        return JSON.parse(appThemeVal);
+      }
+      return window.matchMedia("(prefers-color-scheme: dark)").matches
+        ? ""
+        : "light";
+    }
+
+    if (getAppTheme() === "light") {
+      document.body.classList.add("light");
+    }
+  `;
+
     return (
       <Html lang="en">
         <Head>
@@ -41,6 +57,7 @@ class MyDocument extends Document {
           />
         </Head>
         <body>
+          {/* <script dangerouslySetInnerHTML={{ __html: setTheme }} /> */}
           <Main />
           <NextScript />
         </body>
