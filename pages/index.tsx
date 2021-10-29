@@ -1,4 +1,6 @@
+import { DateTime } from "luxon";
 import { GetServerSideProps } from "next";
+import { useEffect, useState } from "react";
 
 import fetchData from "../services/dataFetcher";
 import { DhbData } from "../types/DhbData";
@@ -25,6 +27,8 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
     waitemata,
     dataFetchedAtTimeUtc,
   } = props;
+
+  const formatTimeTitle = useTimeFormatter();
 
   return (
     <div className="h-full min-h-screen">
@@ -88,7 +92,9 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
               </a>
             </p>
             <div className="hidden sm:block">&#8226;</div>
-            <p>{hoursBeforeNow(dataFetchedAtTimeUtc)}</p>
+            <p title={formatTimeTitle(dataFetchedAtTimeUtc)}>
+              {hoursBeforeNow(dataFetchedAtTimeUtc)}
+            </p>
           </div>
           <div className="flex flex-row items-center justify-center footnote mt-1">
             <div className="mr-2">&#128075;</div>
@@ -142,6 +148,20 @@ export default Home;
 const Container: React.FC<{ children: React.ReactNode }> = ({ children }) => (
   <div className="max-w-[600px] mx-5 sm:mx-auto">{children}</div>
 );
+
+const useTimeFormatter = () => {
+  // Set formatter for server - simply return a string
+  const [format, setFormat] = useState(() => (a: string) => "");
+
+  // Set formatter on client - will run in client TZ
+  useEffect(() => {
+    const clientFormatter = (t: string) =>
+      DateTime.fromISO(t).toFormat("dd LLL yyyy h:mm a");
+    setFormat(() => clientFormatter);
+  }, []);
+
+  return format;
+};
 
 export const getServerSideProps: GetServerSideProps<HomePageProps> =
   async () => {
