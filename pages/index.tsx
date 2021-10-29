@@ -7,8 +7,6 @@ import hoursBeforeNow from "../utilities/hoursBeforeNow";
 import DosesDescriptionList, {
   DosesDescription,
 } from "../components/DosesDetailList";
-import { DarkModeToggle } from "../components/DarkModeToggle";
-import { useHasMounted } from "../hooks/useIsMounted";
 
 export type HomePageProps = {
   waitemata: DhbData;
@@ -28,11 +26,8 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
     dataFetchedAtTimeUtc,
   } = props;
 
-  const hasMounted = useHasMounted();
-
   return (
     <div className="h-full min-h-screen">
-      {hasMounted ? <DarkModeToggle /> : null}
       <div className="background-shape"></div>
       <section className="pb-12 pt-12 md:pt-16">
         <Container>
