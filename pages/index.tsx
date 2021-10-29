@@ -90,6 +90,40 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
             <div className="hidden sm:block">&#8226;</div>
             <p>{hoursBeforeNow(dataFetchedAtTimeUtc)}</p>
           </div>
+          <div className="flex flex-col sm:flex-row items-center justify-center space-x-0 sm:space-x-2 space-y-2 sm:space-y-0 footnote mt-1">
+            <p>
+              &#128075; Made with love by{" "}
+              <a
+                className="underline focus:outline-none focus:no-underline focus:opacity-70 hover:opacity-70"
+                href="https://www.instagram.com/finnsta_gram/"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                Finn
+              </a>, <a
+                className="underline focus:outline-none focus:no-underline focus:opacity-70 hover:opacity-70"
+                href="https://twitter.com/andy__carrell"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                Andy
+              </a>, <a
+                className="underline focus:outline-none focus:no-underline focus:opacity-70 hover:opacity-70"
+                href="https://twitter.com/jishaal"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                Jishaal
+              </a>, and <a
+                className="underline focus:outline-none focus:no-underline focus:opacity-70 hover:opacity-70"
+                href="https://twitter.com/__simar__"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                Simar
+              </a>
+            </p>
+          </div>
         </Container>
       </footer>
     </div>
