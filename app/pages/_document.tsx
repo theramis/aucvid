@@ -57,7 +57,7 @@ class MyDocument extends Document {
           />
         </Head>
         <body>
-          {/* <script dangerouslySetInnerHTML={{ __html: setTheme }} /> */}
+          <script dangerouslySetInnerHTML={{ __html: setTheme }} />
           <Main />
           <NextScript />
         </body>

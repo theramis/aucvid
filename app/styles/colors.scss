@@ -28,6 +28,8 @@ $light--complete--background: $green-light;
 $light--background--base: $white;
 $light--background--tint-1: $purple-2xlight;
 $light--background--tint-2: $purple-xlight;
+$light--dark-mode-toggle: $purple-xdark;
+$light--dark-mode-toggle-hover: $purple-base;
 
 // Dark
 $dark--text-primary: $white-95;
@@ -42,6 +44,8 @@ $dark--complete-background: $green-light;
 $dark--background-base: $purple-2xdark;
 $dark--background-tint-1: $purple-xdark;
 $dark--background-tint-2: $purple-dark;
+$dark--dark-mode-toggle: $white-95;
+$dark--dark-mode-toggle-hover: $purple-base;
 
 :root {
   --text-primary: #{$dark--text-primary};
@@ -56,6 +60,8 @@ $dark--background-tint-2: $purple-dark;
   --background-base: #{$dark--background-base};
   --background-tint-1: #{$dark--background-tint-1};
   --background-tint-2: #{$dark--background-tint-2};
+  --dark-mode-toggle: #{$dark--dark-mode-toggle};
+  --dark-mode-toggle-hover: #{$dark--dark-mode-toggle-hover};
 }
 
 .light {
@@ -71,4 +77,6 @@ $dark--background-tint-2: $purple-dark;
   --background-base: #{$light--background--base};
   --background-tint-1: #{$light--background--tint-1};
   --background-tint-2: #{$light--background--tint-2};
+  --dark-mode-toggle: #{$light--dark-mode-toggle};
+  --dark-mode-toggle-hover: #{$light--dark-mode-toggle-hover};
 }

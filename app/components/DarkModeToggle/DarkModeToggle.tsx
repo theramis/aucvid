@@ -1,11 +1,17 @@
 import { MoonIcon } from "@heroicons/react/solid";
 import { SunIcon } from "@heroicons/react/solid";
 import { useEffect } from "react";
-import { useStickyState } from "../hooks/useStickyState";
+import cx from "classnames";
+
+import { useStickyState } from "../../hooks/useStickyState";
+import styles from "./DarkModeToggle.module.scss";
 
 type ThemeState = "dark" | "light";
+type DarkModeToggleProps = {
+  className?: string;
+};
 
-export const DarkModeToggle = () => {
+export const DarkModeToggle = ({ className }: DarkModeToggleProps) => {
   const defaultMode = window.matchMedia("(prefers-color-scheme: dark)").matches
     ? "dark"
     : "light";
@@ -20,14 +26,10 @@ export const DarkModeToggle = () => {
     }
   }, [mode]);
 
-  // todo proper component as per design
   return (
     <button
       onClick={() => setMode(mode === "light" ? "dark" : "light")}
-      style={{
-        width: "50px",
-        height: "50px",
-      }}
+      className={cx(styles.toggleButton, className)}
     >
       {mode === "light" ? <SunIcon /> : <MoonIcon />}
     </button>
