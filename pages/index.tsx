@@ -100,21 +100,27 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
                 target="_blank"
               >
                 Finn
-              </a>, <a
+              </a>
+              ,{" "}
+              <a
                 className="underline focus:outline-none focus:no-underline focus:opacity-70 hover:opacity-70"
                 href="https://twitter.com/andy__carrell"
                 rel="noopener noreferrer"
                 target="_blank"
               >
                 Andy
-              </a>, <a
+              </a>
+              ,{" "}
+              <a
                 className="underline focus:outline-none focus:no-underline focus:opacity-70 hover:opacity-70"
                 href="https://twitter.com/jishaal"
                 rel="noopener noreferrer"
                 target="_blank"
               >
                 Jishaal
-              </a>, and <a
+              </a>
+              , and{" "}
+              <a
                 className="underline focus:outline-none focus:no-underline focus:opacity-70 hover:opacity-70"
                 href="https://twitter.com/__simar__"
                 rel="noopener noreferrer"
