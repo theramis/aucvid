@@ -1,0 +1,77 @@
+@import "../../styles/colors";
+@import "../../styles/vars";
+
+.progress-bar-container {
+  width: 100%;
+}
+
+.progress-total {
+  width: 100%;
+  position: relative;
+  background: var(--progress--total);
+}
+
+.progress-total-small {
+  height: 1.5rem;
+  border-radius: $radius;
+}
+
+.progress-total-large {
+  height: 2.5rem;
+  border-radius: $radius-large;
+}
+
+.progress-bar {
+  height: 100%;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+}
+
+.progress-bar-small {
+  border-radius: $radius 0 0 $radius;
+}
+
+.progress-bar-large {
+  border-radius: $radius-large 0 0 $radius-large;
+}
+
+.progress-first {
+  height: 100%;
+  box-shadow: 2px 0 0 var(--progress--first);
+  background-size: 8px 8px;
+  background-image: repeating-linear-gradient(
+    45deg,
+    var(--progress--first) 0,
+    var(--progress--first) 2px,
+    var(--progress--total) 0,
+    var(--progress--total) 50%
+  );
+}
+
+.progress-second {
+  height: 100%;
+  background: var(--progress--first);
+  box-shadow: 2px 0 0 var(--progress--second);
+
+  animation-delay: 1s;
+}
+
+.goal-line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  border-right-width: 2px;
+  border-color: $black;
+  box-shadow: 1px 0 0 $white-75;
+  &::before {
+    content: "";
+    position: inherit;
+    height: 100%;
+    width: 1px;
+    left: -1px;
+    background: $white-75;
+  }
+}
