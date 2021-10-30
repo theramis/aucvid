@@ -2,6 +2,7 @@ import { GetServerSideProps } from "next";
 import Head from "next/head";
 
 import { Progress } from "../components/Progress";
+import { ExternalLink } from "../components/Link";
 import { DosesDescriptionList } from "../components/DosesDescriptionList";
 import { DarkModeToggle } from "../components/DarkModeToggle";
 import { DhbPopulationDoseData } from "../types/VaccineDataTypes";
@@ -75,55 +76,30 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
           <div className="flex flex-row items-center justify-center footnote">
             <p>
               Data source:{" "}
-              <a
-                className="underline focus:outline-none focus:no-underline focus:opacity-70 hover:opacity-70"
-                href="https://www.health.govt.nz/our-work/diseases-and-conditions/covid-19-novel-coronavirus/covid-19-data-and-statistics/covid-19-vaccine-data"
-                rel="noopener noreferrer"
-                target="_blank"
-              >
+              <ExternalLink href="https://www.health.govt.nz/our-work/diseases-and-conditions/covid-19-novel-coronavirus/covid-19-data-and-statistics/covid-19-vaccine-data">
                 Ministry of Health NZ
-              </a>
+              </ExternalLink>
             </p>
           </div>
           <div className="flex flex-row items-center justify-center footnote mt-1">
             <div className="mr-2">&#128075;</div>
             <p>
               Made <span className="hidden sm:inline">with love</span> by{" "}
-              <a
-                className="underline focus:outline-none focus:no-underline focus:opacity-70 hover:opacity-70"
-                href="https://www.instagram.com/finnsta_gram/"
-                rel="noopener noreferrer"
-                target="_blank"
-              >
+              <ExternalLink href="https://www.instagram.com/finnsta_gram/">
                 Finn
-              </a>
+              </ExternalLink>
               ,{" "}
-              <a
-                className="underline focus:outline-none focus:no-underline focus:opacity-70 hover:opacity-70"
-                href="https://twitter.com/andy__carrell"
-                rel="noopener noreferrer"
-                target="_blank"
-              >
+              <ExternalLink href="https://twitter.com/andy__carrell">
                 Andy
-              </a>
+              </ExternalLink>
               ,{" "}
-              <a
-                className="underline focus:outline-none focus:no-underline focus:opacity-70 hover:opacity-70"
-                href="https://twitter.com/jishaal"
-                rel="noopener noreferrer"
-                target="_blank"
-              >
+              <ExternalLink href="https://twitter.com/jishaal">
                 Jishaal
-              </a>
+              </ExternalLink>
               , and{" "}
-              <a
-                className="underline focus:outline-none focus:no-underline focus:opacity-70 hover:opacity-70"
-                href="https://twitter.com/__simar__"
-                rel="noopener noreferrer"
-                target="_blank"
-              >
+              <ExternalLink href="https://twitter.com/__simar__">
                 Simar
-              </a>
+              </ExternalLink>
             </p>
           </div>
         </Container>
