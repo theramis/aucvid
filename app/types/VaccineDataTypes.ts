@@ -1,5 +1,7 @@
 import { DateTime } from "luxon";
 
+export type DhbRegionId = "auckland" | "northIsland" | "southIsland";
+
 export type DhbPopulationDoseData = {
   dhbName: string;
   numOfFirstDoses: number;
@@ -11,6 +13,10 @@ export type DhbPopulationDoseData = {
   secondDosesPercentage: number;
   hasMetSecondDoseTarget: boolean;
   totalPopulation: number;
+};
+
+export type DhbPopulationDoseDataWithRegion = DhbPopulationDoseData & {
+  regionIds: DhbRegionId[];
 };
 
 export type VaccineData = {

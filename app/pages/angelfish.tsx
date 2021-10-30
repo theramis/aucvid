@@ -1,33 +1,25 @@
+import { useState } from "react";
 import { GetServerSideProps } from "next";
 import Head from "next/head";
 
 import { Progress } from "../components/Progress";
 import { DosesDescriptionList } from "../components/DosesDescriptionList";
 import { DarkModeToggle } from "../components/DarkModeToggle";
-import { DhbPopulationDoseData } from "../types/VaccineDataTypes";
-import fetchHomePageProps from "../services/homePagePropsService";
+import { DhbPopulationDoseDataWithRegion } from "../types/VaccineDataTypes";
+import fetchHomePageProps from "../services/angelfishPagePropsService";
 import { useHasMounted } from "../hooks/useIsMounted";
 import { RegionDropdown } from "../components/RegionDropdown";
-import { DhbRegionId } from "../components/RegionDropdown/RegionDropdown";
 import dhbDisplayName from "../utilities/dhbDisplayName";
-import { useState } from "react";
+import { DhbRegionId } from "../types/VaccineDataTypes";
 
 export type HomePageProps = {
-  allDhbsPopulationDoseData: DhbPopulationDoseData[];
-  aucklandDhbsPopulationDoseData: DhbPopulationDoseData[];
-  combinedAucklandDhbsPopulationDoseData: DhbPopulationDoseData;
+  allDhbsPopulationDoseData: DhbPopulationDoseDataWithRegion[];
   dataValidAsAtTimeUtc: string;
   dataFetchedAtTimeUtc: string;
 };
 
 const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
-  const { aucklandDhbsPopulationDoseData } = props;
-
-  const sortedAucklandDhbsPopulationDoseData =
-    aucklandDhbsPopulationDoseData.sort((a, b) =>
-      a.dhbName.localeCompare(b.dhbName)
-    );
-
+  const { allDhbsPopulationDoseData } = props;
   const hasMounted = useHasMounted();
   const [region, selectedRegion] = useState<DhbRegionId>("auckland");
 
@@ -56,20 +48,22 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
       <section>
         <Container>
           <div className="container-data rounded-xl p-6 space-y-6">
-            {sortedAucklandDhbsPopulationDoseData.map((dhb) => (
-              <div key={dhb.dhbName}>
-                <h3 className="heading-3 mb-2">
-                  {dhbDisplayName(dhb.dhbName)}
-                </h3>
-                <div className="mb-4">
-                  <DosesDescriptionList dhbData={dhb} />
+            {allDhbsPopulationDoseData
+              .filter((dhb) => dhb.regionIds.includes(region))
+              .map((dhb) => (
+                <div key={dhb.dhbName}>
+                  <h3 className="heading-3 mb-2">
+                    {dhbDisplayName(dhb.dhbName)}
+                  </h3>
+                  <div className="mb-4">
+                    <DosesDescriptionList dhbData={dhb} />
+                  </div>
+                  <Progress
+                    firstDose={dhb.firstDosesPercentage}
+                    secondDose={dhb.secondDosesPercentage}
+                  />
                 </div>
-                <Progress
-                  firstDose={dhb.firstDosesPercentage * 100}
-                  secondDose={dhb.secondDosesPercentage * 100}
-                />
-              </div>
-            ))}
+              ))}
           </div>
         </Container>
       </section>

@@ -1,4 +1,4 @@
-name: Eslint
+name: Build Fetchy Fetch Boi
 on:
   pull_request:
   push:
@@ -7,7 +7,7 @@ on:
 
 jobs:
   lint:
-    name: Run lint
+    name: Build
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -20,6 +20,6 @@ jobs:
           node-version: ${{ env.NODE_VERSION }}
           cache: "npm"
       - name: Install dependencies
-        run: npm install
-      - name: Lint
-        run: npm run lint
+        run: npm ci
+      - name: build fetchy fetch boi
+        run: npm run fetch-boi
