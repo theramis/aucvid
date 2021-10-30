@@ -32,14 +32,10 @@ body {
   max-width: 1000px;
 }
 
-.container-data {
-  background: var(--background-tint);
-}
-
 .doses-data-grid {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
-  gap: 1.25rem;
+  gap: $space-l;
 
   & .doses-data-grid-item {
     background: var(--background-tint);
