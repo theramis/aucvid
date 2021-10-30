@@ -13,17 +13,17 @@
 }
 
 .progress-total-xsmall {
-  height: 0.75rem;
+  height: $space-s;
   border-radius: $radius;
 }
 
 .progress-total-small {
-  height: 1.5rem;
+  height: $space-xl;
   border-radius: $radius;
 }
 
 .progress-total-large {
-  height: 2.5rem;
+  height: $space-3xl;
   border-radius: $radius-large;
 }
 

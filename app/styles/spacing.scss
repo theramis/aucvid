@@ -72,4 +72,16 @@ $space-map: (
   .width-#{$size} {
     width: $space;
   }
+
+  // Space
+  .space-y-#{$size} {
+    & > :not([hidden]) ~ :not([hidden]) {
+      margin-top: $space;
+    }
+  }
+  .space-x-#{$size} {
+    & > :not([hidden]) ~ :not([hidden]) {
+      margin-left: $space;
+    }
+  }
 }
