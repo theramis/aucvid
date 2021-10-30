@@ -10,7 +10,7 @@
     "start": "next start app",
     "lint": "next lint app",
     "husky-install": "husky install",
-    "fetch-boi": "ts-node fetchyFetchBoi/fetchyFetchBoi.ts"
+    "fetch-boi": "NODE_OPTIONS='--unhandled-rejections=strict' ts-node fetchyFetchBoi/fetchyFetchBoi.ts"
   },
   "dependencies": {
     "@heroicons/react": "^1.0.5",
