@@ -4,8 +4,10 @@ import {
   DosesDescription,
   DosesDescriptionList,
 } from "../components/DosesDescriptionList";
+import { DarkModeToggle } from "../components/DarkModeToggle";
 import { DhbPopulationDoseData } from "../types/VaccineDataTypes";
 import fetchHomePageProps from "../services/homePagePropsService";
+import { useHasMounted } from "../hooks/useIsMounted";
 
 export type HomePageProps = {
   allDhbsPopulationDoseData: DhbPopulationDoseData[];
@@ -27,14 +29,19 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
       a.dhbName.localeCompare(b.dhbName)
     );
 
+  const hasMounted = useHasMounted();
+
   return (
     <div className="h-full min-h-screen">
       <div className="background-shape"></div>
       <section className="pb-12 pt-12 md:pt-16">
         <Container>
-          <div>
-            <h2 className="heading-2">Vaccination rates</h2>
-            <h1 className="heading-1 mb-6 md:mb-8">Auckland</h1>
+          <div className="flex flex-row justify-between">
+            <div>
+              <h2 className="heading-2">Vaccination rates</h2>
+              <h1 className="heading-1 mb-6 md:mb-8">Auckland</h1>
+            </div>
+            {hasMounted && <DarkModeToggle className="mt-1" />}
           </div>
           <h2 className="heading-3 mb-3">Combined Auckland DHBs</h2>
           <dl className="mb-6">
