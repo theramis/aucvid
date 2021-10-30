@@ -1,0 +1,11 @@
+.toggleButton {
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0.625rem;
+  color: var(--dark-mode-toggle);
+  transition: color 0.2s ease-in-out;
+
+  &:hover {
+    color: var(--dark-mode-toggle-hover);
+  }
+}
