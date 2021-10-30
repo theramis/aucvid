@@ -1,0 +1,62 @@
+// Spacing definitions
+
+$space-2xs: .25rem;   // 4px
+$space-xs: .5rem;     // 8px
+$space-s: .75rem;     // 12px
+$space-m: 1rem;       // 16px
+$space-l: 1.25rem;    // 20px 
+$space-xl: 1.5rem;    // 24px
+$space-2xl: 2rem;     // 32px
+$space-3xl: 2.5rem;   // 40px
+$space-4xl: 3rem;     // 48px
+
+$space-map: ("2xs": $space-2xs, "xs": $space-xs, "s": $space-s, "m": $space-m, "l": $space-l, "xl": $space-xl, "2xl": $space-2xl, "3xl": $space-3xl, "4xl": $space-4xl);
+
+@each $size, $space in $space-map {
+    .margin-#{$size} {
+        margin: $space;
+    }
+    .margin-top-#{$size} {
+        margin-top: $space;
+    }
+    .margin-right-#{$size} {
+        margin-right: $space;
+    }
+    .margin-bottom-#{$size} {
+        margin-bottom: $space;
+    }
+    .margin-left-#{$size} {
+        margin-left: $space;
+    }
+    .margin-vertical-#{$size} {
+        margin-top: $space;
+        margin-bottom: $space;
+    }
+    .margin-horizontal-#{$size} {
+        margin-left: $space;
+        margin-right: $space;
+    }
+    .padding-#{$size} {
+        padding: $space;
+    }
+    .padding-top-#{$size} {
+        padding-top: $space;
+    }
+    .padding-right-#{$size} {
+        padding-right: $space;
+    }
+    .padding-bottom-#{$size} {
+        padding-bottom: $space;
+    }
+    .padding-left-#{$size} {
+        padding-left: $space;
+    }
+    .padding-vertical-#{$size} {
+        padding-top: $space;
+        padding-bottom: $space;
+    }
+    .padding-horizontal-#{$size} {
+        padding-left: $space;
+        padding-right: $space;
+    }
+}
