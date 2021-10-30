@@ -8,7 +8,13 @@
 .progress-total {
   width: 100%;
   position: relative;
+  overflow: hidden;
   background: var(--progress--total);
+}
+
+.progress-total-xsmall {
+  height: 0.75rem;
+  border-radius: $radius;
 }
 
 .progress-total-small {
@@ -28,14 +34,6 @@
   right: 0px;
   bottom: 0px;
   left: 0px;
-}
-
-.progress-bar-small {
-  border-radius: $radius 0 0 $radius;
-}
-
-.progress-bar-large {
-  border-radius: $radius-large 0 0 $radius-large;
 }
 
 .progress-first {
