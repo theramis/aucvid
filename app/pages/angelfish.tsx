@@ -9,6 +9,7 @@ import fetchHomePageProps from "../services/homePagePropsService";
 import { useHasMounted } from "../hooks/useIsMounted";
 import { RegionDropdown } from "../components/RegionDropdown";
 import { DhbRegionId } from "../components/RegionDropdown/RegionDropdown";
+import dhbDisplayName from "../utilities/dhbDisplayName";
 import { useState } from "react";
 
 export type HomePageProps = {
@@ -57,7 +58,9 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
           <div className="container-data rounded-xl p-6 space-y-6">
             {sortedAucklandDhbsPopulationDoseData.map((dhb) => (
               <div key={dhb.dhbName}>
-                <h3 className="heading-3 mb-2">{dhb.dhbName}</h3>
+                <h3 className="heading-3 mb-2">
+                  {dhbDisplayName(dhb.dhbName)}
+                </h3>
                 <div className="mb-4">
                   <DosesDescriptionList dhbData={dhb} />
                 </div>
