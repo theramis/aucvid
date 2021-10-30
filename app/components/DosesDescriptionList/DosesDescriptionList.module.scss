@@ -1,3 +1,5 @@
+@import "../../styles/vars.scss";
+
 .description-definition {
   display: flex;
   flex-direction: row;
@@ -31,7 +33,7 @@
   justify-content: center;
   color: var(--progress-complete);
   background: var(--complete-background);
-  border-radius: 99999px;
+  border-radius: $radius-full;
   margin-right: 0.5rem;
 
   & svg {

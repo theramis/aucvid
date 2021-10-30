@@ -2,6 +2,13 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
+@import "colors";
+@import "typography";
+@import "animations";
+
+// Font
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;700&display=swap");
+
 * {
   -webkit-tap-highlight-color: transparent;
 }
@@ -10,36 +17,54 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-family: Rubik, Helvetica, Arial, sans-serif;
+  background: var(--background-tint-2);
 }
 
-@keyframes fade-in {
-  0% {
-    opacity: 0%;
-  }
-  100% {
-    opacity: 100%;
-  }
+.background-shape {
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  height: 80vh;
+  background-color: var(--background-base);
+  clip-path: ellipse(85% 100% at 50% 0%);
 }
 
-@keyframes grow-width {
-  0% {
-    opacity: 0%;
-    width: 0%;
-  }
-  30% {
-    opacity: 100%;
-  }
-  100% {
-    opacity: 100%;
-    width: 100%;
-  }
+.container-data {
+  background: var(--background-tint-1);
 }
 
-.animate-fade-in {
-  animation: fade-in 0.3s ease-in-out forwards;
+// Themes
+
+:root {
+  --text-primary: #{$dark--text-primary};
+  --text-secondary: #{$dark--text-secondary};
+  --text-positive: #{$dark--text-positive};
+  --progress-goal: #{$dark--progress-goal};
+  --progress-complete: #{$dark--progress-complete};
+  --progress--total: #{$dark--progress--total};
+  --progress--first: #{$dark--progress--first};
+  --progress--second: #{$dark--progress--second};
+  --complete-background: #{$dark--complete-background};
+  --background-base: #{$dark--background-base};
+  --background-tint-1: #{$dark--background-tint-1};
+  --background-tint-2: #{$dark--background-tint-2};
+  --dark-mode-toggle: #{$dark--dark-mode-toggle};
+  --dark-mode-toggle-hover: #{$dark--dark-mode-toggle-hover};
 }
 
-.animate-grow-width {
-  opacity: 0%;
-  animation: grow-width 1s ease-in-out 0.5s forwards;
+.light {
+  --text-primary: #{$light--text-primary};
+  --text-secondary: #{$light--text-secondary};
+  --text-positive: #{$light--text-positive};
+  --progress-goal: #{$light--progress--goal};
+  --progress-complete: #{$light--progress--complete};
+  --progress--total: #{$light--progress--total};
+  --progress--first: #{$light--progress--first};
+  --progress--second: #{$light--progress--second};
+  --complete-background: #{$light--complete--background};
+  --background-base: #{$light--background--base};
+  --background-tint-1: #{$light--background--tint-1};
+  --background-tint-2: #{$light--background--tint-2};
+  --dark-mode-toggle: #{$light--dark-mode-toggle};
+  --dark-mode-toggle-hover: #{$light--dark-mode-toggle-hover};
 }
