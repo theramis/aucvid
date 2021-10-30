@@ -1,6 +1,6 @@
+import { DhbRegionId } from "../../types/VaccineDataTypes";
 import styles from "./RegionDropdown.module.scss";
 
-export type DhbRegionId = "auckland" | "northIsland" | "southIsland";
 type Option = {
   id: DhbRegionId;
   label: string;
