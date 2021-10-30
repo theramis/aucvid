@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { GetServerSideProps } from "next";
 import Head from "next/head";
 
@@ -8,8 +9,8 @@ import { DhbPopulationDoseDataWithRegion } from "../types/VaccineDataTypes";
 import fetchHomePageProps from "../services/angelfishPagePropsService";
 import { useHasMounted } from "../hooks/useIsMounted";
 import { RegionDropdown } from "../components/RegionDropdown";
+import dhbDisplayName from "../utilities/dhbDisplayName";
 import { DhbRegionId } from "../types/VaccineDataTypes";
-import { useState } from "react";
 
 export type HomePageProps = {
   allDhbsPopulationDoseData: DhbPopulationDoseDataWithRegion[];
@@ -51,7 +52,9 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
               .filter((dhb) => dhb.regionIds.includes(region))
               .map((dhb) => (
                 <div key={dhb.dhbName}>
-                  <h3 className="heading-3 mb-2">{dhb.dhbName}</h3>
+                  <h3 className="heading-3 mb-2">
+                    {dhbDisplayName(dhb.dhbName)}
+                  </h3>
                   <div className="mb-4">
                     <DosesDescriptionList dhbData={dhb} />
                   </div>

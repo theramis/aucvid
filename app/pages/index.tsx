@@ -8,6 +8,7 @@ import { DarkModeToggle } from "../components/DarkModeToggle";
 import { DhbPopulationDoseData } from "../types/VaccineDataTypes";
 import fetchHomePageProps from "../services/homePagePropsService";
 import { useHasMounted } from "../hooks/useIsMounted";
+import dhbDisplayName from "../utilities/dhbDisplayName";
 
 export type HomePageProps = {
   allDhbsPopulationDoseData: DhbPopulationDoseData[];
@@ -21,7 +22,6 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
   const {
     combinedAucklandDhbsPopulationDoseData,
     aucklandDhbsPopulationDoseData,
-    dataFetchedAtTimeUtc,
   } = props;
 
   const sortedAucklandDhbsPopulationDoseData =
@@ -79,7 +79,9 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
           <div className="container-data rounded-xl p-6 space-y-6">
             {sortedAucklandDhbsPopulationDoseData.map((dhb) => (
               <div key={dhb.dhbName}>
-                <h3 className="heading-3 mb-2">{dhb.dhbName}</h3>
+                <h3 className="heading-3 mb-2">
+                  {dhbDisplayName(dhb.dhbName)}
+                </h3>
                 <div className="mb-4">
                   <DosesDescriptionList dhbData={dhb} />
                 </div>
