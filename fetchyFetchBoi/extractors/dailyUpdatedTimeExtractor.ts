@@ -28,4 +28,4 @@ export const extractDailyUpdatedNzTime = (rawHtml: string): DateTime => {
 };
 
 const getMonthFromString = (s: string) =>
-  new Date(Date.parse(s + " 1, 2012")).getMonth() + 1;
+  new Date(Date.parse(`${s} 1, 2012`)).getMonth() + 1;
