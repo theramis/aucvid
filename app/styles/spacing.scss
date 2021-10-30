@@ -1,0 +1,75 @@
+@import "vars";
+
+$space-map: (
+  "none": $space-none,
+  "2xs": $space-2xs,
+  "xs": $space-xs,
+  "s": $space-s,
+  "m": $space-m,
+  "l": $space-l,
+  "xl": $space-xl,
+  "2xl": $space-2xl,
+  "3xl": $space-3xl,
+  "4xl": $space-4xl,
+  "full": $space-full,
+);
+
+@each $size, $space in $space-map {
+  // Margin
+  .margin-#{$size} {
+    margin: $space;
+  }
+  .margin-top-#{$size} {
+    margin-top: $space;
+  }
+  .margin-right-#{$size} {
+    margin-right: $space;
+  }
+  .margin-bottom-#{$size} {
+    margin-bottom: $space;
+  }
+  .margin-left-#{$size} {
+    margin-left: $space;
+  }
+  .margin-y-#{$size} {
+    margin-top: $space;
+    margin-bottom: $space;
+  }
+  .margin-x-#{$size} {
+    margin-left: $space;
+    margin-right: $space;
+  }
+
+  // Padding
+  .padding-#{$size} {
+    padding: $space;
+  }
+  .padding-top-#{$size} {
+    padding-top: $space;
+  }
+  .padding-right-#{$size} {
+    padding-right: $space;
+  }
+  .padding-bottom-#{$size} {
+    padding-bottom: $space;
+  }
+  .padding-left-#{$size} {
+    padding-left: $space;
+  }
+  .padding-y-#{$size} {
+    padding-top: $space;
+    padding-bottom: $space;
+  }
+  .padding-x-#{$size} {
+    padding-left: $space;
+    padding-right: $space;
+  }
+
+  // Heights & Widths
+  .height-#{$size} {
+    height: $space;
+  }
+  .width-#{$size} {
+    width: $space;
+  }
+}
