@@ -47,11 +47,11 @@
   color: var(--text-secondary);
 }
 
+.data-text-complete {
+  color: var(--text-positive);
+}
+
 .footnote {
   @include footnote;
   color: var(--text-secondary);
-}
-
-.data-text-complete {
-  color: var(--text-positive);
 }

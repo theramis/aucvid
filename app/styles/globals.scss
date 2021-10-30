@@ -18,6 +18,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   font-family: Rubik, Helvetica, Arial, sans-serif;
   background: var(--background-tint-2);
+  transition: background-color 0.3s ease-in-out;
 }
 
 .background-shape {
@@ -27,6 +28,7 @@ body {
   height: 80vh;
   background-color: var(--background-base);
   clip-path: ellipse(85% 100% at 50% 0%);
+  transition: background-color 0.3s ease-in-out;
 }
 
 .container-data {
