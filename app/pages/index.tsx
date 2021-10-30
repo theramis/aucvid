@@ -33,7 +33,6 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
 
   return (
     <div className="h-full min-h-screen">
-      <div className="background-shape"></div>
       <section className="pb-12 pt-12 md:pt-16">
         <Container>
           <div className="flex flex-row justify-between">
