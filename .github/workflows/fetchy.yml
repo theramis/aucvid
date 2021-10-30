@@ -7,6 +7,9 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
+    branches:
+      - main
 
 jobs:
   fetchy:
@@ -29,7 +32,7 @@ jobs:
       - name: Run Fetchy
         run: npm run fetch-boi
       - uses: EndBug/add-and-commit@v7
-        if: ${{ github.event_name == 'schedule' }}
+        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
         with:
           default_author: github_actions
           message: "Adding/Updating the latest MoH Data"
