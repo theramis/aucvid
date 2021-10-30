@@ -2,17 +2,14 @@ import { GetServerSideProps } from "next";
 import Head from "next/head";
 
 import { Progress } from "../components/Progress";
-import {
-  DosesDescription,
-  DosesDescriptionList,
-} from "../components/DosesDescriptionList";
+import { DosesDescriptionList } from "../components/DosesDescriptionList";
 import { DarkModeToggle } from "../components/DarkModeToggle";
 import { DhbPopulationDoseData } from "../types/VaccineDataTypes";
 import fetchHomePageProps from "../services/homePagePropsService";
 import { useHasMounted } from "../hooks/useIsMounted";
 import { RegionDropdown } from "../components/RegionDropdown";
-import { useStickyState } from "../hooks/useStickyState";
 import { DhbRegionId } from "../components/RegionDropdown/RegionDropdown";
+import { useState } from "react";
 
 export type HomePageProps = {
   allDhbsPopulationDoseData: DhbPopulationDoseData[];
@@ -31,11 +28,13 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
     );
 
   const hasMounted = useHasMounted();
+  const [region, selectedRegion] = useState<DhbRegionId>("auckland");
 
   return (
     <div className="h-full min-h-screen">
       <Head>
-        <meta name="robots" content="noindex" />
+        <meta name="robots" content="noindex, nofollow" />
+        <meta name="googlebot" content="noindex, nofollow" />
       </Head>
       <div className="background-shape"></div>
       <section className="pb-12 pt-12 md:pt-16">
@@ -47,7 +46,10 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
             </div>
             {hasMounted && <DarkModeToggle className="mt-1" />}
           </div>
-          {hasMounted && <RegionDropdown onChange={(id) => console.log(id)} />}
+          <RegionDropdown
+            selectedRegion={region}
+            onChange={(regionId) => selectedRegion(regionId)}
+          />
         </Container>
       </section>
       <section>

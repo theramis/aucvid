@@ -1,5 +1,3 @@
-import { useEffect } from "react";
-import { useStickyState } from "../../hooks/useStickyState";
 import styles from "./RegionDropdown.module.scss";
 
 export type DhbRegionId = "auckland" | "northIsland" | "southIsland";
@@ -15,29 +13,19 @@ const options: Option[] = [
 ];
 
 type RegionDropdownProps = {
+  selectedRegion: DhbRegionId;
   onChange: (id: DhbRegionId) => void;
 };
 
-export const RegionDropdown = ({ onChange }: RegionDropdownProps) => {
-  const [region, setRegion] = useStickyState<DhbRegionId>(
-    "regionPreference",
-    "auckland"
-  );
-
-  const handleChange = (id: DhbRegionId) => {
-    setRegion(id);
-    onChange(id);
-  };
-
-  useEffect(() => {
-    onChange(region);
-  }, []);
-
+export const RegionDropdown = ({
+  selectedRegion,
+  onChange,
+}: RegionDropdownProps) => {
   return (
     <select
       className={styles.dropdown}
-      value={region}
-      onChange={(event) => handleChange(event.target.value as DhbRegionId)}
+      value={selectedRegion}
+      onChange={(event) => onChange(event.target.value as DhbRegionId)}
     >
       {options.map((option: Option) => {
         return (
