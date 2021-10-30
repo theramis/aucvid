@@ -32,14 +32,13 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
   const [region, selectedRegion] = useState<DhbRegionId>("auckland");
 
   return (
-    <div className="h-full min-h-screen">
+    <div className="page">
       <Head>
         <meta name="robots" content="noindex, nofollow" />
         <meta name="googlebot" content="noindex, nofollow" />
       </Head>
-      <div className="background-shape"></div>
       <section className="pb-12 pt-12 md:pt-16">
-        <Container>
+        <div className="page-container mx-5 sm:mx-auto">
           <div className="flex flex-row justify-between">
             <div>
               <h2 className="heading-2">Vaccination rates</h2>
@@ -51,10 +50,10 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
             selectedRegion={region}
             onChange={(regionId) => selectedRegion(regionId)}
           />
-        </Container>
+        </div>
       </section>
       <section>
-        <Container>
+        <div className="page-container mx-5 sm:mx-auto">
           <div className="container-data rounded-xl p-6 space-y-6">
             {sortedAucklandDhbsPopulationDoseData.map((dhb) => (
               <div key={dhb.dhbName}>
@@ -69,10 +68,10 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
               </div>
             ))}
           </div>
-        </Container>
+        </div>
       </section>
       <footer className="pb-4 pt-20 md:pt-32">
-        <Container>
+        <div className="page-container mx-5 sm:mx-auto">
           <div className="flex flex-row items-center justify-center footnote">
             <p>
               Data source:{" "}
@@ -102,19 +101,13 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
               </ExternalLink>
             </p>
           </div>
-        </Container>
+        </div>
       </footer>
     </div>
   );
 };
 
 export default Home;
-
-const Container: React.FC<{ children: React.ReactNode }> = ({ children }) => (
-  <div className="mx-5 sm:mx-auto" style={{ maxWidth: "600px" }}>
-    {children}
-  </div>
-);
 
 export const getServerSideProps: GetServerSideProps<HomePageProps> =
   async () => {
