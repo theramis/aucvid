@@ -35,7 +35,7 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
   return (
     <div className="page">
       <section className="pb-12 pt-12 md:pt-16">
-        <div className="page-container mx-5 sm:mx-auto">
+        <div className="max-w-[600px] mx-5 sm:mx-auto">
           <div className="flex flex-row justify-between">
             <div>
               <h2 className="heading-2">Vaccination rates</h2>
@@ -76,7 +76,7 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
         </div>
       </section>
       <section>
-        <div className="page-container mx-5 sm:mx-auto">
+        <div className="max-w-[600px] mx-5 sm:mx-auto">
           <div className="container-data rounded-xl p-6 space-y-6">
             {sortedAucklandDhbsPopulationDoseData.map((dhb) => (
               <div key={dhb.dhbName}>
@@ -96,7 +96,7 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
         </div>
       </section>
       <footer className="pb-4 pt-20 md:pt-32">
-        <div className="page-container mx-5 sm:mx-auto">
+        <div className="max-w-[600px] mx-5 sm:mx-auto">
           <div className="flex flex-row items-center justify-center footnote">
             <p>
               Data source:{" "}

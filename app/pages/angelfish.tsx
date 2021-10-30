@@ -31,7 +31,7 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
         <meta name="googlebot" content="noindex, nofollow" />
       </Head>
       <section className="pb-12 pt-12 md:pt-16">
-        <div className="page-container mx-5 sm:mx-auto">
+        <div className="page-container mx-5 lg:mx-auto">
           <div className="flex flex-row justify-between">
             <div>
               <h2 className="heading-2">Vaccination rates</h2>
@@ -46,19 +46,20 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
         </div>
       </section>
       <section>
-        <div className="page-container mx-5 sm:mx-auto">
-          <div className="container-data rounded-xl p-6 space-y-6">
+        <div className="page-container mx-5 lg:mx-auto">
+          <div className="doses-data-grid">
             {allDhbsPopulationDoseData
               .filter((dhb) => dhb.regionIds.includes(region))
               .map((dhb) => (
-                <div key={dhb.dhbName}>
-                  <h3 className="heading-3 mb-2">
+                <div key={dhb.dhbName} className="doses-data-grid-item p-5">
+                  <h3 className="heading-3 mb-3">
                     {dhbDisplayName(dhb.dhbName)}
                   </h3>
-                  <div className="mb-4">
+                  <div className="mb-2">
                     <DosesDescriptionList dhbData={dhb} />
                   </div>
                   <Progress
+                    size="xsmall"
                     firstDose={dhb.firstDosesPercentage}
                     secondDose={dhb.secondDosesPercentage}
                   />
@@ -68,7 +69,7 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
         </div>
       </section>
       <footer className="pb-4 pt-20 md:pt-32">
-        <div className="page-container mx-5 sm:mx-auto">
+        <div className="page-container mx-5 lg:mx-auto">
           <div className="flex flex-row items-center justify-center footnote">
             <p>
               Data source:{" "}
