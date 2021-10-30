@@ -11,6 +11,11 @@
   background: var(--progress--total);
 }
 
+.progress-total-xsmall {
+  height: 0.75rem;
+  border-radius: $radius;
+}
+
 .progress-total-small {
   height: 1.5rem;
   border-radius: $radius;
@@ -28,6 +33,10 @@
   right: 0px;
   bottom: 0px;
   left: 0px;
+}
+
+.progress-bar-xsmall {
+  border-radius: $radius 0 0 $radius;
 }
 
 .progress-bar-small {
