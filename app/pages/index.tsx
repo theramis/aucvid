@@ -36,7 +36,7 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
     <div className="page">
       <section className="pb-12 pt-12 md:pt-16">
         <div className="max-w-[600px] mx-5 sm:mx-auto">
-          <div className="flex flex-row justify-between">
+          <div className="flex flex-row justify-content-between">
             <div>
               <h2 className="heading-2">Vaccination rates</h2>
               <h1 className="heading-1 mb-6 md:mb-8">Auckland</h1>
@@ -96,17 +96,15 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
         </div>
       </section>
       <footer className="pb-4 pt-20 md:pt-32">
-        <div className="max-w-[600px] mx-5 sm:mx-auto">
-          <div className="flex flex-row items-center justify-center footnote">
-            <p>
-              Data source:{" "}
-              <ExternalLink href="https://www.health.govt.nz/our-work/diseases-and-conditions/covid-19-novel-coronavirus/covid-19-data-and-statistics/covid-19-vaccine-data">
-                Ministry of Health NZ
-              </ExternalLink>
-            </p>
-          </div>
+        <div className="max-w-[600px] mx-5 sm:mx-auto flex align-items-center">
+          <p className="footnote">
+            Data source:{" "}
+            <ExternalLink href="https://www.health.govt.nz/our-work/diseases-and-conditions/covid-19-novel-coronavirus/covid-19-data-and-statistics/covid-19-vaccine-data">
+              Ministry of Health NZ
+            </ExternalLink>
+          </p>
           <div className="flex flex-row items-center justify-center footnote mt-1">
-            <div className="mr-2">&#128075;</div>
+            <div className="mr-1">&#128075;</div>
             <p>
               Made <span className="hidden sm:inline">with love</span> by{" "}
               <ExternalLink href="https://www.instagram.com/finnsta_gram/">
