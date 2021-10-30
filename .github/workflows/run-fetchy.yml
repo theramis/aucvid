@@ -1,5 +1,8 @@
-name: Build Fetchy Fetch Boi
+name: Run Fetchy Fetch Boi
 on:
+  schedule:
+    # This will run fetchy every 5 mins
+    - cron: "*/5 * * * *"
   pull_request:
   push:
     branches:
@@ -7,7 +10,7 @@ on:
 
 jobs:
   lint:
-    name: Build
+    name: Run
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -21,5 +24,9 @@ jobs:
           cache: "npm"
       - name: Install dependencies
         run: npm ci
-      - name: build fetchy fetch boi
+      - name: Run Fetchy
         run: npm run fetch-boi
+        # Just testing to see if the git checkout will be detached or not
+      - name: Git status
+        if: ${{ github.event_name == 'schedule' }}
+        run: git status
