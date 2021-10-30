@@ -13,7 +13,7 @@ const nameMap: NameMapType = {
   Lakes: "Lakes",
   MidCentral: "MidCentral",
   "Nelson Malborough": "Nelson Malborough",
-  "Overseas / Unkown": "Overseas / Unkown",
+  "Overseas / Unknown": "Overseas / Unknown",
   Northland: "Northland",
   "South Canterbury": "South Canterbury",
   Southern: "Southern",
@@ -26,7 +26,6 @@ const nameMap: NameMapType = {
 };
 
 const dhbDisplayName = (raw: string): string => {
-  console.log(raw, nameMap[raw], raw in nameMap);
   if (raw in nameMap) {
     return nameMap[raw];
   }
