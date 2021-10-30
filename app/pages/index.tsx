@@ -1,8 +1,5 @@
-import { DateTime } from "luxon";
 import { GetServerSideProps } from "next";
-import { useEffect, useState } from "react";
 import { Progress } from "../components/Progress";
-import hoursBeforeNow from "../utilities/hoursBeforeNow";
 import DosesDescriptionList, {
   DosesDescription,
 } from "../components/DosesDetailList";
@@ -28,8 +25,6 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
     aucklandDhbsPopulationDoseData.sort((a, b) =>
       a.dhbName.localeCompare(b.dhbName)
     );
-
-  const formatTimeTitle = useTimeFormatter();
 
   return (
     <div className="h-full min-h-screen">
@@ -92,9 +87,9 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
       </section>
       <footer className="pb-4 pt-20 md:pt-32">
         <Container>
-          <div className="flex flex-col sm:flex-row items-center justify-center space-x-0 sm:space-x-2 space-y-2 sm:space-y-0 footnote">
+          <div className="flex flex-row items-center justify-center footnote">
             <p>
-              Data fetched from{" "}
+              Data source:{" "}
               <a
                 className="underline focus:outline-none focus:no-underline focus:opacity-70 hover:opacity-70"
                 href="https://www.health.govt.nz/our-work/diseases-and-conditions/covid-19-novel-coronavirus/covid-19-data-and-statistics/covid-19-vaccine-data"
@@ -103,10 +98,6 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
               >
                 Ministry of Health NZ
               </a>
-            </p>
-            <div className="hidden sm:block">&#8226;</div>
-            <p title={formatTimeTitle(dataFetchedAtTimeUtc)}>
-              {hoursBeforeNow(dataFetchedAtTimeUtc)}
             </p>
           </div>
           <div className="flex flex-row items-center justify-center footnote mt-1">
@@ -163,20 +154,6 @@ const Container: React.FC<{ children: React.ReactNode }> = ({ children }) => (
     {children}
   </div>
 );
-
-const useTimeFormatter = () => {
-  // Set formatter for server - simply return a string
-  const [format, setFormat] = useState(() => (a: string) => "");
-
-  // Set formatter on client - will run in client TZ
-  useEffect(() => {
-    const clientFormatter = (t: string) =>
-      DateTime.fromISO(t).toFormat("dd LLL yyyy h:mm a");
-    setFormat(() => clientFormatter);
-  }, []);
-
-  return format;
-};
 
 export const getServerSideProps: GetServerSideProps<HomePageProps> =
   async () => {
