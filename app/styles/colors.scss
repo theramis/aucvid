@@ -46,37 +46,3 @@ $dark--background-tint-1: $purple-xdark;
 $dark--background-tint-2: $purple-dark;
 $dark--dark-mode-toggle: $white-95;
 $dark--dark-mode-toggle-hover: $purple-base;
-
-:root {
-  --text-primary: #{$dark--text-primary};
-  --text-secondary: #{$dark--text-secondary};
-  --text-positive: #{$dark--text-positive};
-  --progress-goal: #{$dark--progress-goal};
-  --progress-complete: #{$dark--progress-complete};
-  --progress--total: #{$dark--progress--total};
-  --progress--first: #{$dark--progress--first};
-  --progress--second: #{$dark--progress--second};
-  --complete-background: #{$dark--complete-background};
-  --background-base: #{$dark--background-base};
-  --background-tint-1: #{$dark--background-tint-1};
-  --background-tint-2: #{$dark--background-tint-2};
-  --dark-mode-toggle: #{$dark--dark-mode-toggle};
-  --dark-mode-toggle-hover: #{$dark--dark-mode-toggle-hover};
-}
-
-.light {
-  --text-primary: #{$light--text-primary};
-  --text-secondary: #{$light--text-secondary};
-  --text-positive: #{$light--text-positive};
-  --progress-goal: #{$light--progress--goal};
-  --progress-complete: #{$light--progress--complete};
-  --progress--total: #{$light--progress--total};
-  --progress--first: #{$light--progress--first};
-  --progress--second: #{$light--progress--second};
-  --complete-background: #{$light--complete--background};
-  --background-base: #{$light--background--base};
-  --background-tint-1: #{$light--background--tint-1};
-  --background-tint-2: #{$light--background--tint-2};
-  --dark-mode-toggle: #{$light--dark-mode-toggle};
-  --dark-mode-toggle-hover: #{$light--dark-mode-toggle-hover};
-}
