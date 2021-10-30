@@ -27,25 +27,13 @@ export const Progress = ({
         className={styles["progress-bar"]}
         style={{ width: `${firstDose * 100}%` }}
       >
-        <div
-          className={cx(styles["progress-first"], "animate-grow-width", {
-            [styles["progress-bar-xsmall"]]: size === "xsmall",
-            [styles["progress-bar-small"]]: size === "small",
-            [styles["progress-bar-large"]]: size === "large",
-          })}
-        />
+        <div className={cx(styles["progress-first"], "animate-grow-width")} />
       </div>
       <div
         className={styles["progress-bar"]}
         style={{ width: `${secondDose * 100}%` }}
       >
-        <div
-          className={cx(styles["progress-second"], "animate-grow-width", {
-            [styles["progress-bar-xsmall"]]: size === "xsmall",
-            [styles["progress-bar-small"]]: size === "small",
-            [styles["progress-bar-large"]]: size === "large",
-          })}
-        />
+        <div className={cx(styles["progress-second"], "animate-grow-width")} />
       </div>
       <div
         className={styles["goal-line"]}
