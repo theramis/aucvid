@@ -1,19 +1,33 @@
 /* Color definitions */
 $black: #000;
+$black-95: rgba(0, 0, 0, 0.95);
+$black-75: rgba(0, 0, 0, 0.75);
+$black-50: rgba(0, 0, 0, 0.5);
+$black-30: rgba(0, 0, 0, 0.3);
+$black-20: rgba(0, 0, 0, 0.2);
+$black-10: rgba(0, 0, 0, 0.1);
+$black-5: rgba(0, 0, 0, 0.05);
+
 $white: #fff;
 $white-95: rgba(255, 255, 255, 0.95);
 $white-75: rgba(255, 255, 255, 0.75);
-$grey: #dedede;
+$white-50: rgba(255, 255, 255, 0.5);
+$white-30: rgba(255, 255, 255, 0.3);
+$white-20: rgba(255, 255, 255, 0.2);
+$white-10: rgba(255, 255, 255, 0.1);
+$white-5: rgba(255, 255, 255, 0.05);
+
 $grey-dark: #383838;
+$grey: #dedede;
+
 $green-dark: #005924;
 $green-light: #7bdaa1;
-$purple-2xdark: #200133;
-$purple-xdark: #2b0e3d;
+
+$purple-xdark: #13011E;
 $purple-dark: #361a47;
 $purple-base: #714cb4;
 $purple-light: #9c7ad9;
-$purple-xlight: #f0e0f9;
-$purple-2xlight: #faf5fd;
+$purple-xlight: #faf5fd;
 
 // Light
 $light--text-primary: $black;
@@ -25,11 +39,10 @@ $light--progress--total: $grey;
 $light--progress--first: $purple-light;
 $light--progress--second: $purple-base;
 $light--complete--background: $green-light;
-$light--background--base: $white;
-$light--background--tint-1: $purple-2xlight;
-$light--background--tint-2: $purple-xlight;
-$light--dark-mode-toggle: $purple-xdark;
-$light--dark-mode-toggle-hover: $purple-base;
+$light--background--base: $purple-xlight;
+$light--background--tint: $white;
+$light--dark-mode-toggle: $black-95;
+$light--dark-mode-toggle-hover: $black-75;
 
 // Dark
 $dark--text-primary: $white-95;
@@ -41,8 +54,7 @@ $dark--progress--total: $grey;
 $dark--progress--first: $purple-light;
 $dark--progress--second: $purple-base;
 $dark--complete-background: $green-light;
-$dark--background-base: $purple-2xdark;
-$dark--background-tint-1: $purple-xdark;
-$dark--background-tint-2: $purple-dark;
+$dark--background-base: $purple-xdark;
+$dark--background-tint: $white-5;
 $dark--dark-mode-toggle: $white-95;
-$dark--dark-mode-toggle-hover: $purple-base;
+$dark--dark-mode-toggle-hover: $white-75;
