@@ -1,8 +1,4 @@
-type NameMapType = {
-  [key: string]: string;
-};
-
-const nameMap: NameMapType = {
+const nameMap: Record<string, string> = {
   Auckland: "Auckland",
   "Bay of Plenty": "Bay of Plenty",
   Canterbury: "Canterbury",
