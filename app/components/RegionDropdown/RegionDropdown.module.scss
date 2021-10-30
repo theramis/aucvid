@@ -1,3 +1,82 @@
+@import "../../styles/typography";
+
+.dropdown-container {
+  position: relative;
+  cursor: pointer;
+  min-width: 15ch;
+  max-width: 30ch;
+  &:focus-within {
+    .left-arrow {
+      transform: rotate(-45deg);
+    }
+    .right-arrow {
+      transform: rotate(45deg);
+    }
+  }
+}
 .dropdown {
-  height: 4.25em;
+  height: 4.25rem;
+  appearance: none;
+  background-color: transparent;
+  color: var(--text-positive);
+  border: none;
+  @include h2;
+  font-weight: 500;
+  width: 100%;
+  padding: 1rem 1.5rem 1rem 2rem;
+  border-radius: 8px;
+  cursor: pointer;
+
+  &:focus {
+    background: rgba(255, 255, 255, 0.05);
+    // .dropdown-caret {
+    //   transform: rotate(180deg);
+    // }
+  }
+}
+
+.dropdown-caret {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 25px;
+  height: 25px;
+  color: white;
+  z-index: -1;
+  color: var(--text-positive);
+}
+
+.arrow {
+  width: 1rem;
+  height: 1rem;
+  margin: 0;
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.left-arrow {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 11px;
+  height: 3px;
+  display: block;
+  background-color: var(--text-positive);
+  transform: rotate(45deg);
+  transition: all 300ms cubic-bezier(0.25, 1.7, 0.35, 0.8);
+}
+
+.right-arrow {
+  position: absolute;
+  top: 50%;
+  left: 6.5px;
+  width: 12px;
+  height: 3px;
+  display: block;
+  background-color: var(--text-positive);
+  transform: rotate(-45deg);
+  transition: all 300ms cubic-bezier(0.25, 1.7, 0.35, 0.8);
 }
