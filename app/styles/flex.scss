@@ -1,0 +1,43 @@
+.flex {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: start;
+}
+
+.flex-row {
+  flex-direction: row;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+$justify-content-map: (
+  "start": "flex-start",
+  "end": "flex-end",
+  "center": "center",
+  "between": "space-between",
+  "around": "space-around",
+  "evenly": "space-evenly",
+);
+
+@each $name, $property in $justify-content-map {
+  .justify-content-#{$name} {
+    justify-content: #{$property};
+  }
+}
+
+$align-items-map: (
+  "start": "flex-start",
+  "end": "flex-end",
+  "center": "center",
+  "baseline": "baseline",
+  "stretch": "stretch",
+);
+
+@each $name, $property in $align-items-map {
+  .align-items-#{$name} {
+    align-items: #{$property};
+  }
+}
