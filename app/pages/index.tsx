@@ -1,9 +1,9 @@
 import { GetServerSideProps } from "next";
-import { Progress } from "../components/Progress";
 import {
   DosesDescription,
   DosesDescriptionList,
 } from "../components/DosesDescriptionList";
+import { Progress } from "../components/Progress";
 import { DarkModeToggle } from "../components/DarkModeToggle";
 import { DhbPopulationDoseData } from "../types/VaccineDataTypes";
 import fetchHomePageProps from "../services/homePagePropsService";
@@ -65,10 +65,10 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
           </dl>
           <Progress
             firstDose={
-              combinedAucklandDhbsPopulationDoseData.firstDosesPercentage * 100
+              combinedAucklandDhbsPopulationDoseData.firstDosesPercentage
             }
             secondDose={
-              combinedAucklandDhbsPopulationDoseData.secondDosesPercentage * 100
+              combinedAucklandDhbsPopulationDoseData.secondDosesPercentage
             }
             size="large"
           />
@@ -84,8 +84,8 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
                   <DosesDescriptionList dhbData={dhb} />
                 </div>
                 <Progress
-                  firstDose={dhb.firstDosesPercentage * 100}
-                  secondDose={dhb.secondDosesPercentage * 100}
+                  firstDose={dhb.firstDosesPercentage}
+                  secondDose={dhb.secondDosesPercentage}
                 />
               </div>
             ))}

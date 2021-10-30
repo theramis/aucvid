@@ -62,8 +62,8 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
                   <DosesDescriptionList dhbData={dhb} />
                 </div>
                 <Progress
-                  firstDose={dhb.firstDosesPercentage * 100}
-                  secondDose={dhb.secondDosesPercentage * 100}
+                  firstDose={dhb.firstDosesPercentage}
+                  secondDose={dhb.secondDosesPercentage}
                 />
               </div>
             ))}

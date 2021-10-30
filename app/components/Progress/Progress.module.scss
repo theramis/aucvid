@@ -1,9 +1,36 @@
-@import "colors";
-@import "vars";
+@import "../../styles/colors";
+@import "../../styles/vars";
 
-// Progress bars
+.progress-bar-container {
+  width: 100%;
+}
+
+.progress-total {
+  width: 100%;
+  position: relative;
+  background: var(--progress--total);
+}
+
+.progress-total-small {
+  height: 1.5rem;
+  border-radius: $radius;
+}
+
+.progress-total-large {
+  height: 2.5rem;
+  border-radius: $radius-large;
+}
 
 .progress-bar {
+  height: 100%;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+}
+
+.progress-bar-small {
   border-radius: $radius 0 0 $radius;
 }
 
@@ -11,11 +38,8 @@
   border-radius: $radius-large 0 0 $radius-large;
 }
 
-.progress-total {
-  background: var(--progress--total);
-}
-
 .progress-first {
+  height: 100%;
   box-shadow: 2px 0 0 var(--progress--first);
   background-size: 8px 8px;
   background-image: repeating-linear-gradient(
@@ -28,8 +52,11 @@
 }
 
 .progress-second {
+  height: 100%;
   background: var(--progress--first);
   box-shadow: 2px 0 0 var(--progress--second);
+
+  animation-delay: 1s;
 }
 
 .goal-line {
@@ -47,15 +74,4 @@
     left: -1px;
     background: $white-75;
   }
-}
-
-// Footnote
-
-// Style utils
-
-.radius {
-  border-radius: $radius;
-}
-.radius-large {
-  border-radius: $radius-large;
 }
