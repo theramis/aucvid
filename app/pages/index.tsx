@@ -1,7 +1,7 @@
 import { DateTime } from "luxon";
 import { GetServerSideProps } from "next";
 import { useEffect, useState } from "react";
-import { Progress } from "../components/Progress/Progress";
+import { Progress } from "../components/Progress";
 import hoursBeforeNow from "../utilities/hoursBeforeNow";
 import {
   DosesDescription,
