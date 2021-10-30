@@ -1,7 +1,7 @@
 import type { AppProps } from "next/app";
 import Head from "next/head";
+
 import "../styles/globals.scss";
-import "../styles/main.scss";
 
 const metaTags = {
   title: "Auckland DHB Vaccination Rates to 90%",
