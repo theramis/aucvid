@@ -21,6 +21,15 @@ body {
   transition: background-color 0.3s ease-in-out;
 }
 
+.page {
+  height: 100%;
+  min-height: 100vh;
+}
+
+.page-container {
+  max-width: 600px;
+}
+
 .container-data {
   background: var(--background-tint);
 }
