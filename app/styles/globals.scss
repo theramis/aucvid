@@ -17,17 +17,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-family: Rubik, Helvetica, Arial, sans-serif;
-  background: var(--background-tint-2);
-  transition: background-color 0.3s ease-in-out;
-}
-
-.background-shape {
-  position: absolute;
-  z-index: -1;
-  width: 100%;
-  height: 80vh;
-  background-color: var(--background-base);
-  clip-path: ellipse(85% 100% at 50% 0%);
+  background: var(--background-base);
   transition: background-color 0.3s ease-in-out;
 }
 
