@@ -10,7 +10,6 @@
     "start": "next start app",
     "lint": "next lint app",
     "husky-install": "husky install",
-    "build-fetchy-fetch-boi": "tsc fetchyFetchBoi/fetchyFetchBoi.ts",
     "fetch-boi": "ts-node fetchyFetchBoi/fetchyFetchBoi.ts"
   },
   "dependencies": {
