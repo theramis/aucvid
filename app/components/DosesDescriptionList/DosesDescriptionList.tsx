@@ -1,7 +1,11 @@
 import cx from "classnames";
 import { CheckIcon } from "@heroicons/react/solid";
-import { DhbPopulationDoseData } from "../types/VaccineDataTypes";
-import numberFormatter from "../utilities/numberFormatter";
+
+import { DhbPopulationDoseData } from "../../types/VaccineDataTypes";
+
+import numberFormatter from "../../utilities/numberFormatter";
+
+import styles from "./DosesDescriptionList.module.scss";
 
 type DosesDescriptionProps = {
   term: string;
@@ -18,23 +22,21 @@ export const DosesDescription = ({
   dosesPercent,
   children = null,
 }: DosesDescriptionProps) => (
-  <div className="flex flex-row justify-start items-center">
-    <dt className="w-32 flex items-center">
+  <div className={styles["description-definition"]}>
+    <dt className={styles["term"]}>
       {hasMetTarget && (
-        <div className="w-4 h-4 mr-2 flex items-center justify-center rounded-full check">
-          <CheckIcon className="h-4 w-4" />
+        <div className={styles["check"]}>
+          <CheckIcon />
         </div>
       )}
       <div
-        className={cx("data-text", {
-          ["data-text-complete"]: hasMetTarget,
-        })}
+        className={cx("data-text", { ["data-text-complete"]: hasMetTarget })}
       >
         {term}
       </div>
     </dt>
     <dd
-      className={cx("data-text text-right w-8", {
+      className={cx(styles["definition-primary"], "data-text", {
         ["data-text-complete"]: hasMetTarget,
       })}
     >
@@ -44,14 +46,16 @@ export const DosesDescription = ({
   </div>
 );
 
-const DosesDescriptionList = ({ dhbData }: DosesDescriptionListProps) => (
+export const DosesDescriptionList = ({
+  dhbData,
+}: DosesDescriptionListProps) => (
   <dl>
     <DosesDescription
       term="First doses"
       hasMetTarget={dhbData.hasMetFirstDoseTarget}
       dosesPercent={dhbData.firstDosesPercentage}
     >
-      <dd className="flex-1 data-text text-right">
+      <dd className={cx(styles["definition-secondary"], "data-text")}>
         <strong>
           {numberFormatter.format(dhbData.numOfFirstDosesTo90Percent)}
         </strong>{" "}
@@ -63,7 +67,7 @@ const DosesDescriptionList = ({ dhbData }: DosesDescriptionListProps) => (
       hasMetTarget={dhbData.hasMetSecondDoseTarget}
       dosesPercent={dhbData.secondDosesPercentage}
     >
-      <dd className="flex-1 data-text text-right">
+      <dd className={cx(styles["definition-secondary"], "data-text")}>
         <strong>
           {numberFormatter.format(dhbData.numOfSecondDosesTo90Percent)}
         </strong>{" "}
@@ -72,5 +76,3 @@ const DosesDescriptionList = ({ dhbData }: DosesDescriptionListProps) => (
     </DosesDescription>
   </dl>
 );
-
-export default DosesDescriptionList;

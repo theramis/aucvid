@@ -1,8 +1,9 @@
 import { GetServerSideProps } from "next";
 import { Progress } from "../components/Progress";
-import DosesDescriptionList, {
+import {
   DosesDescription,
-} from "../components/DosesDetailList";
+  DosesDescriptionList,
+} from "../components/DosesDescriptionList";
 import { DarkModeToggle } from "../components/DarkModeToggle";
 import { DhbPopulationDoseData } from "../types/VaccineDataTypes";
 import fetchHomePageProps from "../services/homePagePropsService";
