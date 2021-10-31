@@ -30,14 +30,14 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
         <meta name="robots" content="noindex, nofollow" />
         <meta name="googlebot" content="noindex, nofollow" />
       </Head>
-      <section className="pb-12 pt-12 md:pt-16">
+      <section className="margin-top-2xl margin-bottom-xl md:pt-16">
         <div className="page-container mx-5 lg:mx-auto">
-          <div className="flex flex-row justify-content-between">
+          <div className="flex flex-row justify-content-between margin-bottom-4xl">
             <div>
               <h2 className="heading-2">Vaccination rates</h2>
-              <h1 className="heading-1 mb-6 md:mb-8">Aotearoa</h1>
+              <h1 className="heading-1">Aotearoa</h1>
             </div>
-            {hasMounted && <DarkModeToggle className="mt-1" />}
+            {hasMounted && <DarkModeToggle className="margin-top-2xs" />}
           </div>
           <RegionDropdown
             selectedRegion={region}
