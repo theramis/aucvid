@@ -22,18 +22,24 @@ export const RegionDropdown = ({
   onChange,
 }: RegionDropdownProps) => {
   return (
-    <select
-      className={styles.dropdown}
-      value={selectedRegion}
-      onChange={(event) => onChange(event.target.value as DhbRegionId)}
-    >
-      {options.map((option: Option) => {
-        return (
-          <option key={option.id} value={option.id}>
-            {option.label}
-          </option>
-        );
-      })}
-    </select>
+    <div className={styles["dropdown-container"]}>
+      <div className={styles["dropdown-caret"]}>
+        <span className={styles["caret-left"]} />
+        <span className={styles["caret-right"]} />
+      </div>
+      <select
+        className={styles["dropdown"]}
+        value={selectedRegion}
+        onChange={(event) => onChange(event.target.value as DhbRegionId)}
+      >
+        {options.map((option: Option) => {
+          return (
+            <option key={option.id} value={option.id}>
+              {option.label}
+            </option>
+          );
+        })}
+      </select>
+    </div>
   );
 };
