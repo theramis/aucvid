@@ -4,7 +4,7 @@ import Head from "next/head";
 import "../styles/globals.scss";
 
 const metaTags = {
-  title: "Aotearoa NZ Vaccination Rates to 90% - Outoflockdown.co",
+  title: "Aotearoa New Zealand Vaccination Rates to 90% - outoflockdown.co",
   description:
     "Easily view vaccinations to 90% by DHB for Auckland, the rest of New Zealand and the daily progress towards getting out of lockdown.",
   url: "https://outoflockdown.co",
