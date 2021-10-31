@@ -4,9 +4,11 @@ import Head from "next/head";
 import "../styles/globals.scss";
 
 const metaTags = {
-  title: "Auckland DHB Vaccination Rates to 90%",
+  title: "Aotearoa NZ Vaccination Rates to 90% - Outoflockdown.co",
   description:
-    "Easily view Auckland's vaccinations to 90% by DHB and the daily progress towards getting out of lockdown.",
+    "Easily view vaccinations to 90% by DHB for Auckland, the rest of New Zealand and the daily progress towards getting out of lockdown.",
+  url: "https://outoflockdown.co",
+  imageUrl: "https://outoflockdown.co/og-preview.png", // TODO: Update this
 };
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -14,24 +16,22 @@ function MyApp({ Component, pageProps }: AppProps) {
     <>
       <Head>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-        <meta name="theme-color" content="#200133" />
+        <meta name="theme-color" content="#13011e" />
+
         <title key="title">{metaTags.title}</title>
-        <meta
-          name="description"
-          content={metaTags.description}
-          key="description"
-        />
-        <meta
-          property="og:url"
-          content="https://outoflockdown.co"
-          key="ogUrl"
-        />
-        <meta property="og:title" content={metaTags.title} key="ogtitle" />
-        <meta
-          property="og:description"
-          content={metaTags.description}
-          key="ogdesc"
-        />
+        <meta name="description" content={metaTags.description} />
+
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={metaTags.url} />
+        <meta property="og:title" content={metaTags.title} />
+        <meta property="og:image" content={metaTags.imageUrl} />
+        <meta property="og:description" content={metaTags.description} />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta property="twitter:title" content={metaTags.title} />
+        <meta property="twitter:url" content={metaTags.url} />
+        <meta property="twitter:description" content={metaTags.description} />
+        <meta property="twitter:image" content={metaTags.imageUrl} />
       </Head>
       <Component {...pageProps} />
     </>
