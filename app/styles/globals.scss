@@ -72,6 +72,10 @@ body {
   --background-tint: #{$dark--background-tint};
   --dark-mode-toggle: #{$dark--dark-mode-toggle};
   --dark-mode-toggle-hover: #{$dark--dark-mode-toggle-hover};
+  --control-background: #{$dark--control-background};
+  --control-background-hover: #{$dark--control-background-hover};
+  --control-focus-ring: #{$dark--control-focus-ring};
+  --control-icon: #{$dark--control-icon};
 }
 
 .light {
@@ -88,4 +92,8 @@ body {
   --background-tint: #{$light--background--tint};
   --dark-mode-toggle: #{$light--dark-mode-toggle};
   --dark-mode-toggle-hover: #{$light--dark-mode-toggle-hover};
+  --control-background: #{$light--control-background};
+  --control-background-hover: #{$light--control-background-hover};
+  --control-focus-ring: #{$light--control-focus-ring};
+  --control-icon: #{$light--control-icon};
 }
