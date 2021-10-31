@@ -48,7 +48,7 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
         </section>
         <section>
           <div className="page-container">
-            <div className="doses-data-grid">
+            <div className="doses-data-grid" key={region}>
               {allDhbsPopulationDoseData
                 .filter((dhb) => dhb.regionIds.includes(region))
                 .map((dhb) => (
