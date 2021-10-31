@@ -27,7 +27,7 @@
   background-color: var(--control-background);
   border: 0;
   outline: 0;
-  width: 100%;
+  width: $space-full;
   padding: $space-m $space-xl;
   border-radius: $radius;
   cursor: pointer;
@@ -47,8 +47,8 @@
 .dropdown-caret {
   position: absolute;
   right: $space-xl;
-  top: 50%;
-  transform: translateY(-50%);
+  top: $space-half;
+  transform: translateY(-$space-half);
   z-index: -1;
   fill: var(--control-icon);
   width: $space-l;
