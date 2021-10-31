@@ -23,7 +23,8 @@ const main = async () => {
     }
   } catch (error) {
     console.error(error);
-    await got.post(process.env.DISCORD_WEBHOOK, {
+
+    await got.post(process.env.DISCORD_WEBHOOK!, {
       json: {
         avatar_url:
           "https://i1.sndcdn.com/artworks-000497194077-gnjnca-t500x500.jpg",
