@@ -30,7 +30,7 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
       <div className="flex-1 width-full">
         <section className="padding-top-4xl padding-bottom-xl">
           <div className="page-container">
-            <div className="xs:padding-left-l margin-bottom-l m:margin-bottom-4xl">
+            <div className="padding-left-l margin-bottom-l m:margin-bottom-4xl">
               <div className="width-full flex flex-row justify-content-between align-items-center">
                 <h2 className="heading-2">Vaccination rates</h2>
                 {hasMounted && <DarkModeToggle className="flex-0" />}
