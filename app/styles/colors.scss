@@ -1,4 +1,6 @@
 /* Color definitions */
+$transparent: transparent;
+
 $black: #000;
 $black-95: rgba(0, 0, 0, 0.95);
 $black-75: rgba(0, 0, 0, 0.75);
@@ -43,6 +45,10 @@ $light--background--base: $purple-xlight;
 $light--background--tint: $white;
 $light--dark-mode-toggle: $black-95;
 $light--dark-mode-toggle-hover: $black-75;
+$light--control-background: $transparent;
+$light--control-background-hover: $black-5;
+$light--control-focus-ring: $black-30;
+$light--control-icon: $green-dark;
 
 // Dark
 $dark--text-primary: $white-95;
@@ -58,3 +64,7 @@ $dark--background-base: $purple-xdark;
 $dark--background-tint: $white-5;
 $dark--dark-mode-toggle: $white-95;
 $dark--dark-mode-toggle-hover: $white-75;
+$dark--control-background: $transparent;
+$dark--control-background-hover: $white-10;
+$dark--control-focus-ring: $white-50;
+$dark--control-icon: $green-light;

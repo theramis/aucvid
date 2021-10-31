@@ -12,6 +12,7 @@ $space-map: (
   "3xl": $space-3xl,
   "4xl": $space-4xl,
   "full": $space-full,
+  "half": $space-half,
 );
 
 @each $size, $space in $space-map {
