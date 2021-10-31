@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { GetServerSideProps } from "next";
-import Head from "next/head";
 
 import { Progress } from "../components/Progress";
 import { ExternalLink } from "../components/Link";
@@ -28,10 +27,6 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
 
   return (
     <main className="page flex align-items-center">
-      <Head>
-        <meta name="robots" content="noindex, nofollow" />
-        <meta name="googlebot" content="noindex, nofollow" />
-      </Head>
       <div className="flex-1 w-full">
         <section className="padding-top-4xl padding-bottom-xl">
           <div className="page-container">
@@ -50,7 +45,7 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
         </section>
         <section>
           <div className="page-container">
-            <div className="doses-data-grid">
+            <div className="doses-data-grid" key={region}>
               {allDhbsPopulationDoseData
                 .filter((dhb) => dhb.regionIds.includes(region))
                 .map((dhb) => (
