@@ -17,21 +17,23 @@ export const DarkModeToggle = ({ className }: DarkModeToggleProps) => {
     : "light";
 
   const [mode, setMode] = useStickyState<ThemeState>("appTheme", defaultMode);
+  const isLight = mode === "light";
 
   useEffect(() => {
-    if (mode === "light") {
+    if (isLight) {
       document.body.classList.add("light");
     } else {
       document.body.classList.remove("light");
     }
-  }, [mode]);
+  }, [isLight]);
 
   return (
     <button
-      onClick={() => setMode(mode === "light" ? "dark" : "light")}
+      aria-label={isLight ? "Switch theme to dark" : "Switch theme to light"}
+      onClick={() => setMode((m) => (m === "light" ? "dark" : "light"))}
       className={cx(styles.toggleButton, className)}
     >
-      {mode === "light" ? <MoonIcon /> : <SunIcon />}
+      {isLight ? <MoonIcon /> : <SunIcon />}
     </button>
   );
 };
