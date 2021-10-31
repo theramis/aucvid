@@ -31,7 +31,7 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
         <meta name="googlebot" content="noindex, nofollow" />
       </Head>
       <div className="flex-1 w-full">
-        <section className="padding-y-4xl">
+        <section className="padding-top-4xl padding-bottom-xl">
           <div className="page-container">
             <div className="flex flex-row justify-content-between margin-bottom-l m:margin-bottom-4xl">
               <div>
