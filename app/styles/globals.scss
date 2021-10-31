@@ -19,10 +19,10 @@
 }
 
 html {
-  font-size: 16px;
+  font-size: 14px;
 
-  @media (max-width: $breakpoint-s) {
-    font-size: 14px;
+  @media (min-width: $breakpoint-s) {
+    font-size: 16px;
   }
 }
 
