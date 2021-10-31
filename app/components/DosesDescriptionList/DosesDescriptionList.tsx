@@ -23,7 +23,7 @@ export const DosesDescription = ({
   children = null,
 }: DosesDescriptionProps) => (
   <div className={styles["description-definition"]}>
-    <dt className={styles["term"]}>
+    <dt className={cx(styles["term"], "space-x-xs")}>
       {hasMetTarget && (
         <div className={styles["check"]}>
           <CheckIcon />
