@@ -1,5 +1,3 @@
-import { ChevronDownIcon } from "@heroicons/react/outline";
-
 import { DhbRegionId } from "../../types/VaccineDataTypes";
 import styles from "./RegionDropdown.module.scss";
 
@@ -26,8 +24,8 @@ export const RegionDropdown = ({
   return (
     <div className={styles["dropdown-container"]}>
       <div className={styles["dropdown-caret"]}>
-        <span className={styles["caret-left"]}></span>
-        <span className={styles["caret-right"]}></span>
+        <span className={styles["caret-left"]} />
+        <span className={styles["caret-right"]} />
       </div>
       <select
         className={styles["dropdown"]}

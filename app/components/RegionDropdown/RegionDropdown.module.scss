@@ -5,10 +5,10 @@
   cursor: pointer;
   width: 16.25rem;
   color: var(--text-positive);
-  // Animation is currently off
 
+  //Animation is currently off
   // &:focus-within {
-  //   .caret-left{
+  //   .caret-left {
   //     transform: rotate(-45deg);
   //   }
   //   .caret-right {
@@ -19,11 +19,11 @@
 
 .dropdown {
   font-size: 1.25rem;
+  font-weight: 500;
   height: 4.25rem;
   appearance: none;
   background-color: transparent;
   border: none;
-  font-weight: 500;
   width: 100%;
   padding: 1rem 1.5rem 1rem 2rem;
   border-radius: 8px;
@@ -47,6 +47,7 @@
   right: 1rem;
   top: 50%;
   transform: translateY(-50%);
+  z-index: -1;
 }
 
 .caret-left {
