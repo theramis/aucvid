@@ -1,6 +1,6 @@
 import Head from "next/head";
 
-import { ExternalLink } from "../components/Link";
+import { ExternalLink } from "../app/components/Link";
 
 const Home: React.FC = () => {
   return (
