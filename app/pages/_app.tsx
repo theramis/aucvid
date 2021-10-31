@@ -6,7 +6,7 @@ import "../styles/globals.scss";
 const metaTags = {
   title: "Aotearoa New Zealand Vaccination Rates to 90% - outoflockdown.co",
   description:
-    "Easily view vaccinations to 90% by DHB for Auckland, the rest of New Zealand and the daily progress towards getting out of lockdown.",
+    "View vaccination rates for each District Health Board in New Zealand and track the daily progress towards the 90% goal, enabling Kiwis to get out of lockdown.",
   url: "https://outoflockdown.co",
   imageUrl: "https://outoflockdown.co/og-preview.png", // TODO: Update this
 };
