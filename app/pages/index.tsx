@@ -27,7 +27,7 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
 
   return (
     <main className="page flex align-items-center">
-      <div className="flex-1 w-full">
+      <div className="flex-1 width-full">
         <section className="padding-top-4xl padding-bottom-xl">
           <div className="page-container">
             <div className="flex flex-row justify-content-between padding-left-l margin-bottom-l m:margin-bottom-4xl">
