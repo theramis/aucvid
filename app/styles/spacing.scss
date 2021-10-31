@@ -15,6 +15,12 @@ $space-map: (
   "half": $space-half,
 );
 
+// For each breakpoint, creates all spacing (margin, padding, height,
+// width & spacing) classnames for each size in the space scale.
+
+// For example: "margin-m l:margin-xl" would apply $space-m for
+// screen sizes below $breakpoint-l and $space-xl above it.
+
 @each $prefix, $breakpoint in $breakpoint-map {
   @each $size, $space in $space-map {
     // Margin
