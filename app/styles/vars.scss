@@ -5,7 +5,7 @@ $breakpoint-s: 640px;
 $breakpoint-m: 768px;
 $breakpoint-l: 1024px;
 
-// map of 'predixes' to equivalent breakpoint
+// map of 'prefixes' to equivalent breakpoint
 $breakpoint-map: (
   "": 0,
   "xs\\:": $breakpoint-xs,
