@@ -53,9 +53,9 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
                     key={dhb.dhbName}
                     className="doses-data-grid-item padding-l"
                   >
-                    <h3 className="heading-3 margin-bottom-s">
+                    <h2 className="heading-3 margin-bottom-s">
                       {dhbDisplayName(dhb.dhbName)}
-                    </h3>
+                    </h2>
                     <div className="margin-bottom-xs">
                       <DosesDescriptionList dhbData={dhb} />
                     </div>
