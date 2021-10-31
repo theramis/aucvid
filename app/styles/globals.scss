@@ -29,10 +29,18 @@ body {
 .page {
   height: 100%;
   min-height: 100vh;
-}
 
-.page-container {
-  max-width: 1000px;
+  & .page-container {
+    max-width: 1000px;
+
+    margin-left: $space-m;
+    margin-right: $space-m;
+
+    @media (min-width: $breakpoint-l) {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
 }
 
 .doses-data-grid {
@@ -46,11 +54,11 @@ body {
 
     grid-column: span 12 / span 12;
 
-    @media (min-width: 640px) {
+    @media (min-width: $breakpoint-s) {
       grid-column: span 6 / span 6;
     }
 
-    @media (min-width: 1024px) {
+    @media (min-width: $breakpoint-l) {
       grid-column: span 4 / span 4;
     }
   }
