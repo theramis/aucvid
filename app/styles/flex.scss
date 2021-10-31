@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: start;
+  align-items: flex-start;
 }
 
 .flex-row {
@@ -11,6 +11,10 @@
 
 .flex-column {
   flex-direction: column;
+}
+
+.flex-1 {
+  flex: 1 1 0%;
 }
 
 $justify-content-map: (
