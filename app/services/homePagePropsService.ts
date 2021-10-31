@@ -1,4 +1,4 @@
-import { HomePageProps } from "../pages/index";
+import { HomePageProps } from "../../pages/index";
 import { DateTime } from "luxon";
 import getVaccineData from "./vaccineDataService";
 import {

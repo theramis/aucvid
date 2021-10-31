@@ -1,18 +1,18 @@
 import { useState } from "react";
 import { GetServerSideProps } from "next";
 
-import { Progress } from "../components/Progress";
-import { ExternalLink } from "../components/Link";
-import { DosesDescriptionList } from "../components/DosesDescriptionList";
-import { DarkModeToggle } from "../components/DarkModeToggle";
+import { Progress } from "../app/components/Progress";
+import { ExternalLink } from "../app/components/Link";
+import { DosesDescriptionList } from "../app/components/DosesDescriptionList";
+import { DarkModeToggle } from "../app/components/DarkModeToggle";
 import {
   DhbRegionId,
   DhbPopulationDoseDataWithRegion,
-} from "../types/VaccineDataTypes";
-import fetchHomePageProps from "../services/homePagePropsService";
-import { useHasMounted } from "../hooks/useIsMounted";
-import { RegionDropdown } from "../components/RegionDropdown";
-import dhbDisplayName from "../utilities/dhbDisplayName";
+} from "../app/types/VaccineDataTypes";
+import fetchHomePageProps from "../app/services/homePagePropsService";
+import { useHasMounted } from "../app/hooks/useIsMounted";
+import { RegionDropdown } from "../app/components/RegionDropdown";
+import dhbDisplayName from "../app/utilities/dhbDisplayName";
 
 export type HomePageProps = {
   allDhbsPopulationDoseData: DhbPopulationDoseDataWithRegion[];

@@ -3,14 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev app",
-    "build": "next build app",
+    "dev": "next dev",
+    "build": "next build",
     "format": "prettier --write .",
     "format-staged": "pretty-quick --staged",
-    "start": "next start app",
-    "lint": "next lint app",
+    "start": "next start",
+    "lint": "next lint",
     "husky-install": "husky install",
-    "fetch-boi": "NODE_OPTIONS='--unhandled-rejections=strict' ts-node fetchyFetchBoi/fetchyFetchBoi.ts"
+    "fetch-boi": "cross-env NODE_OPTIONS='--unhandled-rejections=strict' ts-node fetchy/fetchyboi.ts"
   },
   "dependencies": {
     "@heroicons/react": "^1.0.5",
@@ -30,6 +30,7 @@
     "@types/node": "^16.11.6",
     "@types/react": "17.0.32",
     "autoprefixer": "^10.3.7",
+    "cross-env": "^7.0.3",
     "eslint": "7.32.0",
     "eslint-config-next": "11.1.2",
     "eslint-plugin-prettier": "4.0.0",
