@@ -44,8 +44,8 @@
     45deg,
     var(--progress--first) 0,
     var(--progress--first) 2px,
-    var(--progress--total) 0,
-    var(--progress--total) 50%
+    $white 0,
+    $white 50%
   );
 }
 
