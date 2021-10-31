@@ -1,11 +1,9 @@
-@import "../../styles/typography";
 @import "../../styles/colors";
 
 .dropdown-container {
   position: relative;
   cursor: pointer;
-  min-width: 15ch;
-  max-width: 30ch;
+  width: 16.25rem;
   color: var(--text-positive);
   // Animation is currently off
 
@@ -20,7 +18,7 @@
 }
 
 .dropdown {
-  @include h2;
+  font-size: 1.25rem;
   height: 4.25rem;
   appearance: none;
   background-color: transparent;
