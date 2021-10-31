@@ -25,61 +25,66 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
   const [region, selectedRegion] = useState<DhbRegionId>("auckland");
 
   return (
-    <div className="page">
+    <main className="page flex align-items-center">
       <Head>
         <meta name="robots" content="noindex, nofollow" />
         <meta name="googlebot" content="noindex, nofollow" />
       </Head>
-      <section className="pb-12 pt-12 md:pt-16">
-        <div className="page-container mx-5 lg:mx-auto">
-          <div className="flex flex-row justify-content-between">
-            <div>
-              <h2 className="heading-2">Vaccination rates</h2>
-              <h1 className="heading-1 mb-6 md:mb-8">Aotearoa</h1>
+      <div className="flex-1 w-full">
+        <section className="padding-y-4xl">
+          <div className="page-container">
+            <div className="flex flex-row justify-content-between mb-6 md:mb-8">
+              <div>
+                <h2 className="heading-2">Vaccination rates</h2>
+                <h1 className="heading-1">Aotearoa</h1>
+              </div>
+              {hasMounted && <DarkModeToggle className="margin-top-2xs" />}
             </div>
-            {hasMounted && <DarkModeToggle className="mt-1" />}
+            <RegionDropdown
+              selectedRegion={region}
+              onChange={(regionId) => selectedRegion(regionId)}
+            />
           </div>
-          <RegionDropdown
-            selectedRegion={region}
-            onChange={(regionId) => selectedRegion(regionId)}
-          />
-        </div>
-      </section>
-      <section>
-        <div className="page-container mx-5 lg:mx-auto">
-          <div className="doses-data-grid">
-            {allDhbsPopulationDoseData
-              .filter((dhb) => dhb.regionIds.includes(region))
-              .map((dhb) => (
-                <div key={dhb.dhbName} className="doses-data-grid-item p-5">
-                  <h3 className="heading-3 mb-3">
-                    {dhbDisplayName(dhb.dhbName)}
-                  </h3>
-                  <div className="mb-2">
-                    <DosesDescriptionList dhbData={dhb} />
+        </section>
+        <section>
+          <div className="page-container">
+            <div className="doses-data-grid">
+              {allDhbsPopulationDoseData
+                .filter((dhb) => dhb.regionIds.includes(region))
+                .map((dhb) => (
+                  <div
+                    key={dhb.dhbName}
+                    className="doses-data-grid-item padding-l"
+                  >
+                    <h3 className="heading-3 margin-bottom-s">
+                      {dhbDisplayName(dhb.dhbName)}
+                    </h3>
+                    <div className="margin-bottom-xs">
+                      <DosesDescriptionList dhbData={dhb} />
+                    </div>
+                    <Progress
+                      size="xsmall"
+                      firstDose={dhb.firstDosesPercentage}
+                      secondDose={dhb.secondDosesPercentage}
+                    />
                   </div>
-                  <Progress
-                    size="xsmall"
-                    firstDose={dhb.firstDosesPercentage}
-                    secondDose={dhb.secondDosesPercentage}
-                  />
-                </div>
-              ))}
+                ))}
+            </div>
           </div>
-        </div>
-      </section>
-      <footer className="pb-4 pt-20 md:pt-32">
-        <div className="page-container mx-5 lg:mx-auto flex align-items-center">
+        </section>
+      </div>
+      <footer className="padding-bottom-l padding-top-4xl">
+        <div className="page-container flex align-items-center">
           <p className="footnote">
             Data source:{" "}
             <ExternalLink href="https://www.health.govt.nz/our-work/diseases-and-conditions/covid-19-novel-coronavirus/covid-19-data-and-statistics/covid-19-vaccine-data">
               Ministry of Health NZ
             </ExternalLink>
           </p>
-          <div className="flex flex-row items-center justify-center footnote mt-1">
-            <div className="mr-1">&#128075;</div>
+          <div className="flex flex-row items-center justify-center footnote margin-top-2xs">
+            <div className="margin-right-2xs">&#128075;</div>
             <p>
-              Made <span className="hidden sm:inline">with love</span> by{" "}
+              Made <span hidden>with love</span> by{" "}
               <ExternalLink href="https://www.instagram.com/finnsta_gram/">
                 Finn
               </ExternalLink>
@@ -99,7 +104,7 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
           </div>
         </div>
       </footer>
-    </div>
+    </main>
   );
 };
 
