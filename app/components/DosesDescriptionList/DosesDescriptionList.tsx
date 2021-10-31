@@ -24,11 +24,6 @@ export const DosesDescription = ({
 }: DosesDescriptionProps) => (
   <div className={styles["description-definition"]}>
     <dt className={cx(styles["term"], "space-x-xs")}>
-      {hasMetTarget && (
-        <div className={styles["check"]}>
-          <CheckIcon />
-        </div>
-      )}
       <div
         className={cx("data-text", { ["data-text-complete"]: hasMetTarget })}
       >
@@ -55,11 +50,19 @@ export const DosesDescriptionList = ({
       hasMetTarget={dhbData.hasMetFirstDoseTarget}
       dosesPercent={dhbData.firstDosesPercentage}
     >
-      <dd className={cx(styles["definition-secondary"], "data-text")}>
-        <strong>
-          {numberFormatter.format(dhbData.numOfFirstDosesTo90Percent)}
-        </strong>{" "}
-        left
+      <dd className="flex-1 flex flex-row justify-content-end">
+        {dhbData.hasMetFirstDoseTarget ? (
+          <div className={styles["check"]}>
+            <CheckIcon aria-label="First doses target met" />
+          </div>
+        ) : (
+          <div className="data-text">
+            <strong>
+              {numberFormatter.format(dhbData.numOfFirstDosesTo90Percent)}
+            </strong>{" "}
+            left
+          </div>
+        )}
       </dd>
     </DosesDescription>
     <DosesDescription
@@ -67,11 +70,19 @@ export const DosesDescriptionList = ({
       hasMetTarget={dhbData.hasMetSecondDoseTarget}
       dosesPercent={dhbData.secondDosesPercentage}
     >
-      <dd className={cx(styles["definition-secondary"], "data-text")}>
-        <strong>
-          {numberFormatter.format(dhbData.numOfSecondDosesTo90Percent)}
-        </strong>{" "}
-        left
+      <dd className="flex-1 flex flex-row justify-content-end">
+        {dhbData.hasMetSecondDoseTarget ? (
+          <div className={styles["check"]}>
+            <CheckIcon aria-label="Second doses target met" />
+          </div>
+        ) : (
+          <div className="data-text">
+            <strong>
+              {numberFormatter.format(dhbData.numOfSecondDosesTo90Percent)}
+            </strong>{" "}
+            left
+          </div>
+        )}
       </dd>
     </DosesDescription>
   </dl>
