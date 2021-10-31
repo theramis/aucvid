@@ -6,12 +6,14 @@ import { Progress } from "../components/Progress";
 import { ExternalLink } from "../components/Link";
 import { DosesDescriptionList } from "../components/DosesDescriptionList";
 import { DarkModeToggle } from "../components/DarkModeToggle";
-import { DhbPopulationDoseDataWithRegion } from "../types/VaccineDataTypes";
-import fetchHomePageProps from "../services/angelfishPagePropsService";
+import {
+  DhbRegionId,
+  DhbPopulationDoseDataWithRegion,
+} from "../types/VaccineDataTypes";
+import fetchHomePageProps from "../services/homePagePropsService";
 import { useHasMounted } from "../hooks/useIsMounted";
 import { RegionDropdown } from "../components/RegionDropdown";
 import dhbDisplayName from "../utilities/dhbDisplayName";
-import { DhbRegionId } from "../types/VaccineDataTypes";
 
 export type HomePageProps = {
   allDhbsPopulationDoseData: DhbPopulationDoseDataWithRegion[];
