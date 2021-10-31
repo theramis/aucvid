@@ -33,7 +33,7 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
       <div className="flex-1 w-full">
         <section className="padding-top-4xl padding-bottom-xl">
           <div className="page-container">
-            <div className="flex flex-row justify-content-between margin-bottom-l m:margin-bottom-4xl">
+            <div className="flex flex-row justify-content-between padding-left-l margin-bottom-l m:margin-bottom-4xl">
               <div>
                 <h2 className="heading-2">Vaccination rates</h2>
                 <h1 className="heading-1">Aotearoa</h1>
