@@ -31,9 +31,9 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
         <meta name="googlebot" content="noindex, nofollow" />
       </Head>
       <div className="flex-1 w-full">
-        <section className="padding-y-4xl">
+        <section className="padding-top-4xl padding-bottom-xl">
           <div className="page-container">
-            <div className="flex flex-row justify-content-between mb-6 md:mb-8">
+            <div className="flex flex-row justify-content-between margin-bottom-l m:margin-bottom-4xl">
               <div>
                 <h2 className="heading-2">Vaccination rates</h2>
                 <h1 className="heading-1">Aotearoa</h1>
@@ -81,8 +81,8 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
               Ministry of Health NZ
             </ExternalLink>
           </p>
-          <div className="flex flex-row items-center justify-center footnote margin-top-2xs">
-            <div className="margin-right-2xs">&#128075;</div>
+          <div className="flex flex-row items-center justify-center footnote margin-top-2xs space-x-2xs">
+            <div>&#128075;</div>
             <p>
               Made <span hidden>with love</span> by{" "}
               <ExternalLink href="https://www.instagram.com/finnsta_gram/">

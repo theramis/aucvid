@@ -5,6 +5,26 @@ $breakpoint-s: 640px;
 $breakpoint-m: 768px;
 $breakpoint-l: 1024px;
 
+// map of 'prefixes' to equivalent breakpoint
+$breakpoint-map: (
+  "": 0,
+  "xs\\:": $breakpoint-xs,
+  "s\\:": $breakpoint-s,
+  "m\\:": $breakpoint-m,
+  "l\\:": $breakpoint-l,
+);
+
+// applies media query for min-width
+@mixin mediaMinWidth($breakpoint) {
+  @if $breakpoint == 0 {
+    @content;
+  } @else {
+    @media (min-width: $breakpoint) {
+      @content;
+    }
+  }
+}
+
 // Spacing
 
 $space-none: 0; // 0

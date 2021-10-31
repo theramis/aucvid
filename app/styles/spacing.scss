@@ -15,74 +15,118 @@ $space-map: (
   "half": $space-half,
 );
 
-@each $size, $space in $space-map {
-  // Margin
-  .margin-#{$size} {
-    margin: $space;
-  }
-  .margin-top-#{$size} {
-    margin-top: $space;
-  }
-  .margin-right-#{$size} {
-    margin-right: $space;
-  }
-  .margin-bottom-#{$size} {
-    margin-bottom: $space;
-  }
-  .margin-left-#{$size} {
-    margin-left: $space;
-  }
-  .margin-y-#{$size} {
-    margin-top: $space;
-    margin-bottom: $space;
-  }
-  .margin-x-#{$size} {
-    margin-left: $space;
-    margin-right: $space;
-  }
+// For each breakpoint, creates all spacing (margin, padding, height,
+// width & spacing) classnames for each size in the space scale.
 
-  // Padding
-  .padding-#{$size} {
-    padding: $space;
-  }
-  .padding-top-#{$size} {
-    padding-top: $space;
-  }
-  .padding-right-#{$size} {
-    padding-right: $space;
-  }
-  .padding-bottom-#{$size} {
-    padding-bottom: $space;
-  }
-  .padding-left-#{$size} {
-    padding-left: $space;
-  }
-  .padding-y-#{$size} {
-    padding-top: $space;
-    padding-bottom: $space;
-  }
-  .padding-x-#{$size} {
-    padding-left: $space;
-    padding-right: $space;
-  }
+// For example: "margin-m l:margin-xl" would apply $space-m for
+// screen sizes below $breakpoint-l and $space-xl above it.
 
-  // Heights & Widths
-  .height-#{$size} {
-    height: $space;
-  }
-  .width-#{$size} {
-    width: $space;
-  }
-
-  // Space
-  .space-y-#{$size} {
-    & > :not([hidden]) ~ :not([hidden]) {
-      margin-top: $space;
+@each $prefix, $breakpoint in $breakpoint-map {
+  @each $size, $space in $space-map {
+    // Margin
+    .#{$prefix}margin-#{$size} {
+      @include mediaMinWidth($breakpoint) {
+        margin: $space;
+      }
     }
-  }
-  .space-x-#{$size} {
-    & > :not([hidden]) ~ :not([hidden]) {
-      margin-left: $space;
+    .#{$prefix}margin-top-#{$size} {
+      @include mediaMinWidth($breakpoint) {
+        margin-top: $space;
+      }
+    }
+    .#{$prefix}margin-right-#{$size} {
+      @include mediaMinWidth($breakpoint) {
+        margin-right: $space;
+      }
+    }
+    .#{$prefix}margin-bottom-#{$size} {
+      @include mediaMinWidth($breakpoint) {
+        margin-bottom: $space;
+      }
+    }
+    .#{$prefix}margin-left-#{$size} {
+      @include mediaMinWidth($breakpoint) {
+        margin-left: $space;
+      }
+    }
+    .#{$prefix}margin-y-#{$size} {
+      @include mediaMinWidth($breakpoint) {
+        margin-top: $space;
+        margin-bottom: $space;
+      }
+    }
+    .#{$prefix}margin-x-#{$size} {
+      @include mediaMinWidth($breakpoint) {
+        margin-left: $space;
+        margin-right: $space;
+      }
+    }
+
+    // Padding
+    .#{$prefix}padding-#{$size} {
+      @include mediaMinWidth($breakpoint) {
+        padding: $space;
+      }
+    }
+    .#{$prefix}padding-top-#{$size} {
+      @include mediaMinWidth($breakpoint) {
+        padding-top: $space;
+      }
+    }
+    .#{$prefix}padding-right-#{$size} {
+      @include mediaMinWidth($breakpoint) {
+        padding-right: $space;
+      }
+    }
+    .#{$prefix}padding-bottom-#{$size} {
+      @include mediaMinWidth($breakpoint) {
+        padding-bottom: $space;
+      }
+    }
+    .#{$prefix}padding-left-#{$size} {
+      @include mediaMinWidth($breakpoint) {
+        padding-left: $space;
+      }
+    }
+    .#{$prefix}padding-y-#{$size} {
+      @include mediaMinWidth($breakpoint) {
+        padding-top: $space;
+        padding-bottom: $space;
+      }
+    }
+    .#{$prefix}padding-x-#{$size} {
+      @include mediaMinWidth($breakpoint) {
+        padding-left: $space;
+        padding-right: $space;
+      }
+    }
+
+    // Heights & Widths
+    .#{$prefix}height-#{$size} {
+      @include mediaMinWidth($breakpoint) {
+        height: $space;
+      }
+    }
+    .#{$prefix}width-#{$size} {
+      @include mediaMinWidth($breakpoint) {
+        width: $space;
+      }
+    }
+
+    // Space
+    .#{$prefix}space-y-#{$size} {
+      @include mediaMinWidth($breakpoint) {
+        & > :not([hidden]) ~ :not([hidden]) {
+          margin-top: $space;
+        }
+      }
+    }
+    .#{$prefix}space-x-#{$size} {
+      @include mediaMinWidth($breakpoint) {
+        & > :not([hidden]) ~ :not([hidden]) {
+          margin-left: $space;
+        }
+      }
     }
   }
 }
