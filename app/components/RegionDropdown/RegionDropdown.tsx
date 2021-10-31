@@ -25,10 +25,9 @@ export const RegionDropdown = ({
 }: RegionDropdownProps) => {
   return (
     <div className={styles["dropdown-container"]}>
-      {/* <ChevronDownIcon className={styles["dropdown-caret"]} /> */}
-      <div className={styles["arrow"]}>
-        <span className={styles["left-arrow"]}></span>
-        <span className={styles["right-arrow"]}></span>
+      <div className={styles["dropdown-caret"]}>
+        <span className={styles["caret-left"]}></span>
+        <span className={styles["caret-right"]}></span>
       </div>
       <select
         className={styles["dropdown"]}
