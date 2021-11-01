@@ -1,4 +1,4 @@
-import { DhbRegionId } from "../../types/VaccineDataTypes";
+import { DhbRegionId } from "../../types/IndexPageProps";
 import styles from "./RegionDropdown.module.scss";
 
 type Option = {
