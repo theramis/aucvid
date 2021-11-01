@@ -14,7 +14,7 @@ jobs:
       DISCORD_WEBHOOK: $ {{ secrets.DISCORD_WEBHOOK }}
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2.3.4
+        uses: actions/checkout@v2.3.5
         with:
           token: ${{ secrets.PAT }}
       - name: Load global environment variables
