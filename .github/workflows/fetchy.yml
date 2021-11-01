@@ -1,5 +1,6 @@
 name: Run Fetchy Fetch Boi
 on:
+  pull_request:
   repository_dispatch:
   workflow_dispatch:
     branches:
@@ -15,8 +16,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2.3.5
-        with:
-          token: ${{ secrets.PAT }}
       - name: Load global environment variables
         run: cat .github/config/global.env >> $GITHUB_ENV
       - name: Setup node
@@ -28,7 +27,33 @@ jobs:
         run: npm ci
       - name: Run Fetchy
         run: npm run fetch-boi
-      - uses: EndBug/add-and-commit@v7
+      - name: Cache fetchy output
+        id: cache-data
+        uses: actions/cache@v2
+        with:
+          path: ./data
+          key: data-${{ hashFiles('./data') }}
+  committy:
+    name: Commit Fetchy Results
+    runs-on: ubuntu-latest
+    needs: fetchy
+    if: github.event_name == 'workflow_dispatch' || github.event_name == 'repository_dispatch'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2.3.5
+        with:
+          token: ${{ secrets.PAT }}
+      - name: Cache fetchy output
+        id: cache-data
+        uses: actions/cache@v2
+        with:
+          path: ./data
+          key: data-${{ hashFiles('./data') }}
+      - name: Fail if cache hit is unsuccessful
+        if: steps.cache-data.outputs.cache-hit != 'true'
+        run: exit 1
+      - name: Commit data
+        uses: EndBug/add-and-commit@v7
         with:
           default_author: github_actions
           message: "Adding/Updating the latest MoH Data"
