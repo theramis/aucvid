@@ -11,6 +11,7 @@ import {
 } from "../app/types/VaccineDataTypes";
 import fetchHomePageProps from "../app/services/homePagePropsService";
 import { useHasMounted } from "../app/hooks/useIsMounted";
+import { Page, PageContainer } from "../app/components/Page";
 import { RegionDropdown } from "../app/components/RegionDropdown";
 import dhbDisplayName from "../app/utilities/dhbDisplayName";
 
@@ -26,10 +27,10 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
   const [region, selectedRegion] = useState<DhbRegionId>("auckland");
 
   return (
-    <main className="page flex align-items-center">
+    <Page className="flex align-items-center">
       <div className="flex-1 width-full">
         <section className="padding-top-4xl padding-bottom-xl">
-          <div className="page-container">
+          <PageContainer>
             <div className="padding-left-l margin-bottom-l m:margin-bottom-4xl">
               <div className="width-full flex flex-row justify-content-between align-items-center">
                 <h2 className="heading-2">Vaccination rates</h2>
@@ -41,10 +42,10 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
               selectedRegion={region}
               onChange={(regionId) => selectedRegion(regionId)}
             />
-          </div>
+          </PageContainer>
         </section>
         <section>
-          <div className="page-container">
+          <PageContainer>
             <div className="doses-data-grid" key={region}>
               {allDhbsPopulationDoseData
                 .filter((dhb) => dhb.regionIds.includes(region))
@@ -67,7 +68,7 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
                   </div>
                 ))}
             </div>
-          </div>
+          </PageContainer>
         </section>
       </div>
       <footer className="padding-bottom-l padding-top-4xl">
@@ -101,7 +102,7 @@ const Home: React.FC<HomePageProps> = (props: HomePageProps) => {
           </div>
         </div>
       </footer>
-    </main>
+    </Page>
   );
 };
 

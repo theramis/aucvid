@@ -1,10 +1,11 @@
 import Head from "next/head";
 
 import { ExternalLink } from "../app/components/Link";
+import { Page } from "../app/components/Page";
 
 const Home: React.FC = () => {
   return (
-    <main className="page flex align-items-center">
+    <Page className="flex align-items-center">
       <Head>
         <meta name="robots" content="noindex, nofollow" />
         <meta name="googlebot" content="noindex, nofollow" />
@@ -41,7 +42,7 @@ const Home: React.FC = () => {
           </div>
         </div>
       </footer>
-    </main>
+    </Page>
   );
 };
 
