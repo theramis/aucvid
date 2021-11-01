@@ -37,6 +37,7 @@ jobs:
     name: Commit Fetchy Results
     runs-on: ubuntu-latest
     needs: fetchy
+    if: github.event_name == 'workflow_dispatch' || github.event_name == 'repository_dispatch'
     steps:
       - name: Checkout code
         uses: actions/checkout@v2.3.5
