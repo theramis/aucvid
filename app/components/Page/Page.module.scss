@@ -8,7 +8,7 @@ $container-width: 1000px;
 }
 
 .page-container {
-  max-width: calc($container-width);
+  max-width: calc($container-width + 2 * $space-m);
   padding-left: $space-m;
   padding-right: $space-m;
 
