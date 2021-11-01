@@ -12,8 +12,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2.3.4
-        with:
-          token: ${{ secrets.PAT }}
       - name: Load global environment variables
         run: cat .github/config/global.env >> $GITHUB_ENV
       - name: Setup node
@@ -25,5 +23,5 @@ jobs:
         run: npm ci
       - name: Run Fetchy
         run: npm run fetch-boi
-      - name: Print results
-        run: git ls-files --others --exclude-standard | xargs -I filename cat filename
+      - name: Note any files generated
+        run: git status
