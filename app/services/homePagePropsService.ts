@@ -8,22 +8,22 @@ import {
 import { CONSTANTS } from "./constants";
 
 // making it global so hopefully it gets cached by lambda
-let cachedData: HomePageProps | null = null;
+// let cachedData: HomePageProps | null = null;
 
 export default async function fetchHomePageProps(): Promise<HomePageProps> {
-  if (
-    cachedData == null ||
-    isCacheExpired(cachedData, CONSTANTS.cacheHomePageDataTtlInMins)
-  ) {
-    cachedData = await generateHomePageProps();
-  }
+//   if (
+//     cachedData == null ||
+//     isCacheExpired(cachedData, CONSTANTS.cacheHomePageDataTtlInMins)
+//   ) {
+//     cachedData = await generateHomePageProps();
+//   }
 
-  return cachedData;
+  return await generateHomePageProps();
 }
 
-const isCacheExpired = (data: HomePageProps, ttl: number) =>
-  DateTime.utc().diff(DateTime.fromISO(data.dataFetchedAtTimeUtc), "minutes")
-    .minutes >= ttl;
+// const isCacheExpired = (data: HomePageProps, ttl: number) =>
+//   DateTime.utc().diff(DateTime.fromISO(data.dataFetchedAtTimeUtc), "minutes")
+//     .minutes >= ttl;
 
 async function generateHomePageProps(): Promise<HomePageProps> {
   const vaccineData = await getVaccineData();
