@@ -1,13 +1,10 @@
-name: Run Fetchy Fetch Boi
+name: Verify Run Fetchy Fetch Boi
 on:
-  repository_dispatch:
-  workflow_dispatch:
-    branches:
-      - main
+  pull_request:
 
 jobs:
   fetchy:
-    name: Run Fetchy
+    name: Verify Run Fetchy
     runs-on: ubuntu-latest
     env:
       # set this secret, you can get the value from this discord message https://discord.com/channels/658523382442360866/903771050385502239/904216952141152328
@@ -15,8 +12,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2.3.4
-        with:
-          token: ${{ secrets.PAT }}
       - name: Load global environment variables
         run: cat .github/config/global.env >> $GITHUB_ENV
       - name: Setup node
@@ -28,7 +23,5 @@ jobs:
         run: npm ci
       - name: Run Fetchy
         run: npm run fetch-boi
-      - uses: EndBug/add-and-commit@v7
-        with:
-          default_author: github_actions
-          message: "Adding/Updating the latest MoH Data"
+      - name: Note any files generated
+        run: git status
