@@ -4,10 +4,18 @@ import { DateTime } from "luxon";
 import { CONSTANTS } from "./constants";
 import { diff } from "deep-object-diff";
 
-export const createDataForDate = async (time: NzTimeIso, data: VaccineData) =>
-  await fs.writeFile(generateFilePath(time), JSON.stringify(data, null, 2));
+export const createVaccineDataForDate = async (
+  time: NzTimeIso,
+  data: VaccineData
+) => await fs.writeFile(generateFilePath(time), JSON.stringify(data, null, 2));
 
-export const getDataForDate = async (
+export const getLatestVaccineData = async (): Promise<VaccineData> => {
+  const latestDataFile = await getLatestVaccineDataFilePath();
+  const data = await fs.readFile(latestDataFile, "utf8");
+  return JSON.parse(data);
+};
+
+export const getVaccineDataForDate = async (
   time: NzTimeIso
 ): Promise<VaccineData | null> => {
   const filePath = generateFilePath(time);
@@ -18,17 +26,17 @@ export const getDataForDate = async (
   return null;
 };
 
-export const updateDataIfDifferentForDate = async (
+export const updateVaccineDataIfDifferentForDate = async (
   time: NzTimeIso,
   data: VaccineData
 ) => {
-  const existingData = await getDataForDate(time);
+  const existingData = await getVaccineDataForDate(time);
   if (existingData == null) {
     return;
   }
 
   if (areObjectsDifferent(existingData, data)) {
-    await createDataForDate(time, data);
+    await createVaccineDataForDate(time, data);
   }
 };
 
@@ -38,4 +46,10 @@ const areObjectsDifferent = (a: object, b: object) =>
 const generateFilePath = (time: NzTimeIso) => {
   const date = DateTime.fromISO(time).toFormat("yyyy-LL-dd");
   return `${CONSTANTS.dataFolder}/${date}.txt`;
+};
+
+const getLatestVaccineDataFilePath = async () => {
+  const files = await fs.readdir(CONSTANTS.dataFolder);
+  const latestDataFile = files.sort()[files.length - 1];
+  return `${CONSTANTS.dataFolder}/${latestDataFile}`;
 };
