@@ -32,7 +32,7 @@ jobs:
         uses: actions/cache@v2
         with:
           path: ./data
-          key: data-${{ hashFiles('./data') }}
+          key: data-${{ github.run_id }}-${{ github.run_number }}
   committy:
     name: Commit Fetchy Results
     runs-on: ubuntu-latest
@@ -47,7 +47,7 @@ jobs:
         uses: actions/cache@v2
         with:
           path: ./data
-          key: data-${{ hashFiles('./data') }}
+          key: data-${{ github.run_id }}-${{ github.run_number }}
       - name: Fail if cache hit is unsuccessful
         if: steps.cache-data.outputs.cache-hit != 'true'
         run: exit 1
