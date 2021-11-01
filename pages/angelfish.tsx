@@ -9,7 +9,7 @@ const Home: React.FC = () => {
         <meta name="robots" content="noindex, nofollow" />
         <meta name="googlebot" content="noindex, nofollow" />
       </Head>
-      <div className="flex-1 w-full" />
+      <div className="flex-1 width-full" />
       <footer className="padding-bottom-l padding-top-4xl">
         <div className="page-container flex align-items-center">
           <p className="footnote">
