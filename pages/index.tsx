@@ -20,13 +20,13 @@ const Index: React.FC<IndexPageProps> = (props: IndexPageProps) => {
     <Page className="flex align-items-center">
       <div className="flex-1 width-full">
         <section className="padding-top-4xl padding-bottom-l">
-          <PageContainer>
-            <div className="padding-left-l l:padding-left-none margin-bottom-l s:margin-bottom-4xl">
+          <PageContainer className="flex align-items-stretch">
+            <div className="padding-left-l l:padding-left-none margin-bottom-l s:margin-bottom-5xl">
               <div className="width-full flex flex-row justify-content-between align-items-center">
                 <h2 className="heading-2">Vaccination rates</h2>
                 {hasMounted && <DarkModeToggle className="flex-0" />}
               </div>
-              <h1 className="heading-1 margin-bottom-xl">Aotearoa</h1>
+              <h1 className="heading-1">Aotearoa</h1>
             </div>
             <RegionDropdown
               selectedRegion={region}

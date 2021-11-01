@@ -1,11 +1,15 @@
+@import "../../styles/vars.scss";
+
 .toggleButton {
   width: 2.5rem;
   height: 2.5rem;
   padding: 0.625rem;
+  border-radius: $radius-full;
   color: var(--dark-mode-toggle);
-  transition: color 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
 
   &:hover {
     color: var(--dark-mode-toggle-hover);
+    background-color: var(--control-background-hover);
   }
 }

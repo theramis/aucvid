@@ -49,7 +49,7 @@ $control-width: 260px; // Control width local variable for now
 .dropdown-caret {
   position: absolute;
   right: $space-l;
-  top: calc($space-half);
+  top: $space-half;
   transform: translateY(-$space-half);
   fill: var(--control-icon);
   width: $space-m;

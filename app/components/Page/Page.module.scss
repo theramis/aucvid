@@ -11,8 +11,6 @@ $container-width: 1000px;
   max-width: calc($container-width);
   padding-left: $space-m;
   padding-right: $space-m;
-  display: flex;
-  flex-direction: column;
 
   @media (min-width: $breakpoint-l) {
     margin-left: auto;
