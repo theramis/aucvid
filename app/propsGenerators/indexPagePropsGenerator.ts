@@ -1,6 +1,9 @@
 import { DateTime } from "luxon";
 import { getLatestVaccineData } from "../../shared/dataRepository";
-import { DhbVaccineDoseData } from "../../shared/types/VaccineDataTypes";
+import {
+  VaccineData,
+  DhbVaccineDoseData,
+} from "../../shared/types/VaccineDataTypes";
 import { CONSTANTS } from "../constants";
 import {
   DhbRegionId,
@@ -8,9 +11,10 @@ import {
   IndexPageProps,
 } from "../types/IndexPageProps";
 
-export default async function fetchIndexPageProps(): Promise<IndexPageProps> {
-  const data = await getLatestVaccineData();
+let pendingData: Promise<VaccineData> = getLatestVaccineData();
 
+export default async function fetchIndexPageProps(): Promise<IndexPageProps> {
+  const data = await pendingData;
   return {
     allDhbsVaccineDoseData: generateAllDhbsVaccineDoseData(
       data.vaccinationsPerDhb
