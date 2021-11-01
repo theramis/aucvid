@@ -13,7 +13,7 @@ const nameMap: Record<string, string> = {
   Northland: "Northland",
   "South Canterbury": "South Canterbury",
   Southern: "Southern",
-  Tairawhiti: "Tairawhiti",
+  Tairawhiti: "Tairāwhiti",
   Taranaki: "Taranaki",
   Waikato: "Waikato",
   Wairarapa: "Wairarapa",
