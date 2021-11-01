@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { GetServerSideProps } from "next";
+import { GetStaticProps } from "next";
 import { Progress } from "../app/components/Progress";
 import { ExternalLink } from "../app/components/Link";
 import { DosesDescriptionList } from "../app/components/DosesDescriptionList";
@@ -11,7 +11,7 @@ import dhbDisplayName from "../app/utilities/dhbDisplayName";
 import { DhbRegionId, IndexPageProps } from "../app/types/IndexPageProps";
 import fetchIndexPageProps from "../app/propsGenerators/indexPagePropsGenerator";
 
-const Home: React.FC<IndexPageProps> = (props: IndexPageProps) => {
+const Index: React.FC<IndexPageProps> = (props: IndexPageProps) => {
   const { allDhbsVaccineDoseData } = props;
   const hasMounted = useHasMounted();
   const [region, selectedRegion] = useState<DhbRegionId>("auckland");
@@ -96,11 +96,10 @@ const Home: React.FC<IndexPageProps> = (props: IndexPageProps) => {
   );
 };
 
-export default Home;
+export default Index;
 
-export const getServerSideProps: GetServerSideProps<IndexPageProps> =
-  async () => {
-    return {
-      props: await fetchIndexPageProps(),
-    };
+export const getStaticProps: GetStaticProps<IndexPageProps> = async () => {
+  return {
+    props: await fetchIndexPageProps(),
   };
+};
