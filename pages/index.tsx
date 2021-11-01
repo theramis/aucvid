@@ -19,9 +19,9 @@ const Index: React.FC<IndexPageProps> = (props: IndexPageProps) => {
   return (
     <Page className="flex align-items-center">
       <div className="flex-1 width-full">
-        <section className="padding-top-4xl padding-bottom-xl">
-          <PageContainer>
-            <div className="padding-left-l margin-bottom-l m:margin-bottom-4xl">
+        <section className="padding-top-4xl padding-bottom-l">
+          <PageContainer className="flex align-items-stretch">
+            <div className="padding-left-l l:padding-left-none margin-bottom-l s:margin-bottom-5xl">
               <div className="width-full flex flex-row justify-content-between align-items-center">
                 <h2 className="heading-2">Vaccination rates</h2>
                 {hasMounted && <DarkModeToggle className="flex-0" />}
