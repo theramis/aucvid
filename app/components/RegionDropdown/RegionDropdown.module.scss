@@ -7,13 +7,16 @@
   box-shadow: 0 0 0 2px var(--control-focus-ring);
 }
 
-$control-width: 260px; // Control width local variable for now
+$select-width: $space-full;
 
 .dropdown-container {
   position: relative;
   cursor: pointer;
-  width: $control-width;
+  width: $select-width;
   color: var(--text-positive);
+  @media (min-width: $breakpoint-s) {
+    width: 260px;
+  }
 
   // Animation is currently off — I don't know if this is what we want anyways because the dropdown could be closed but still in focus?
   // &:focus-within {
