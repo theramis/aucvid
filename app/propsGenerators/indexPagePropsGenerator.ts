@@ -1,6 +1,9 @@
 import { DateTime } from "luxon";
 import { getLatestVaccineData } from "../../shared/dataRepository";
-import { DhbVaccineDoseData } from "../../shared/types/VaccineDataTypes";
+import {
+  DhbVaccineDoseData,
+  DhbName,
+} from "../../shared/types/VaccineDataTypes";
 import { CONSTANTS } from "../constants";
 import {
   DhbRegionId,
@@ -24,8 +27,12 @@ export default async function fetchIndexPageProps(): Promise<IndexPageProps> {
 function generateAllDhbsVaccineDoseData(
   dhbVaccineData: DhbVaccineDoseData[]
 ): DhbVaccineDoseDataForIndexPage[] {
-  const aucklandDhbNames = ["Waitemata", "Auckland", "Counties Manukau"];
-  const northIslandDhbNames = aucklandDhbNames.concat([
+  const aucklandDhbNames: DhbName[] = [
+    "Waitemata",
+    "Auckland",
+    "Counties Manukau",
+  ];
+  const northIslandDhbNames: DhbName[] = aucklandDhbNames.concat([
     "Northland",
     "Waikato",
     "Lakes",
@@ -39,7 +46,7 @@ function generateAllDhbsVaccineDoseData(
     "Hutt Valley",
     "Wairarapa",
   ]);
-  const southIslandDhbNames = [
+  const southIslandDhbNames: DhbName[] = [
     "Nelson Marlborough",
     "West Coast",
     "Canterbury",

@@ -1,4 +1,7 @@
-import { DhbVaccineDoseData } from "../../shared/types/VaccineDataTypes";
+import {
+  DhbName,
+  DhbVaccineDoseData,
+} from "../../shared/types/VaccineDataTypes";
 import { convertToNumber } from "../utilities";
 
 export const getVaccinationDataPerDhb = (
@@ -31,7 +34,7 @@ const createPopulationDoseDataForDhbFromRegexMatch = (
   match: RegExpExecArray
 ): DhbVaccineDoseData => {
   return {
-    dhbName: match.groups!.DhbName,
+    dhbName: match.groups!.DhbName as DhbName,
     firstDoses: convertToNumber(match.groups!.firstDoses),
     firstDosesPercentage:
       convertToNumber(match.groups!.firstDosesPercentage) / 100,

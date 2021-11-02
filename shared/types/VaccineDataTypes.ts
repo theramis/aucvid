@@ -1,5 +1,5 @@
 export type DhbVaccineDoseData = {
-  dhbName: string;
+  dhbName: DhbName;
   firstDoses: number;
   firstDosesPercentage: number;
   firstDosesTo90Percent: number;
@@ -15,3 +15,31 @@ export type VaccineData = {
   vaccinationsPerDhb: DhbVaccineDoseData[];
   dataValidAsAtNzTimeIso: NzTimeIso;
 };
+
+type NorthIslandDhbKeys =
+  | "Northland"
+  | "Waitemata"
+  | "Auckland"
+  | "Counties Manukau"
+  | "Waikato"
+  | "Lakes"
+  | "Bay of Plenty"
+  | "Tairawhiti"
+  | "Taranaki"
+  | "Hawkes Bay"
+  | "MidCentral"
+  | "Whanganui"
+  | "Capital and Coast"
+  | "Hutt Valley"
+  | "Wairarapa";
+
+type SouthIslandDhbKeys =
+  | "Nelson Marlborough"
+  | "West Coast"
+  | "Canterbury"
+  | "South Canterbury"
+  | "Southern";
+
+type OverseasUnknown = "Overseas / Unknown";
+
+export type DhbName = NorthIslandDhbKeys | SouthIslandDhbKeys | OverseasUnknown;
