@@ -22,6 +22,7 @@
 }
 
 $justify-content-map: (
+  "inherit": "inherit",
   "start": "flex-start",
   "end": "flex-end",
   "center": "center",
@@ -37,6 +38,7 @@ $justify-content-map: (
 }
 
 $align-items-map: (
+  "inherit": "inherit",
   "start": "flex-start",
   "end": "flex-end",
   "center": "center",
