@@ -1,11 +1,8 @@
 import cx from "classnames";
 import { CheckIcon } from "@heroicons/react/solid";
-
-import { DhbPopulationDoseData } from "../../types/VaccineDataTypes";
-
 import numberFormatter from "../../utilities/numberFormatter";
-
 import styles from "./DosesDescriptionList.module.scss";
+import { DhbVaccineDoseDataForIndexPage } from "../../types/IndexPageProps";
 
 type DosesDescriptionProps = {
   term: string;
@@ -14,7 +11,7 @@ type DosesDescriptionProps = {
   children?: React.ReactNode;
 };
 
-type DosesDescriptionListProps = { dhbData: DhbPopulationDoseData };
+type DosesDescriptionListProps = { dhbData: DhbVaccineDoseDataForIndexPage };
 
 export const DosesDescription = ({
   term,
@@ -58,7 +55,7 @@ export const DosesDescriptionList = ({
         ) : (
           <div className="data-text">
             <strong>
-              {numberFormatter.format(dhbData.numOfFirstDosesTo90Percent)}
+              {numberFormatter.format(dhbData.firstDosesTo90Percent)}
             </strong>{" "}
             left
           </div>
@@ -78,7 +75,7 @@ export const DosesDescriptionList = ({
         ) : (
           <div className="data-text">
             <strong>
-              {numberFormatter.format(dhbData.numOfSecondDosesTo90Percent)}
+              {numberFormatter.format(dhbData.secondDosesTo90Percent)}
             </strong>{" "}
             left
           </div>

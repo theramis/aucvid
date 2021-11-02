@@ -1,8 +1,8 @@
 import getVaccineData from "./vaccineDataService";
 import {
-  createDataForDate,
-  getDataForDate,
-  updateDataIfDifferentForDate,
+  createVaccineDataForDate,
+  getVaccineDataForDate,
+  updateVaccineDataIfDifferentForDate,
 } from "../shared/dataRepository";
 import got from "got";
 
@@ -10,13 +10,16 @@ const main = async () => {
   try {
     const vaccineData = await getVaccineData();
 
-    const existingData = await getDataForDate(
+    const existingData = await getVaccineDataForDate(
       vaccineData.dataValidAsAtNzTimeIso
     );
     if (existingData == null) {
-      await createDataForDate(vaccineData.dataValidAsAtNzTimeIso, vaccineData);
+      await createVaccineDataForDate(
+        vaccineData.dataValidAsAtNzTimeIso,
+        vaccineData
+      );
     } else {
-      await updateDataIfDifferentForDate(
+      await updateVaccineDataIfDifferentForDate(
         vaccineData.dataValidAsAtNzTimeIso,
         vaccineData
       );

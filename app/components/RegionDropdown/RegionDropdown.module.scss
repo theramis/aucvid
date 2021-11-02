@@ -7,13 +7,16 @@
   box-shadow: 0 0 0 2px var(--control-focus-ring);
 }
 
-$control-width: 260px; // Control width local variable for now
+$select-width: $space-full;
 
 .dropdown-container {
   position: relative;
   cursor: pointer;
-  width: $control-width;
+  width: $select-width;
   color: var(--text-positive);
+  @media (min-width: $breakpoint-s) {
+    width: 260px;
+  }
 
   // Animation is currently off — I don't know if this is what we want anyways because the dropdown could be closed but still in focus?
   // &:focus-within {
@@ -31,7 +34,7 @@ $control-width: 260px; // Control width local variable for now
   outline: 0;
   width: $space-full;
   padding: $space-m $space-l;
-  border-radius: $radius;
+  border-radius: $radius-large;
   cursor: pointer;
   transition: 0.2s ease-in-out;
 
@@ -48,12 +51,13 @@ $control-width: 260px; // Control width local variable for now
 
 .dropdown-caret {
   position: absolute;
-  right: $space-xl;
+  right: $space-l;
   top: $space-half;
   transform: translateY(-$space-half);
-  z-index: -1;
   fill: var(--control-icon);
-  width: $space-l;
+  width: $space-m;
+  height: $space-m;
+  pointer-events: none;
 
   svg {
     transition: 0.2s ease-in-out;
