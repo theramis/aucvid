@@ -6,7 +6,7 @@ import dhbDisplayName from "../../utilities/dhbDisplayName";
 import { DosesDescriptionList } from "../DosesDescriptionList";
 import { Progress } from "../Progress";
 
-import styles from "./DosesDataList.module.scss";
+import styles from "./DhbsVaccineDoseDataList.module.scss";
 
 type DhbsVaccineDoseDataListProps = {
   dhbsVaccineDoseData: DhbVaccineDoseDataForIndexPage[];
