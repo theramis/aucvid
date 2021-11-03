@@ -23,7 +23,7 @@ const NotFound = () => {
           <div className="flex flex-column align-items-center margin-y-5xl">
             <h1 className="heading-1">404</h1>
             <h2 className="heading-2 margin-bottom-l">
-              This page could not be found.
+              This page could not be found
             </h2>
             <InternalLink className="paragraph" href="/">
               Back to homepage
