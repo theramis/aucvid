@@ -1,12 +1,12 @@
 @import "../../styles/spacing.scss";
 
-.grid {
+.card-grid {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
   gap: $space-l;
 }
 
-.item {
+.card {
   background: var(--background-tint);
   border-radius: $radius-large;
 
@@ -18,5 +18,17 @@
 
   @media (min-width: $breakpoint-l) {
     grid-column: span 4 / span 4;
+  }
+}
+
+.card-title {
+  color: var(--text-primary);
+
+  font-size: 1.125rem; // 18px
+  line-height: 1.5rem; // 24px
+  font-weight: 500;
+  @media (min-width: $breakpoint-s) {
+    font-size: 1.25rem; // 20px
+    line-height: 1.625rem; // 26px
   }
 }

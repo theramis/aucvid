@@ -4,7 +4,6 @@
   font-size: 3.25rem;
   line-height: 4rem;
   font-weight: 700;
-
   @media (min-width: $breakpoint-s) {
     font-size: 3.75rem;
     line-height: 4.5rem;
@@ -27,11 +26,6 @@
     font-size: 1.5rem;
     line-height: 2rem;
   }
-}
-@mixin h4 {
-  font-size: 0.875rem;
-  line-height: 1.25rem;
-  font-weight: 500;
 }
 
 @mixin control {
@@ -59,15 +53,6 @@
 .heading-3 {
   @include h3;
   color: var(--text-primary);
-}
-
-.data-text {
-  @include h4;
-  color: var(--text-secondary);
-}
-
-.data-text-complete {
-  color: var(--text-positive);
 }
 
 .footnote {

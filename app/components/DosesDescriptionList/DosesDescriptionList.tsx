@@ -1,8 +1,9 @@
 import cx from "classnames";
 import { CheckIcon } from "@heroicons/react/solid";
 import numberFormatter from "../../utilities/numberFormatter";
-import styles from "./DosesDescriptionList.module.scss";
 import { DhbVaccineDoseDataForIndexPage } from "../../types/IndexPageProps";
+
+import styles from "./DosesDescriptionList.module.scss";
 
 type DosesDescriptionProps = {
   term: string;
@@ -19,20 +20,21 @@ export const DosesDescription = ({
   dosesPercent,
   children = null,
 }: DosesDescriptionProps) => (
-  <div className={styles["description-definition"]}>
-    <dt className={cx(styles["term"], "space-x-xs")}>
+  <div className="width-half">
+    <dt className={cx(styles["dose-label"], "margin-bottom-2xs")}>{term}</dt>
+    <dd className="flex flex-row justify-content-start align-items-center space-x-xs">
       <div
-        className={cx("data-text", { ["data-text-complete"]: hasMetTarget })}
+        className={cx(styles["percentage-value"], {
+          [styles["percentage-value-complete"]]: hasMetTarget,
+        })}
       >
-        {term}
+        {dosesPercent * 100}%
       </div>
-    </dt>
-    <dd
-      className={cx(styles["definition-primary"], "data-text", {
-        ["data-text-complete"]: hasMetTarget,
-      })}
-    >
-      {dosesPercent * 100}%
+      {hasMetTarget && (
+        <div className={cx(styles["check"], "flex-0")}>
+          <CheckIcon aria-label={`${term} target met`} />
+        </div>
+      )}
     </dd>
     {children}
   </div>
@@ -41,25 +43,14 @@ export const DosesDescription = ({
 export const DosesDescriptionList = ({
   dhbData,
 }: DosesDescriptionListProps) => (
-  <dl>
+  <dl className="flex flex-row">
     <DosesDescription
       term="First doses"
       hasMetTarget={dhbData.hasMetFirstDoseTarget}
       dosesPercent={dhbData.firstDosesPercentage}
     >
-      <dd className="flex-1 flex flex-row justify-content-end">
-        {dhbData.hasMetFirstDoseTarget ? (
-          <div className={styles["check"]}>
-            <CheckIcon aria-label="First doses target met" />
-          </div>
-        ) : (
-          <div className="data-text">
-            <strong>
-              {numberFormatter.format(dhbData.firstDosesTo90Percent)}
-            </strong>{" "}
-            left
-          </div>
-        )}
+      <dd className={styles["vaccine-count"]}>
+        {numberFormatter.format(dhbData.firstDosesTo90Percent)} left
       </dd>
     </DosesDescription>
     <DosesDescription
@@ -67,19 +58,8 @@ export const DosesDescriptionList = ({
       hasMetTarget={dhbData.hasMetSecondDoseTarget}
       dosesPercent={dhbData.secondDosesPercentage}
     >
-      <dd className="flex-1 flex flex-row justify-content-end">
-        {dhbData.hasMetSecondDoseTarget ? (
-          <div className={styles["check"]}>
-            <CheckIcon aria-label="Second doses target met" />
-          </div>
-        ) : (
-          <div className="data-text">
-            <strong>
-              {numberFormatter.format(dhbData.secondDosesTo90Percent)}
-            </strong>{" "}
-            left
-          </div>
-        )}
+      <dd className={styles["vaccine-count"]}>
+        {numberFormatter.format(dhbData.secondDosesTo90Percent)} left
       </dd>
     </DosesDescription>
   </dl>
