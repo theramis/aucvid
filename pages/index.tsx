@@ -1,15 +1,14 @@
 import { useState } from "react";
 import { GetStaticProps } from "next";
-import { Progress } from "../app/components/Progress";
+
 import { ExternalLink } from "../app/components/Link";
-import { DosesDescriptionList } from "../app/components/DosesDescriptionList";
 import { DarkModeToggle } from "../app/components/DarkModeToggle";
 import { useHasMounted } from "../app/hooks/useIsMounted";
 import { Page, PageContainer } from "../app/components/Page";
 import { RegionDropdown } from "../app/components/RegionDropdown";
-import dhbDisplayName from "../app/utilities/dhbDisplayName";
 import { DhbRegionId, IndexPageProps } from "../app/types/IndexPageProps";
 import fetchIndexPageProps from "../app/propsGenerators/indexPagePropsGenerator";
+import { DhbsVaccineDoseDataList } from "../app/components/DhbsVaccineDoseDataList";
 
 const Index: React.FC<IndexPageProps> = (props: IndexPageProps) => {
   const { allDhbsVaccineDoseData } = props;
@@ -36,40 +35,24 @@ const Index: React.FC<IndexPageProps> = (props: IndexPageProps) => {
         </section>
         <section>
           <PageContainer>
-            <div className="doses-data-grid" key={region}>
-              {allDhbsVaccineDoseData
-                .filter((dhb) => dhb.regionIds.includes(region))
-                .map((dhb) => (
-                  <div
-                    key={dhb.dhbName}
-                    className="doses-data-grid-item padding-l"
-                  >
-                    <h2 className="heading-3 margin-bottom-s">
-                      {dhbDisplayName(dhb.dhbName)}
-                    </h2>
-                    <div className="margin-bottom-xs">
-                      <DosesDescriptionList dhbData={dhb} />
-                    </div>
-                    <Progress
-                      size="xsmall"
-                      firstDose={dhb.firstDosesPercentage}
-                      secondDose={dhb.secondDosesPercentage}
-                    />
-                  </div>
-                ))}
-            </div>
+            <DhbsVaccineDoseDataList
+              key={region}
+              dhbsVaccineDoseData={allDhbsVaccineDoseData.filter((dhb) =>
+                dhb.regionIds.includes(region)
+              )}
+            />
           </PageContainer>
         </section>
       </div>
       <footer className="padding-bottom-l padding-top-4xl">
-        <div className="page-container flex align-items-center">
+        <PageContainer className="flex align-items-center">
           <p className="footnote">
             Data source:{" "}
             <ExternalLink href="https://www.health.govt.nz/our-work/diseases-and-conditions/covid-19-novel-coronavirus/covid-19-data-and-statistics/covid-19-vaccine-data">
               Ministry of Health NZ
             </ExternalLink>
           </p>
-          <div className="flex flex-row items-center justify-center footnote margin-top-2xs space-x-2xs">
+          <div className="flex flex-row align-items-center justify-content-center footnote margin-top-2xs space-x-2xs">
             <div>&#128075;</div>
             <p>
               Made <span hidden>with love</span> by{" "}
@@ -90,7 +73,7 @@ const Index: React.FC<IndexPageProps> = (props: IndexPageProps) => {
               </ExternalLink>
             </p>
           </div>
-        </div>
+        </PageContainer>
       </footer>
     </Page>
   );
