@@ -34,45 +34,6 @@
   font-weight: 500;
 }
 
-@mixin card-title {
-  font-size: 1.125rem; // 18px
-  line-height: 1.5rem; // 24px
-  font-weight: 500;
-  @media (min-width: $breakpoint-s) {
-    font-size: 1.25rem; // 20px
-    line-height: 1.625rem; // 26px
-  }
-}
-@mixin dose-label {
-  font-size: 0.625rem; // 10px
-  line-height: 0.875rem; // 14px
-  font-weight: 400;
-  text-transform: uppercase;
-  letter-spacing: 0.05rem;
-  @media (min-width: $breakpoint-s) {
-    font-size: 0.75rem; // 12px
-    line-height: 1rem; // 16px
-  }
-}
-@mixin percentage-label {
-  font-size: 1.125rem; // 18px
-  line-height: 1.5rem; // 24px
-  font-weight: 500;
-  @media (min-width: $breakpoint-s) {
-    font-size: 1.25rem; // 20px
-    line-height: 1.75rem; // 28px
-  }
-}
-@mixin vaccine-count {
-  font-size: 0.75rem; // 12px
-  line-height: 1rem; // 16px
-  font-weight: 400;
-  @media (min-width: $breakpoint-s) {
-    font-size: 0.875rem; // 14px
-    line-height: 1.125rem; // 18px
-  }
-}
-
 @mixin control {
   font-size: 1.25rem;
   line-height: 1.5rem;
@@ -101,6 +62,7 @@
 }
 
 .data-text {
+  @include h4;
   color: var(--text-secondary);
 }
 
