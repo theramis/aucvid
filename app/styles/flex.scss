@@ -1,25 +1,4 @@
-.flex {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-}
-
-.flex-row {
-  flex-direction: row;
-}
-
-.flex-column {
-  flex-direction: column;
-}
-
-.flex-0 {
-  flex: 0 0 auto;
-}
-
-.flex-1 {
-  flex: 1 1 0%;
-}
+@import "vars";
 
 $justify-content-map: (
   "inherit": "inherit",
@@ -31,12 +10,6 @@ $justify-content-map: (
   "evenly": "space-evenly",
 );
 
-@each $name, $property in $justify-content-map {
-  .justify-content-#{$name} {
-    justify-content: #{$property};
-  }
-}
-
 $align-items-map: (
   "inherit": "inherit",
   "start": "flex-start",
@@ -46,8 +19,53 @@ $align-items-map: (
   "stretch": "stretch",
 );
 
-@each $name, $property in $align-items-map {
-  .align-items-#{$name} {
-    align-items: #{$property};
+@each $prefix, $breakpoint in $breakpoint-map {
+  .#{$prefix}flex {
+    @include mediaMinWidth($breakpoint) {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+    }
+  }
+
+  .#{$prefix}flex-row {
+    @include mediaMinWidth($breakpoint) {
+      flex-direction: row;
+    }
+  }
+
+  .#{$prefix}flex-column {
+    @include mediaMinWidth($breakpoint) {
+      flex-direction: column;
+    }
+  }
+
+  .#{$prefix}flex-1 {
+    @include mediaMinWidth($breakpoint) {
+      flex: 1 1 0%;
+    }
+  }
+
+  .#{$prefix}flex-0 {
+    @include mediaMinWidth($breakpoint) {
+      flex: 0 0 auto;
+    }
+  }
+
+  @each $name, $property in $justify-content-map {
+    .#{$prefix}justify-content-#{$name} {
+      @include mediaMinWidth($breakpoint) {
+        justify-content: #{$property};
+      }
+    }
+  }
+
+  @each $name, $property in $align-items-map {
+    .#{$prefix}align-items-#{$name} {
+      @include mediaMinWidth($breakpoint) {
+        align-items: #{$property};
+      }
+    }
   }
 }
