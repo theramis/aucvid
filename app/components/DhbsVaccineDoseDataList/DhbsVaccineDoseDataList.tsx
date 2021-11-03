@@ -15,16 +15,16 @@ type DhbsVaccineDoseDataListProps = {
 export const DhbsVaccineDoseDataList = ({
   dhbsVaccineDoseData,
 }: DhbsVaccineDoseDataListProps) => (
-  <div className={styles["grid"]}>
+  <div className={styles["card-grid"]}>
     {dhbsVaccineDoseData.map((dhbVaccineDoseData) => (
       <div
         key={dhbVaccineDoseData.dhbName}
-        className={cx(styles["item"], "padding-l")}
+        className={cx(styles["card"], "padding-l")}
       >
-        <h2 className="heading-3 margin-bottom-s">
+        <h2 className={cx(styles["card-title"], "margin-bottom-s")}>
           {dhbDisplayName(dhbVaccineDoseData.dhbName)}
         </h2>
-        <div className="margin-bottom-xs">
+        <div className="margin-bottom-l">
           <DosesDescriptionList dhbData={dhbVaccineDoseData} />
         </div>
         <Progress
