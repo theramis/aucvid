@@ -20,7 +20,7 @@ const DosesDescription = ({
   hasMetTarget,
   dosesPercent,
   children = null,
-}: DosesDescriptionProps) => (
+}: Omit<DosesDescriptionProps, "dosesChange">) => (
   <div className="width-half">
     <dt className={cx(styles["dose-label"], "margin-bottom-2xs")}>{term}</dt>
     <dd className="flex flex-row justify-content-start align-items-center space-x-xs">
@@ -49,7 +49,6 @@ export const DosesDescriptionList = ({
       term="First doses"
       hasMetTarget={dhbData.hasMetFirstDoseTarget}
       dosesPercent={dhbData.firstDosesPercentage}
-      dosesChange={dhbData.firstDosesChange}
     >
       <dd className={styles["vaccine-count"]}>
         {numberFormatter.format(dhbData.firstDosesTo90Percent)} left{" "}
@@ -60,7 +59,6 @@ export const DosesDescriptionList = ({
       term="Second doses"
       hasMetTarget={dhbData.hasMetSecondDoseTarget}
       dosesPercent={dhbData.secondDosesPercentage}
-      dosesChange={dhbData.secondDosesChange}
     >
       <dd className={styles["vaccine-count"]}>
         {numberFormatter.format(dhbData.secondDosesTo90Percent)} left{" "}
