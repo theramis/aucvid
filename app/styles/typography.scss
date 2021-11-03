@@ -34,7 +34,7 @@
   font-weight: 500;
 }
 
-@mixin footnote {
+@mixin p {
   font-size: 0.875rem;
   line-height: 1.25rem;
   font-weight: 400;
@@ -55,7 +55,12 @@
   color: var(--text-primary);
 }
 
+.paragraph {
+  @include p;
+  color: var(--text-secondary);
+}
+
 .footnote {
-  @include footnote;
+  @include p;
   color: var(--text-secondary);
 }
