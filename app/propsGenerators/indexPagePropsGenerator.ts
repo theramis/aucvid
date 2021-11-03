@@ -1,10 +1,9 @@
 import { DateTime } from "luxon";
-import { getLatestVaccineData } from "../../shared/dataRepository";
+import { getVaccineData } from "../../shared/dataRepository";
 import {
   DhbVaccineDoseData,
   DhbName,
 } from "../../shared/types/VaccineDataTypes";
-import { CONSTANTS } from "../constants";
 import {
   DhbRegionId,
   DhbVaccineDoseDataForIndexPage,
@@ -12,20 +11,23 @@ import {
 } from "../types/IndexPageProps";
 
 export default async function fetchIndexPageProps(): Promise<IndexPageProps> {
-  const data = await getLatestVaccineData();
+  const latestData = await getVaccineData("latest");
+  const yesterdayData = await getVaccineData("yesterday");
 
   return {
     allDhbsVaccineDoseData: generateAllDhbsVaccineDoseData(
-      data.vaccinationsPerDhb
+      latestData.vaccinationsPerDhb,
+      yesterdayData.vaccinationsPerDhb
     ),
-    dataValidAsAtTimeUtc: DateTime.fromISO(data.dataValidAsAtNzTimeIso)
+    dataValidAsAtTimeUtc: DateTime.fromISO(latestData.dataValidAsAtNzTimeIso)
       .toUTC()
       .toISO(),
   };
 }
 
 function generateAllDhbsVaccineDoseData(
-  dhbVaccineData: DhbVaccineDoseData[]
+  latestVaccineData: DhbVaccineDoseData[],
+  yesterdayVaccineData: DhbVaccineDoseData[]
 ): DhbVaccineDoseDataForIndexPage[] {
   const aucklandDhbNames: DhbName[] = [
     "Waitemata",
@@ -54,7 +56,7 @@ function generateAllDhbsVaccineDoseData(
     "Southern",
   ];
 
-  return dhbVaccineData.map((dhb) => {
+  return latestVaccineData.map((dhb) => {
     const regions: DhbRegionId[] = [];
     if (aucklandDhbNames.includes(dhb.dhbName)) {
       regions.push("auckland");
@@ -65,11 +67,22 @@ function generateAllDhbsVaccineDoseData(
     if (southIslandDhbNames.includes(dhb.dhbName)) {
       regions.push("southIsland");
     }
+
+    const yesterdayDoseData = yesterdayVaccineData.find(
+      (yesterdayDhb) => yesterdayDhb.dhbName === dhb.dhbName
+    );
+
     return {
       ...dhb,
       regionIds: regions,
       hasMetFirstDoseTarget: dhb.firstDosesTo90Percent === 0,
       hasMetSecondDoseTarget: dhb.secondDosesTo90Percent === 0,
+      firstDosesChange: yesterdayDoseData
+        ? dhb.firstDosesTo90Percent - yesterdayDoseData?.firstDosesTo90Percent
+        : 0,
+      secondDosesChange: yesterdayDoseData
+        ? dhb.secondDosesTo90Percent - yesterdayDoseData?.secondDosesTo90Percent
+        : 0,
     };
   });
 }

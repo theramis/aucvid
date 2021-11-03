@@ -9,12 +9,13 @@ type DosesDescriptionProps = {
   term: string;
   hasMetTarget: boolean;
   dosesPercent: number;
+  dosesChange: number;
   children?: React.ReactNode;
 };
 
 type DosesDescriptionListProps = { dhbData: DhbVaccineDoseDataForIndexPage };
 
-export const DosesDescription = ({
+const DosesDescription = ({
   term,
   hasMetTarget,
   dosesPercent,
@@ -48,18 +49,22 @@ export const DosesDescriptionList = ({
       term="First doses"
       hasMetTarget={dhbData.hasMetFirstDoseTarget}
       dosesPercent={dhbData.firstDosesPercentage}
+      dosesChange={dhbData.firstDosesChange}
     >
       <dd className={styles["vaccine-count"]}>
-        {numberFormatter.format(dhbData.firstDosesTo90Percent)} left
+        {numberFormatter.format(dhbData.firstDosesTo90Percent)} left{" "}
+        {!dhbData.hasMetFirstDoseTarget && `(${dhbData.firstDosesChange})`}
       </dd>
     </DosesDescription>
     <DosesDescription
       term="Second doses"
       hasMetTarget={dhbData.hasMetSecondDoseTarget}
       dosesPercent={dhbData.secondDosesPercentage}
+      dosesChange={dhbData.secondDosesChange}
     >
       <dd className={styles["vaccine-count"]}>
-        {numberFormatter.format(dhbData.secondDosesTo90Percent)} left
+        {numberFormatter.format(dhbData.secondDosesTo90Percent)} left{" "}
+        {!dhbData.hasMetSecondDoseTarget && `(${dhbData.secondDosesChange})`}
       </dd>
     </DosesDescription>
   </dl>
