@@ -49,7 +49,7 @@ export const DosesDescriptionList = ({
       hasMetTarget={dhbData.hasMetFirstDoseTarget}
       dosesPercent={dhbData.firstDosesPercentage}
     >
-      <dd className={cx(styles["vaccine-count"], "margin-top-px")}>
+      <dd className={styles["vaccine-count"]}>
         {numberFormatter.format(dhbData.firstDosesTo90Percent)} left
       </dd>
     </DosesDescription>
@@ -58,7 +58,7 @@ export const DosesDescriptionList = ({
       hasMetTarget={dhbData.hasMetSecondDoseTarget}
       dosesPercent={dhbData.secondDosesPercentage}
     >
-      <dd className={cx(styles["vaccine-count"], "margin-top-px")}>
+      <dd className={styles["vaccine-count"]}>
         {numberFormatter.format(dhbData.secondDosesTo90Percent)} left
       </dd>
     </DosesDescription>
