@@ -26,11 +26,18 @@ export const getVaccineDataForDate = async (
   return null;
 };
 
-export const updateVaccineDataForDate = async (
+export const updateVaccineDataIfDifferentForDate = async (
   time: NzTimeIso,
   data: VaccineData
 ) => {
-  await createVaccineDataForDate(time, data);
+  const existingData = await getVaccineDataForDate(time);
+  if (existingData == null) {
+    return;
+  }
+
+  if (areObjectsDifferent(existingData, data)) {
+    await createVaccineDataForDate(time, data);
+  }
 };
 
 const areObjectsDifferent = (a: object, b: object) =>
