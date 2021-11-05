@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       # set this secret, you can get the value from this discord message https://discord.com/channels/658523382442360866/903771050385502239/904216952141152328
-      DISCORD_WEBHOOK: $ {{ secrets.DISCORD_WEBHOOK }}
+      DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v2.3.5
