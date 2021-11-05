@@ -13,7 +13,7 @@ export const Progress = ({
   firstDose,
   secondDose,
   size = "small",
-  goal = 0.9,
+  goal = 90,
 }: ProgressProps) => {
   return (
     <div
@@ -25,20 +25,17 @@ export const Progress = ({
     >
       <div
         className={styles["progress-bar"]}
-        style={{ width: `${firstDose * 100}%` }}
+        style={{ width: `${firstDose}%` }}
       >
         <div className={cx(styles["progress-first"], "animate-grow-width")} />
       </div>
       <div
         className={styles["progress-bar"]}
-        style={{ width: `${secondDose * 100}%` }}
+        style={{ width: `${secondDose}%` }}
       >
         <div className={cx(styles["progress-second"], "animate-grow-width")} />
       </div>
-      <div
-        className={styles["goal-line"]}
-        style={{ left: `${goal * 100}%` }}
-      ></div>
+      <div className={styles["goal-line"]} style={{ left: `${goal}%` }}></div>
     </div>
   );
 };

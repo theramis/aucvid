@@ -1,4 +1,4 @@
-import { NzTimeIso, VaccineData } from "./types/VaccineDataTypes";
+import { NzTimeIso, DataPeriod, VaccineData } from "./types/VaccineDataTypes";
 import { promises as fs, existsSync as fileExists } from "fs";
 import { DateTime } from "luxon";
 import { CONSTANTS } from "./constants";
@@ -8,9 +8,11 @@ export const createOrUpdateVaccineDataForDate = async (
   data: VaccineData
 ) => await fs.writeFile(generateFilePath(time), JSON.stringify(data, null, 2));
 
-export const getLatestVaccineData = async (): Promise<VaccineData> => {
-  const latestDataFile = await getLatestVaccineDataFilePath();
-  const data = await fs.readFile(latestDataFile, "utf8");
+export const getVaccineData = async (
+  period: DataPeriod
+): Promise<VaccineData> => {
+  const dataFile = await getVaccineDataFilePath(period);
+  const data = await fs.readFile(dataFile, "utf8");
   return JSON.parse(data);
 };
 
@@ -30,8 +32,10 @@ const generateFilePath = (time: NzTimeIso) => {
   return `${CONSTANTS.dataFolder}/${date}.txt`;
 };
 
-const getLatestVaccineDataFilePath = async () => {
+const getVaccineDataFilePath = async (period: DataPeriod) => {
   const files = await fs.readdir(CONSTANTS.dataFolder);
-  const latestDataFile = files.sort()[files.length - 1];
-  return `${CONSTANTS.dataFolder}/${latestDataFile}`;
+  const [latestPath, yesterdayPath] = files.sort().reverse();
+  const filePath = period === "latest" ? latestPath : yesterdayPath;
+
+  return `${CONSTANTS.dataFolder}/${filePath}`;
 };

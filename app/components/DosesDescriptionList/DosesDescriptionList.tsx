@@ -1,6 +1,7 @@
 import cx from "classnames";
 import { CheckIcon } from "@heroicons/react/solid";
 import numberFormatter from "../../utilities/numberFormatter";
+import truncateNumber from "../../utilities/truncateNumber";
 import { DhbVaccineDoseDataForIndexPage } from "../../types/IndexPageProps";
 
 import styles from "./DosesDescriptionList.module.scss";
@@ -9,17 +10,18 @@ type DosesDescriptionProps = {
   term: string;
   hasMetTarget: boolean;
   dosesPercent: number;
+  dosesChange: number;
   children?: React.ReactNode;
 };
 
 type DosesDescriptionListProps = { dhbData: DhbVaccineDoseDataForIndexPage };
 
-export const DosesDescription = ({
+const DosesDescription = ({
   term,
   hasMetTarget,
   dosesPercent,
   children = null,
-}: DosesDescriptionProps) => (
+}: Omit<DosesDescriptionProps, "dosesChange">) => (
   <div className="width-half">
     <dt className={cx(styles["dose-label"], "margin-bottom-2xs")}>{term}</dt>
     <dd className="flex flex-row justify-content-start align-items-center space-x-xs">
@@ -28,7 +30,7 @@ export const DosesDescription = ({
           [styles["percentage-value-complete"]]: hasMetTarget,
         })}
       >
-        {dosesPercent * 100}%
+        {truncateNumber(dosesPercent, 1)}%
       </div>
       {hasMetTarget && (
         <div className={cx(styles["check"], "flex-0")}>

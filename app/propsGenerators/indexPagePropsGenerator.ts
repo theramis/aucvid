@@ -1,5 +1,5 @@
 import { DateTime } from "luxon";
-import { getLatestVaccineData } from "../../shared/dataRepository";
+import { getVaccineData } from "../../shared/dataRepository";
 import {
   DhbVaccineDoseData,
   DhbName,
@@ -11,21 +11,31 @@ import {
   IndexPageProps,
 } from "../types/IndexPageProps";
 
+function calculateDosePercentage(
+  dosesCount: number,
+  totalPopulation: number
+): number {
+  return parseFloat(((dosesCount / totalPopulation) * 100).toFixed(6));
+}
+
 export default async function fetchIndexPageProps(): Promise<IndexPageProps> {
-  const data = await getLatestVaccineData();
+  const latestData = await getVaccineData("latest");
+  const yesterdayData = await getVaccineData("yesterday");
 
   return {
     allDhbsVaccineDoseData: generateAllDhbsVaccineDoseData(
-      data.vaccinationsPerDhb
+      latestData.vaccinationsPerDhb,
+      yesterdayData.vaccinationsPerDhb
     ),
-    dataValidAsAtTimeUtc: DateTime.fromISO(data.dataValidAsAtNzTimeIso)
+    dataValidAsAtTimeUtc: DateTime.fromISO(latestData.dataValidAsAtNzTimeIso)
       .toUTC()
       .toISO(),
   };
 }
 
 function generateAllDhbsVaccineDoseData(
-  dhbVaccineData: DhbVaccineDoseData[]
+  latestVaccineData: DhbVaccineDoseData[],
+  yesterdayVaccineData: DhbVaccineDoseData[]
 ): DhbVaccineDoseDataForIndexPage[] {
   const aucklandDhbNames: DhbName[] = [
     "Waitemata",
@@ -54,7 +64,7 @@ function generateAllDhbsVaccineDoseData(
     "Southern",
   ];
 
-  return dhbVaccineData.map((dhb) => {
+  return latestVaccineData.map((dhb) => {
     const regions: DhbRegionId[] = [];
     if (aucklandDhbNames.includes(dhb.dhbName)) {
       regions.push("auckland");
@@ -65,11 +75,36 @@ function generateAllDhbsVaccineDoseData(
     if (southIslandDhbNames.includes(dhb.dhbName)) {
       regions.push("southIsland");
     }
+
+    const yesterdayDoseData = yesterdayVaccineData.find(
+      (yesterdayDhb) => yesterdayDhb.dhbName === dhb.dhbName
+    );
+
+    const firstDosesPercentage = calculateDosePercentage(
+      dhb.firstDoses,
+      dhb.totalPopulation
+    );
+
+    const secondDosesPercentage = calculateDosePercentage(
+      dhb.secondDoses,
+      dhb.totalPopulation
+    );
+
     return {
       ...dhb,
       regionIds: regions,
-      hasMetFirstDoseTarget: dhb.firstDosesTo90Percent === 0,
-      hasMetSecondDoseTarget: dhb.secondDosesTo90Percent === 0,
+      firstDosesPercentage,
+      secondDosesPercentage,
+      hasMetFirstDoseTarget:
+        firstDosesPercentage >= CONSTANTS.firstDoseTargetPercentage,
+      hasMetSecondDoseTarget:
+        secondDosesPercentage >= CONSTANTS.secondDoseTargetPercentage,
+      firstDosesChange: yesterdayDoseData
+        ? yesterdayDoseData?.firstDosesTo90Percent - dhb.firstDosesTo90Percent
+        : null,
+      secondDosesChange: yesterdayDoseData
+        ? yesterdayDoseData?.secondDosesTo90Percent - dhb.secondDosesTo90Percent
+        : null,
     };
   });
 }
