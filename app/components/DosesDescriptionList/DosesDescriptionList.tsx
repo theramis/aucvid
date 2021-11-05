@@ -1,6 +1,7 @@
 import cx from "classnames";
 import { CheckIcon } from "@heroicons/react/solid";
 import numberFormatter from "../../utilities/numberFormatter";
+import truncateNumber from "../../utilities/truncateNumber";
 import { DhbVaccineDoseDataForIndexPage } from "../../types/IndexPageProps";
 
 import styles from "./DosesDescriptionList.module.scss";
@@ -29,7 +30,7 @@ const DosesDescription = ({
           [styles["percentage-value-complete"]]: hasMetTarget,
         })}
       >
-        {dosesPercent * 100}%
+        {truncateNumber(dosesPercent, 1)}%
       </div>
       {hasMetTarget && (
         <div className={cx(styles["check"], "flex-0")}>
@@ -52,7 +53,6 @@ export const DosesDescriptionList = ({
     >
       <dd className={styles["vaccine-count"]}>
         {numberFormatter.format(dhbData.firstDosesTo90Percent)} left{" "}
-        {!dhbData.hasMetFirstDoseTarget && `(${dhbData.firstDosesChange})`}
       </dd>
     </DosesDescription>
     <DosesDescription
@@ -62,7 +62,6 @@ export const DosesDescriptionList = ({
     >
       <dd className={styles["vaccine-count"]}>
         {numberFormatter.format(dhbData.secondDosesTo90Percent)} left{" "}
-        {!dhbData.hasMetSecondDoseTarget && `(${dhbData.secondDosesChange})`}
       </dd>
     </DosesDescription>
   </dl>

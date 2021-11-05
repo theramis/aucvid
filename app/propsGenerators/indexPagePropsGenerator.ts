@@ -4,11 +4,19 @@ import {
   DhbVaccineDoseData,
   DhbName,
 } from "../../shared/types/VaccineDataTypes";
+import { CONSTANTS } from "../constants";
 import {
   DhbRegionId,
   DhbVaccineDoseDataForIndexPage,
   IndexPageProps,
 } from "../types/IndexPageProps";
+
+function calculateDosePercentage(
+  dosesCount: number,
+  totalPopulation: number
+): number {
+  return parseFloat(((dosesCount / totalPopulation) * 100).toFixed(6));
+}
 
 export default async function fetchIndexPageProps(): Promise<IndexPageProps> {
   const latestData = await getVaccineData("latest");
@@ -72,11 +80,25 @@ function generateAllDhbsVaccineDoseData(
       (yesterdayDhb) => yesterdayDhb.dhbName === dhb.dhbName
     );
 
+    const firstDosesPercentage = calculateDosePercentage(
+      dhb.firstDoses,
+      dhb.totalPopulation
+    );
+
+    const secondDosesPercentage = calculateDosePercentage(
+      dhb.secondDoses,
+      dhb.totalPopulation
+    );
+
     return {
       ...dhb,
       regionIds: regions,
-      hasMetFirstDoseTarget: dhb.firstDosesTo90Percent === 0,
-      hasMetSecondDoseTarget: dhb.secondDosesTo90Percent === 0,
+      firstDosesPercentage,
+      secondDosesPercentage,
+      hasMetFirstDoseTarget:
+        firstDosesPercentage >= CONSTANTS.firstDoseTargetPercentage,
+      hasMetSecondDoseTarget:
+        secondDosesPercentage >= CONSTANTS.secondDoseTargetPercentage,
       firstDosesChange: yesterdayDoseData
         ? dhb.firstDosesTo90Percent - yesterdayDoseData?.firstDosesTo90Percent
         : 0,
