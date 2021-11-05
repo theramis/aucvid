@@ -68,10 +68,8 @@ function generateAllDhbsVaccineDoseData(
     return {
       ...dhb,
       regionIds: regions,
-      hasMetFirstDoseTarget:
-        dhb.firstDosesPercentage >= CONSTANTS.firstDoseTargetPercentage,
-      hasMetSecondDoseTarget:
-        dhb.secondDosesPercentage >= CONSTANTS.secondDoseTargetPercentage,
+      hasMetFirstDoseTarget: dhb.firstDosesTo90Percent === 0,
+      hasMetSecondDoseTarget: dhb.secondDosesTo90Percent === 0,
     };
   });
 }
