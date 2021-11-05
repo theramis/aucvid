@@ -100,11 +100,11 @@ function generateAllDhbsVaccineDoseData(
       hasMetSecondDoseTarget:
         secondDosesPercentage >= CONSTANTS.secondDoseTargetPercentage,
       firstDosesChange: yesterdayDoseData
-        ? dhb.firstDosesTo90Percent - yesterdayDoseData?.firstDosesTo90Percent
-        : 0,
+        ? yesterdayDoseData?.firstDosesTo90Percent - dhb.firstDosesTo90Percent
+        : null,
       secondDosesChange: yesterdayDoseData
-        ? dhb.secondDosesTo90Percent - yesterdayDoseData?.secondDosesTo90Percent
-        : 0,
+        ? yesterdayDoseData?.secondDosesTo90Percent - dhb.secondDosesTo90Percent
+        : null,
     };
   });
 }

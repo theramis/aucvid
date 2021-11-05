@@ -32,11 +32,10 @@ const generateFilePath = (time: NzTimeIso) => {
   return `${CONSTANTS.dataFolder}/${date}.txt`;
 };
 
-const getVaccineDataFilePath = async (period: "latest" | "yesterday") => {
+const getVaccineDataFilePath = async (period: DataPeriod) => {
   const files = await fs.readdir(CONSTANTS.dataFolder);
-  const filePath =
-    period === "latest"
-      ? files.sort()[files.length - 1]
-      : files.sort()[files.length - 2];
+  const [latestPath, yesterdayPath] = files.sort().reverse();
+  const filePath = period === "latest" ? latestPath : yesterdayPath;
+
   return `${CONSTANTS.dataFolder}/${filePath}`;
 };
