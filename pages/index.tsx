@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { GetStaticProps } from "next";
+import { GetServerSideProps } from "next";
 
 import { ExternalLink } from "../app/components/Link";
 import { DarkModeToggle } from "../app/components/DarkModeToggle";
@@ -81,8 +81,9 @@ const Index: React.FC<IndexPageProps> = (props: IndexPageProps) => {
 
 export default Index;
 
-export const getStaticProps: GetStaticProps<IndexPageProps> = async () => {
-  return {
-    props: await fetchIndexPageProps(),
+export const getServerSideProps: GetServerSideProps<IndexPageProps> =
+  async () => {
+    return {
+      props: await fetchIndexPageProps(),
+    };
   };
-};
