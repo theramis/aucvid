@@ -33,7 +33,7 @@
     {
       "dhbName": "Counties Manukau",
       "firstDoses": 432521,
-      "firstDosesPercentage": 0.9,
+      "firstDosesPercentage": 0.8965,
       "firstDosesTo90Percent": 1975,
       "secondDoses": 380135,
       "secondDosesPercentage": 0.79,
