@@ -28,17 +28,15 @@ export const getAllVaccineData = async (
   maxItems: number = 999
 ): Promise<VaccineData[]> => {
   const files = await fs.readdir(CONSTANTS.vaccineDataFolder);
-
-  const vaccineData: VaccineData[] = [];
   const filesToParse = files.sort().reverse().slice(0, maxItems);
 
-  for (const f of filesToParse) {
+  const vaccineData = filesToParse.map(async (f) => {
     const filePath = `${CONSTANTS.vaccineDataFolder}/${f}`;
     const data = await fs.readFile(filePath, "utf8");
-    vaccineData.push(JSON.parse(data));
-  }
+    return JSON.parse(data);
+  });
 
-  return vaccineData;
+  return Promise.all(vaccineData);
 };
 
 export const storeRawVaccineSite = async (time: NzTimeIso, rawHtml: string) =>
