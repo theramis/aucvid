@@ -52,7 +52,7 @@ export const DosesDescriptionList = ({
       dosesPercent={dhbData.firstDosesPercentage}
     >
       <dd className={styles["vaccine-count"]}>
-        {numberFormatter.format(dhbData.firstDosesTo90Percent)} left{" "}
+        {numberFormatter.format(dhbData.firstDosesTo90Percent)} left
       </dd>
     </DosesDescription>
     <DosesDescription
@@ -61,7 +61,7 @@ export const DosesDescriptionList = ({
       dosesPercent={dhbData.secondDosesPercentage}
     >
       <dd className={styles["vaccine-count"]}>
-        {numberFormatter.format(dhbData.secondDosesTo90Percent)} left{" "}
+        {numberFormatter.format(dhbData.secondDosesTo90Percent)} left
       </dd>
     </DosesDescription>
   </dl>
