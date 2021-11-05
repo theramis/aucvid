@@ -10,7 +10,6 @@ export type DhbVaccineDoseData = {
 };
 
 export type NzTimeIso = string;
-export type DataPeriod = "latest" | "yesterday";
 
 export type VaccineData = {
   vaccinationsPerDhb: DhbVaccineDoseData[];

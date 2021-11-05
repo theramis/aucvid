@@ -1,5 +1,5 @@
 import { DateTime } from "luxon";
-import { getVaccineData } from "../../shared/dataRepository";
+import { getAllVaccineData } from "../../shared/vaccineDataStore";
 import {
   DhbVaccineDoseData,
   DhbName,
@@ -19,8 +19,7 @@ function calculateDosePercentage(
 }
 
 export default async function fetchIndexPageProps(): Promise<IndexPageProps> {
-  const latestData = await getVaccineData("latest");
-  const yesterdayData = await getVaccineData("yesterday");
+  const [latestData, yesterdayData] = await getAllVaccineData(2);
 
   return {
     allDhbsVaccineDoseData: generateAllDhbsVaccineDoseData(
