@@ -1,15 +1,13 @@
 import getVaccineData from "./vaccineDataService";
 import {
-  createVaccineDataForDate,
+  createOrUpdateVaccineDataForDate,
   getVaccineDataForDate,
-  updateVaccineDataForDate,
 } from "../shared/dataRepository";
 import got from "got";
 import { diff } from "deep-object-diff";
 
 const sendNotification = async (message: string) => {
-  // don't send notifications if running in a PR
-  if (process.env.GITHUB_EVENT_NAME === "pull_request") {
+  if (process.env.SEND_DISCORD_NOTIFICATIONS === "true") {
     return;
   }
 
@@ -39,14 +37,11 @@ const main = async () => {
       vaccineData.dataValidAsAtNzTimeIso
     );
 
-    if (existingData == null) {
-      await createVaccineDataForDate(
-        vaccineData.dataValidAsAtNzTimeIso,
-        vaccineData
-      );
-      await sendDataUpdatedNotification();
-    } else if (areObjectsDifferent(existingData, vaccineData)) {
-      await updateVaccineDataForDate(
+    if (
+      existingData == null ||
+      areObjectsDifferent(existingData, vaccineData)
+    ) {
+      await createOrUpdateVaccineDataForDate(
         vaccineData.dataValidAsAtNzTimeIso,
         vaccineData
       );
