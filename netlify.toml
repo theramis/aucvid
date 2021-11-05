@@ -3,7 +3,7 @@
   publish = "out"
 
 [functions]
-  included_files = ["data/*.txt"]
+  included_files = ["data/vaccineData/*.json"]
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
