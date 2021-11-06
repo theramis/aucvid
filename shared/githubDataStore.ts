@@ -19,3 +19,17 @@ export const getLastestFetchyRun = async () => {
 
   return latestRun;
 };
+
+export const triggerFetchy = async () => {
+  const octokit = new Octokit({ auth: process.env.GITHUB_PAT });
+  const response = await octokit.request(
+    "POST /repos/{owner}/{repo}/dispatches",
+    {
+      owner: "theramis",
+      repo: "aucvid",
+      event_type: "trigger-fetchy-boi",
+    }
+  );
+
+  return response;
+};
