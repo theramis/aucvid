@@ -1,12 +1,16 @@
 import { Octokit } from "@octokit/core";
 
+const githubOwner = "theramis";
+const githubRepo = "aucvid";
+
+const octokit = new Octokit({ auth: process.env.GITHUB_PAT });
+
 export const getLastestFetchyRun = async () => {
-  const octokit = new Octokit({ auth: process.env.GITHUB_PAT });
   const { data } = await octokit.request(
     "GET /repos/{owner}/{repo}/actions/workflows/{workflow_id}/runs",
     {
-      owner: "theramis",
-      repo: "aucvid",
+      owner: githubOwner,
+      repo: githubRepo,
       workflow_id: "fetchy.yml",
       branch: "main",
       status: "success",
@@ -21,12 +25,11 @@ export const getLastestFetchyRun = async () => {
 };
 
 export const triggerFetchy = async () => {
-  const octokit = new Octokit({ auth: process.env.GITHUB_PAT });
   const response = await octokit.request(
     "POST /repos/{owner}/{repo}/dispatches",
     {
-      owner: "theramis",
-      repo: "aucvid",
+      owner: githubOwner,
+      repo: githubRepo,
       event_type: "trigger-fetchy-boi",
     }
   );
