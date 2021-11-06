@@ -43,3 +43,13 @@ type SouthIslandDhbKeys =
 type OverseasUnknown = "Overseas / Unknown";
 
 export type DhbName = NorthIslandDhbKeys | SouthIslandDhbKeys | OverseasUnknown;
+
+type FileMetaData = {
+  createdAtTimeIso: NzTimeIso;
+  updatedAtTimeIso: NzTimeIso;
+};
+
+export type VaccineDataFile = {
+  meta: FileMetaData;
+  data: VaccineData;
+};

@@ -1,215 +1,217 @@
 {
-  "vaccinationsPerDhb": [
-    {
-      "dhbName": "Northland",
-      "firstDoses": 126991,
-      "firstDosesPercentage": 0.79,
-      "firstDosesTo90Percent": 18197,
-      "secondDoses": 102266,
-      "secondDosesPercentage": 0.63,
-      "secondDosesTo90Percent": 42922,
-      "totalPopulation": 161320
-    },
-    {
-      "dhbName": "Waitemata",
-      "firstDoses": 477971,
-      "firstDosesPercentage": 0.91,
-      "firstDosesTo90Percent": 0,
-      "secondDoses": 413561,
-      "secondDosesPercentage": 0.79,
-      "secondDosesTo90Percent": 59917,
-      "totalPopulation": 526087
-    },
-    {
-      "dhbName": "Auckland",
-      "firstDoses": 397001,
-      "firstDosesPercentage": 0.94,
-      "firstDosesTo90Percent": 0,
-      "secondDoses": 351361,
-      "secondDosesPercentage": 0.83,
-      "secondDosesTo90Percent": 30201,
-      "totalPopulation": 423958
-    },
-    {
-      "dhbName": "Counties Manukau",
-      "firstDoses": 426789,
-      "firstDosesPercentage": 0.88,
-      "firstDosesTo90Percent": 7707,
-      "secondDoses": 363479,
-      "secondDosesPercentage": 0.75,
-      "secondDosesTo90Percent": 71017,
-      "totalPopulation": 482773
-    },
-    {
-      "dhbName": "Waikato",
-      "firstDoses": 307533,
-      "firstDosesPercentage": 0.86,
-      "firstDosesTo90Percent": 13925,
-      "secondDoses": 251626,
-      "secondDosesPercentage": 0.7,
-      "secondDosesTo90Percent": 69832,
-      "totalPopulation": 357176
-    },
-    {
-      "dhbName": "Lakes",
-      "firstDoses": 75347,
-      "firstDosesPercentage": 0.8,
-      "firstDosesTo90Percent": 9630,
-      "secondDoses": 60243,
-      "secondDosesPercentage": 0.64,
-      "secondDosesTo90Percent": 24734,
-      "totalPopulation": 94419
-    },
-    {
-      "dhbName": "Bay of Plenty",
-      "firstDoses": 178935,
-      "firstDosesPercentage": 0.82,
-      "firstDosesTo90Percent": 16312,
-      "secondDoses": 141800,
-      "secondDosesPercentage": 0.65,
-      "secondDosesTo90Percent": 53447,
-      "totalPopulation": 216941
-    },
-    {
-      "dhbName": "Tairawhiti",
-      "firstDoses": 32492,
-      "firstDosesPercentage": 0.77,
-      "firstDosesTo90Percent": 5276,
-      "secondDoses": 26146,
-      "secondDosesPercentage": 0.62,
-      "secondDosesTo90Percent": 11622,
-      "totalPopulation": 41965
-    },
-    {
-      "dhbName": "Taranaki",
-      "firstDoses": 85347,
-      "firstDosesPercentage": 0.84,
-      "firstDosesTo90Percent": 6585,
-      "secondDoses": 65454,
-      "secondDosesPercentage": 0.64,
-      "secondDosesTo90Percent": 26478,
-      "totalPopulation": 102147
-    },
-    {
-      "dhbName": "Hawkes Bay",
-      "firstDoses": 121965,
-      "firstDosesPercentage": 0.84,
-      "firstDosesTo90Percent": 9049,
-      "secondDoses": 101011,
-      "secondDosesPercentage": 0.69,
-      "secondDosesTo90Percent": 30003,
-      "totalPopulation": 145571
-    },
-    {
-      "dhbName": "MidCentral",
-      "firstDoses": 130464,
-      "firstDosesPercentage": 0.86,
-      "firstDosesTo90Percent": 6608,
-      "secondDoses": 107890,
-      "secondDosesPercentage": 0.71,
-      "secondDosesTo90Percent": 29182,
-      "totalPopulation": 152302
-    },
-    {
-      "dhbName": "Whanganui",
-      "firstDoses": 45804,
-      "firstDosesPercentage": 0.8,
-      "firstDosesTo90Percent": 5718,
-      "secondDoses": 38369,
-      "secondDosesPercentage": 0.67,
-      "secondDosesTo90Percent": 13153,
-      "totalPopulation": 57247
-    },
-    {
-      "dhbName": "Capital and Coast",
-      "firstDoses": 248949,
-      "firstDosesPercentage": 0.92,
-      "firstDosesTo90Percent": 0,
-      "secondDoses": 213148,
-      "secondDosesPercentage": 0.79,
-      "secondDosesTo90Percent": 30909,
-      "totalPopulation": 271174
-    },
-    {
-      "dhbName": "Hutt Valley",
-      "firstDoses": 113951,
-      "firstDosesPercentage": 0.87,
-      "firstDosesTo90Percent": 3264,
-      "secondDoses": 94440,
-      "secondDosesPercentage": 0.73,
-      "secondDosesTo90Percent": 22775,
-      "totalPopulation": 130239
-    },
-    {
-      "dhbName": "Wairarapa",
-      "firstDoses": 35155,
-      "firstDosesPercentage": 0.85,
-      "firstDosesTo90Percent": 2129,
-      "secondDoses": 29380,
-      "secondDosesPercentage": 0.71,
-      "secondDosesTo90Percent": 7904,
-      "totalPopulation": 41427
-    },
-    {
-      "dhbName": "Nelson Marlborough",
-      "firstDoses": 116995,
-      "firstDosesPercentage": 0.86,
-      "firstDosesTo90Percent": 5174,
-      "secondDoses": 101527,
-      "secondDosesPercentage": 0.75,
-      "secondDosesTo90Percent": 20642,
-      "totalPopulation": 135743
-    },
-    {
-      "dhbName": "West Coast",
-      "firstDoses": 22411,
-      "firstDosesPercentage": 0.8,
-      "firstDosesTo90Percent": 2704,
-      "secondDoses": 18122,
-      "secondDosesPercentage": 0.65,
-      "secondDosesTo90Percent": 6993,
-      "totalPopulation": 27906
-    },
-    {
-      "dhbName": "Canterbury",
-      "firstDoses": 434574,
-      "firstDosesPercentage": 0.9,
-      "firstDosesTo90Percent": 27,
-      "secondDoses": 340807,
-      "secondDosesPercentage": 0.71,
-      "secondDosesTo90Percent": 93794,
-      "totalPopulation": 482890
-    },
-    {
-      "dhbName": "South Canterbury",
-      "firstDoses": 44901,
-      "firstDosesPercentage": 0.85,
-      "firstDosesTo90Percent": 2425,
-      "secondDoses": 38211,
-      "secondDosesPercentage": 0.73,
-      "secondDosesTo90Percent": 9115,
-      "totalPopulation": 52584
-    },
-    {
-      "dhbName": "Southern",
-      "firstDoses": 256602,
-      "firstDosesPercentage": 0.89,
-      "firstDosesTo90Percent": 2612,
-      "secondDoses": 219241,
-      "secondDosesPercentage": 0.76,
-      "secondDosesTo90Percent": 39972,
-      "totalPopulation": 288015
-    },
-    {
-      "dhbName": "Overseas / Unknown",
-      "firstDoses": 2036,
-      "firstDosesPercentage": 0.12,
-      "firstDosesTo90Percent": 13420,
-      "secondDoses": 1635,
-      "secondDosesPercentage": 0.1,
-      "secondDosesTo90Percent": 13821,
-      "totalPopulation": 17173
-    }
-  ],
-  "dataValidAsAtNzTimeIso": "2021-10-28T23:59:00.000+13:00"
+  "data": {
+    "vaccinationsPerDhb": [
+      {
+        "dhbName": "Northland",
+        "firstDoses": 126991,
+        "firstDosesPercentage": 0.79,
+        "firstDosesTo90Percent": 18197,
+        "secondDoses": 102266,
+        "secondDosesPercentage": 0.63,
+        "secondDosesTo90Percent": 42922,
+        "totalPopulation": 161320
+      },
+      {
+        "dhbName": "Waitemata",
+        "firstDoses": 477971,
+        "firstDosesPercentage": 0.91,
+        "firstDosesTo90Percent": 0,
+        "secondDoses": 413561,
+        "secondDosesPercentage": 0.79,
+        "secondDosesTo90Percent": 59917,
+        "totalPopulation": 526087
+      },
+      {
+        "dhbName": "Auckland",
+        "firstDoses": 397001,
+        "firstDosesPercentage": 0.94,
+        "firstDosesTo90Percent": 0,
+        "secondDoses": 351361,
+        "secondDosesPercentage": 0.83,
+        "secondDosesTo90Percent": 30201,
+        "totalPopulation": 423958
+      },
+      {
+        "dhbName": "Counties Manukau",
+        "firstDoses": 426789,
+        "firstDosesPercentage": 0.88,
+        "firstDosesTo90Percent": 7707,
+        "secondDoses": 363479,
+        "secondDosesPercentage": 0.75,
+        "secondDosesTo90Percent": 71017,
+        "totalPopulation": 482773
+      },
+      {
+        "dhbName": "Waikato",
+        "firstDoses": 307533,
+        "firstDosesPercentage": 0.86,
+        "firstDosesTo90Percent": 13925,
+        "secondDoses": 251626,
+        "secondDosesPercentage": 0.7,
+        "secondDosesTo90Percent": 69832,
+        "totalPopulation": 357176
+      },
+      {
+        "dhbName": "Lakes",
+        "firstDoses": 75347,
+        "firstDosesPercentage": 0.8,
+        "firstDosesTo90Percent": 9630,
+        "secondDoses": 60243,
+        "secondDosesPercentage": 0.64,
+        "secondDosesTo90Percent": 24734,
+        "totalPopulation": 94419
+      },
+      {
+        "dhbName": "Bay of Plenty",
+        "firstDoses": 178935,
+        "firstDosesPercentage": 0.82,
+        "firstDosesTo90Percent": 16312,
+        "secondDoses": 141800,
+        "secondDosesPercentage": 0.65,
+        "secondDosesTo90Percent": 53447,
+        "totalPopulation": 216941
+      },
+      {
+        "dhbName": "Tairawhiti",
+        "firstDoses": 32492,
+        "firstDosesPercentage": 0.77,
+        "firstDosesTo90Percent": 5276,
+        "secondDoses": 26146,
+        "secondDosesPercentage": 0.62,
+        "secondDosesTo90Percent": 11622,
+        "totalPopulation": 41965
+      },
+      {
+        "dhbName": "Taranaki",
+        "firstDoses": 85347,
+        "firstDosesPercentage": 0.84,
+        "firstDosesTo90Percent": 6585,
+        "secondDoses": 65454,
+        "secondDosesPercentage": 0.64,
+        "secondDosesTo90Percent": 26478,
+        "totalPopulation": 102147
+      },
+      {
+        "dhbName": "Hawkes Bay",
+        "firstDoses": 121965,
+        "firstDosesPercentage": 0.84,
+        "firstDosesTo90Percent": 9049,
+        "secondDoses": 101011,
+        "secondDosesPercentage": 0.69,
+        "secondDosesTo90Percent": 30003,
+        "totalPopulation": 145571
+      },
+      {
+        "dhbName": "MidCentral",
+        "firstDoses": 130464,
+        "firstDosesPercentage": 0.86,
+        "firstDosesTo90Percent": 6608,
+        "secondDoses": 107890,
+        "secondDosesPercentage": 0.71,
+        "secondDosesTo90Percent": 29182,
+        "totalPopulation": 152302
+      },
+      {
+        "dhbName": "Whanganui",
+        "firstDoses": 45804,
+        "firstDosesPercentage": 0.8,
+        "firstDosesTo90Percent": 5718,
+        "secondDoses": 38369,
+        "secondDosesPercentage": 0.67,
+        "secondDosesTo90Percent": 13153,
+        "totalPopulation": 57247
+      },
+      {
+        "dhbName": "Capital and Coast",
+        "firstDoses": 248949,
+        "firstDosesPercentage": 0.92,
+        "firstDosesTo90Percent": 0,
+        "secondDoses": 213148,
+        "secondDosesPercentage": 0.79,
+        "secondDosesTo90Percent": 30909,
+        "totalPopulation": 271174
+      },
+      {
+        "dhbName": "Hutt Valley",
+        "firstDoses": 113951,
+        "firstDosesPercentage": 0.87,
+        "firstDosesTo90Percent": 3264,
+        "secondDoses": 94440,
+        "secondDosesPercentage": 0.73,
+        "secondDosesTo90Percent": 22775,
+        "totalPopulation": 130239
+      },
+      {
+        "dhbName": "Wairarapa",
+        "firstDoses": 35155,
+        "firstDosesPercentage": 0.85,
+        "firstDosesTo90Percent": 2129,
+        "secondDoses": 29380,
+        "secondDosesPercentage": 0.71,
+        "secondDosesTo90Percent": 7904,
+        "totalPopulation": 41427
+      },
+      {
+        "dhbName": "Nelson Marlborough",
+        "firstDoses": 116995,
+        "firstDosesPercentage": 0.86,
+        "firstDosesTo90Percent": 5174,
+        "secondDoses": 101527,
+        "secondDosesPercentage": 0.75,
+        "secondDosesTo90Percent": 20642,
+        "totalPopulation": 135743
+      },
+      {
+        "dhbName": "West Coast",
+        "firstDoses": 22411,
+        "firstDosesPercentage": 0.8,
+        "firstDosesTo90Percent": 2704,
+        "secondDoses": 18122,
+        "secondDosesPercentage": 0.65,
+        "secondDosesTo90Percent": 6993,
+        "totalPopulation": 27906
+      },
+      {
+        "dhbName": "Canterbury",
+        "firstDoses": 434574,
+        "firstDosesPercentage": 0.9,
+        "firstDosesTo90Percent": 27,
+        "secondDoses": 340807,
+        "secondDosesPercentage": 0.71,
+        "secondDosesTo90Percent": 93794,
+        "totalPopulation": 482890
+      },
+      {
+        "dhbName": "South Canterbury",
+        "firstDoses": 44901,
+        "firstDosesPercentage": 0.85,
+        "firstDosesTo90Percent": 2425,
+        "secondDoses": 38211,
+        "secondDosesPercentage": 0.73,
+        "secondDosesTo90Percent": 9115,
+        "totalPopulation": 52584
+      },
+      {
+        "dhbName": "Southern",
+        "firstDoses": 256602,
+        "firstDosesPercentage": 0.89,
+        "firstDosesTo90Percent": 2612,
+        "secondDoses": 219241,
+        "secondDosesPercentage": 0.76,
+        "secondDosesTo90Percent": 39972,
+        "totalPopulation": 288015
+      },
+      {
+        "dhbName": "Overseas / Unknown",
+        "firstDoses": 2036,
+        "firstDosesPercentage": 0.12,
+        "firstDosesTo90Percent": 13420,
+        "secondDoses": 1635,
+        "secondDosesPercentage": 0.1,
+        "secondDosesTo90Percent": 13821,
+        "totalPopulation": 17173
+      }
+    ],
+    "dataValidAsAtNzTimeIso": "2021-10-28T23:59:00.000+13:00"
+  }
 }

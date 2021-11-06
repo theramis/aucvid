@@ -29,8 +29,8 @@ const sendDataUpdatedNotification = async () => {
   );
 };
 
-const areObjectsDifferent = (a: object, b: object) =>
-  Object.keys(diff(a, b)).length !== 0;
+const areObjectsDifferent = (a: Object, b: Object) =>
+  Boolean(Object.keys(diff(a, b)).length);
 
 const main = async () => {
   try {
@@ -47,7 +47,7 @@ const main = async () => {
 
     if (
       existingData == null ||
-      areObjectsDifferent(existingData, vaccineData)
+      areObjectsDifferent(existingData.data, vaccineData)
     ) {
       // store raw html and data
       await storeRawVaccineSite(vaccineData.dataValidAsAtNzTimeIso, rawHtml);
