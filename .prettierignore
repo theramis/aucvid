@@ -19,3 +19,6 @@ yarn-error.log*
 
 # vercel
 .vercel
+
+# data html files
+data/rawSite/*
