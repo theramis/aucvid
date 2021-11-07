@@ -56,7 +56,7 @@ const Index: React.FC<IndexPageProps> = (props: IndexPageProps) => {
             <div>&#128075;</div>
             <p>
               Made <span hidden>with love</span> by{" "}
-              <ExternalLink href="https://www.instagram.com/finnsta_gram/">
+              <ExternalLink href="https://www.linkedin.com/in/finnhello/">
                 Finn
               </ExternalLink>
               ,{" "}
