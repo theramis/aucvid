@@ -1,5 +1,7 @@
 import {
   createOrUpdateVaccineDataForDate,
+  deleteAllVaccineData,
+  getAllRawVaccineSites,
   getVaccineDataForDate,
   storeRawVaccineSite,
 } from "../shared/vaccineDataStore";
@@ -30,38 +32,61 @@ const sendDataUpdatedNotification = async () => {
 };
 
 const areObjectsDifferent = (a: object, b: object) =>
-  Object.keys(diff(a, b)).length !== 0;
+  Boolean(Object.keys(diff(a, b)).length);
 
-const main = async () => {
+const extractAndStoreVaccineData = async (rawHtml: string) => {
+  // extract vaccine data
+  const vaccineData = extractVaccineData(rawHtml);
+
+  // get local vaccine data
+  const existingData = await getVaccineDataForDate(
+    vaccineData.dataValidAsAtNzTimeIso
+  );
+
+  if (
+    existingData == null ||
+    areObjectsDifferent(existingData.data, vaccineData)
+  ) {
+    // store raw html and data
+    await storeRawVaccineSite(vaccineData.dataValidAsAtNzTimeIso, rawHtml);
+    await createOrUpdateVaccineDataForDate(
+      vaccineData.dataValidAsAtNzTimeIso,
+      vaccineData
+    );
+    await sendDataUpdatedNotification();
+  }
+};
+
+const regenVaccineData = async () => {
+  try {
+    await deleteAllVaccineData();
+
+    const allRawSiteHtml = await getAllRawVaccineSites();
+    await Promise.all(allRawSiteHtml.map((s) => extractAndStoreVaccineData(s)));
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+const fetchNewVaccineData = async () => {
   try {
     // get latest html from MoH site
     const rawHtml = (await got(CONSTANTS.mohVaccineDataSiteUrl)).body;
 
-    // extract vaccine data
-    const vaccineData = extractVaccineData(rawHtml);
-
-    // get local vaccine data
-    const existingData = await getVaccineDataForDate(
-      vaccineData.dataValidAsAtNzTimeIso
-    );
-
-    if (
-      existingData == null ||
-      areObjectsDifferent(existingData, vaccineData)
-    ) {
-      // store raw html and data
-      await storeRawVaccineSite(vaccineData.dataValidAsAtNzTimeIso, rawHtml);
-      await createOrUpdateVaccineDataForDate(
-        vaccineData.dataValidAsAtNzTimeIso,
-        vaccineData
-      );
-      await sendDataUpdatedNotification();
-    }
+    await extractAndStoreVaccineData(rawHtml);
   } catch (error) {
     console.error(error);
     await sendNotification(
       ":warning: :warning: **Fetchy ain't fetching!** :warning::warning:"
     );
+  }
+};
+
+const main = async () => {
+  if (process.env.REGENERATE_DATA === "true") {
+    await regenVaccineData();
+  } else {
+    await fetchNewVaccineData();
   }
 };
 

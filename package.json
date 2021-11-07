@@ -10,7 +10,8 @@
     "start": "next start",
     "lint": "next lint",
     "husky-install": "husky install",
-    "fetch-boi": "cross-env NODE_OPTIONS='--unhandled-rejections=strict' ts-node fetchy/fetchyboi.ts"
+    "fetch-boi": "cross-env NODE_OPTIONS='--unhandled-rejections=strict' ts-node fetchy/fetchyboi.ts",
+    "regen-data": "cross-env NODE_OPTIONS='--unhandled-rejections=strict' REGENERATE_DATA=true ts-node fetchy/fetchyboi.ts"
   },
   "dependencies": {
     "@heroicons/react": "^1.0.5",

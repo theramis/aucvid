@@ -23,10 +23,12 @@ export default async function fetchIndexPageProps(): Promise<IndexPageProps> {
 
   return {
     allDhbsVaccineDoseData: generateAllDhbsVaccineDoseData(
-      latestData.vaccinationsPerDhb,
-      yesterdayData.vaccinationsPerDhb
+      latestData.data.vaccinationsPerDhb,
+      yesterdayData.data.vaccinationsPerDhb
     ),
-    dataValidAsAtTimeUtc: DateTime.fromISO(latestData.dataValidAsAtNzTimeIso)
+    dataValidAsAtTimeUtc: DateTime.fromISO(
+      latestData.data.dataValidAsAtNzTimeIso
+    )
       .toUTC()
       .toISO(),
   };
