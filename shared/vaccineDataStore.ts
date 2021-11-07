@@ -14,14 +14,14 @@ export const createOrUpdateVaccineDataForDate = async (
     : null;
 
   const rightNow = DateTime.utc().toISO();
-  const metaData = {
+  const metadata = {
     createdAtUtcTimeIso: previousFileData
-      ? previousFileData.metaData.createdAtUtcTimeIso
+      ? previousFileData.metadata.createdAtUtcTimeIso
       : rightNow,
     updatedAtUtcTimeIso: rightNow,
   };
 
-  await writeFileDataForPath(filePath, { metaData, data: vaccineData });
+  await writeFileDataForPath(filePath, { metadata, data: vaccineData });
 };
 
 export const getAllVaccineData = async (

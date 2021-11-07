@@ -1,11 +1,11 @@
 type UtcTimeIso = string;
 
-type DocumentMetaData = {
+type DocumentMetadata = {
   createdAtUtcTimeIso: UtcTimeIso;
   updatedAtUtcTimeIso: UtcTimeIso;
 };
 
 export type DataDocument<Type> = {
-  metaData: DocumentMetaData;
+  metadata: DocumentMetadata;
   data: Type;
 };

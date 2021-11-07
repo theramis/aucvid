@@ -31,7 +31,7 @@ const sendDataUpdatedNotification = async () => {
   );
 };
 
-const areObjectsDifferent = (a: Object, b: Object) =>
+const areObjectsDifferent = (a: object, b: object) =>
   Boolean(Object.keys(diff(a, b)).length);
 
 const extractAndStoreVaccineData = async (rawHtml: string) => {
@@ -83,7 +83,7 @@ const fetchNewVaccineData = async () => {
 };
 
 const main = async () => {
-  if (process.env.REGEN_DATA === "true") {
+  if (process.env.REGENERATE_DATA === "true") {
     await regenVaccineData();
   } else {
     await fetchNewVaccineData();
