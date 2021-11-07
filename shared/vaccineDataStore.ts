@@ -46,6 +46,27 @@ export const getVaccineDataForDate = async (
   return fileExists(filePath) ? await readFileDataForPath(filePath) : null;
 };
 
+export const deleteAllVaccineData = async () => {
+  const files = await fs.readdir(CONSTANTS.vaccineDataFolder);
+  await Promise.all(
+    files.map((f) => {
+      const filePath = `${CONSTANTS.vaccineDataFolder}/${f}`;
+      return fs.rm(filePath);
+    })
+  );
+};
+
+export const getAllRawVaccineSites = async () => {
+  const files = await fs.readdir(CONSTANTS.rawSiteFolder);
+
+  return await Promise.all(
+    files.map((f) => {
+      const filePath = `${CONSTANTS.rawSiteFolder}/${f}`;
+      return fs.readFile(filePath, "utf8");
+    })
+  );
+};
+
 export const storeRawVaccineSite = async (time: NzTimeIso, rawHtml: string) =>
   await fs.writeFile(generateRawSiteFilePath(time), rawHtml);
 
