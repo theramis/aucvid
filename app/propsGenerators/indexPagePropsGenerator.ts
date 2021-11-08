@@ -1,5 +1,6 @@
 import { DateTime } from "luxon";
 import { getAllVaccineData } from "../../shared/vaccineDataStore";
+import { getLastestFetchyRun } from "../../shared/githubDataStore";
 import {
   DhbVaccineDoseData,
   DhbName,
@@ -20,8 +21,11 @@ function calculateDosePercentage(
 
 export default async function fetchIndexPageProps(): Promise<IndexPageProps> {
   const [latestData, yesterdayData] = await getAllVaccineData(2);
+  const latestFetchyRun = await getLastestFetchyRun();
+  const { run_started_at: lastCheckedAtTimeUtc = null } = latestFetchyRun ?? {};
 
   return {
+    lastCheckedAtTimeUtc,
     allDhbsVaccineDoseData: generateAllDhbsVaccineDoseData(
       latestData.data.vaccinationsPerDhb,
       yesterdayData.data.vaccinationsPerDhb

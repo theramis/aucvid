@@ -13,4 +13,5 @@ export type DhbVaccineDoseDataForIndexPage = DhbVaccineDoseData & {
 export type IndexPageProps = {
   allDhbsVaccineDoseData: DhbVaccineDoseDataForIndexPage[];
   dataValidAsAtTimeUtc: string;
+  lastCheckedAtTimeUtc: string | null;
 };
