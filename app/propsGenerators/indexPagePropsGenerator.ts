@@ -20,19 +20,21 @@ function calculateDosePercentage(
 }
 
 export default async function fetchIndexPageProps(): Promise<IndexPageProps> {
-  const [latestData, yesterdayData] = await getAllVaccineData(2);
+  const [
+    { data: latestData, metadata: latestMetaData },
+    { data: yesterdayData },
+  ] = await getAllVaccineData(2);
   const latestFetchyRun = await getLatestFetchyRun();
-  const { run_started_at: lastCheckedAtTimeUtc = null } = latestFetchyRun ?? {};
+  const { run_started_at: lastCheckedAtTimeUtc } = latestFetchyRun ?? {};
 
   return {
     lastCheckedAtTimeUtc,
+    dataUpdatedAtTimeUtc: latestMetaData.updatedAtUtcTimeIso,
     allDhbsVaccineDoseData: generateAllDhbsVaccineDoseData(
-      latestData.data.vaccinationsPerDhb,
-      yesterdayData.data.vaccinationsPerDhb
+      latestData.vaccinationsPerDhb,
+      yesterdayData.vaccinationsPerDhb
     ),
-    dataValidAsAtTimeUtc: DateTime.fromISO(
-      latestData.data.dataValidAsAtNzTimeIso
-    )
+    dataValidAsAtTimeUtc: DateTime.fromISO(latestData.dataValidAsAtNzTimeIso)
       .toUTC()
       .toISO(),
   };

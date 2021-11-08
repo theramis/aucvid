@@ -48,6 +48,7 @@ body {
   --control-background-hover: #{$dark--control-background-hover};
   --control-focus-ring: #{$dark--control-focus-ring};
   --control-icon: #{$dark--control-icon};
+  --divider: #{$dark--divider};
 }
 
 .light {
@@ -68,4 +69,5 @@ body {
   --control-background-hover: #{$light--control-background-hover};
   --control-focus-ring: #{$light--control-focus-ring};
   --control-icon: #{$light--control-icon};
+  --divider: #{$light--divider};
 }

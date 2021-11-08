@@ -1,10 +1,16 @@
 import { useState } from "react";
 import { GetServerSideProps } from "next";
+import { DateTime } from "luxon";
 
 import { ExternalLink } from "../app/components/Link";
 import { DarkModeToggle } from "../app/components/DarkModeToggle";
 import { useHasMounted } from "../app/hooks/useIsMounted";
-import { Page, PageContainer } from "../app/components/Page";
+import {
+  Page,
+  PageContainer,
+  PageFooter,
+  Divider,
+} from "../app/components/Page";
 import { RegionDropdown } from "../app/components/RegionDropdown";
 import { DhbRegionId, IndexPageProps } from "../app/types/IndexPageProps";
 import fetchIndexPageProps from "../app/propsGenerators/indexPagePropsGenerator";
@@ -44,37 +50,27 @@ const Index: React.FC<IndexPageProps> = (props: IndexPageProps) => {
           </PageContainer>
         </section>
       </div>
-      <footer className="padding-bottom-l padding-top-4xl">
-        <PageContainer className="flex align-items-center">
-          <p className="footnote">
-            Data source:{" "}
+      <PageFooter>
+        <div className="flex align-items-center">
+          <p className="footnote margin-bottom-xs">
+            Source:{" "}
             <ExternalLink href="https://www.health.govt.nz/our-work/diseases-and-conditions/covid-19-novel-coronavirus/covid-19-data-and-statistics/covid-19-vaccine-data">
               Ministry of Health NZ
             </ExternalLink>
           </p>
-          <div className="flex flex-row align-items-center justify-content-center footnote margin-top-2xs space-x-2xs">
-            <div>&#128075;</div>
-            <p>
-              Made <span hidden>with love</span> by{" "}
-              <ExternalLink href="https://www.instagram.com/finnhello/">
-                Finn
-              </ExternalLink>
-              ,{" "}
-              <ExternalLink href="https://twitter.com/andy__carrell">
-                Andy
-              </ExternalLink>
-              ,{" "}
-              <ExternalLink href="https://twitter.com/jishaal">
-                Jishaal
-              </ExternalLink>
-              , and{" "}
-              <ExternalLink href="https://twitter.com/__simar__">
-                Simar
-              </ExternalLink>
+          <p className="footnote">
+            Data updated{" "}
+            {DateTime.fromISO(props.dataUpdatedAtTimeUtc).toRelative()}
+          </p>
+          {props.lastCheckedAtTimeUtc ? (
+            <p className="footnote">
+              Last checked{" "}
+              {DateTime.fromISO(props.lastCheckedAtTimeUtc).toRelative()}
             </p>
-          </div>
-        </PageContainer>
-      </footer>
+          ) : null}
+        </div>
+        <Divider className="margin-l" />
+      </PageFooter>
     </Page>
   );
 };
