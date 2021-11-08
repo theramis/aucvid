@@ -1,6 +1,6 @@
 import { DateTime } from "luxon";
 import { getAllVaccineData } from "../../shared/vaccineDataStore";
-import { getLastestFetchyRun } from "../../shared/githubDataStore";
+import { getLatestFetchyRun } from "../../shared/githubDataStore";
 import {
   DhbVaccineDoseData,
   DhbName,
@@ -24,7 +24,7 @@ export default async function fetchIndexPageProps(): Promise<IndexPageProps> {
     { data: latestData, metadata: latestMetaData },
     { data: yesterdayData },
   ] = await getAllVaccineData(2);
-  const latestFetchyRun = await getLastestFetchyRun();
+  const latestFetchyRun = await getLatestFetchyRun();
   const { run_started_at: lastCheckedAtTimeUtc } = latestFetchyRun ?? {};
 
   return {
