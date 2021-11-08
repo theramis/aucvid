@@ -18,3 +18,9 @@ $container-width: 1000px;
     margin-right: auto;
   }
 }
+
+.divider {
+  height: 1px;
+  background: var(--divider);
+  width: 100%;
+}

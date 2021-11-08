@@ -13,6 +13,10 @@ export const PageContainer = ({ className, children }: PageContainerProps) => (
   <div className={cx(styles["page-container"], className)}>{children}</div>
 );
 
+export const Divider = ({ className }: { className?: string }) => (
+  <hr className={cx(styles["divider"], className)} />
+);
+
 type PageFooterProps = {
   children?: React.ReactNode;
   className?: string;
@@ -21,7 +25,7 @@ type PageFooterProps = {
 export const PageFooter = ({ className, children = null }: PageFooterProps) => (
   <footer
     className={cx(
-      "padding-bottom-l padding-top-4xl flex align-items-center space-y-2xs ",
+      "padding-bottom-l padding-top-4xl flex align-items-center",
       className
     )}
   >

@@ -1,10 +1,16 @@
 import { useState } from "react";
 import { GetServerSideProps } from "next";
+import { DateTime } from "luxon";
 
 import { ExternalLink } from "../app/components/Link";
 import { DarkModeToggle } from "../app/components/DarkModeToggle";
 import { useHasMounted } from "../app/hooks/useIsMounted";
-import { Page, PageContainer, PageFooter } from "../app/components/Page";
+import {
+  Page,
+  PageContainer,
+  PageFooter,
+  Divider,
+} from "../app/components/Page";
 import { RegionDropdown } from "../app/components/RegionDropdown";
 import { DhbRegionId, IndexPageProps } from "../app/types/IndexPageProps";
 import fetchIndexPageProps from "../app/propsGenerators/indexPagePropsGenerator";
@@ -45,12 +51,25 @@ const Index: React.FC<IndexPageProps> = (props: IndexPageProps) => {
         </section>
       </div>
       <PageFooter>
-        <p className="footnote">
-          Data source:{" "}
-          <ExternalLink href="https://www.health.govt.nz/our-work/diseases-and-conditions/covid-19-novel-coronavirus/covid-19-data-and-statistics/covid-19-vaccine-data">
-            Ministry of Health NZ
-          </ExternalLink>
-        </p>
+        <div className="flex align-items-center">
+          <p className="footnote margin-bottom-xs">
+            Data source:{" "}
+            <ExternalLink href="https://www.health.govt.nz/our-work/diseases-and-conditions/covid-19-novel-coronavirus/covid-19-data-and-statistics/covid-19-vaccine-data">
+              Ministry of Health NZ
+            </ExternalLink>
+          </p>
+          <p className="footnote">
+            Data updated{" "}
+            {DateTime.fromISO(props.dataUpdatedAtTimeUtc).toRelative()}
+          </p>
+          {props.lastCheckedAtTimeUtc ? (
+            <p className="footnote">
+              Last checked{" "}
+              {DateTime.fromISO(props.lastCheckedAtTimeUtc).toRelative()}
+            </p>
+          ) : null}
+        </div>
+        <Divider className="margin-l" />
       </PageFooter>
     </Page>
   );
