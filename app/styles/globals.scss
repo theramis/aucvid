@@ -39,7 +39,7 @@ body {
 
   .#{$prefix}visible {
     @include mediaMinWidth($breakpoint) {
-      display: initial;
+      display: unset;
     }
   }
 }
