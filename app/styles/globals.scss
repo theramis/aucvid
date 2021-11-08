@@ -28,6 +28,22 @@ body {
   transition: background-color 0.3s ease-in-out;
 }
 
+// Hidden utilities
+
+@each $prefix, $breakpoint in $breakpoint-map {
+  .#{$prefix}hidden {
+    @include mediaMinWidth($breakpoint) {
+      display: none;
+    }
+  }
+
+  .#{$prefix}visible {
+    @include mediaMinWidth($breakpoint) {
+      display: initial;
+    }
+  }
+}
+
 // Themes
 
 :root {

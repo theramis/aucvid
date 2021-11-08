@@ -58,16 +58,21 @@ const Index: React.FC<IndexPageProps> = (props: IndexPageProps) => {
               Ministry of Health NZ
             </ExternalLink>
           </p>
-          <p className="footnote">
-            Data updated{" "}
-            {DateTime.fromISO(props.dataUpdatedAtTimeUtc).toRelative()}
-          </p>
-          {props.lastCheckedAtTimeUtc ? (
-            <p className="footnote">
-              Last checked{" "}
-              {DateTime.fromISO(props.lastCheckedAtTimeUtc).toRelative()}
+          <div className="flex flex-column s:flex-row justify-content-center align-items-center footnote">
+            <p>
+              Data updated{" "}
+              {DateTime.fromISO(props.dataUpdatedAtTimeUtc).toRelative()}
             </p>
-          ) : null}
+            {props.lastCheckedAtTimeUtc ? (
+              <>
+                <span className="hidden s:visible margin-x-xs">-</span>
+                <p>
+                  Last checked{" "}
+                  {DateTime.fromISO(props.lastCheckedAtTimeUtc).toRelative()}
+                </p>
+              </>
+            ) : null}
+          </div>
         </div>
         <Divider className="margin-l" />
       </PageFooter>
