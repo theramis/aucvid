@@ -15,7 +15,7 @@ jobs:
       SEND_DISCORD_NOTIFICATIONS: true
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2.3.5
+        uses: actions/checkout@v2.4.0
         with:
           token: ${{ secrets.PAT }}
       - name: Load global environment variables
