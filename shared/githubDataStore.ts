@@ -3,9 +3,10 @@ import { Octokit } from "@octokit/core";
 const githubOwner = "theramis";
 const githubRepo = "aucvid";
 
-const octokit = new Octokit({ auth: process.env.GITHUB_PAT });
+const octokit = new Octokit();
+const adminOctokit = new Octokit({ auth: process.env.GITHUB_PAT });
 
-export const getLastestFetchyRun = async () => {
+export const getLatestFetchyRun = async () => {
   const { data } = await octokit.request(
     "GET /repos/{owner}/{repo}/actions/workflows/{workflow_id}/runs",
     {
@@ -25,7 +26,7 @@ export const getLastestFetchyRun = async () => {
 };
 
 export const triggerFetchy = async () => {
-  const response = await octokit.request(
+  const response = await adminOctokit.request(
     "POST /repos/{owner}/{repo}/dispatches",
     {
       owner: githubOwner,
