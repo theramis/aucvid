@@ -53,7 +53,7 @@ const Index: React.FC<IndexPageProps> = (props: IndexPageProps) => {
       <PageFooter>
         <div className="flex align-items-center">
           <p className="footnote margin-bottom-xs">
-            Data source:{" "}
+            Source:{" "}
             <ExternalLink href="https://www.health.govt.nz/our-work/diseases-and-conditions/covid-19-novel-coronavirus/covid-19-data-and-statistics/covid-19-vaccine-data">
               Ministry of Health NZ
             </ExternalLink>
