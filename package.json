@@ -29,7 +29,7 @@
   },
   "devDependencies": {
     "@types/node": "^16.11.6",
-    "@types/react": "17.0.33",
+    "@types/react": "17.0.34",
     "autoprefixer": "^10.4.0",
     "cross-env": "^7.0.3",
     "eslint": "7.32.0",
