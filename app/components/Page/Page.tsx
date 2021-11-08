@@ -21,13 +21,12 @@ type PageFooterProps = {
 export const PageFooter = ({ className, children = null }: PageFooterProps) => (
   <footer
     className={cx(
-      styles["page-footer"],
-      "padding-bottom-l padding-top-4xl flex align-items-center",
+      "padding-bottom-l padding-top-4xl flex align-items-center space-y-2xs ",
       className
     )}
   >
     {children}
-    <div className="flex flex-row align-items-center justify-content-center footnote margin-top-2xs space-x-2xs">
+    <div className="flex flex-row align-items-center justify-content-center footnote space-x-2xs">
       <div>&#128075;</div>
       <p>
         Made <span hidden>with love</span> by{" "}
