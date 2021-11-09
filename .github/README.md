@@ -15,7 +15,6 @@
 <br />
 
 [![license](https://img.shields.io/github/license/theramis/aucvid.svg?style=for-the-badge)](../LICENSE)
-![PRs welcome](https://img.shields.io/badge/PRs-welcome-ff69b4.svg?style=for-the-badge)
 [![Netlify Status](https://img.shields.io/netlify/bd587c9a-10b4-426d-a4c3-344b1a386a4f?style=for-the-badge)](https://app.netlify.com/sites/aucvid-site/deploys)
 
 </div>
