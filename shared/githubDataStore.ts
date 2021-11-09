@@ -16,7 +16,7 @@ type LatestFetchyRunResponse = OctokitResponse<
 const getOrUpdateLatestFetchyRunCache = createCache<LatestFetchyRunResponse>();
 
 export const getLatestFetchyRun = async () => {
-  const cachedValue = await getOrUpdateLatestFetchyRunCache(async () => {
+  const cache = await getOrUpdateLatestFetchyRunCache(async () => {
     const response = await octokit.request(
       "GET /repos/{owner}/{repo}/actions/workflows/{workflow_id}/runs",
       {
@@ -33,7 +33,7 @@ export const getLatestFetchyRun = async () => {
     return response;
   });
 
-  const [latestRun = null] = cachedValue?.data?.workflow_runs ?? [];
+  const [latestRun = null] = cache.value?.data?.workflow_runs ?? [];
 
   return latestRun;
 };

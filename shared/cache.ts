@@ -12,7 +12,7 @@ export const createCache = <DataType>(
   let cache: Cache<DataType> = {
     value: defaultCache.value ?? undefined,
     updatedAt: defaultCache.updatedAt ?? undefined,
-    timeToLive: 5 * 60,
+    timeToLive: defaultCache.timeToLive ?? 5 * 60,
   };
 
   const getOrUpdateCache = async (getValue: () => Promise<DataType>) => {
@@ -29,7 +29,7 @@ export const createCache = <DataType>(
       }
     }
 
-    return cache.value;
+    return cache;
   };
 
   return getOrUpdateCache;
