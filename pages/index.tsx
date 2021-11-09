@@ -15,7 +15,7 @@ import {
   RegionDropdown,
   RegionOptionId,
 } from "../app/components/RegionDropdown";
-import { DhbRegionId, IndexPageProps } from "../app/types/IndexPageProps";
+import { IndexPageProps } from "../app/types/IndexPageProps";
 import fetchIndexPageProps from "../app/propsGenerators/indexPagePropsGenerator";
 import { DhbsVaccineDoseDataList } from "../app/components/DhbsVaccineDoseDataList";
 
