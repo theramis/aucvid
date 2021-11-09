@@ -11,15 +11,18 @@ import {
   PageFooter,
   Divider,
 } from "../app/components/Page";
-import { RegionDropdown } from "../app/components/RegionDropdown";
-import { DhbRegionId, IndexPageProps } from "../app/types/IndexPageProps";
+import {
+  RegionDropdown,
+  RegionOptionId,
+} from "../app/components/RegionDropdown";
+import { IndexPageProps } from "../app/types/IndexPageProps";
 import fetchIndexPageProps from "../app/propsGenerators/indexPagePropsGenerator";
 import { DhbsVaccineDoseDataList } from "../app/components/DhbsVaccineDoseDataList";
 
 const Index: React.FC<IndexPageProps> = (props: IndexPageProps) => {
   const { allDhbsVaccineDoseData } = props;
   const hasMounted = useHasMounted();
-  const [region, selectedRegion] = useState<DhbRegionId>("auckland");
+  const [region, selectedRegion] = useState<RegionOptionId>("auckland");
 
   return (
     <Page className="flex align-items-center">
@@ -43,9 +46,12 @@ const Index: React.FC<IndexPageProps> = (props: IndexPageProps) => {
           <PageContainer>
             <DhbsVaccineDoseDataList
               key={region}
-              dhbsVaccineDoseData={allDhbsVaccineDoseData.filter((dhb) =>
-                dhb.regionIds.includes(region)
-              )}
+              dhbsVaccineDoseData={allDhbsVaccineDoseData.filter((dhb) => {
+                if (region === "all") {
+                  return true;
+                }
+                return dhb.regionIds.includes(region);
+              })}
             />
           </PageContainer>
         </section>
