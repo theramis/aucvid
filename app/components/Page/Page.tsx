@@ -33,7 +33,7 @@ export const PageFooter = ({ className, children = null }: PageFooterProps) => (
     <div className="flex flex-row align-items-center justify-content-center footnote space-x-2xs">
       <div>&#128075;</div>
       <p>
-        Made <span hidden>with love</span> by{" "}
+        Made <span className="hidden s:visible">with love</span> by{" "}
         <ExternalLink href="https://www.instagram.com/finnhello/">
           Finn
         </ExternalLink>
