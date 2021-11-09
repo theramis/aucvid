@@ -13,7 +13,9 @@ type LatestFetchyRunResponse = OctokitResponse<
   200
 >;
 
-const getOrUpdateLatestFetchyRunCache = createCache<LatestFetchyRunResponse>();
+const getOrUpdateLatestFetchyRunCache = createCache<LatestFetchyRunResponse>({
+  name: "latest-fetchy-run",
+});
 
 export const getLatestFetchyRun = async () => {
   const cache = await getOrUpdateLatestFetchyRunCache(async () => {
