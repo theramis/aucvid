@@ -1,6 +1,6 @@
 import { DateTime } from "luxon";
 
-export type Cache<DataType> = {
+type Cache<DataType> = {
   value?: DataType;
   updatedAt?: string;
   timeToLive: number;

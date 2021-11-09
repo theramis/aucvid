@@ -24,12 +24,10 @@ export default async function fetchIndexPageProps(): Promise<IndexPageProps> {
     { data: latestData, metadata: latestMetaData },
     { data: yesterdayData },
   ] = await getAllVaccineData(2);
-
   const latestFetchyRun = await getLatestFetchyRun();
-  const { run_started_at: lastCheckedAtTimeUtc } = latestFetchyRun ?? {};
 
   return {
-    lastCheckedAtTimeUtc,
+    lastCheckedAtTimeUtc: latestFetchyRun?.run_started_at,
     dataUpdatedAtTimeUtc: latestMetaData.updatedAtUtcTimeIso,
     allDhbsVaccineDoseData: generateAllDhbsVaccineDoseData(
       latestData.vaccinationsPerDhb,
