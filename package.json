@@ -28,6 +28,7 @@
     "sass": "^1.43.4"
   },
   "devDependencies": {
+    "@octokit/types": "6.34.0",
     "@types/node": "^16.11.6",
     "@types/react": "17.0.34",
     "autoprefixer": "^10.4.0",
