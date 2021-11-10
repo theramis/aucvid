@@ -11,8 +11,7 @@ export default async function handler(
   if (secret !== process.env.API_SECRET) {
     res.status(401).json({ message: "Missing or incorrect secret!" });
   } else {
-    // const response = await triggerFetchy();
-    // res.status(response.status).end();
-    res.status(200).end();
+    const response = await triggerFetchy();
+    res.status(response.status).end();
   }
 }

@@ -214,26 +214,6 @@
         "secondDosesPercentage": 0.1,
         "secondDosesTo90Percent": 13693,
         "totalPopulation": 17173
-      },
-      {
-        "dhbName": "<strong>New Zealand</strong>",
-        "firstDoses": null,
-        "firstDosesPercentage": null,
-        "firstDosesTo90Percent": null,
-        "secondDoses": null,
-        "secondDosesPercentage": null,
-        "secondDosesTo90Percent": null,
-        "totalPopulation": null
-      },
-      {
-        "dhbName": "<strong>All DHBs to 90%</strong>",
-        "firstDoses": null,
-        "firstDosesPercentage": null,
-        "firstDosesTo90Percent": null,
-        "secondDoses": null,
-        "secondDosesPercentage": null,
-        "secondDosesTo90Percent": null,
-        "totalPopulation": null
       }
     ],
     "dataValidAsAtNzTimeIso": "2021-11-09T23:59:00.000+13:00"
