@@ -21,8 +21,8 @@ function calculateDosePercentage(
 }
 
 const getLatestFetchyRunCache = createCache(getLatestFetchyRun, {
-  name: "latest-fetchy-run",
-  timeToLive: 5 * 60,
+  key: "latest-fetchy-run",
+  ttl: 5 * 60,
 });
 
 export default async function fetchIndexPageProps(): Promise<IndexPageProps> {

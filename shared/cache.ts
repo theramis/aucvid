@@ -2,12 +2,12 @@ import { DateTime } from "luxon";
 
 type Cache<DataType> = {
   value?: DataType;
-  updatedAt?: string;
-  timeToLive: number;
-  name?: string;
+  populatedAt?: string;
+  ttl: number;
+  key?: string;
 };
 
-const defaultTimeToLive = 5 * 60;
+const defaultTtl = 5 * 60;
 
 export const createCache = <DataType>(
   getValue: () => Promise<DataType>,
@@ -15,42 +15,33 @@ export const createCache = <DataType>(
 ) => {
   let cache: Cache<DataType> = {
     value: defaultCache.value ?? undefined,
-    updatedAt: defaultCache.updatedAt ?? undefined,
-    timeToLive: defaultCache.timeToLive ?? defaultTimeToLive,
-    name: defaultCache.name,
+    populatedAt: defaultCache.populatedAt ?? undefined,
+    ttl: defaultCache.ttl ?? defaultTtl,
+    key: defaultCache.key,
   };
 
   const getOrUpdateCache = async () => {
+    const logPrefix = cache.key ? `${cache.key} - ` : "";
     if (isCacheExpired(cache)) {
-      console.log(
-        `${cache.name ? `${cache.name} - ` : ""}Cache miss, updating.`
-      );
+      console.log(`${logPrefix}Cache miss, updating.`);
 
       try {
         const value = await getValue();
 
         cache.value = value;
-        cache.updatedAt = DateTime.utc().toISO();
+        cache.populatedAt = DateTime.utc().toISO();
 
-        console.log(`${cache.name ? `${cache.name} - ` : ""}Cache updated.`);
+        console.log(`${logPrefix}Cache updated.`);
         return cache;
       } catch (e: any) {
         console.error(
-          `${
-            cache.name ? `${cache.name} - ` : ""
-          }Cache error, could not update. ${e?.message}`
+          `${logPrefix}Cache error, could not update. ${e?.message}`
         );
-        console.error(
-          `${cache.name ? `${cache.name} - ` : ""}Returning previous value.`
-        );
+        console.error(`${logPrefix}Returning previous value.`);
         return cache;
       }
     } else {
-      console.log(
-        `${
-          cache.name ? `${cache.name} - ` : ""
-        }Cache hit, returning cached value.`
-      );
+      console.log(`${logPrefix}Cache hit, returning cached value.`);
       return cache;
     }
   };
@@ -59,10 +50,10 @@ export const createCache = <DataType>(
 };
 
 const isCacheExpired = (cache: Cache<unknown>) => {
-  if (cache.updatedAt) {
+  if (cache.populatedAt) {
     return (
-      DateTime.utc().diff(DateTime.fromISO(cache.updatedAt), "seconds")
-        .seconds >= cache.timeToLive
+      DateTime.utc().diff(DateTime.fromISO(cache.populatedAt), "seconds")
+        .seconds >= cache.ttl
     );
   }
 
