@@ -11,6 +11,7 @@ import {
   DhbVaccineDoseDataForIndexPage,
   IndexPageProps,
 } from "../types/IndexPageProps";
+import { createCache } from "../../shared/cache";
 
 function calculateDosePercentage(
   dosesCount: number,
@@ -19,16 +20,20 @@ function calculateDosePercentage(
   return parseFloat(((dosesCount / totalPopulation) * 100).toFixed(6));
 }
 
+const getLatestFetchyRunCache = createCache(getLatestFetchyRun, {
+  name: "latest-fetchy-run",
+  timeToLive: 5 * 60,
+});
+
 export default async function fetchIndexPageProps(): Promise<IndexPageProps> {
   const [
     { data: latestData, metadata: latestMetaData },
     { data: yesterdayData },
   ] = await getAllVaccineData(2);
-  const latestFetchyRun = await getLatestFetchyRun();
-  const { run_started_at: lastCheckedAtTimeUtc } = latestFetchyRun ?? {};
+  const { value: latestFetchyRun } = await getLatestFetchyRunCache();
 
   return {
-    lastCheckedAtTimeUtc,
+    lastCheckedAtTimeUtc: latestFetchyRun?.run_started_at ?? null,
     dataUpdatedAtTimeUtc: latestMetaData.updatedAtUtcTimeIso,
     allDhbsVaccineDoseData: generateAllDhbsVaccineDoseData(
       latestData.vaccinationsPerDhb,

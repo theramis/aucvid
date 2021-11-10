@@ -14,5 +14,5 @@ export type IndexPageProps = {
   allDhbsVaccineDoseData: DhbVaccineDoseDataForIndexPage[];
   dataValidAsAtTimeUtc: string;
   dataUpdatedAtTimeUtc: string;
-  lastCheckedAtTimeUtc?: string;
+  lastCheckedAtTimeUtc: string | null;
 };
