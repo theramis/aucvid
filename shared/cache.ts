@@ -2,8 +2,8 @@ import { DateTime } from "luxon";
 
 type Cache<DataType> = {
   value?: DataType;
-  populatedAt?: string;
-  ttl: number;
+  populatedAtUtc?: string;
+  ttlInSeconds: number;
   key?: string;
 };
 
@@ -15,8 +15,8 @@ export const createCache = <DataType>(
 ) => {
   let cache: Cache<DataType> = {
     value: defaultCache.value ?? undefined,
-    populatedAt: defaultCache.populatedAt ?? undefined,
-    ttl: defaultCache.ttl ?? defaultTtl,
+    populatedAtUtc: defaultCache.populatedAtUtc ?? undefined,
+    ttlInSeconds: defaultCache.ttlInSeconds ?? defaultTtl,
     key: defaultCache.key,
   };
 
@@ -29,7 +29,7 @@ export const createCache = <DataType>(
         const value = await getValue();
 
         cache.value = value;
-        cache.populatedAt = DateTime.utc().toISO();
+        cache.populatedAtUtc = DateTime.utc().toISO();
 
         console.log(`${logPrefix}Cache updated.`);
         return cache;
@@ -50,10 +50,10 @@ export const createCache = <DataType>(
 };
 
 const isCacheExpired = (cache: Cache<unknown>) => {
-  if (cache.populatedAt) {
+  if (cache.populatedAtUtc) {
     return (
-      DateTime.utc().diff(DateTime.fromISO(cache.populatedAt), "seconds")
-        .seconds >= cache.ttl
+      DateTime.utc().diff(DateTime.fromISO(cache.populatedAtUtc), "seconds")
+        .seconds >= cache.ttlInSeconds
     );
   }
 

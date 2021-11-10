@@ -20,9 +20,9 @@ function calculateDosePercentage(
   return parseFloat(((dosesCount / totalPopulation) * 100).toFixed(6));
 }
 
-const getLatestFetchyRunCache = createCache(getLatestFetchyRun, {
+const getCachedLatestFetchyRun = createCache(getLatestFetchyRun, {
   key: "latest-fetchy-run",
-  ttl: 5 * 60,
+  ttlInSeconds: 5 * 60,
 });
 
 export default async function fetchIndexPageProps(): Promise<IndexPageProps> {
@@ -30,7 +30,7 @@ export default async function fetchIndexPageProps(): Promise<IndexPageProps> {
     { data: latestData, metadata: latestMetaData },
     { data: yesterdayData },
   ] = await getAllVaccineData(2);
-  const { value: latestFetchyRun } = await getLatestFetchyRunCache();
+  const { value: latestFetchyRun } = await getCachedLatestFetchyRun();
 
   return {
     lastCheckedAtTimeUtc: latestFetchyRun?.run_started_at ?? null,
