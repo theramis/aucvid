@@ -43,9 +43,6 @@ const extractAndStoreVaccineData = async (rawHtml: string) => {
     vaccineData.dataValidAsAtNzTimeIso
   );
 
-  if (existingData) {
-    console.log(diff(existingData.data, vaccineData));
-  }
   if (
     existingData == null ||
     areObjectsDifferent(existingData.data, vaccineData)
