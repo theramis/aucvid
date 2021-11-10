@@ -1,6 +1,6 @@
 import Head from "next/head";
 
-import { useHasMounted } from "../app/hooks/useIsMounted";
+import { useHasMounted } from "../app/hooks/useHasMounted";
 import { Page, PageContainer, PageFooter } from "../app/components/Page";
 import { DarkModeToggle } from "../app/components/DarkModeToggle";
 import { InternalLink } from "../app/components/Link";

@@ -4,7 +4,7 @@ import { DateTime } from "luxon";
 
 import { ExternalLink } from "../app/components/Link";
 import { DarkModeToggle } from "../app/components/DarkModeToggle";
-import { useHasMounted } from "../app/hooks/useIsMounted";
+import { useHasMounted } from "../app/hooks/useHasMounted";
 import {
   Page,
   PageContainer,
