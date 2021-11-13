@@ -6,8 +6,6 @@ import { DhbVaccineDoseDataForIndexPage } from "../../types/IndexPageProps";
 
 import styles from "./DosesDescriptionList.module.scss";
 
-type DisplayPercentageProps = { percentage: number };
-
 type DosesDescriptionProps = {
   term: string;
   hasMetTarget: boolean;
@@ -18,7 +16,7 @@ type DosesDescriptionProps = {
 
 type DosesDescriptionListProps = { dhbData: DhbVaccineDoseDataForIndexPage };
 
-const DisplayPercentage = ({ percentage }: DisplayPercentageProps) => {
+const DisplayPercentage = ({ percentage }: { percentage: number }) => {
   if (percentage > 99) {
     return <>&gt; 99%</>;
   }
