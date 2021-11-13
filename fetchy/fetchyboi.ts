@@ -20,9 +20,8 @@ const sendNotification = async (message: string) => {
         username: "Fetchy",
       },
     });
-  } else {
-    console.log(message);
   }
+  console.log(message);
 };
 
 const sendDataUpdatedNotification = async () => {
@@ -31,8 +30,15 @@ const sendDataUpdatedNotification = async () => {
   );
 };
 
-const areObjectsDifferent = (a: object, b: object) =>
-  Boolean(Object.keys(diff(a, b)).length);
+const areObjectsDifferent = (a: object, b: object) => {
+  const differences = diff(a, b);
+  const isDiff = Boolean(Object.keys(differences).length);
+
+  if (isDiff) {
+    console.log("Detected these differences", differences);
+  }
+  return isDiff;
+};
 
 const extractAndStoreVaccineData = async (rawHtml: string) => {
   // extract vaccine data
