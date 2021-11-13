@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { GetServerSideProps } from "next";
+import { useRouter } from "next/router";
 import { DateTime } from "luxon";
 
 import { ExternalLink } from "../app/components/Link";
@@ -13,16 +14,42 @@ import {
 } from "../app/components/Page";
 import {
   RegionDropdown,
+  isValidRegionId,
   RegionOptionId,
 } from "../app/components/RegionDropdown";
 import { IndexPageProps } from "../app/types/IndexPageProps";
 import fetchIndexPageProps from "../app/propsGenerators/indexPagePropsGenerator";
 import { DhbsVaccineDoseDataList } from "../app/components/DhbsVaccineDoseDataList";
 
+const useQueryParam = <ParamType extends string>(
+  key: string,
+  defaultValue: ParamType
+): [ParamType, React.Dispatch<React.SetStateAction<ParamType>>] => {
+  const { query, push } = useRouter();
+
+  const [value, setValue] = useState<ParamType>(() => {
+    if (query[key] && typeof query[key] === "string") {
+      // TODO - check this is actually ParamType & decode value
+      return query[key] as ParamType;
+    }
+    return defaultValue;
+  });
+
+  useEffect(() => {
+    push({ query: { [key]: value } });
+  }, [push, key, value]);
+
+  return [value, setValue];
+};
+
 const Index: React.FC<IndexPageProps> = (props: IndexPageProps) => {
   const { allDhbsVaccineDoseData } = props;
   const hasMounted = useHasMounted();
-  const [region, selectedRegion] = useState<RegionOptionId>("auckland");
+
+  const [region, selectRegion] = useQueryParam<RegionOptionId>(
+    "dhbs",
+    "auckland"
+  );
 
   return (
     <Page className="flex align-items-center">
@@ -38,7 +65,7 @@ const Index: React.FC<IndexPageProps> = (props: IndexPageProps) => {
             </div>
             <RegionDropdown
               selectedRegion={region}
-              onChange={(regionId) => selectedRegion(regionId)}
+              onChange={(id) => selectRegion(id)}
             />
           </PageContainer>
         </section>
