@@ -35,14 +35,12 @@ const createPopulationDoseDataForDhbFromRegexMatch = (
   return {
     dhbName: match.groups!.DhbName as DhbName,
     firstDoses: convertToNumber(match.groups!.firstDoses),
-    firstDosesPercentage:
-      convertToNumber(match.groups!.firstDosesPercentage) / 100,
+    firstDosesPercentageRaw: match.groups!.firstDosesPercentage,
     firstDosesTo90Percent: convertToNumber(
       match.groups!.firstDosesToReach90Percent
     ),
     secondDoses: convertToNumber(match.groups!.secondDoses),
-    secondDosesPercentage:
-      convertToNumber(match.groups!.secondDosesPercentage) / 100,
+    secondDosesPercentageRaw: match.groups!.secondDosesPercentage,
     secondDosesTo90Percent: convertToNumber(
       match.groups!.secondDosesToReach90Percent
     ),

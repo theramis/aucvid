@@ -1,10 +1,10 @@
 export type DhbVaccineDoseData = {
   dhbName: DhbName;
   firstDoses: number;
-  firstDosesPercentage: number;
+  firstDosesPercentageRaw: string;
   firstDosesTo90Percent: number;
   secondDoses: number;
-  secondDosesPercentage: number;
+  secondDosesPercentageRaw: string;
   secondDosesTo90Percent: number;
   totalPopulation: number;
 };
