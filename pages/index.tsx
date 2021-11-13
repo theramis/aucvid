@@ -14,7 +14,6 @@ import {
 } from "../app/components/Page";
 import {
   RegionDropdown,
-  isValidRegionId,
   RegionOptionId,
 } from "../app/components/RegionDropdown";
 import { IndexPageProps } from "../app/types/IndexPageProps";
