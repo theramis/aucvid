@@ -19,13 +19,12 @@ export const getVaccinationDataPerDhb = (
   let match;
   while ((match = perDhbRegex.exec(vaccinationTo90PerDhbTableHtml)) !== null) {
     const dhbDoseData = createPopulationDoseDataForDhbFromRegexMatch(match);
+    vaccinationDataPerDhb.push(dhbDoseData);
 
-    if (dhbDoseData.dhbName.includes("New Zealand")) {
+    if (dhbDoseData.dhbName.includes("Overseas / Unknown")) {
       // this means we have reached the bottom of the table and all DHBs have been parsed
       break;
     }
-
-    vaccinationDataPerDhb.push(dhbDoseData);
   }
   return vaccinationDataPerDhb;
 };
