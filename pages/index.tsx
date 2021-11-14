@@ -14,7 +14,7 @@ import {
 import {
   RegionDropdown,
   RegionOptionId,
-  isTypeOfRegionOptionId,
+  assertOptionTypeOrDefaultTo,
 } from "../app/components/RegionDropdown";
 import { IndexPageProps } from "../app/types/IndexPageProps";
 import fetchIndexPageProps from "../app/propsGenerators/indexPagePropsGenerator";
@@ -25,8 +25,7 @@ const Index: React.FC<IndexPageProps> = (props: IndexPageProps) => {
   const hasMounted = useHasMounted();
   const [region, selectRegion] = useQueryParam<RegionOptionId>(
     "dhbs",
-    "auckland",
-    isTypeOfRegionOptionId
+    assertOptionTypeOrDefaultTo("auckland")
   );
 
   return (

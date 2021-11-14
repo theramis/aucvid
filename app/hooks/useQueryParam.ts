@@ -1,11 +1,13 @@
 import {
+  useRef,
   useState,
   useEffect,
-  useRef,
-  useLayoutEffect,
   useCallback,
+  useLayoutEffect,
 } from "react";
 import { useRouter } from "next/router";
+
+type MaybeNextQueryParamType = string | string[] | undefined;
 
 const useEventCallback = <T extends (...args: any[]) => any>(fn: T): T => {
   const fnRef = useRef(fn);
@@ -17,21 +19,27 @@ const useEventCallback = <T extends (...args: any[]) => any>(fn: T): T => {
   return useCallback((...args: any[]) => fnRef.current(...args), []) as T;
 };
 
+const useFreeze = <FrozenType>(
+  initializer: FrozenType | (() => FrozenType)
+): FrozenType => {
+  const [frozenValue] = useState<FrozenType>(initializer);
+
+  return frozenValue;
+};
+
 export const useQueryParam = <ParamType extends string>(
   key: string,
-  defaultValue: ParamType,
-  checkType: (s: unknown) => s is ParamType
-): [ParamType, React.Dispatch<React.SetStateAction<ParamType | undefined>>] => {
+  getDefaultValue: (s: MaybeNextQueryParamType) => ParamType
+): [ParamType, React.Dispatch<React.SetStateAction<ParamType>>] => {
   const router = useRouter();
   const push = useEventCallback(router.push);
 
-  const [value, setValue] = useState<ParamType | undefined>(() => {
+  const defaultValue = useFreeze<ParamType>(() => {
     const initialQueryValue = router.query[key];
-    if (checkType(initialQueryValue)) {
-      return initialQueryValue as ParamType;
-    }
-    return undefined;
+    return getDefaultValue(initialQueryValue);
   });
+
+  const [value, setValue] = useState<ParamType>(defaultValue);
 
   useEffect(() => {
     // If value is undefined or the default value, clear the query param
@@ -42,5 +50,5 @@ export const useQueryParam = <ParamType extends string>(
     }
   }, [push, key, value, defaultValue]);
 
-  return [value ?? defaultValue, setValue];
+  return [value, setValue];
 };
