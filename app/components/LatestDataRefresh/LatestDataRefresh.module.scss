@@ -1,0 +1,11 @@
+@import "../../styles/vars.scss";
+
+.container {
+  position: sticky;
+  width: 100%;
+  top: 10px;
+}
+
+.sticky-button {
+  position: absolute;
+}

@@ -14,7 +14,7 @@ export const Button = ({
 }: ButtonProps) => {
   return (
     <button
-      className={cx(styles.button, "padding-x-l padding-y-s", className)}
+      className={cx(styles["button"], "padding-x-l padding-y-s", className)}
       {...buttonProps}
     >
       {children}
