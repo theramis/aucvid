@@ -16,6 +16,14 @@ type DosesDescriptionProps = {
 
 type DosesDescriptionListProps = { dhbData: DhbVaccineDoseDataForIndexPage };
 
+const DisplayPercentage = ({ percentage }: { percentage: number }) => {
+  if (percentage > 99) {
+    return <>&gt; 99%</>;
+  }
+
+  return <>{truncateNumber(percentage, 1)}%</>;
+};
+
 const DosesDescription = ({
   term,
   hasMetTarget,
@@ -30,7 +38,7 @@ const DosesDescription = ({
           [styles["percentage-value-complete"]]: hasMetTarget,
         })}
       >
-        {truncateNumber(dosesPercent, 1)}%
+        <DisplayPercentage percentage={dosesPercent} />
       </div>
       {hasMetTarget && (
         <div className={cx(styles["check"], "flex-0")}>
