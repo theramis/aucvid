@@ -7,14 +7,14 @@ import {
 } from "react";
 import { useRouter } from "next/router";
 
-const useEventCallback = (fn: (...a: any[]) => any) => {
+const useEventCallback = <T extends (...args: any[]) => any>(fn: T): T => {
   const fnRef = useRef(fn);
 
   useLayoutEffect(() => {
     fnRef.current = fn;
   });
 
-  return useCallback((...args) => fnRef.current(...args), []);
+  return useCallback((...args: any[]) => fnRef.current(...args), []) as T;
 };
 
 export const useQueryParam = <ParamType extends string>(
