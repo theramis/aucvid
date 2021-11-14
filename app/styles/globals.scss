@@ -65,6 +65,10 @@ body {
   --control-focus-ring: #{$dark--control-focus-ring};
   --control-icon: #{$dark--control-icon};
   --divider: #{$dark--divider};
+  --button-background: #{$dark--button-background};
+  --button-background-hover: #{$dark--button-background-hover};
+  --button-foreground: #{$dark--button-foreground};
+  --button-foreground-hover: #{$dark--button-foreground-hover};
 }
 
 .light {
@@ -86,4 +90,8 @@ body {
   --control-focus-ring: #{$light--control-focus-ring};
   --control-icon: #{$light--control-icon};
   --divider: #{$light--divider};
+  --button-background: #{$light--button-background};
+  --button-background-hover: #{$light--button-background-hover};
+  --button-foreground: #{$light--button-foreground};
+  --button-foreground-hover: #{$light--button-foreground-hover};
 }
