@@ -20,6 +20,9 @@ type RegionDropdownProps = {
   onChange: (id: RegionOptionId) => void;
 };
 
+export const isTypeOfRegionOptionId = (id: unknown): id is RegionOptionId =>
+  options.map((o) => o.id as any).includes(id);
+
 export const RegionDropdown = ({
   selectedRegion,
   onChange,

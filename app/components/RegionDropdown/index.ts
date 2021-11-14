@@ -1,2 +1,2 @@
-export { RegionDropdown } from "./RegionDropdown";
+export { RegionDropdown, isTypeOfRegionOptionId } from "./RegionDropdown";
 export type { RegionOptionId } from "./RegionDropdown";
