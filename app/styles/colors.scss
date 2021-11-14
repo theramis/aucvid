@@ -51,8 +51,8 @@ $light--control-focus-ring: $black-30;
 $light--control-icon: $green-dark;
 $light--divider: $black-10;
 $light--button-background: $black-95;
+$light--button-background-hover: $white;
 $light--button-foreground: $white;
-$light--button-background-hover: $black-5;
 $light--button-foreground-hover: $black-75;
 
 // Dark
@@ -75,6 +75,6 @@ $dark--control-focus-ring: $white-50;
 $dark--control-icon: $green-light;
 $dark--divider: $white-10;
 $dark--button-background: $white-95;
-$dark--button-foreground: $black;
 $dark--button-background-hover: $white-75;
+$dark--button-foreground: $black;
 $dark--button-foreground-hover: $black;

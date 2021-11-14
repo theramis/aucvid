@@ -1,5 +1,9 @@
 import cx from "classnames";
+import { useRouter } from "next/router";
+import { useQuery } from "react-query";
+import { LatestMetadataResponse } from "../../../shared/types/api";
 import { Button } from "../Button";
+import clientFetcher from "../../utilities/clientFetcher";
 import styles from "./LatestDataRefresh.module.scss";
 
 type LatestDataRefreshProps = {
@@ -7,14 +11,41 @@ type LatestDataRefreshProps = {
   className?: string;
 };
 
-export const LatestDataRefresh = ({ className }: LatestDataRefreshProps) => {
+const getLatestMetadata = async (): Promise<LatestMetadataResponse> =>
+  clientFetcher("/api/data/latest-metadata");
+
+export const LatestDataRefresh = ({
+  className,
+  dataUpdatedAtTimeUtc,
+}: LatestDataRefreshProps) => {
+  const { data, error } = useQuery("latest-metadata", getLatestMetadata, {
+    staleTime: 5 * 60 * 1000,
+  });
+  const router = useRouter();
+
+  if (!data || error) {
+    return null;
+  }
+
+  // TODO: uncomment out this line before merge
+  // if (dataUpdatedAtTimeUtc === data.updatedAtUtcTimeIso) {
+  //   return null;
+  // }
+
   return (
     <div
-      className={cx(styles["container"], "flex align-items-center", className)}
+      className={cx(
+        styles["sticky-container"],
+        "flex align-items-center",
+        className
+      )}
     >
-      <div className={styles["sticky-button"]}>
-        <Button>Update data</Button>
-      </div>
+      <Button
+        className={cx(styles["refresh-button"], "animate-fade-in")}
+        onClick={() => router.reload()}
+      >
+        Update data
+      </Button>
     </div>
   );
 };

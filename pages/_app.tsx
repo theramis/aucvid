@@ -1,5 +1,8 @@
 import type { AppProps } from "next/app";
 import Head from "next/head";
+import { QueryClient, QueryClientProvider } from "react-query";
+import { ReactQueryDevtools } from "react-query/devtools";
+
 import { NewRelicSnippet } from "../app/NewRelicSnippet";
 
 import "../app/styles/globals.scss";
@@ -11,6 +14,8 @@ const metaTags = {
   url: "https://outoflockdown.co",
   imageUrl: "https://outoflockdown.co/preview-cover.png",
 };
+
+const queryClient = new QueryClient();
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -34,8 +39,12 @@ function MyApp({ Component, pageProps }: AppProps) {
         <meta property="twitter:description" content={metaTags.description} />
         <meta property="twitter:image" content={metaTags.imageUrl} />
       </Head>
+
       <NewRelicSnippet />
-      <Component {...pageProps} />
+      <QueryClientProvider client={queryClient}>
+        <Component {...pageProps} />
+        <ReactQueryDevtools initialIsOpen={false} />
+      </QueryClientProvider>
     </>
   );
 }

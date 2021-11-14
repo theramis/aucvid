@@ -1,11 +1,23 @@
 @import "../../styles/vars.scss";
 
-.container {
+.sticky-container {
   position: sticky;
   width: 100%;
-  top: 10px;
+  top: 0;
+  z-index: 1;
+
+  &:before {
+    content: "";
+    top: 0;
+    position: absolute;
+    height: 6.25rem;
+    width: 100%;
+    background: linear-gradient(180deg, #000000 0%, rgba(0, 0, 0, 0) 100%);
+    pointer-events: none;
+  }
 }
 
-.sticky-button {
+.refresh-button {
   position: absolute;
+  top: 3.75rem;
 }
