@@ -1,6 +1,7 @@
 import type { AppProps } from "next/app";
 import Head from "next/head";
 
+import { NewRelicSnippet } from "../app/NewRelicSnippet";
 import { NextQueryParamProvider } from "../app/components/NextQueryParamProvider";
 
 import "../app/styles/globals.scss";
@@ -36,6 +37,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <meta property="twitter:image" content={metaTags.imageUrl} />
       </Head>
       <NextQueryParamProvider>
+        <NewRelicSnippet />
         <Component {...pageProps} />
       </NextQueryParamProvider>
     </>
