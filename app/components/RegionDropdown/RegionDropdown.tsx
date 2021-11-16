@@ -1,4 +1,3 @@
-import { useEffectOnce } from "../../hooks/useEffectOnce";
 import { DhbRegionId } from "../../types/IndexPageProps";
 import styles from "./RegionDropdown.module.scss";
 
