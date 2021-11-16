@@ -1,6 +1,6 @@
-import { useState } from "react";
 import { GetServerSideProps } from "next";
 import { DateTime } from "luxon";
+import { useQueryParams, withDefault, StringParam } from "use-query-params";
 
 import { ExternalLink } from "../app/components/Link";
 import { DarkModeToggle } from "../app/components/DarkModeToggle";
@@ -11,18 +11,18 @@ import {
   PageFooter,
   Divider,
 } from "../app/components/Page";
-import {
-  RegionDropdown,
-  RegionOptionId,
-} from "../app/components/RegionDropdown";
-import { IndexPageProps } from "../app/types/IndexPageProps";
+import { RegionDropdown } from "../app/components/RegionDropdown";
+import { DhbRegionId, IndexPageProps } from "../app/types/IndexPageProps";
 import fetchIndexPageProps from "../app/propsGenerators/indexPagePropsGenerator";
 import { DhbsVaccineDoseDataList } from "../app/components/DhbsVaccineDoseDataList";
 
 const Index: React.FC<IndexPageProps> = (props: IndexPageProps) => {
   const { allDhbsVaccineDoseData } = props;
+
   const hasMounted = useHasMounted();
-  const [region, selectedRegion] = useState<RegionOptionId>("auckland");
+  const [query, setQuery] = useQueryParams({
+    dhbs: withDefault(StringParam, "auckland"),
+  });
 
   return (
     <Page className="flex align-items-center">
@@ -37,20 +37,20 @@ const Index: React.FC<IndexPageProps> = (props: IndexPageProps) => {
               <h1 className="heading-1">Aotearoa</h1>
             </div>
             <RegionDropdown
-              selectedRegion={region}
-              onChange={(regionId) => selectedRegion(regionId)}
+              selectedRegion={query.dhbs}
+              onChange={(id) => setQuery({ dhbs: id })}
             />
           </PageContainer>
         </section>
         <section>
           <PageContainer>
             <DhbsVaccineDoseDataList
-              key={region}
+              key={query.dhbs}
               dhbsVaccineDoseData={allDhbsVaccineDoseData.filter((dhb) => {
-                if (region === "all") {
+                if (query.dhbs === "all") {
                   return true;
                 }
-                return dhb.regionIds.includes(region);
+                return dhb.regionIds.includes(query.dhbs as DhbRegionId);
               })}
             />
           </PageContainer>
