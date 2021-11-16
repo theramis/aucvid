@@ -25,16 +25,6 @@ export const RegionDropdown = ({
   selectedRegion,
   onChange,
 }: RegionDropdownProps) => {
-  useEffectOnce(() => {
-    const isValidSelectedRegion =
-      selectedRegion &&
-      options.map((o) => o.id as string).includes(selectedRegion);
-
-    if (!isValidSelectedRegion) {
-      onChange("auckland");
-    }
-  });
-
   return (
     <div className={styles["dropdown-container"]}>
       <select
@@ -42,6 +32,7 @@ export const RegionDropdown = ({
         value={selectedRegion}
         onChange={(event) => onChange(event.target.value as RegionOptionId)}
       >
+        <option hidden>Select DHBs</option>
         {options.map((option: Option) => {
           return (
             <option key={option.id} value={option.id}>

@@ -43,13 +43,13 @@ export const NextQueryParamProvider = ({
       push: ({ search }: Location) =>
         router.push(
           { pathname: router.pathname, search },
-          { search, pathname },
+          { pathname, search },
           { shallow: true, scroll: false }
         ),
       replace: ({ search }: Location) => {
         router.replace(
           { pathname: router.pathname, search },
-          { search, pathname },
+          { pathname, search },
           { shallow: true, scroll: false }
         );
       },
