@@ -1,5 +1,6 @@
 import type { AppProps } from "next/app";
 import Head from "next/head";
+import { NewRelicSnippet } from "../app/NewRelicSnippet";
 
 import "../app/styles/globals.scss";
 
@@ -33,6 +34,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <meta property="twitter:description" content={metaTags.description} />
         <meta property="twitter:image" content={metaTags.imageUrl} />
       </Head>
+      <NewRelicSnippet />
       <Component {...pageProps} />
     </>
   );
