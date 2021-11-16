@@ -1,4 +1,4 @@
-name: Verify Run Fetchy Fetch Boi
+name: Verify Run Fetchy
 on:
   pull_request:
 
@@ -23,6 +23,6 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: Run Fetchy
-        run: npm run fetch-boi
+        run: npm run fetchy
       - name: Note any files generated
         run: git status
