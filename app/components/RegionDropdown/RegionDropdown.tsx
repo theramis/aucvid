@@ -1,3 +1,4 @@
+import { useEffectOnce } from "../../hooks/useEffectOnce";
 import { DhbRegionId } from "../../types/IndexPageProps";
 import styles from "./RegionDropdown.module.scss";
 
@@ -16,7 +17,7 @@ const options: Option[] = [
 ];
 
 type RegionDropdownProps = {
-  selectedRegion: RegionOptionId;
+  selectedRegion: RegionOptionId | string | undefined;
   onChange: (id: RegionOptionId) => void;
 };
 
@@ -24,6 +25,16 @@ export const RegionDropdown = ({
   selectedRegion,
   onChange,
 }: RegionDropdownProps) => {
+  useEffectOnce(() => {
+    const isValidSelectedRegion =
+      selectedRegion &&
+      options.map((o) => o.id as string).includes(selectedRegion);
+
+    if (!isValidSelectedRegion) {
+      onChange("auckland");
+    }
+  });
+
   return (
     <div className={styles["dropdown-container"]}>
       <select
