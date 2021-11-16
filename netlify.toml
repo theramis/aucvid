@@ -10,6 +10,8 @@
 
 [context.production.environment]
   NEXT_PUBLIC_GA_ID = "G-3N8VWQ2KCM"
+  NEXT_PUBLIC_ENVIRONMENT = "production"
 
 [context.deploy-preview.environment]
   NEXT_PUBLIC_GA_ID = "G-LGFTVFGLKX"
+  NEXT_PUBLIC_ENVIRONMENT = "deploy-preview"
