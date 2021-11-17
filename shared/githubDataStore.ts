@@ -30,7 +30,7 @@ export const triggerFetchy = async () => {
     {
       owner: githubOwner,
       repo: githubRepo,
-      event_type: "trigger-fetchy-boi",
+      event_type: "trigger-fetchy",
     }
   );
 

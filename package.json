@@ -10,8 +10,8 @@
     "start": "next start",
     "lint": "next lint",
     "husky-install": "husky install",
-    "fetch-boi": "cross-env NODE_OPTIONS='--unhandled-rejections=strict' ts-node fetchy/fetchyboi.ts",
-    "regen-data": "cross-env NODE_OPTIONS='--unhandled-rejections=strict' REGENERATE_DATA=true ts-node fetchy/fetchyboi.ts"
+    "fetchy": "cross-env NODE_OPTIONS='--unhandled-rejections=strict' ts-node fetchy/fetchy.ts",
+    "fetchy-regen-data": "cross-env NODE_OPTIONS='--unhandled-rejections=strict' REGENERATE_DATA=true ts-node fetchy/fetchy.ts"
   },
   "dependencies": {
     "@heroicons/react": "^1.0.5",
@@ -25,6 +25,7 @@
     "query-string": "7.0.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",
+    "react-query": "^3.32.3",
     "sass": "^1.43.4",
     "use-query-params": "1.2.3"
   },

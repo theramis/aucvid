@@ -1,5 +1,7 @@
 import type { AppProps } from "next/app";
 import Head from "next/head";
+import { ReactQueryDevtools } from "react-query/devtools";
+import { QueryClient, QueryClientProvider } from "react-query";
 
 import { NewRelicSnippet } from "../app/NewRelicSnippet";
 import { NextQueryParamProvider } from "../app/components/NextQueryParamProvider";
@@ -13,6 +15,8 @@ const metaTags = {
   url: "https://outoflockdown.co",
   imageUrl: "https://outoflockdown.co/preview-cover.png",
 };
+
+const queryClient = new QueryClient();
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -37,9 +41,11 @@ function MyApp({ Component, pageProps }: AppProps) {
         <meta property="twitter:image" content={metaTags.imageUrl} />
       </Head>
       <NextQueryParamProvider>
-        <NewRelicSnippet />
-        <Component {...pageProps} />
+        <QueryClientProvider client={queryClient}>
+          <Component {...pageProps} />
+        </QueryClientProvider>
       </NextQueryParamProvider>
+      <NewRelicSnippet />
     </>
   );
 }

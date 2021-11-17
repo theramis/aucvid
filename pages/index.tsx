@@ -15,6 +15,7 @@ import { RegionDropdown } from "../app/components/RegionDropdown";
 import { DhbRegionId, IndexPageProps } from "../app/types/IndexPageProps";
 import fetchIndexPageProps from "../app/propsGenerators/indexPagePropsGenerator";
 import { DhbsVaccineDoseDataList } from "../app/components/DhbsVaccineDoseDataList";
+import { LatestDataRefresh } from "../app/components/LatestDataRefresh";
 
 const Index: React.FC<IndexPageProps> = (props: IndexPageProps) => {
   const { allDhbsVaccineDoseData } = props;
@@ -26,6 +27,7 @@ const Index: React.FC<IndexPageProps> = (props: IndexPageProps) => {
 
   return (
     <Page className="flex align-items-center">
+      <LatestDataRefresh dataUpdatedAtTimeUtc={props.dataUpdatedAtTimeUtc} />
       <div className="flex-1 width-full">
         <section className="padding-top-4xl padding-bottom-l">
           <PageContainer className="flex align-items-stretch">
