@@ -1,12 +1,14 @@
 import { ErrorResponse } from "../../shared/types/api";
 
-const clientFetcher = (url: string) =>
-  fetch(url).then(async (response) => {
-    if (!response.ok) {
-      const errorMessage = (await response.json()) as ErrorResponse;
-      throw new Error(errorMessage.message);
-    }
-    return response.json();
-  });
+const clientFetcher = async (url: string) => {
+  const response = await fetch(url);
+  const data = await response.json();
+
+  if (response.ok) {
+    return data;
+  } else {
+    throw new Error((data as ErrorResponse).message);
+  }
+};
 
 export default clientFetcher;
