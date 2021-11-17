@@ -31,6 +31,13 @@ $purple-base: #714cb4;
 $purple-light: #9c7ad9;
 $purple-xlight: #faf5fd;
 
+$black-gradient: linear-gradient(180deg, $black 0%, rgba(0, 0, 0, 0) 100%);
+$white-gradient: linear-gradient(
+  180deg,
+  $white 0%,
+  rgba(255, 255, 255, 0) 100%
+);
+
 // Light
 $light--text-primary: $black;
 $light--text-secondary: $grey-dark;
@@ -50,6 +57,7 @@ $light--control-background-hover: $black-5;
 $light--control-focus-ring: $black-30;
 $light--control-icon: $green-dark;
 $light--divider: $black-10;
+$light--mask-gradient: $white-gradient;
 
 // Dark
 $dark--text-primary: $white-95;
@@ -70,3 +78,4 @@ $dark--control-background-hover: $white-10;
 $dark--control-focus-ring: $white-50;
 $dark--control-icon: $green-light;
 $dark--divider: $white-10;
+$dark--mask-gradient: $black-gradient;

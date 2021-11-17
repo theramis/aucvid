@@ -65,6 +65,7 @@ body {
   --control-focus-ring: #{$dark--control-focus-ring};
   --control-icon: #{$dark--control-icon};
   --divider: #{$dark--divider};
+  --mask-gradient: #{$dark--mask-gradient};
 }
 
 .light {
@@ -86,4 +87,5 @@ body {
   --control-focus-ring: #{$light--control-focus-ring};
   --control-icon: #{$light--control-icon};
   --divider: #{$light--divider};
+  --mask-gradient: #{$light--mask-gradient};
 }

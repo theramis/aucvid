@@ -27,10 +27,9 @@ export const LatestDataRefresh = ({
     return null;
   }
 
-  // TODO: uncomment out this line before merge
-  // if (dataUpdatedAtTimeUtc === data.updatedAtUtcTimeIso) {
-  //   return null;
-  // }
+  if (dataUpdatedAtTimeUtc === data.updatedAtUtcTimeIso) {
+    return null;
+  }
 
   return (
     <div

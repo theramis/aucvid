@@ -12,12 +12,12 @@
     position: absolute;
     height: 6rem;
     width: 100%;
-    background: linear-gradient(180deg, #000000 0%, rgba(0, 0, 0, 0) 100%);
+    background: var(--mask-gradient);
     pointer-events: none;
   }
 }
 
 .refresh-button {
   position: absolute;
-  top: 3.75rem;
+  top: 2rem;
 }
