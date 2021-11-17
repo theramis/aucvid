@@ -58,17 +58,13 @@ body {
   --complete-background: #{$dark--complete-background};
   --background-base: #{$dark--background-base};
   --background-tint: #{$dark--background-tint};
-  --dark-mode-toggle: #{$dark--dark-mode-toggle};
-  --dark-mode-toggle-hover: #{$dark--dark-mode-toggle-hover};
+  --control-foreground: #{$dark--control-foreground};
+  --control-foreground-hover: #{$dark--control-foreground-hover};
   --control-background: #{$dark--control-background};
   --control-background-hover: #{$dark--control-background-hover};
   --control-focus-ring: #{$dark--control-focus-ring};
   --control-icon: #{$dark--control-icon};
   --divider: #{$dark--divider};
-  --button-background: #{$dark--button-background};
-  --button-background-hover: #{$dark--button-background-hover};
-  --button-foreground: #{$dark--button-foreground};
-  --button-foreground-hover: #{$dark--button-foreground-hover};
 }
 
 .light {
@@ -83,15 +79,11 @@ body {
   --complete-background: #{$light--complete--background};
   --background-base: #{$light--background--base};
   --background-tint: #{$light--background--tint};
-  --dark-mode-toggle: #{$light--dark-mode-toggle};
-  --dark-mode-toggle-hover: #{$light--dark-mode-toggle-hover};
+  --control-foreground: #{$light--control-foreground};
+  --control-foreground-hover: #{$light--control-foreground-hover};
   --control-background: #{$light--control-background};
   --control-background-hover: #{$light--control-background-hover};
   --control-focus-ring: #{$light--control-focus-ring};
   --control-icon: #{$light--control-icon};
   --divider: #{$light--divider};
-  --button-background: #{$light--button-background};
-  --button-background-hover: #{$light--button-background-hover};
-  --button-foreground: #{$light--button-foreground};
-  --button-foreground-hover: #{$light--button-foreground-hover};
 }
