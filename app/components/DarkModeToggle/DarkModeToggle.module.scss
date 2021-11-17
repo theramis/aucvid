@@ -5,11 +5,11 @@
   height: 2.5rem;
   padding: 0.625rem;
   border-radius: $radius-full;
-  color: var(--control-foreground);
+  color: var(--dark-mode-toggle);
   transition: all 0.2s ease-in-out;
 
   &:hover {
-    color: var(--control-foreground-hover);
+    color: var(--dark-mode-toggle-hover);
     background-color: var(--control-background-hover);
   }
 }
