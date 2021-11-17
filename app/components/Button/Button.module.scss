@@ -1,0 +1,13 @@
+@import "../../styles/vars.scss";
+
+.button {
+  color: var(--button-foreground);
+  background: var(--button-background);
+  border-radius: $radius-full;
+  font-weight: 500;
+  transition: color, background-color 0.2s ease;
+
+  &:hover {
+    background: var(--button-background-hover);
+  }
+}

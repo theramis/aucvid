@@ -1,6 +1,6 @@
 type UtcTimeIso = string;
 
-type DocumentMetadata = {
+export type DocumentMetadata = {
   createdAtUtcTimeIso: UtcTimeIso;
   updatedAtUtcTimeIso: UtcTimeIso;
 };
