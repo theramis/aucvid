@@ -27,9 +27,9 @@ export const LatestDataRefresh = ({
     return null;
   }
 
-  if (dataUpdatedAtTimeUtc === data.updatedAtUtcTimeIso) {
-    return null;
-  }
+  // if (dataUpdatedAtTimeUtc === data.updatedAtUtcTimeIso) {
+  //   return null;
+  // }
 
   return (
     <div
