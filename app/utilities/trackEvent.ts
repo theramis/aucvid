@@ -16,7 +16,8 @@ interface WindowWithTracking {
 }
 
 const windowHasTracking = (w: unknown): w is WindowWithTracking =>
-  typeof w !== undefined && typeof (w as any).gtag !== undefined;
+  typeof w !== "undefined" &&
+  typeof (w as WindowWithTracking)?.gtag !== "undefined";
 
 const trackEvent = ({ action, category, label, value }: GTagEvent): void => {
   if (windowHasTracking(window))
