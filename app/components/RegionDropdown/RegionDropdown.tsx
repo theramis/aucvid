@@ -16,7 +16,7 @@ const options: Option[] = [
 ];
 
 type RegionDropdownProps = {
-  selectedRegion: RegionOptionId;
+  selectedRegion: RegionOptionId | string | undefined;
   onChange: (id: RegionOptionId) => void;
 };
 
@@ -31,6 +31,7 @@ export const RegionDropdown = ({
         value={selectedRegion}
         onChange={(event) => onChange(event.target.value as RegionOptionId)}
       >
+        <option hidden>Select DHBs</option>
         {options.map((option: Option) => {
           return (
             <option key={option.id} value={option.id}>
@@ -40,8 +41,6 @@ export const RegionDropdown = ({
         })}
       </select>
       <div className={styles["dropdown-caret"]}>
-        {/* <span className={styles["caret-left"]} />
-        <span className={styles["caret-right"]} /> */}
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
           <path d="M0 7.33l2.829-2.83 9.175 9.339 9.167-9.339 2.829 2.83-11.996 12.17z" />
         </svg>

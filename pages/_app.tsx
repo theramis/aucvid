@@ -1,9 +1,10 @@
 import type { AppProps } from "next/app";
 import Head from "next/head";
-import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
+import { QueryClient, QueryClientProvider } from "react-query";
 
 import { NewRelicSnippet } from "../app/NewRelicSnippet";
+import { NextQueryParamProvider } from "../app/components/NextQueryParamProvider";
 
 import "../app/styles/globals.scss";
 
@@ -39,12 +40,12 @@ function MyApp({ Component, pageProps }: AppProps) {
         <meta property="twitter:description" content={metaTags.description} />
         <meta property="twitter:image" content={metaTags.imageUrl} />
       </Head>
-
+      <NextQueryParamProvider>
+        <QueryClientProvider client={queryClient}>
+          <Component {...pageProps} />
+        </QueryClientProvider>
+      </NextQueryParamProvider>
       <NewRelicSnippet />
-      <QueryClientProvider client={queryClient}>
-        <Component {...pageProps} />
-        <ReactQueryDevtools initialIsOpen={false} />
-      </QueryClientProvider>
     </>
   );
 }
