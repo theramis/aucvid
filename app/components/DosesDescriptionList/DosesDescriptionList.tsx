@@ -53,24 +53,27 @@ const DosesDescription = ({
         {displayDosesPercentageChange ? (
           <div
             className={cx(
-              styles["percentage-value-change"],
+              styles["percentage-change"],
+              {
+                [styles["percentage-change-negative"]]:
+                  displayDosesPercentageChange < 0,
+              },
               "flex flex-row align-items-baseline space-x-2xs paragraph"
             )}
           >
-            <div className="flex-0">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 16 16"
-                fill="none"
-              >
-                <path
-                  fillRule="evenodd"
-                  clipRule="evenodd"
-                  d="M9.23077 4.57143L14.1538 9.14286L16 7.42857L8 0L-5.96046e-07 7.42857L1.84615 9.14286L6.76923 4.57143L6.76923 16H9.23077L9.23077 4.57143Z"
-                  fill="currentColor"
-                />
-              </svg>
-            </div>
+            <svg
+              className="flex-0"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 16 16"
+              fill="none"
+            >
+              <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M9.23077 4.57143L14.1538 9.14286L16 7.42857L8 0L-5.96046e-07 7.42857L1.84615 9.14286L6.76923 4.57143L6.76923 16H9.23077L9.23077 4.57143Z"
+                fill="currentColor"
+              />
+            </svg>
             <div>{displayDosesPercentageChange}</div>
           </div>
         ) : null}
