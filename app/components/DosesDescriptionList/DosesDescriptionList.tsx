@@ -10,7 +10,7 @@ type DosesDescriptionProps = {
   term: string;
   hasMetTarget: boolean;
   dosesPercent: number;
-  dosesChange: number;
+  dosesPercentChange: number | null;
   children?: React.ReactNode;
 };
 
@@ -28,11 +28,17 @@ const DosesDescription = ({
   term,
   hasMetTarget,
   dosesPercent,
+  dosesPercentChange,
   children = null,
-}: Omit<DosesDescriptionProps, "dosesChange">) => (
+}: DosesDescriptionProps) => (
   <div className="width-half">
     <dt className={cx(styles["dose-label"], "margin-bottom-2xs")}>{term}</dt>
     <dd className="flex flex-row justify-content-start align-items-center space-x-xs">
+      {hasMetTarget && (
+        <div className={cx(styles["check"], "flex-0")}>
+          <CheckIcon aria-label={`${term} target met`} />
+        </div>
+      )}
       <div
         className={cx(styles["percentage-value"], {
           [styles["percentage-value-complete"]]: hasMetTarget,
@@ -40,9 +46,9 @@ const DosesDescription = ({
       >
         <DisplayPercentage percentage={dosesPercent} />
       </div>
-      {hasMetTarget && (
-        <div className={cx(styles["check"], "flex-0")}>
-          <CheckIcon aria-label={`${term} target met`} />
+      {dosesPercentChange && truncateNumber(dosesPercentChange, 1) > 0 && (
+        <div className={cx(styles["percentage-value-change"])}>
+          ↑ {truncateNumber(dosesPercentChange, 1)}
         </div>
       )}
     </dd>
@@ -58,6 +64,7 @@ export const DosesDescriptionList = ({
       term="First doses"
       hasMetTarget={dhbData.hasMetFirstDoseTarget}
       dosesPercent={dhbData.firstDosesPercentage}
+      dosesPercentChange={dhbData.firstDosesPercentChange}
     >
       <dd className={styles["vaccine-count"]}>
         {numberFormatter.format(dhbData.firstDosesTo90Percent)} left
@@ -67,6 +74,7 @@ export const DosesDescriptionList = ({
       term="Second doses"
       hasMetTarget={dhbData.hasMetSecondDoseTarget}
       dosesPercent={dhbData.secondDosesPercentage}
+      dosesPercentChange={dhbData.secondDosesPercentChange}
     >
       <dd className={styles["vaccine-count"]}>
         {numberFormatter.format(dhbData.secondDosesTo90Percent)} left

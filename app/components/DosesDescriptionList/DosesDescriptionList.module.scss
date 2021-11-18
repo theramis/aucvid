@@ -58,3 +58,17 @@
     height: $space-s;
   }
 }
+
+// TODO
+// I copy pasted this. IDK how to CSS. Someone please fix
+.percentage-value-change {
+  color: var(--text-primary);
+
+  font-size: 1.125rem; // 18px
+  line-height: 1.5rem; // 24px
+  font-weight: 500;
+  @media (min-width: $breakpoint-s) {
+    font-size: 1.25rem; // 20px
+    line-height: 1.75rem; // 28px
+  }
+}
