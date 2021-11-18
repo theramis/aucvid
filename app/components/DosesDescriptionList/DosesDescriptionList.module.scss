@@ -31,12 +31,18 @@
   color: var(--text-positive);
 }
 
-.percentage-value-change {
+.percentage-change {
   color: var(--text-secondary);
 
   & svg {
     width: 0.625rem;
     height: 0.625rem;
+  }
+}
+
+.percentage-change-negative {
+  & svg {
+    transform: scaleY(-1);
   }
 }
 
