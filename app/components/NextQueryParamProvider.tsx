@@ -13,14 +13,14 @@ export const NextQueryParamProvider = ({
 }: NextQueryParamProviderProps) => {
   const router = useRouter();
 
-  const [pathname, search = ""] = router.asPath.split("?");
+  const [pathname, queryString = ""] = router.asPath.split("?");
 
   const location = useMemo<Location>(() => {
     if (typeof window === "undefined") {
       // On the server side we only need a subset of the available
       // properties of `Location`. The other ones are only necessary
       // for interactive features on the client.
-      return { search } as Location;
+      return { search: `?${queryString}` } as Location;
     }
 
     // For SSG, no query parameters are available on the server side,
@@ -35,7 +35,7 @@ export const NextQueryParamProvider = ({
     }
 
     return { search: "" } as Location;
-  }, [search, router.isReady]);
+  }, [queryString, router.isReady]);
 
   const history = useMemo(
     () => ({
