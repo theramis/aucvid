@@ -4,6 +4,7 @@ import { useQuery } from "react-query";
 import { LatestMetadataResponse } from "../../../shared/types/api";
 import { Button } from "../Button";
 import clientFetcher from "../../utilities/clientFetcher";
+import trackEvent from "../../utilities/trackEvent";
 import styles from "./LatestDataRefresh.module.scss";
 
 type LatestDataRefreshProps = {
@@ -41,7 +42,10 @@ export const LatestDataRefresh = ({
     >
       <Button
         className={cx(styles["refresh-button"], "animate-fade-in")}
-        onClick={() => router.reload()}
+        onClick={() => {
+          trackEvent({ action: "refresh-latest-data" });
+          router.reload();
+        }}
       >
         Update data
       </Button>
