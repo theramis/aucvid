@@ -31,6 +31,7 @@
   },
   "devDependencies": {
     "@netlify/plugin-nextjs": "^4.0.0-beta.6",
+    "@types/gtag.js": "0.0.8",
     "@types/node": "^16.11.7",
     "@types/react": "17.0.34",
     "autoprefixer": "^10.4.0",
