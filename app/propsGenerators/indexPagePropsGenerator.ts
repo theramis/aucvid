@@ -102,6 +102,20 @@ function generateAllDhbsVaccineDoseData(
       dhb.totalPopulation
     );
 
+    const yesterdaysFirstDosesPercentage = yesterdayDoseData
+      ? calculateDosePercentage(
+          yesterdayDoseData.firstDoses,
+          yesterdayDoseData.totalPopulation
+        )
+      : null;
+
+    const yesterdaysSecondDosesPercentage = yesterdayDoseData
+      ? calculateDosePercentage(
+          yesterdayDoseData.secondDoses,
+          yesterdayDoseData.totalPopulation
+        )
+      : null;
+
     return {
       ...dhb,
       regionIds: regions,
@@ -111,11 +125,11 @@ function generateAllDhbsVaccineDoseData(
         firstDosesPercentage >= CONSTANTS.firstDoseTargetPercentage,
       hasMetSecondDoseTarget:
         secondDosesPercentage >= CONSTANTS.secondDoseTargetPercentage,
-      firstDosesChange: yesterdayDoseData
-        ? yesterdayDoseData?.firstDosesTo90Percent - dhb.firstDosesTo90Percent
+      firstDosesPercentChange: yesterdaysFirstDosesPercentage
+        ? firstDosesPercentage - yesterdaysFirstDosesPercentage
         : null,
-      secondDosesChange: yesterdayDoseData
-        ? yesterdayDoseData?.secondDosesTo90Percent - dhb.secondDosesTo90Percent
+      secondDosesPercentChange: yesterdaysSecondDosesPercentage
+        ? secondDosesPercentage - yesterdaysSecondDosesPercentage
         : null,
     };
   });

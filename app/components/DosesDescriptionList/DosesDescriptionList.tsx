@@ -10,7 +10,7 @@ type DosesDescriptionProps = {
   term: string;
   hasMetTarget: boolean;
   dosesPercent: number;
-  dosesChange: number;
+  dosesPercentChange: number | null;
   children?: React.ReactNode;
 };
 
@@ -28,27 +28,57 @@ const DosesDescription = ({
   term,
   hasMetTarget,
   dosesPercent,
+  dosesPercentChange = null,
   children = null,
-}: Omit<DosesDescriptionProps, "dosesChange">) => (
-  <div className="width-half">
-    <dt className={cx(styles["dose-label"], "margin-bottom-2xs")}>{term}</dt>
-    <dd className="flex flex-row justify-content-start align-items-center space-x-xs">
-      <div
-        className={cx(styles["percentage-value"], {
-          [styles["percentage-value-complete"]]: hasMetTarget,
-        })}
-      >
-        <DisplayPercentage percentage={dosesPercent} />
-      </div>
-      {hasMetTarget && (
-        <div className={cx(styles["check"], "flex-0")}>
-          <CheckIcon aria-label={`${term} target met`} />
+}: DosesDescriptionProps) => {
+  const displayDosesPercentageChange =
+    dosesPercentChange && truncateNumber(dosesPercentChange, 1);
+
+  return (
+    <div className="width-half">
+      <dt className={cx(styles["dose-label"], "margin-bottom-2xs")}>{term}</dt>
+      <dd className="flex flex-row justify-content-start align-items-baseline space-x-xs">
+        {hasMetTarget && (
+          <div className={cx(styles["check"], "flex-0")}>
+            <CheckIcon aria-label={`${term} target met`} />
+          </div>
+        )}
+        <div
+          className={cx(styles["percentage-value"], {
+            [styles["percentage-value-complete"]]: hasMetTarget,
+          })}
+        >
+          <DisplayPercentage percentage={dosesPercent} />
         </div>
-      )}
-    </dd>
-    {children}
-  </div>
-);
+        {displayDosesPercentageChange ? (
+          <div
+            className={cx(
+              styles["percentage-value-change"],
+              "flex flex-row align-items-baseline space-x-2xs paragraph"
+            )}
+          >
+            <div className="flex-0">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 16 16"
+                fill="none"
+              >
+                <path
+                  fillRule="evenodd"
+                  clipRule="evenodd"
+                  d="M9.23077 4.57143L14.1538 9.14286L16 7.42857L8 0L-5.96046e-07 7.42857L1.84615 9.14286L6.76923 4.57143L6.76923 16H9.23077L9.23077 4.57143Z"
+                  fill="currentColor"
+                />
+              </svg>
+            </div>
+            <div>{displayDosesPercentageChange}</div>
+          </div>
+        ) : null}
+      </dd>
+      {children}
+    </div>
+  );
+};
 
 export const DosesDescriptionList = ({
   dhbData,
@@ -58,6 +88,7 @@ export const DosesDescriptionList = ({
       term="First doses"
       hasMetTarget={dhbData.hasMetFirstDoseTarget}
       dosesPercent={dhbData.firstDosesPercentage}
+      dosesPercentChange={dhbData.firstDosesPercentChange}
     >
       <dd className={styles["vaccine-count"]}>
         {numberFormatter.format(dhbData.firstDosesTo90Percent)} left
@@ -67,6 +98,7 @@ export const DosesDescriptionList = ({
       term="Second doses"
       hasMetTarget={dhbData.hasMetSecondDoseTarget}
       dosesPercent={dhbData.secondDosesPercentage}
+      dosesPercentChange={dhbData.secondDosesPercentChange}
     >
       <dd className={styles["vaccine-count"]}>
         {numberFormatter.format(dhbData.secondDosesTo90Percent)} left

@@ -31,6 +31,15 @@
   color: var(--text-positive);
 }
 
+.percentage-value-change {
+  color: var(--text-secondary);
+
+  & svg {
+    width: 0.625rem;
+    height: 0.625rem;
+  }
+}
+
 .vaccine-count {
   color: var(--text-primary);
 
@@ -44,6 +53,7 @@
 }
 
 .check {
+  align-self: center;
   width: $space-m;
   height: $space-m;
   display: flex;
