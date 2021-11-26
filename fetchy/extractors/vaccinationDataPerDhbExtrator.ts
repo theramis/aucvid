@@ -8,7 +8,7 @@ export const getVaccinationDataPerDhb = (
   rawHtml: string
 ): DhbVaccineDoseData[] => {
   const vaccinationTo90PerDhbTableHtml =
-    /Vaccinations\sto\s90%\sby\sDHB\<\/h3\>.*?\<tbody\>(.*?)\<\/tbody\>/gs.exec(
+    /\<a id="90pct" name="90pct"\>\<\/a\>.*?\<\/h3\>.*?\<tbody\>(.*?)\<\/tbody\>/gs.exec(
       rawHtml
     )![1];
 
