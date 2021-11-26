@@ -1,9 +1,13 @@
 import { DateTime } from "luxon";
-import { getAllVaccineData } from "../../shared/vaccineDataStore";
+import {
+  getAllVaccineData,
+  getVaccineDataForDate,
+} from "../../shared/vaccineDataStore";
 import { getLatestFetchyRun } from "../../shared/githubDataStore";
 import {
   DhbVaccineDoseData,
   DhbName,
+  NzTimeIso,
 } from "../../shared/types/VaccineDataTypes";
 import { CONSTANTS } from "../constants";
 import {
@@ -12,6 +16,8 @@ import {
   IndexPageProps,
 } from "../types/IndexPageProps";
 import { createCache } from "../../shared/cache";
+
+export type DatePageProps = Omit<IndexPageProps, "lastCheckedAtTimeUtc">;
 
 function calculateDosePercentage(
   dosesCount: number,
@@ -24,6 +30,33 @@ const getCachedLatestFetchyRun = createCache(getLatestFetchyRun, {
   key: "latest-fetchy-run",
   ttlInSeconds: 5 * 60,
 });
+
+export async function fetchDatePageProps(
+  date: NzTimeIso
+): Promise<DatePageProps | null> {
+  const previousDateIso = DateTime.fromISO(date).minus({ days: 1 }).toISO();
+
+  const dataForDate = await getVaccineDataForDate(date);
+  const previousDataForDate = await getVaccineDataForDate(previousDateIso);
+
+  if (!dataForDate || !previousDataForDate) {
+    return null;
+  }
+
+  const { data, metadata } = dataForDate;
+  const { data: previousData } = previousDataForDate;
+
+  return {
+    dataUpdatedAtTimeUtc: metadata.updatedAtUtcTimeIso,
+    allDhbsVaccineDoseData: generateAllDhbsVaccineDoseData(
+      data.vaccinationsPerDhb,
+      previousData.vaccinationsPerDhb
+    ),
+    dataValidAsAtTimeUtc: DateTime.fromISO(data.dataValidAsAtNzTimeIso)
+      .toUTC()
+      .toISO(),
+  };
+}
 
 export default async function fetchIndexPageProps(): Promise<IndexPageProps> {
   const [
@@ -46,8 +79,8 @@ export default async function fetchIndexPageProps(): Promise<IndexPageProps> {
 }
 
 function generateAllDhbsVaccineDoseData(
-  latestVaccineData: DhbVaccineDoseData[],
-  yesterdayVaccineData: DhbVaccineDoseData[]
+  vaccineData: DhbVaccineDoseData[],
+  previousVaccineData: DhbVaccineDoseData[]
 ): DhbVaccineDoseDataForIndexPage[] {
   const aucklandDhbNames: DhbName[] = [
     "Waitemata",
@@ -76,7 +109,7 @@ function generateAllDhbsVaccineDoseData(
     "Southern",
   ];
 
-  return latestVaccineData.map((dhb) => {
+  return vaccineData.map((dhb) => {
     const regions: DhbRegionId[] = [];
     if (aucklandDhbNames.includes(dhb.dhbName)) {
       regions.push("auckland");
@@ -88,7 +121,7 @@ function generateAllDhbsVaccineDoseData(
       regions.push("southIsland");
     }
 
-    const yesterdayDoseData = yesterdayVaccineData.find(
+    const previousDoseData = previousVaccineData.find(
       (yesterdayDhb) => yesterdayDhb.dhbName === dhb.dhbName
     );
 
@@ -102,17 +135,17 @@ function generateAllDhbsVaccineDoseData(
       dhb.totalPopulation
     );
 
-    const yesterdaysFirstDosesPercentage = yesterdayDoseData
+    const previousFirstDosesPercentage = previousDoseData
       ? calculateDosePercentage(
-          yesterdayDoseData.firstDoses,
-          yesterdayDoseData.totalPopulation
+          previousDoseData.firstDoses,
+          previousDoseData.totalPopulation
         )
       : null;
 
-    const yesterdaysSecondDosesPercentage = yesterdayDoseData
+    const previousSecondDosesPercentage = previousDoseData
       ? calculateDosePercentage(
-          yesterdayDoseData.secondDoses,
-          yesterdayDoseData.totalPopulation
+          previousDoseData.secondDoses,
+          previousDoseData.totalPopulation
         )
       : null;
 
@@ -125,11 +158,11 @@ function generateAllDhbsVaccineDoseData(
         firstDosesPercentage >= CONSTANTS.firstDoseTargetPercentage,
       hasMetSecondDoseTarget:
         secondDosesPercentage >= CONSTANTS.secondDoseTargetPercentage,
-      firstDosesPercentChange: yesterdaysFirstDosesPercentage
-        ? firstDosesPercentage - yesterdaysFirstDosesPercentage
+      firstDosesPercentChange: previousFirstDosesPercentage
+        ? firstDosesPercentage - previousFirstDosesPercentage
         : null,
-      secondDosesPercentChange: yesterdaysSecondDosesPercentage
-        ? secondDosesPercentage - yesterdaysSecondDosesPercentage
+      secondDosesPercentChange: previousSecondDosesPercentage
+        ? secondDosesPercentage - previousSecondDosesPercentage
         : null,
     };
   });
