@@ -88,7 +88,7 @@ const Date: React.FC<DatePageProps> = (props: DatePageProps) => {
 
 export default Date;
 
-const queryParamAsString = (p: string | string[] | undefined = ""): string => {
+const paramToString = (p: string | string[] | undefined = ""): string => {
   if (Array.isArray(p)) {
     return p.join("");
   }
@@ -96,18 +96,15 @@ const queryParamAsString = (p: string | string[] | undefined = ""): string => {
 };
 
 const queryDateToNzIso = (date: string) => {
-  const [year, month, day] = queryParamAsString(date).split("-").map(Number);
+  const [year, month, day] = date.split("-").map(Number);
 
-  return DateTime.fromObject(
-    { day, month, year },
-    { zone: "Pacific/Auckland" }
-  ).toISO();
+  return DateTime.fromObject({ day, month, year }).toISO();
 };
 
 export const getServerSideProps: GetServerSideProps<DatePageProps> = async ({
-  query,
+  params,
 }) => {
-  const queryNzIso = queryDateToNzIso(queryParamAsString(query.date));
+  const queryNzIso = queryDateToNzIso(paramToString(params?.date));
 
   // if query is 'today' or in the future, redirect to the home page
   if (
