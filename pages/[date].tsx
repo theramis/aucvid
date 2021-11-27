@@ -34,7 +34,12 @@ const Date: React.FC<DatePageProps> = (props: DatePageProps) => {
           <PageContainer className="flex align-items-stretch">
             <div className="padding-left-l l:padding-left-none margin-bottom-4xl s:margin-bottom-5xl">
               <div className="width-full flex flex-row justify-content-between align-items-center">
-                <h2 className="heading-2">Vaccination rates</h2>
+                <h2 className="heading-2">
+                  Vaccination rates:{" "}
+                  {DateTime.fromISO(props.dataValidAsAtTimeUtc).toFormat(
+                    "MMM dd"
+                  )}
+                </h2>
                 {hasMounted && <DarkModeToggle className="flex-0" />}
               </div>
               <h1 className="heading-1">Aotearoa</h1>
@@ -68,12 +73,12 @@ const Date: React.FC<DatePageProps> = (props: DatePageProps) => {
             </ExternalLink>
             ,{" "}
             {DateTime.fromISO(props.dataUpdatedAtTimeUtc).toFormat(
-              "MMM dd yyyy"
+              "dd MMM yyyy"
             )}
           </p>
           <div className="flex flex-column justify-content-center align-items-center footnote">
             <p>
-              Data valid to:{" "}
+              Data as at:{" "}
               {DateTime.fromISO(props.dataValidAsAtTimeUtc).toFormat(
                 "dd MMM yyyy, hh:mm a"
               )}
