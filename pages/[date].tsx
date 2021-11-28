@@ -68,13 +68,9 @@ const Date: React.FC<DatePageProps> = (props: DatePageProps) => {
         <div className="flex align-items-center">
           <p className="footnote margin-bottom-xs">
             Sourced from{" "}
-            <ExternalLink href="https://www.health.govt.nz/our-work/diseases-and-conditions/covid-19-novel-coronavirus/covid-19-data-and-statistics/covid-19-vaccine-data">
+            <ExternalLink href="https://www.health.govt.nz/our-work/diseases-and-conditions/covid-19-novel-coronavirus/covid-19-data-and-statistics">
               Ministry of Health NZ
             </ExternalLink>
-            ,{" "}
-            {DateTime.fromISO(props.dataUpdatedAtTimeUtc).toFormat(
-              "dd MMM yyyy"
-            )}
           </p>
           <div className="flex flex-column justify-content-center align-items-center footnote">
             <p>
