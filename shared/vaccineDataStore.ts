@@ -31,7 +31,7 @@ export const getAllVaccineData = async (
   const files = await fs.readdir(CONSTANTS.vaccineDataFolder);
   const filesToParse = files.sort().reverse().slice(0, maxItems);
 
-  return await Promise.all(
+  return Promise.all(
     filesToParse.map((f) => {
       const filePath = `${CONSTANTS.vaccineDataFolder}/${f}`;
       return readFileDataForPath(filePath);
@@ -59,7 +59,7 @@ export const deleteAllVaccineData = async () => {
 export const getAllRawVaccineSites = async () => {
   const files = await fs.readdir(CONSTANTS.rawSiteFolder);
 
-  return await Promise.all(
+  return Promise.all(
     files.map((f) => {
       const filePath = `${CONSTANTS.rawSiteFolder}/${f}`;
       return fs.readFile(filePath, "utf8");
