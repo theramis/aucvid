@@ -29,7 +29,14 @@ export const getAllVaccineData = async (
   maxItems: number = 999
 ): Promise<DataDocument<VaccineData>[]> => {
   const files = await fs.readdir(CONSTANTS.vaccineDataFolder);
-  const filesToParse = files.sort().reverse().slice(0, maxItems);
+  const orderedFiles = files.sort().reverse();
+
+  // Temporary fix while regex is re-written
+  // 2022-02-16 - was the last date when the current regex still worked
+  const filesToParse = orderedFiles.slice(
+    orderedFiles.indexOf("2022-02-16.json"),
+    orderedFiles.indexOf("2022-02-16.json") + maxItems
+  );
 
   return await Promise.all(
     filesToParse.map((f) => {
