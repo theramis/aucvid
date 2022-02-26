@@ -32,10 +32,10 @@ export const getAllVaccineData = async (
   const orderedFiles = files.sort().reverse();
 
   // Temporary fix while regex is re-written
-  // 2022-02-16 - was the last date when the current regex still worked
+  // 2022-02-15 - was the last date when the current regex still worked
   const filesToParse = orderedFiles.slice(
-    orderedFiles.indexOf("2022-02-16.json"),
-    orderedFiles.indexOf("2022-02-16.json") + maxItems
+    orderedFiles.indexOf("2022-02-15.json"),
+    orderedFiles.indexOf("2022-02-15.json") + maxItems
   );
 
   return await Promise.all(
