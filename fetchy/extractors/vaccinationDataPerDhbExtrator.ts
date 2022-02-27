@@ -15,32 +15,38 @@ export const getVaccinationDataPerDhb = (
     dailyUpdatedNzTimeFromHtml.day
   );
 
-  if (rawHtmlDate > new Date(2022, 2, 16)) {
-    return extractDhbDataAfter_16_02_22(rawHtml);
+  if (rawHtmlDate <= new Date(2022, 2, 15)) {
+    return extractDhbData_Including_and_Before_15_02_22(rawHtml);
   }
 
-  if (rawHtmlDate > new Date(2022, 2, 15)) {
-    return extractDhbDataAfter_15_02_22(rawHtml);
+  if (rawHtmlDate <= new Date(2022, 2, 16)) {
+    return extractDhbData_Including_and_Before_16_02_22(rawHtml);
   }
 
-  return defaultExtractDhbData(rawHtml);
+  return extractDhbData_Including_and_After_17_02_22(rawHtml);
 };
 
-const extractDhbDataAfter_16_02_22 = (rawHtml: string): DhbVaccineDoseData[] =>
+const extractDhbData_Including_and_After_17_02_22 = (
+  rawHtml: string
+): DhbVaccineDoseData[] =>
   extractDataFromHtml(
     rawHtml,
     /\<a id=\"dhbtables all ethnicities" name="dhbtables all ethnicities\"\>\<\/a\>.*?\<\/h4\>.*?\<tbody\>(.*?)\<\/tbody\>/gs,
     /nowrap\"\>(?<DhbName>.*?)\<\/th\>.*?\>(?<firstDoses>.*?)\<\/td\>.*?\>(?<firstDosesPercentage>.*?)\<\/td\>.*?\>(?<secondDoses>.*?)\<\/td\>.*?\>(?<secondDosesPercentage>.*?)\<\/td\>.*?\>(?<totalPopulation>.*?)\<\/td\>/gs
   );
 
-const extractDhbDataAfter_15_02_22 = (rawHtml: string): DhbVaccineDoseData[] =>
+const extractDhbData_Including_and_Before_16_02_22 = (
+  rawHtml: string
+): DhbVaccineDoseData[] =>
   extractDataFromHtml(
     rawHtml,
     /\<a id=\"dhbtables all ethnicities" name="dhbtables all ethnicities\"\>\<\/a\>.*?\<\/h4\>.*?\<tbody\>(.*?)\<\/tbody\>/gs,
     /<th\>(?<DhbName>.*?)\<\/th\>.*?\>(?<firstDoses>.*?)\<\/td\>.*?\>(?<firstDosesPercentage>.*?)\<\/td\>.*?\>(?<secondDoses>.*?)\<\/td\>.*?\>(?<secondDosesPercentage>.*?)\<\/td\>.*?\>(?<totalPopulation>.*?)\<\/td\>/gs
   );
 
-const defaultExtractDhbData = (rawHtml: string): DhbVaccineDoseData[] =>
+const extractDhbData_Including_and_Before_15_02_22 = (
+  rawHtml: string
+): DhbVaccineDoseData[] =>
   extractDataFromHtml(
     rawHtml,
     /\<a id=\"90pct all ethnicities" name="90pct all ethnicities\"\>\<\/a\>.*?\<\/h4\>.*?\<tbody\>(.*?)\<\/tbody\>/gs,
