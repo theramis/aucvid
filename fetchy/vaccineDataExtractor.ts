@@ -3,8 +3,9 @@ import { getVaccinationDataPerDhb } from "./extractors/vaccinationDataPerDhbExtr
 import { extractDailyUpdatedNzTime } from "./extractors/dailyUpdatedTimeExtractor";
 
 export default function extractVaccineData(rawHtml: string): VaccineData {
+  const dailyUpdatedNzTime = extractDailyUpdatedNzTime(rawHtml);
   return {
-    vaccinationsPerDhb: getVaccinationDataPerDhb(rawHtml),
-    dataValidAsAtNzTimeIso: extractDailyUpdatedNzTime(rawHtml).toISO(),
+    vaccinationsPerDhb: getVaccinationDataPerDhb(dailyUpdatedNzTime, rawHtml),
+    dataValidAsAtNzTimeIso: dailyUpdatedNzTime.toISO(),
   };
 }

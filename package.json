@@ -11,7 +11,8 @@
     "lint": "next lint",
     "husky-install": "husky install",
     "fetchy": "cross-env NODE_OPTIONS='--unhandled-rejections=strict' ts-node fetchy/fetchy.ts",
-    "fetchy-regen-data": "cross-env NODE_OPTIONS='--unhandled-rejections=strict' REGENERATE_DATA=true ts-node fetchy/fetchy.ts"
+    "fetchy-regen-data": "cross-env NODE_OPTIONS='--unhandled-rejections=strict' REGENERATE_DATA=true ts-node fetchy/fetchy.ts",
+    "test": "jest"
   },
   "dependencies": {
     "@heroicons/react": "^1.0.5",
@@ -32,6 +33,7 @@
   "devDependencies": {
     "@netlify/plugin-nextjs": "^4.0.0-beta.9",
     "@types/gtag.js": "0.0.8",
+    "@types/jest": "^27.4.1",
     "@types/node": "^16.11.7",
     "@types/react": "17.0.34",
     "autoprefixer": "^10.4.0",
@@ -40,6 +42,7 @@
     "eslint-config-next": "12.0.4",
     "eslint-plugin-prettier": "4.0.0",
     "husky": "7.0.4",
+    "jest": "^27.5.1",
     "postcss": "^8.3.11",
     "prettier": "2.4.1",
     "pretty-quick": "3.1.2",
