@@ -6,3 +6,8 @@ export const convertToNumber = (s: string): number => {
   }
   return result;
 };
+
+export const calculateDosesToReach90Percent = (
+  currentDoses: number,
+  totalPopulation: number
+): number => Math.max(Math.round(totalPopulation * 0.9) - currentDoses, 0);

@@ -4,7 +4,7 @@ import {
 } from "../../../shared/types/VaccineDataTypes";
 import { convertToNumber } from "../../utilities";
 
-export const extractDhbData_Including_and_Before_15_02_22 = (
+export const extractDhbDataIncludingAndBefore15Feb22 = (
   rawHtml: string
 ): DhbVaccineDoseData[] => {
   const vaccinationTo90PerDhbTableHtml =

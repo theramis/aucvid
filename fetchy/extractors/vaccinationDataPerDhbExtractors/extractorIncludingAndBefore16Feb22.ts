@@ -2,9 +2,12 @@ import {
   DhbName,
   DhbVaccineDoseData,
 } from "../../../shared/types/VaccineDataTypes";
-import { convertToNumber } from "../../utilities";
+import {
+  convertToNumber,
+  calculateDosesToReach90Percent,
+} from "../../utilities";
 
-export const extractDhbData_Including_and_After_17_02_22 = (
+export const extractDhbDataIncludingAndBefore16Feb22 = (
   rawHtml: string
 ): DhbVaccineDoseData[] => {
   const vaccinationTo90PerDhbTableHtml =
@@ -13,7 +16,7 @@ export const extractDhbData_Including_and_After_17_02_22 = (
     )![1];
 
   const perDhbRegex =
-    /nowrap\"\>(?<DhbName>.*?)\<\/th\>.*?\>(?<firstDoses>.*?)\<\/td\>.*?\>(?<firstDosesPercentage>.*?)\<\/td\>.*?\>(?<secondDoses>.*?)\<\/td\>.*?\>(?<secondDosesPercentage>.*?)\<\/td\>.*?\>(?<totalPopulation>.*?)\<\/td\>/gs;
+    /<th\>(?<DhbName>.*?)\<\/th\>.*?\>(?<firstDoses>.*?)\<\/td\>.*?\>(?<firstDosesPercentage>.*?)\<\/td\>.*?\>(?<secondDoses>.*?)\<\/td\>.*?\>(?<secondDosesPercentage>.*?)\<\/td\>.*?\>(?<totalPopulation>.*?)\<\/td\>/gs;
   const vaccinationDataPerDhb: DhbVaccineDoseData[] = [];
   let match;
   while ((match = perDhbRegex.exec(vaccinationTo90PerDhbTableHtml)) !== null) {
@@ -56,8 +59,3 @@ const createPopulationDoseDataForDhbFromRegexMatch = (
     totalPopulation: totalPopulation,
   };
 };
-
-const calculateDosesToReach90Percent = (
-  currentDoses: number,
-  totalPopulation: number
-): number => Math.max(Math.round(totalPopulation * 0.9) - currentDoses, 0);
