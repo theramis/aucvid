@@ -1,15 +1,11 @@
-name: Verify Run Fetchy
+name: Tests
 on:
   pull_request:
 
 jobs:
-  fetchy:
-    name: Verify Run Fetchy
+  tests:
+    name: Run tests
     runs-on: ubuntu-latest
-    env:
-      # set this secret, you can get the value from this discord message https://discord.com/channels/658523382442360866/903771050385502239/904216952141152328
-      DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
-      SEND_DISCORD_NOTIFICATIONS: false
     steps:
       - name: Checkout code
         uses: actions/checkout@v2.4.0
@@ -22,7 +18,5 @@ jobs:
           cache: "npm"
       - name: Install dependencies
         run: npm ci
-      - name: Run Fetchy
-        run: npm run fetchy
-      - name: Note any files generated
-        run: git status
+      - name: Run Tests
+        run: npm test
