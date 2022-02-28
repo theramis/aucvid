@@ -33,7 +33,7 @@ export default async function fetchIndexPageProps(): Promise<IndexPageProps> {
   const { value: latestFetchyRun } = await getCachedLatestFetchyRun();
 
   return {
-    lastCheckedAtTimeUtc: latestMetaData.updatedAtUtcTimeIso, // Temporary fix while regex is re-written //latestFetchyRun?.run_started_at ?? null,
+    lastCheckedAtTimeUtc: latestFetchyRun?.run_started_at ?? null,
     dataUpdatedAtTimeUtc: latestMetaData.updatedAtUtcTimeIso,
     allDhbsVaccineDoseData: generateAllDhbsVaccineDoseData(
       latestData.vaccinationsPerDhb,

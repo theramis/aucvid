@@ -1,20 +1,19 @@
 import {
   DhbName,
   DhbVaccineDoseData,
-} from "../../shared/types/VaccineDataTypes";
-import { convertToNumber } from "../utilities";
+} from "../../../shared/types/VaccineDataTypes";
+import { convertToNumber } from "../../utilities";
 
-export const getVaccinationDataPerDhb = (
+export const extractDhbData_Including_and_Before_15_02_22 = (
   rawHtml: string
 ): DhbVaccineDoseData[] => {
   const vaccinationTo90PerDhbTableHtml =
-    /\<a id=\"dhbtables all ethnicities" name="dhbtables all ethnicities\"\>\<\/a\>.*?\<\/h4\>.*?\<tbody\>(.*?)\<\/tbody\>/gs.exec(
+    /\<a id=\"90pct all ethnicities" name="90pct all ethnicities\"\>\<\/a\>.*?\<\/h4\>.*?\<tbody\>(.*?)\<\/tbody\>/gs.exec(
       rawHtml
     )![1];
 
   const perDhbRegex =
-    /<th\>(?<DhbName>.*?)\<\/th\>.*?\>(?<firstDoses>.*?)\<\/td\>.*?\>(?<firstDosesPercentage>.*?)\<\/td\>.*?\>(?<firstDosesToReach90Percent>.*?)\<\/td\>.*?\>(?<secondDoses>.*?)\<\/td\>.*?\>(?<secondDosesPercentage>.*?)\<\/td\>.*?\>(?<secondDosesToReach90Percent>.*?)\<\/td\>.*?\>(?<totalPopulation>.*?)\<\/td\>/gs;
-
+    /nowrap\"\>(?<DhbName>.*?)\<\/th\>.*?\>(?<firstDoses>.*?)\<\/td\>.*?\>(?<firstDosesPercentage>.*?)\<\/td\>.*?\>(?<firstDosesToReach90Percent>.*?)\<\/td\>.*?\>(?<secondDoses>.*?)\<\/td\>.*?\>(?<secondDosesPercentage>.*?)\<\/td\>.*?\>(?<secondDosesToReach90Percent>.*?)\<\/td\>.*?\>(?<totalPopulation>.*?)\<\/td\>/gs;
   const vaccinationDataPerDhb: DhbVaccineDoseData[] = [];
   let match;
   while ((match = perDhbRegex.exec(vaccinationTo90PerDhbTableHtml)) !== null) {
