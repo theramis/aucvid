@@ -4,7 +4,7 @@ import { convertToNumber } from "../utilities";
 export const extractDailyUpdatedNzTime = (rawHtml: string): DateTime => {
   // extracts a date like "11:59pm 24 October 2021"
   const match =
-    /Data\sin\sthis\ssection\sis\sas\sat\s([0-9]+):([0-9]+)(am|pm)\s([0-9]+)\s(.*?)\s([0-9]+)\sand\sis\supdated\sdaily/g.exec(
+    /Data\sin\sthis\ssection\sis\sas\sat\s([0-9]+):([0-9]+)(am|pm)\s([0-9]+)\s(.*?)\s([0-9]+)\sand\sis\supdated/g.exec(
       rawHtml
     )!;
 
